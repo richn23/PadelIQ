@@ -326,3 +326,6 @@ i.played { background: #fff; }
 .center-self { align-self: center; margin-top: 4px; }
 .chip-btn.area { border-radius: 8px; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
 .goal-note { font-size: 14px; color: var(--text-soft); line-height: 1.35; }
+.goal-chat { display: flex; flex-direction: column; gap: 12px; }
+.mascot-img.small { width: 60px; }
+.goal-chat .bubble { font-size: 15px; }

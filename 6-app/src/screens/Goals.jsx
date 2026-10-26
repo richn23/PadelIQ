@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
-import { allSkillById as skillById, axisById } from '../data.js';
+import { allSkillById as skillById, axisById, goalDiagnosis as gd } from '../data.js';
 
 export default function Goals({ player, updatePlayer, onAdd }) {
   const goals = player.goals || [];
@@ -30,7 +30,12 @@ export default function Goals({ player, updatePlayer, onAdd }) {
                 <li key={g.id} className="goal">
                   <div className="goal-top"><span className="goal-title">{goalSkill(g)}</span><span className="goal-pct">{g.progress}%</span></div>
                   {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
-                  {skill && <p className="goal-skill">{axisById[skill.axis].name}</p>}
+                  {skill && (
+                    <p className="goal-skill">
+                      {axisById[skill.axis].name}
+                      {g.diagnosis?.when && g.diagnosis.when !== 'unsure' ? ` · mostly ${gd.when.find((w) => w.id === g.diagnosis.when)?.label.toLowerCase()}` : ''}
+                    </p>
+                  )}
                   <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How happy you are with: ${goalLine(g)}`} className="slider" />
                   {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => mark[x]).join(' ')} <span className="legend">(▲ better ● same ▼ struggling)</span></p>}
                   {removing === g.id

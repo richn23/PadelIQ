@@ -1,0 +1,333 @@
+{
+  "_note": "Goal diagnosis (draft v0.1). Before making a goal, the coach asks what's wrong and when. Each problem has a kind (technique, decision, position, pressure) for the coach, and a suggested goal the player can edit.",
+  "problemsByGroup": {
+    "attacking": [
+      {
+        "id": "net",
+        "label": "Goes into the net",
+        "kind": "technique",
+        "goal": "Clear the net with more margin"
+      },
+      {
+        "id": "long",
+        "label": "Goes long or out",
+        "kind": "technique",
+        "goal": "Keep it in, a little shorter and safer"
+      },
+      {
+        "id": "loopy",
+        "label": "Too slow or loopy",
+        "kind": "technique",
+        "goal": "Faster and less loopy"
+      },
+      {
+        "id": "sits_up",
+        "label": "Sits up for them to attack",
+        "kind": "technique",
+        "goal": "Keep it low and deep"
+      },
+      {
+        "id": "mistime",
+        "label": "I mistime it or miss it",
+        "kind": "position",
+        "goal": "Get set early and watch the ball"
+      },
+      {
+        "id": "choice",
+        "label": "I use it at the wrong time",
+        "kind": "decision",
+        "goal": "Choose the right moment for it"
+      },
+      {
+        "id": "avoid",
+        "label": "I avoid it",
+        "kind": "pressure",
+        "goal": "Try it more in relaxed games"
+      },
+      {
+        "id": "tense",
+        "label": "I tense up when I play it",
+        "kind": "pressure",
+        "goal": "Stay loose and play it calmly"
+      }
+    ],
+    "defensive": [
+      {
+        "id": "net",
+        "label": "Goes into the net",
+        "kind": "technique",
+        "goal": "Clear the net with more margin"
+      },
+      {
+        "id": "long",
+        "label": "Goes long or out",
+        "kind": "technique",
+        "goal": "Keep it in, a little shorter and safer"
+      },
+      {
+        "id": "loopy",
+        "label": "Too slow or loopy",
+        "kind": "technique",
+        "goal": "Faster and less loopy"
+      },
+      {
+        "id": "sits_up",
+        "label": "Sits up for them to attack",
+        "kind": "technique",
+        "goal": "Keep it low and deep"
+      },
+      {
+        "id": "mistime",
+        "label": "I mistime it or miss it",
+        "kind": "position",
+        "goal": "Get set early and watch the ball"
+      },
+      {
+        "id": "choice",
+        "label": "I use it at the wrong time",
+        "kind": "decision",
+        "goal": "Choose the right moment for it"
+      },
+      {
+        "id": "avoid",
+        "label": "I avoid it",
+        "kind": "pressure",
+        "goal": "Try it more in relaxed games"
+      },
+      {
+        "id": "tense",
+        "label": "I tense up when I play it",
+        "kind": "pressure",
+        "goal": "Stay loose and play it calmly"
+      }
+    ],
+    "transition": [
+      {
+        "id": "net",
+        "label": "Goes into the net",
+        "kind": "technique",
+        "goal": "Clear the net with more margin"
+      },
+      {
+        "id": "long",
+        "label": "Goes long or out",
+        "kind": "technique",
+        "goal": "Keep it in, a little shorter and safer"
+      },
+      {
+        "id": "loopy",
+        "label": "Too slow or loopy",
+        "kind": "technique",
+        "goal": "Faster and less loopy"
+      },
+      {
+        "id": "sits_up",
+        "label": "Sits up for them to attack",
+        "kind": "technique",
+        "goal": "Keep it low and deep"
+      },
+      {
+        "id": "mistime",
+        "label": "I mistime it or miss it",
+        "kind": "position",
+        "goal": "Get set early and watch the ball"
+      },
+      {
+        "id": "choice",
+        "label": "I use it at the wrong time",
+        "kind": "decision",
+        "goal": "Choose the right moment for it"
+      },
+      {
+        "id": "avoid",
+        "label": "I avoid it",
+        "kind": "pressure",
+        "goal": "Try it more in relaxed games"
+      },
+      {
+        "id": "tense",
+        "label": "I tense up when I play it",
+        "kind": "pressure",
+        "goal": "Stay loose and play it calmly"
+      }
+    ],
+    "specialist": [
+      {
+        "id": "net",
+        "label": "Goes into the net",
+        "kind": "technique",
+        "goal": "Clear the net with more margin"
+      },
+      {
+        "id": "long",
+        "label": "Goes long or out",
+        "kind": "technique",
+        "goal": "Keep it in, a little shorter and safer"
+      },
+      {
+        "id": "loopy",
+        "label": "Too slow or loopy",
+        "kind": "technique",
+        "goal": "Faster and less loopy"
+      },
+      {
+        "id": "sits_up",
+        "label": "Sits up for them to attack",
+        "kind": "technique",
+        "goal": "Keep it low and deep"
+      },
+      {
+        "id": "mistime",
+        "label": "I mistime it or miss it",
+        "kind": "position",
+        "goal": "Get set early and watch the ball"
+      },
+      {
+        "id": "choice",
+        "label": "I use it at the wrong time",
+        "kind": "decision",
+        "goal": "Choose the right moment for it"
+      },
+      {
+        "id": "avoid",
+        "label": "I avoid it",
+        "kind": "pressure",
+        "goal": "Try it more in relaxed games"
+      },
+      {
+        "id": "tense",
+        "label": "I tense up when I play it",
+        "kind": "pressure",
+        "goal": "Stay loose and play it calmly"
+      }
+    ],
+    "movement": [
+      {
+        "id": "late",
+        "label": "I'm late getting there",
+        "kind": "position",
+        "goal": "Split step and move earlier"
+      },
+      {
+        "id": "wrong_place",
+        "label": "I end up in the wrong place",
+        "kind": "position",
+        "goal": "Know where to be after each shot"
+      },
+      {
+        "id": "middle",
+        "label": "I get stuck in the middle of the court",
+        "kind": "position",
+        "goal": "Go forward or back, not the middle"
+      },
+      {
+        "id": "split",
+        "label": "My partner and I split up",
+        "kind": "position",
+        "goal": "Move together, forwards and back"
+      },
+      {
+        "id": "tired",
+        "label": "I slow down when I'm tired",
+        "kind": "pressure",
+        "goal": "Keep my feet moving late in matches"
+      }
+    ],
+    "tactics": [
+      {
+        "id": "wrong_shot",
+        "label": "I pick the wrong shot",
+        "kind": "decision",
+        "goal": "Pick the safe shot when I'm in trouble"
+      },
+      {
+        "id": "too_early",
+        "label": "I go for winners too early",
+        "kind": "decision",
+        "goal": "Build the point before going for it"
+      },
+      {
+        "id": "no_plan",
+        "label": "We don't have a plan",
+        "kind": "decision",
+        "goal": "Agree one simple plan before we start"
+      },
+      {
+        "id": "no_talk",
+        "label": "We don't talk enough",
+        "kind": "decision",
+        "goal": "Call every middle ball"
+      },
+      {
+        "id": "same",
+        "label": "I play the same way all match",
+        "kind": "decision",
+        "goal": "Change something when it isn't working"
+      }
+    ],
+    "mentality": [
+      {
+        "id": "nerves",
+        "label": "Nerves on big points",
+        "kind": "pressure",
+        "goal": "Same routine on big points"
+      },
+      {
+        "id": "frustration",
+        "label": "Frustration after mistakes",
+        "kind": "pressure",
+        "goal": "Reset by the next point"
+      },
+      {
+        "id": "focus",
+        "label": "I lose focus",
+        "kind": "pressure",
+        "goal": "One word to refocus between points"
+      },
+      {
+        "id": "negative",
+        "label": "I'm hard on myself",
+        "kind": "pressure",
+        "goal": "Talk to myself like a good partner would"
+      },
+      {
+        "id": "partner",
+        "label": "I get annoyed with my partner",
+        "kind": "pressure",
+        "goal": "Stay positive with my partner"
+      }
+    ]
+  },
+  "when": [
+    {
+      "id": "always",
+      "label": "Most of the time"
+    },
+    {
+      "id": "pressure",
+      "label": "Under pressure or tight scores"
+    },
+    {
+      "id": "fast",
+      "label": "On fast balls"
+    },
+    {
+      "id": "rushed",
+      "label": "When I'm rushed or out of position"
+    },
+    {
+      "id": "late_match",
+      "label": "Late in the match"
+    },
+    {
+      "id": "unsure",
+      "label": "Not sure"
+    }
+  ],
+  "lines": {
+    "what": "What's wrong with your {skill} at the moment? Pick up to 2.",
+    "when": "When does it happen most?",
+    "suggest": "How about this as your goal? Change the words if you like.",
+    "happy": "How happy are you with your {skill} right now?"
+  }
+}

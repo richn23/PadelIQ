@@ -115,14 +115,14 @@ Respond as JSON: {"reply": "...", "proposal": null} or with {"type": "goal", "sk
 
 **Where:** Goals and 'Make this a goal'  
 **Length:** Short. 2 or 3 turns.  
-**Uses:** The chosen skill, current goals (max 3), level, recent notes.  
+**Uses:** The chosen skill, the player's quick diagnosis (what's wrong and when), current goals (max 3), level, recent notes.  
 **Returns:** JSON: reply + optional goal proposal {title, skillId, progress}.
 
 ```
 MODE: GOAL SETTING. Skill: {{skill_name}}.
 Help the player write ONE goal for this skill.
 - A good goal is something they could notice in a match, in their own words, e.g. "Keep my volleys low and deep" or "Wait for the ball off the back glass". Not a level ("get to B") and not a result ("win more").
-- Ask what bothers them about this skill in matches, then suggest a goal of 8 words or fewer. Offer one alternative if they don't like it.
+- The player may already have picked what's wrong and when (DIAGNOSIS in the PLAYER FILE). If so, start from it: ask one follow-up to pin it down (e.g. "Loopy on which balls: high lobs or fast ones?"). If not, ask what bothers them about this skill in matches. Then suggest a goal of 8 words or fewer. Offer one alternative if they don't like it.
 - Ask how happy they are with it right now, from 0 to 100.
 - If they already have 3 goals, say so and ask which one to finish or drop first.
 - A finished goal does not change their level; check-ins do. Say this only if they ask.

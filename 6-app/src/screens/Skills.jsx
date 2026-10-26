@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
-import { axes, levels, groups, allSkills, allSkillById, axisById } from '../data.js';
+import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd } from '../data.js';
+import think from '../assets/mascot-think.png';
 import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder } from '../levels.js';
 
 const views = [
@@ -138,6 +139,53 @@ function Explore({ onOpen }) {
   );
 }
 
+// The goal-setting coach (scripted for now): what's wrong, when, then a suggested goal.
+function GoalChat({ skill, form, setForm, onSave, onCancel }) {
+  const problems = gd.problemsByGroup[skill.group] || gd.problemsByGroup.attacking;
+  // Padel words keep their capital (Bandeja); English names go lower case in a sentence ("your serve").
+  const name = skill.name === skill.es ? skill.name : skill.name.toLowerCase();
+  const line = (k) => gd.lines[k].replace('{skill}', name);
+  const toggle = (id) => setForm({ ...form, problems: form.problems.includes(id) ? form.problems.filter((x) => x !== id) : form.problems.length < 2 ? [...form.problems, id] : form.problems });
+  const suggestion = () => problems.filter((p) => form.problems.includes(p.id)).map((p, i) => (i ? p.goal[0].toLowerCase() + p.goal.slice(1) : p.goal)).join(', and ') || goalIdea(skill);
+
+  return (
+    <section className="panel goal-chat">
+      <p className="eyebrow">New goal · {skill.name}</p>
+      {form.step === 'what' && (
+        <>
+          <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{line('what')}</div></div>
+          <div className="chips">
+            {problems.map((p) => <button key={p.id} className={'chip-btn skill' + (form.problems.includes(p.id) ? ' on' : '')} onClick={() => toggle(p.id)}>{p.label}</button>)}
+          </div>
+          <button className="btn" disabled={!form.problems.length} onClick={() => setForm({ ...form, step: 'when' })}>Next</button>
+          <button className="btn ghost" onClick={() => setForm({ ...form, step: 'suggest', title: '' })}>Skip, I'll write my own</button>
+        </>
+      )}
+      {form.step === 'when' && (
+        <>
+          <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{line('when')}</div></div>
+          <div className="chips">
+            {gd.when.map((w) => <button key={w.id} className={'chip-btn skill' + (form.when === w.id ? ' on' : '')} onClick={() => setForm({ ...form, when: w.id, step: 'suggest', title: form.title || suggestion() })}>{w.label}</button>)}
+          </div>
+          <button className="back" onClick={() => setForm({ ...form, step: 'what' })}>‹ Back</button>
+        </>
+      )}
+      {form.step === 'suggest' && (
+        <div className="ob-form">
+          <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{form.problems.length ? line('suggest') : 'What do you want to change? In your own words.'}</div></div>
+          <textarea rows="2" value={form.title} maxLength={80} placeholder={`e.g. ${goalIdea(skill)}`} onChange={(e) => setForm({ ...form, title: e.target.value })} aria-label="Your goal" />
+          <label className="soft">{line('happy')} <strong className="goal-pct">{form.progress}%</strong>
+            <input type="range" className="slider" min="0" max="100" step="5" value={form.progress} onChange={(e) => setForm({ ...form, progress: Number(e.target.value) })} />
+          </label>
+          <button className="btn" onClick={onSave}>Save goal</button>
+          {form.problems.length > 0 && <button className="back" onClick={() => setForm({ ...form, step: 'when' })}>‹ Back</button>}
+        </div>
+      )}
+      <button className="btn ghost" onClick={onCancel}>Cancel</button>
+    </section>
+  );
+}
+
 // A concrete example goal, to show what "specific" looks like.
 function goalIdea(skill) {
   const ideas = {
@@ -175,11 +223,12 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const makeGoal = () => {
     if (isGoal) return;
     if (goals.length >= 3) { setNote('You already have 3 goals. Finish or remove one first.'); return; }
-    setGoalForm({ title: '', progress: 30 });
+    setGoalForm({ step: 'what', problems: [], when: '', title: '', progress: 30 });
   };
   const saveGoal = () => {
     const title = goalForm.title.trim();
-    updatePlayer((p) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), skillId: skill.id, title, progress: goalForm.progress, created: new Date().toISOString() }] }));
+    const diagnosis = { problems: goalForm.problems, when: goalForm.when };
+    updatePlayer((p) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), skillId: skill.id, title, diagnosis, progress: goalForm.progress, created: new Date().toISOString() }] }));
     setGoalForm(null);
     setNote('Added to your goals.');
   };
@@ -237,19 +286,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       </section>
 
       {skill.checked && !goalForm && <button className="btn" onClick={makeGoal} disabled={isGoal}>{isGoal ? 'This is one of your goals' : 'Make this a goal'}</button>}
-      {goalForm && (
-        <section className="panel ob-form">
-          <p className="eyebrow">New goal: {skill.name}</p>
-          <label className="soft">In your words: what do you want to change? (optional)
-            <input value={goalForm.title} maxLength={60} placeholder={`e.g. ${goalIdea(skill)}`} onChange={(e) => setGoalForm({ ...goalForm, title: e.target.value })} />
-          </label>
-          <label className="soft">How happy are you with it right now? <strong className="goal-pct">{goalForm.progress}%</strong>
-            <input type="range" className="slider" min="0" max="100" step="5" value={goalForm.progress} onChange={(e) => setGoalForm({ ...goalForm, progress: Number(e.target.value) })} />
-          </label>
-          <button className="btn" onClick={saveGoal}>Save goal</button>
-          <button className="btn ghost" onClick={() => setGoalForm(null)}>Cancel</button>
-        </section>
-      )}
+      {goalForm && <GoalChat skill={skill} form={goalForm} setForm={setGoalForm} onSave={saveGoal} onCancel={() => setGoalForm(null)} />}
       {note && <p className="soft center">{note}</p>}
     </main>
   );
