@@ -84,6 +84,8 @@ function whenWord(date) {
   const t = todayISO();
   if (!date) return 'your next';
   if (date === t) return "today's";
+  const y = new Date(t + 'T00:00:00'); y.setDate(y.getDate() - 1);
+  if (date === `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`) return "yesterday's";
   const d = new Date(t + 'T00:00:00'); d.setDate(d.getDate() + 1);
   const tomorrow = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   if (date === tomorrow) return "tomorrow's";
@@ -103,4 +105,10 @@ export function preMatchOpener(player, session) {
   const what = session ? `${whenWord(session.date)} ${kind}` : 'your next game';
   if (!points.length) return `Nothing saved to focus on for ${what} yet.\n\nAt your level the priority is: ${levelFocus(currentLevel(player))}\n\nAnything on your mind?`;
   return `Here's a reminder of what you wanted to focus on in ${what}:\n${points.slice(0, 3).map((p, i) => `${i + 1}. ${p}`).join('\n')}\n\nAnything else on your mind?`;
+}
+
+// The post-match coach opens instantly with one simple question.
+export function postMatchOpener(session) {
+  const kind = session?.kind === 'lesson' ? 'lesson' : 'match';
+  return session ? `How do you feel about ${whenWord(session.date)} ${kind}?` : 'How do you feel about your last game?';
 }

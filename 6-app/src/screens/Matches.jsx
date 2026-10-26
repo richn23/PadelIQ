@@ -3,7 +3,7 @@ import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
-import { sessionSummary, preMatchOpener } from '../coach.js';
+import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn } from '../sessions.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], intention: '' };
@@ -369,6 +369,7 @@ function Reflect({ session, player, goals, onBack, onSave }) {
             title="Post-match coach"
             vars={{ session_summary: sessionSummary(session) }}
             player={player}
+            intro={postMatchOpener(session)}
             onClose={() => setChat(false)}
             onProposal={(p) => {
               if (p.type !== 'reflection') return;
