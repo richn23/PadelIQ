@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd } from '../data.js';
 import think from '../assets/mascot-think.png';
-import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder } from '../levels.js';
+import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus } from '../levels.js';
 
 const views = [
   { id: 'have', label: 'My skills' },
@@ -96,6 +96,10 @@ function Next({ level, checks, onOpen }) {
   const right = (r) => (r.have === null ? <span className="tag">Not checked</span> : <span className="soft">{levelName(levelByOrder(r.have).id)} → {levelName(levelByOrder(r.need).id)}</span>);
   return (
     <>
+      <section className="panel focus-card">
+        <p className="eyebrow">Your focus at {levelName(level)}</p>
+        <p className="insight">{levelFocus(level)}</p>
+      </section>
       <section className="panel">
         <p className="eyebrow">Gaps at your level ({levelName(level)})</p>
         <p className="soft">Skills a player at level {levelName(level)} usually has. Closing these makes your level solid.</p>
@@ -140,7 +144,7 @@ function Explore({ onOpen }) {
 }
 
 // The goal-setting coach (scripted for now): what's wrong, when, then a suggested goal.
-function GoalChat({ skill, form, setForm, onSave, onCancel }) {
+function GoalChat({ skill, level, form, setForm, onSave, onCancel }) {
   const problems = gd.problemsByGroup[skill.group] || gd.problemsByGroup.attacking;
   // Padel words keep their capital (Bandeja); English names go lower case in a sentence ("your serve").
   const name = skill.name === skill.es ? skill.name : skill.name.toLowerCase();
@@ -173,6 +177,7 @@ function GoalChat({ skill, form, setForm, onSave, onCancel }) {
       {form.step === 'suggest' && (
         <div className="ob-form">
           <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{form.problems.length ? line('suggest') : 'What do you want to change? In your own words.'}</div></div>
+          <p className="soft">At {levelName(level)}, the priority is: <em>{levelFocus(level)}</em></p>
           <textarea rows="2" value={form.title} maxLength={80} placeholder={`e.g. ${goalIdea(skill)}`} onChange={(e) => setForm({ ...form, title: e.target.value })} aria-label="Your goal" />
           <label className="soft">{line('happy')} <strong className="goal-pct">{form.progress}%</strong>
             <input type="range" className="slider" min="0" max="100" step="5" value={form.progress} onChange={(e) => setForm({ ...form, progress: Number(e.target.value) })} />
@@ -286,7 +291,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       </section>
 
       {skill.checked && !goalForm && <button className="btn" onClick={makeGoal} disabled={isGoal}>{isGoal ? 'This is one of your goals' : 'Make this a goal'}</button>}
-      {goalForm && <GoalChat skill={skill} form={goalForm} setForm={setGoalForm} onSave={saveGoal} onCancel={() => setGoalForm(null)} />}
+      {goalForm && <GoalChat skill={skill} level={currentLevel(player)} form={goalForm} setForm={setGoalForm} onSave={saveGoal} onCancel={() => setGoalForm(null)} />}
       {note && <p className="soft center">{note}</p>}
     </main>
   );

@@ -79,3 +79,6 @@ export function topDescribed(skill) {
 
 // "a" or "an" before a level name ("an A player", "a B player")
 export const article = (name) => (/^[AEFHILMNORSX]$/.test(name) || /^[aeiou]/i.test(name) ? 'an' : 'a');
+
+// What the coach prioritises at a level (e.g. D: "Get it back.")
+export const levelFocus = (id) => find(id)?.coachFocus || '';

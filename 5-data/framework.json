@@ -33,42 +33,54 @@
       "order": 0,
       "name": "Beginner",
       "assessable": true,
-      "description": "Learning the rules and the court. Getting the ball over the net is the main challenge."
+      "description": "Learning the rules and the court. Getting the ball over the net is the main challenge.",
+      "coachFocus": "Learn the rules and where to stand. Get the serve in and the ball over the net.",
+      "coachFocusSource": "draft"
     },
     {
       "id": "D",
       "order": 1,
       "name": "D",
       "assessable": true,
-      "description": "Consistent basics: you return reliably, serve in, and keep a simple rally going."
+      "description": "Consistent basics: you return reliably, serve in, and keep a simple rally going.",
+      "coachFocus": "Get it back. Keep the ball in play. No need for winners.",
+      "coachFocusSource": "richard"
     },
     {
       "id": "C",
       "order": 2,
       "name": "C",
       "assessable": true,
-      "description": "Controlled shots in friendly games: lobs, bandeja, basic glass play."
+      "description": "Controlled shots in friendly games: lobs, bandeja, basic glass play.",
+      "coachFocus": "Be consistent, and start aiming for spaces: the sides and the middle.",
+      "coachFocusSource": "richard"
     },
     {
       "id": "B",
       "order": 3,
       "name": "B",
       "assessable": true,
-      "description": "Reliable in matches: wins points on purpose, handles pressure."
+      "description": "Reliable in matches: wins points on purpose, handles pressure.",
+      "coachFocus": "Build points on purpose: use depth, pace and height to move opponents, then finish when the ball is there.",
+      "coachFocusSource": "draft"
     },
     {
       "id": "A",
       "order": 4,
       "name": "A",
       "assessable": true,
-      "description": "Complete player: varied shots, smart tactics, and stays strong against good opponents."
+      "description": "Complete player: varied shots, smart tactics, and stays strong against good opponents.",
+      "coachFocus": "Control the match: vary spin and pace, read the opponents and change the plan when needed.",
+      "coachFocusSource": "draft"
     },
     {
       "id": "Pro",
       "order": 5,
       "name": "Pro",
       "assessable": false,
-      "description": "Professional level. The top benchmark, not an assessment target for most players."
+      "description": "Professional level. The top benchmark, not an assessment target for most players.",
+      "coachFocus": "Coming soon.",
+      "coachFocusSource": "draft"
     }
   ],
   "rules": {
