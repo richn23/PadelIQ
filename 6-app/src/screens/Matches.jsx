@@ -179,7 +179,7 @@ function AddForm({ date, onCancel, onSave }) {
   );
 }
 
-function SkillChips({ selected, onChange, prefer = [] }) {
+export function SkillChips({ selected, onChange, prefer = [] }) {
   const [area, setArea] = useState(null);
   const toggle = (id) => onChange(selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id]);
   const list = allSkills.filter((s) => s.checked && (area ? s.axis === area : prefer.includes(s.id) || selected.includes(s.id)));
