@@ -48,7 +48,12 @@ export default function Onboarding({ onDone }) {
 
   const next = () => setStep((s) => s + 1);
   const progress = Math.min(step, total) / total;
-  const Progress = () => <div className="bar ob-bar"><span style={{ width: `${progress * 100}%` }} /></div>;
+  const Progress = () => (
+    <div className="ob-top">
+      <button className="back" onClick={() => setStep((s) => Math.max(s - 1, 0))} aria-label="Back">‹ Back</button>
+      <div className="bar ob-bar"><span style={{ width: `${progress * 100}%` }} /></div>
+    </div>
+  );
 
   if (step === 0) {
     return (
@@ -131,7 +136,7 @@ export default function Onboarding({ onDone }) {
             <p className="eyebrow">Your starting level</p>
             <p className="ob-level-value">{levels.find((l) => l.id === level)?.name}</p>
           </div>
-          <p className="soft">It gets more accurate after your first check-in, in 5 sessions.</p>
+          <p className="soft">It gets more accurate after your first check-in (after 5 sessions).</p>
           <Pentagon axes={axes} axisLevels={axisLevels} selected={null} onSelect={() => {}} />
         </section>
         <p className="soft center ob-disc">{ob.levelNote}</p>

@@ -25,6 +25,8 @@ export default function App() {
   const [screen, setScreen] = useState('splash');
   const [coachQuestion, setCoachQuestion] = useState(null);
   const [tapCount, setTapCount] = useState(0); // tapping a tab again goes back to its start
+  const [intent, setIntent] = useState(null); // e.g. open a session's plan, or Skills on 'Work on next'
+  const go = (id, opts = null) => { setIntent(opts); setTapCount((n) => n + 1); setScreen(id); };
   const [player, setPlayer] = useState(() => (params.has('demo') ? samplePlayer : loadPlayer()));
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function App() {
               <CoachButton screen={screen} onOpenCoach={(q) => { setCoachQuestion(q); setScreen('coach'); }} />
             )}
           </TopBar>
-          {screen === 'home' && <Home player={player} onGo={setScreen} />}
+          {screen === 'home' && <Home player={player} onGo={go} />}
           {screen === 'checkin' && <CheckIn player={player} updatePlayer={updatePlayer} onDone={() => setScreen('matches')} />}
           {screen === 'settings' && (
             <Settings
@@ -86,11 +88,11 @@ export default function App() {
               onReset={() => { clearPlayer(); setPlayer(null); setScreen('onboarding'); }}
             />
           )}
-          {screen === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} />}
-          {screen === 'goals' && <Goals player={player} updatePlayer={updatePlayer} />}
-          {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} />}
+          {screen === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} startView={intent?.view} />}
+          {screen === 'goals' && <Goals player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
+          {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} />}
           {screen === 'coach' && <Coach question={coachQuestion} />}
-          <TabBar active={screen} onChange={(id) => { setCoachQuestion(null); setTapCount((n) => n + 1); setScreen(id); }} />
+          <TabBar active={screen} onChange={(id) => { setCoachQuestion(null); go(id); }} />
         </>
       )}
     </div>

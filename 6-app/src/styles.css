@@ -319,3 +319,9 @@ i.played { background: #fff; }
 .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 .topbar .gear { margin-left: 0; }
 .coach-fab { position: static; width: 44px; height: 44px; border-width: 2px; box-shadow: none; padding: 3px; }
+
+/* QC fixes */
+.ob-top { display: flex; align-items: center; gap: 12px; }
+.ob-top .bar { flex: 1; }
+.center-self { align-self: center; margin-top: 4px; }
+.chip-btn.area { border-radius: 8px; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }

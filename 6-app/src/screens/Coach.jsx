@@ -13,7 +13,7 @@ export default function Coach({ question }) {
     <main className="page">
       <div className="mascot-row">
         <img className="mascot-img" src={think} alt="" />
-        <div className="bubble">{question ? `"${question}". I'll be able to answer that once I'm connected.` : 'How can I help today?'}</div>
+        <div className="bubble">{question ? `"${question}" I'll be able to answer that once I'm connected.` : 'How can I help today?'}</div>
       </div>
       <section className="panel">
         <p className="eyebrow">Coach modes</p>

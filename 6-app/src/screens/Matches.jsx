@@ -15,8 +15,8 @@ const checkOptions = [
   { id: 'struggling', label: 'Still struggling' },
 ];
 
-export default function Matches({ player, updatePlayer, onCheckIn }) {
-  const [mode, setMode] = useState({ name: 'list' });
+export default function Matches({ player, updatePlayer, onCheckIn, openPlan }) {
+  const [mode, setMode] = useState(openPlan ? { name: 'targets', id: openPlan } : { name: 'list' });
   const [day, setDay] = useState(null);
   const sessions = player.sessions || [];
   const { upcoming, played } = sortSessions(sessions);
@@ -79,7 +79,7 @@ export default function Matches({ player, updatePlayer, onCheckIn }) {
                 </div>
                 <div className="session-actions">
                   <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>Plan</button>
-                  <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Done: reflect</button>
+                  {s.date <= todayISO() && <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Done: reflect</button>}
                 </div>
               </li>
             ))}
@@ -98,7 +98,7 @@ export default function Matches({ player, updatePlayer, onCheckIn }) {
                     <span className="session-when">{prettyDate(s.date)}</span>
                     <span className="soft block">{summary(s)}</span>
                   </span>
-                  <span className="row-right">{s.kind === 'match' && s.result?.outcome && <span className={'tag ' + s.result.outcome}>{s.result.outcome}</span>}<span className="chev">›</span></span>
+                  <span className="row-right">{s.kind === 'match' && s.result?.outcome && <span className={'tag ' + s.result.outcome}>{cap(s.result.outcome)}</span>}<span className="chev">›</span></span>
                 </button>
               </li>
             ))}
@@ -108,6 +108,8 @@ export default function Matches({ player, updatePlayer, onCheckIn }) {
     </main>
   );
 }
+
+const cap = (t) => (t ? t[0].toUpperCase() + t.slice(1) : t);
 
 function summary(s) {
   if (s.kind === 'lesson') return `Lesson${s.coach ? ' with ' + s.coach : ''}${s.venue ? ' · ' + s.venue : ''}`;
@@ -151,10 +153,8 @@ function AddForm({ date, onCancel, onSave }) {
         {f.kind === 'match' ? (
           <>
             <label className="soft">Partner<input value={f.partner} onChange={set('partner')} /></label>
-            <div className="two">
-              <label className="soft">Opponent 1<input value={f.opp1} onChange={set('opp1')} /></label>
-              <label className="soft">Opponent 2<input value={f.opp2} onChange={set('opp2')} /></label>
-            </div>
+            <label className="soft">Opponent 1<input value={f.opp1} onChange={set('opp1')} /></label>
+            <label className="soft">Opponent 2<input value={f.opp2} onChange={set('opp2')} /></label>
             <label className="soft">Type
               <select value={f.type} onChange={set('type')}>
                 <option value="casual">Casual</option><option value="competitive">Competitive</option><option value="league">League</option><option value="practice">Practice</option>
@@ -173,7 +173,7 @@ function AddForm({ date, onCancel, onSave }) {
         </label>
       </section>
       {past && <button className="btn" onClick={() => onSave(build(), true)}>Save and reflect now</button>}
-      <button className={'btn' + (past ? ' ghost' : '')} onClick={() => onSave(build(), false)}>Save as upcoming</button>
+      <button className={'btn' + (past ? ' ghost' : '')} onClick={() => onSave(build(), false)}>{past ? 'Save, reflect later' : 'Save as upcoming'}</button>
     </main>
   );
 }
@@ -181,13 +181,14 @@ function AddForm({ date, onCancel, onSave }) {
 function SkillChips({ selected, onChange, prefer = [] }) {
   const [area, setArea] = useState(null);
   const toggle = (id) => onChange(selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id]);
-  const list = allSkills.filter((s) => s.checked && (area ? s.axis === area : prefer.length ? prefer.includes(s.id) || selected.includes(s.id) : true));
+  const list = allSkills.filter((s) => s.checked && (area ? s.axis === area : prefer.includes(s.id) || selected.includes(s.id)));
   return (
     <div className="chip-picker">
       <div className="chips">
-        {prefer.length > 0 && <button className={'chip-btn' + (!area ? ' on' : '')} onClick={() => setArea(null)}>Suggested</button>}
-        {axes.map((a) => <button key={a.id} className={'chip-btn' + (area === a.id ? ' on' : '')} onClick={() => setArea(area === a.id ? null : a.id)}>{a.name.split(' and ')[0]}</button>)}
+        {prefer.length > 0 && <button className={'chip-btn area' + (!area ? ' on' : '')} onClick={() => setArea(null)}>Suggested</button>}
+        {axes.map((a) => <button key={a.id} className={'chip-btn area' + (area === a.id ? ' on' : '')} onClick={() => setArea(area === a.id ? null : a.id)}>{a.name.split(' and ')[0]}</button>)}
       </div>
+      {list.length === 0 && <p className="soft">Pick an area to see its skills.</p>}
       <div className="chips">
         {list.map((s) => <button key={s.id} className={'chip-btn skill' + (selected.includes(s.id) ? ' on' : '')} onClick={() => toggle(s.id)}>{s.name}</button>)}
       </div>
@@ -325,7 +326,7 @@ function Detail({ session, goals, onBack, onEdit, onDelete }) {
       <section className="panel">
         <p className="eyebrow">{session.kind === 'lesson' ? 'Lesson' : 'Match'} · {prettyDate(session.date, session.time)}</p>
         <p className="insight">{summary(session)}</p>
-        {session.result?.outcome && <p className="soft">Result: {session.result.outcome}{session.result.score ? ` (${session.result.score})` : ''}</p>}
+        {session.result?.outcome && <p className="soft">Result: {cap(session.result.outcome)}{session.result.score ? ` (${session.result.score})` : ''}</p>}
       </section>
       {session.kind === 'lesson' && (session.coachSaid || session.practice) && (
         <section className="panel">
@@ -376,7 +377,7 @@ function Calendar({ sessions, day, onDay }) {
     <section className="panel cal">
       <div className="row-between">
         <button className="cal-nav" onClick={() => shift(-1)} aria-label="Previous month">‹</button>
-        <p className="cal-title">{month.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</p>
+        <p className="cal-title">{month.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}</p>
         <button className="cal-nav" onClick={() => shift(1)} aria-label="Next month">›</button>
       </div>
       <div className="cal-grid">

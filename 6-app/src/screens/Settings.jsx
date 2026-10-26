@@ -46,13 +46,16 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       <section className="panel ob-form">
         <p className="eyebrow">You</p>
         <label className="soft">Your name
-          <input value={player.name} maxLength={20} onChange={(e) => updatePlayer((p) => ({ ...p, name: e.target.value }))} />
+          <input value={player.name} maxLength={20} onChange={(e) => updatePlayer((p) => ({ ...p, name: e.target.value }))} onBlur={() => updatePlayer((p) => ({ ...p, name: p.name.trim() || 'Player' }))} />
         </label>
       </section>
 
       <section className="panel">
         <div className="row-between"><p className="eyebrow">Your level</p><p className="pill">{levelName(currentLevel(player))}</p></div>
-        <p className="soft">{player.levelSetByPlayer ? 'You set this yourself.' : 'Worked out from your skill checks.'} From your skills it would be {levelName(fromSkills)}.</p>
+        <p className="soft">
+          {player.levelSetByPlayer ? 'You set this yourself.' : Object.keys(player.skillChecks || {}).length ? 'Worked out from your skill checks.' : 'From your quiz.'}
+          {player.levelSetByPlayer && fromSkills !== player.level ? ` From your answers it would be ${levelName(fromSkills)}.` : ''}
+        </p>
         {!pickLevel ? (
           <div className="session-actions" style={{ marginTop: 10 }}>
             <button className="mini" onClick={() => setPickLevel(true)}>Set it myself</button>

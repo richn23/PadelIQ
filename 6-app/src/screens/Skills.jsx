@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, groups, allSkills, allSkillById, axisById } from '../data.js';
-import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor } from '../levels.js';
+import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder } from '../levels.js';
 
 const views = [
   { id: 'have', label: 'My skills' },
@@ -9,8 +9,8 @@ const views = [
   { id: 'explore', label: 'Explore' },
 ];
 
-export default function Skills({ player, updatePlayer }) {
-  const [view, setView] = useState('have');
+export default function Skills({ player, updatePlayer, startView = 'have' }) {
+  const [view, setView] = useState(startView || 'have');
   const [open, setOpen] = useState(null);
   const checks = skillChecks(player);
   const axisLevels = currentAxisLevels(player);
@@ -79,6 +79,7 @@ function Have({ axisLevels, level, checks, onOpen }) {
 }
 
 function Next({ level, checks, onOpen }) {
+  const [all, setAll] = useState(false);
   const now = levelOrder(level);
   const nextLevel = levelByOrder(Math.min(now + 1, 4)); // A is the top checked level
   const rows = allSkills
@@ -96,13 +97,14 @@ function Next({ level, checks, onOpen }) {
     <>
       <section className="panel">
         <p className="eyebrow">Gaps at your level ({levelName(level)})</p>
-        <p className="soft">Skills a {levelName(level)} player usually has. Closing these makes your level solid.</p>
+        <p className="soft">Skills a player at level {levelName(level)} usually has. Closing these makes your level solid.</p>
         {gaps.length ? <ul className="list">{gaps.map((r) => <Row key={r.s.id} skill={r.s} onOpen={onOpen} right={right(r)} />)}</ul> : <p className="insight">No gaps. Nice.</p>}
       </section>
       <section className="panel">
         <p className="eyebrow">Towards {levelName(nextLevel.id)}</p>
         <p className="soft">What the next level asks for.</p>
-        {ahead.length ? <ul className="list">{ahead.map((r) => <Row key={r.s.id} skill={r.s} onOpen={onOpen} right={right(r)} />)}</ul> : <p className="soft">Nothing listed yet.</p>}
+        {ahead.length ? <ul className="list">{(all ? ahead : ahead.slice(0, 8)).map((r) => <Row key={r.s.id} skill={r.s} onOpen={onOpen} right={right(r)} />)}</ul> : <p className="soft">Nothing listed yet.</p>}
+        {ahead.length > 8 && <button className="mini" onClick={() => setAll(!all)}>{all ? 'Show fewer' : `Show all ${ahead.length}`}</button>}
       </section>
     </>
   );
@@ -127,7 +129,7 @@ function Explore({ onOpen }) {
             <p className="eyebrow">{g.name}</p>
             {g.note && <p className="soft">{g.note}</p>}
             <ul className="list">
-              {items.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<span className="soft es">{s.es !== s.name ? s.es : ''}</span>} />)}
+              {items.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<span className="soft es">{s.es}</span>} />)}
             </ul>
           </section>
         );
@@ -143,7 +145,18 @@ function goalIdea(skill) {
     net_play: 'Follow my lobs to the net', back_glass_return: 'Wait for the ball off the back glass', chiquita: 'Play one chiquita each game',
     composure: 'Same routine on big points', defensive_lob: 'Lob high and deep, not short',
   };
-  return ideas[skill.id] || `Use my ${skill.name.toLowerCase()} more in matches`;
+  return ideas[skill.id] || 'one thing you want to do better in matches';
+}
+
+// What to show for each level on a skill page.
+function levelLine(skill, id) {
+  if (id === 'Pro') return 'Coming soon.';
+  if (skill.levels[id]) return skill.levels[id].text;
+  const first = firstMasterOrder(skill);
+  const top = topDescribed(skill);
+  if (first !== null && levelOrder(id) < first) return 'Not expected yet at this level.';
+  if (top && levelOrder(id) > levelOrder(top)) return `Same as ${levelName(top)}.`;
+  return 'Not expected yet at this level.';
 }
 
 function SkillPage({ skill, check, player, updatePlayer, onBack }) {
@@ -165,7 +178,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
     setGoalForm({ title: '', progress: 30 });
   };
   const saveGoal = () => {
-    const title = goalForm.title.trim() || `Improve my ${skill.name.toLowerCase()}`;
+    const title = goalForm.title.trim() || `Work on: ${skill.name}`;
     updatePlayer((p) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), skillId: skill.id, title, progress: goalForm.progress, created: new Date().toISOString() }] }));
     setGoalForm(null);
     setNote('Added to your goals.');
@@ -175,7 +188,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
     <main className="page">
       <button className="back" onClick={onBack}>‹ Skills</button>
       <section className="panel">
-        <p className="eyebrow">{axisById[skill.axis].name}{skill.group !== skill.axis ? ` · ${groups.find((g) => g.id === skill.group)?.name}` : ''}</p>
+        <p className="eyebrow">{['transition', 'specialist'].includes(skill.group) ? groups.find((g) => g.id === skill.group)?.name : axisById[skill.axis].name}</p>
         <h2 className="skill-title">{skill.name}</h2>
         {skill.es && skill.es !== skill.name && <p className="soft">Spanish: <em>{skill.es}</em></p>}
         {skill.aka && <p className="soft">Also called: {skill.aka}</p>}
@@ -187,7 +200,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
         <section className="panel">
           <div className="row-between">
             <p className="eyebrow">Your level for this</p>
-            <p className="pill">{check ? levelName(check.level) : '–'}</p>
+            <p className="pill">{!check ? '–' : !skill.levels[check.level] && levelOrder(check.level) < (firstMasterOrder(skill) ?? 0) ? 'Not yet' : levelName(check.level)}</p>
           </div>
           {check?.from === 'quiz' && <p className="soft">From your quiz. Check it properly below.</p>}
           {!checking ? (
@@ -201,7 +214,8 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
                     <strong>{l.name}.</strong> {skill.levels[l.id].text}
                   </button>
                 ))}
-                <button className="ans skip" onClick={() => setChecking(false)}>Not sure yet</button>
+                <button className="ans" onClick={() => saveCheck(notYetLevel(skill))}><strong>Not yet.</strong> I can't really do this yet.</button>
+                <button className="ans skip" onClick={() => setChecking(false)}>Not sure</button>
               </div>
             </>
           )}
@@ -216,7 +230,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           {levels.map((l) => (
             <li key={l.id} className={'list-row col' + (check?.level === l.id ? ' you' : '')}>
               <strong>{l.name}{check?.level === l.id ? ' (you)' : ''}</strong>
-              <span className="soft">{l.id === 'Pro' ? 'Coming soon.' : skill.levels[l.id]?.text || (levelOrder(l.id) < levelOrder(skill.firstLevel) ? 'Not expected at this level.' : 'Description coming soon.')}</span>
+              <span className="soft">{check?.level === l.id && !skill.levels[l.id] ? 'You said: not yet. That\'s fine at this level.' : levelLine(skill, l.id)}</span>
             </li>
           ))}
         </ul>

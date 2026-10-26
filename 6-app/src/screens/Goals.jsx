@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { allSkillById as skillById, axisById } from '../data.js';
 
-export default function Goals({ player, updatePlayer }) {
+export default function Goals({ player, updatePlayer, onAdd }) {
   const goals = player.goals || [];
   const [removing, setRemoving] = useState(null);
   const setProgress = (id, v) => updatePlayer((p) => ({ ...p, goals: p.goals.map((g) => (g.id === id ? { ...g, progress: v } : g)) }));
@@ -39,7 +39,8 @@ export default function Goals({ player, updatePlayer }) {
             })}
           </ul>
         )}
-        <p className="soft">To add a goal, open a skill on the Skills tab and tap "Make this a goal".</p>
+        {goals.length < 3 && <button className="btn" onClick={onAdd}>+ Choose a skill to work on</button>}
+        <p className="soft">Goals start from a skill. Pick one, then tap "Make this a goal".</p>
       </section>
     </main>
   );

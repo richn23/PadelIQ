@@ -39,7 +39,7 @@
       "id": "q2",
       "axis": "attack",
       "skill": "bandeja",
-      "ask": "A lob goes over your head at the net. What do you usually do?",
+      "ask": "You're at the net and the opponents lob you. What do you usually do?",
       "answers": [
         "I let it go, or just try to get it back.",
         "I hit it hard and hope.",
@@ -99,7 +99,7 @@
       "answers": [
         "We often end up in the wrong place.",
         "We sometimes go for the same ball.",
-        "OK when the ball is slow.",
+        "We're fine when the ball is slow.",
         "Mostly together, forwards and back.",
         "Together, even when we switch sides.",
         "Like one player, without thinking."
@@ -130,7 +130,7 @@
         "We call \"mine\" and \"yours\".",
         "We agree a plan before we start.",
         "We change the plan during the match.",
-        "We read each other and the opponents all match."
+        "We read each other and the opponents all match long."
       ]
     },
     {

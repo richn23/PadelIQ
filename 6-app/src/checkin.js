@@ -1,4 +1,5 @@
 import { axes, allSkills } from './data.js';
+import { currentLevel, levelOrder, firstMasterOrder } from './levels.js';
 
 // Which skills to ask at a check-in: 1-2 per area.
 // Order: your goals first, then skills you haven't checked yourself for longest, then the ones you tag most.
@@ -7,10 +8,11 @@ export function pickCheckInSkills(player, perArea = 2) {
   const own = player.skillChecks || {};
   const tagCount = {};
   (player.sessions || []).forEach((s) => (s.tags || []).forEach((t) => { tagCount[t] = (tagCount[t] || 0) + 1; }));
+  const maxOrder = levelOrder(currentLevel(player)) + 1; // your level and the next one up
   const picked = [];
   axes.forEach((a) => {
     const list = allSkills
-      .filter((s) => s.axis === a.id && s.checked && Object.keys(s.levels).length)
+      .filter((s) => s.axis === a.id && s.checked && Object.keys(s.levels).length && (firstMasterOrder(s) ?? 0) <= maxOrder)
       .sort((x, y) => {
         const g = (goalSkills.has(y.id) ? 1 : 0) - (goalSkills.has(x.id) ? 1 : 0);
         if (g) return g;

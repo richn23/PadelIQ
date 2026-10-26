@@ -33,7 +33,7 @@
       "order": 0,
       "name": "Beginner",
       "assessable": true,
-      "description": "Learning the rules and the court. Rarely gets the ball over the net. Everything before D."
+      "description": "Learning the rules and the court. Getting the ball over the net is the main challenge."
     },
     {
       "id": "D",
@@ -61,7 +61,7 @@
       "order": 4,
       "name": "A",
       "assessable": true,
-      "description": "Complete player: tactics, variety, strong play against good opponents."
+      "description": "Complete player: varied shots, smart tactics, and stays strong against good opponents."
     },
     {
       "id": "Pro",
@@ -149,7 +149,7 @@
         "D": {
           "master": true,
           "source": "draft",
-          "text": "Avoids lobs or misjudges them. Pushes the ball back rather than hitting through it."
+          "text": "Gets some easy lobs back with an overhead, mostly pushing the ball rather than hitting through it."
         },
         "C": {
           "master": true,
@@ -318,7 +318,7 @@
         "A": {
           "master": true,
           "source": "draft",
-          "text": "Handles double-glass balls and awkward angles under pressure."
+          "text": "Handles fast and awkward side glass angles under pressure, and places the return."
         }
       }
     },
@@ -330,7 +330,7 @@
         "D": {
           "master": true,
           "source": "draft",
-          "text": "Reacts late. Often flat-footed when the ball arrives."
+          "text": "Knows the ready position and uses it on slow balls, but is often late on fast ones."
         },
         "C": {
           "master": true,
@@ -484,7 +484,7 @@
         "D": {
           "master": true,
           "source": "draft",
-          "text": "Gets frustrated after errors. Focus drops during long rallies."
+          "text": "Stays calm in easy rallies, but gets frustrated after errors."
         },
         "C": {
           "master": true,
@@ -533,7 +533,7 @@
         "D": {
           "master": true,
           "source": "draft",
-          "text": "Attention drifts, especially after a long rally or a lost point."
+          "text": "Stays focused for short spells. Attention drifts after long rallies or lost points."
         },
         "C": {
           "master": true,
@@ -838,7 +838,7 @@
     {
       "id": "contrapared",
       "axis": "defence",
-      "name": "Back wall boast",
+      "name": "Back wall rescue",
       "levels": {
         "B": {
           "master": true,

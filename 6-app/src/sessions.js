@@ -1,7 +1,11 @@
 // Helpers for matches and lessons ("sessions").
 export const CHECKIN_EVERY = 5;
 
-export const todayISO = () => new Date().toISOString().slice(0, 10);
+// Today's date in the phone's own time zone (not UTC).
+export const todayISO = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
 
 export function sortSessions(list = []) {
   const key = (s) => `${s.date} ${s.time || '00:00'}`;
@@ -13,7 +17,7 @@ export function sortSessions(list = []) {
 export function prettyDate(date, time) {
   if (!date) return '';
   const d = new Date(date + 'T00:00:00');
-  const day = d.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
+  const day = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
   return time ? `${day}, ${time}` : day;
 }
 

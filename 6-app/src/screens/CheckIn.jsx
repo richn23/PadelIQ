@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { levels, axisById } from '../data.js';
-import { skillChecks, levelName } from '../levels.js';
+import { skillChecks, levelName, notYetLevel } from '../levels.js';
 import { pickCheckInSkills } from '../checkin.js';
 import think from '../assets/mascot-think.png';
 import cheer from '../assets/mascot-cheer.png';
@@ -38,7 +38,9 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
               <strong>{l.name}.</strong> {s.levels[l.id].text}
             </button>
           ))}
+          <button className="ans" onClick={() => pick(notYetLevel(s))}><strong>Not yet.</strong> I can't really do this yet.</button>
           <button className="ans skip" onClick={() => setI(i + 1)}>Skip this one</button>
+          {i > 0 && <button className="back center-self" onClick={() => setI(i - 1)}>‹ Back</button>}
         </div>
       </main>
     );

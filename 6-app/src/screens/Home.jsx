@@ -33,16 +33,16 @@ export default function Home({ player, onGo }) {
         <header className="home-head">
           <div>
             <p className="hello">{greeting()}</p>
-            <h1 className="name">{player.name}</h1>
+            <h1 className="name">{player.name || 'Player'}</h1>
           </div>
-          <div className="avatar" aria-hidden="true">{player.name[0]}</div>
+          <div className="avatar" aria-hidden="true">{(player.name || 'P')[0]}</div>
         </header>
 
         <section className="tiles" aria-label="Summary">
           <div className="panel tile">
             <p className="eyebrow">Your level</p>
             <p className={'tile-value' + (level.length > 2 ? ' small' : '')}>{level}</p>
-            {player.provisional && <p className="tile-note">Provisional</p>}
+            {player.provisional && <p className="tile-note">Starting estimate</p>}
           </div>
           <div className="panel tile">
             <p className="eyebrow">Active goals</p>
@@ -104,7 +104,7 @@ export default function Home({ player, onGo }) {
               <p className="match-when">{next.when}</p>
               <p className="match-who">{next.who}</p>
               {next.venue && <p className="soft">{next.venue}</p>}
-              <button className="btn" onClick={() => onGo('matches')}>Plan this session</button>
+              <button className="btn" onClick={() => onGo('matches', planned ? { plan: planned.id } : null)}>Plan this session</button>
             </>
           ) : (
             <>

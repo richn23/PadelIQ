@@ -107,7 +107,7 @@
       "area": "attack",
       "checked": true,
       "firstLevel": "C",
-      "what": "A sliced overhead hit at about head height, flatter and slower than a smash. It keeps you at the net.",
+      "what": "A sliced overhead hit above the head, out to the side. Flatter and slower than a smash, it keeps you at the net.",
       "when": "Against lobs you can't safely smash. The most common overhead in padel.",
       "source": "draft"
     },
@@ -185,8 +185,8 @@
       "area": "attack",
       "checked": true,
       "firstLevel": "A",
-      "what": "A flat smash from close to the net that bounces high enough to fly out over the back wall and fence.",
-      "when": "Only on short, high balls near the net. Advanced.",
+      "what": "A powerful flat smash that bounces high enough to fly out over the back wall and fence.",
+      "when": "On short, high balls when you have time to set up. Advanced.",
       "source": "draft"
     },
     {
@@ -295,7 +295,7 @@
     },
     {
       "id": "contrapared",
-      "name": "Back wall boast",
+      "name": "Back wall rescue",
       "es": "Contrapared",
       "aka": "",
       "group": "defensive",
@@ -379,7 +379,7 @@
       "group": "specialist",
       "area": "defence",
       "checked": false,
-      "firstLevel": "pro",
+      "firstLevel": "Pro",
       "what": "Hitting a ball between your legs while running away from the net.",
       "when": "Emergency only, after a lob gets over you.",
       "source": "draft"
@@ -392,7 +392,7 @@
       "group": "specialist",
       "area": "defence",
       "checked": false,
-      "firstLevel": "pro",
+      "firstLevel": "Pro",
       "what": "Hitting the ball behind your body when there's no time to turn.",
       "when": "Emergency only.",
       "source": "draft"
@@ -405,7 +405,7 @@
       "group": "specialist",
       "area": "defence",
       "checked": false,
-      "firstLevel": "pro",
+      "firstLevel": "Pro",
       "what": "Running out through the door to play a ball that has bounced out.",
       "when": "After an x3 or x4 smash, where the court allows it.",
       "source": "draft"
@@ -426,7 +426,7 @@
     {
       "id": "ready_position",
       "name": "Ready position and split step",
-      "es": "Posición de espera",
+      "es": "Posición de espera y split step",
       "aka": "",
       "group": "movement",
       "area": "movement",
