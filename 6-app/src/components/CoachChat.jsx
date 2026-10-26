@@ -27,7 +27,9 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
         messages: next.map((m) => ({ role: m.role, content: m.role === 'assistant' ? JSON.stringify({ reply: m.content, proposal: m.proposal || null }) : m.content })),
       });
       const reply = out.reply || [out.title, out.body].filter(Boolean).join('. ') || '…';
-      setMsgs([...next, { role: 'assistant', content: reply, proposal: out.proposal || null }]);
+      // Sources are listed under the answer, so tidy inline links like [fipadel.com](https://...) to plain words.
+      const clean = reply.replace(/\(?\[([^\]]+)\]\((https?:[^)]+)\)\)?/g, '').replace(/ +([.,])/g, '$1').trim();
+      setMsgs([...next, { role: 'assistant', content: clean || reply, proposal: out.proposal || null, sources: out.sources || [] }]);
     } catch (e) {
       setError(String(e.message || e));
     }
@@ -57,6 +59,11 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
             {m.role === 'assistant' && <img src={think} alt="" className="msg-face" />}
             <div className="msg-body">
               <p>{m.content}</p>
+              {m.sources?.length > 0 && (
+                <p className="sources">Sources: {m.sources.map((src, k) => (
+                  <React.Fragment key={src.url}>{k ? ', ' : ''}<a href={src.url} target="_blank" rel="noopener noreferrer">{src.title.length > 40 ? new URL(src.url).hostname.replace(/^www\./, '') : src.title}</a></React.Fragment>
+                ))}</p>
+              )}
               {m.proposal && (
                 <div className="proposal">
                   <ProposalText p={m.proposal} />

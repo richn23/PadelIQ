@@ -395,3 +395,6 @@ i.played { background: #fff; }
 .thinking .msg-body p { color: var(--text-soft); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { .bob, .dots i { animation: none; } }
 .list-row.link.col { align-items: flex-start; text-align: left; }
+
+.sources { margin-top: 8px; font-size: 12px; color: var(--text-soft); }
+.sources a { color: var(--accent); }

@@ -44,6 +44,35 @@ async function ask(key, model, messages, attempt = 0) {
   return data.choices[0].message.content;
 }
 
+// Web search (only for modes that allow it): OpenAI's Responses API with its web search tool.
+// Returns { text, sources }. If the tool isn't available, returns null so we fall back to a normal answer.
+async function askWithSearch(key, model, messages) {
+  const input = messages.map((m) => ({ role: m.role === 'system' ? 'developer' : m.role, content: m.content }));
+  for (const tool of ['web_search', 'web_search_preview']) {
+    const r = await fetch(`${OPENAI}/responses`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model, input, tools: [{ type: tool }] }),
+    });
+    const data = await r.json();
+    if (!r.ok) continue;
+    let text = '';
+    const sources = [];
+    for (const item of data.output || []) {
+      if (item.type !== 'message') continue;
+      for (const c of item.content || []) {
+        if (c.type !== 'output_text') continue;
+        text += c.text;
+        for (const a of c.annotations || []) {
+          if (a.type === 'url_citation' && a.url && !sources.some((s) => s.url === a.url)) sources.push({ title: a.title || a.url, url: a.url });
+        }
+      }
+    }
+    if (text) return { text, sources };
+  }
+  return null;
+}
+
 export default async function handler(req, res) {
   const key = process.env.OPENAI_API_KEY;
   if (req.method === 'GET') {
@@ -69,9 +98,21 @@ export default async function handler(req, res) {
 
   try {
     const model = await pickModel(key);
-    const text = await ask(key, model, chat);
+    let text;
+    let sources = [];
+    if (m.usesWebSearch) {
+      const found = await askWithSearch(key, model, chat).catch(() => null);
+      if (found) { text = found.text; sources = found.sources; }
+    }
+    if (!text) text = await ask(key, model, chat);
     let out;
-    try { out = JSON.parse(text); } catch { out = { reply: text, proposal: null }; }
+    try {
+      // Answers may come as JSON, sometimes wrapped in a code block.
+      out = JSON.parse(text.replace(/^```(json)?\s*/i, '').replace(/```\s*$/, ''));
+    } catch {
+      out = { reply: text, proposal: null };
+    }
+    if (sources.length) out.sources = sources.slice(0, 4);
     return res.status(200).json(out);
   } catch (e) {
     return res.status(502).json({ error: String(e.message || e) });
