@@ -1,0 +1,273 @@
+{
+  "_note": "Goal wording for each warning question, used as the 'point to work on' after a quick check. invert = answering 'Often' is GOOD for this question. Keyed by the exact question text in 2-framework/framework-v3/padel-iq-skills.csv.",
+  "Does your forehand volley pop up or miss on routine balls?": {
+    "fix": "Keep routine forehand volleys low and in"
+  },
+  "Does your backhand volley pop up or miss on routine balls?": {
+    "fix": "Keep routine backhand volleys low and in"
+  },
+  "Do you force an overhead on a lob that has already beaten you?": {
+    "fix": "Let lobs that have beaten me go to the glass"
+  },
+  "Does your bandeja lose depth or control when you move back?": {
+    "fix": "Keep my bandeja deep when I move back"
+  },
+  "Do you force an x4 from a ball that is too deep?": {
+    "fix": "Only try the x4 on short balls"
+  },
+  "Do first-serve misses lead to rushed second serves or double faults?": {
+    "fix": "Take my time on the second serve"
+  },
+  "Does your forehand break down in a routine rally?": {
+    "fix": "Keep my forehand steady in rallies"
+  },
+  "Does your backhand break down in a routine rally?": {
+    "fix": "Keep my backhand steady in rallies"
+  },
+  "Do you move forward even when your chiquita sits up?": {
+    "fix": "Only move up when my chiquita stays low"
+  },
+  "Is there a simpler, safer return available?": {
+    "fix": "Pick the simpler, safer return when there is one",
+    "invert": true
+  },
+  "Is outside play authorized, and is the route clear?": {
+    "fix": "Only play outside when it's allowed and clear",
+    "invert": true
+  },
+  "Do you decide where to swing before you have seen the fence rebound?": {
+    "fix": "Watch the fence rebound before choosing my swing"
+  },
+  "Do you stop in the middle of the court without getting ready for the reply?": {
+    "fix": "Be ready for the reply wherever I stop"
+  },
+  "Do you arrive at the next ball still off balance?": {
+    "fix": "Be balanced before the next ball"
+  },
+  "Do you both hit, or both leave, balls through the middle?": {
+    "fix": "Agree who takes the middle balls"
+  },
+  "Are you using the same scoring format, and do you know when the ball is still live?": {
+    "fix": "Agree the scoring format before we start",
+    "invert": true
+  },
+  "Does the score make you rush or skip your preparation?": {
+    "fix": "Keep my routine when the score is tight"
+  },
+  "Do you miss the next point's preparation after a distraction?": {
+    "fix": "Reset and prepare after a distraction"
+  },
+  "Do you fault more serves than you get in?": {
+    "fix": "Get more first serves in"
+  },
+  "Do you double fault in most games?": {
+    "fix": "Cut out double faults"
+  },
+  "Does your serve go short and easy to attack when the score is tight?": {
+    "fix": "Keep my serve deep at tight scores"
+  },
+  "Do you let lobs go because you can't hit them?": {
+    "fix": "Go for lobs instead of letting them go"
+  },
+  "Do your overheads land short and get attacked?": {
+    "fix": "Hit my overheads deeper"
+  },
+  "Do you lose the net after your bandeja?": {
+    "fix": "Stay at the net after my bandeja"
+  },
+  "Does your bandeja land short or in the middle when you're rushed?": {
+    "fix": "Keep my bandeja deep when I'm rushed"
+  },
+  "Does your víbora go long or into the net?": {
+    "fix": "Keep my víbora in"
+  },
+  "Do you hit balls off the back glass too early or too late to attack them?": {
+    "fix": "Wait for the right height before my bajada"
+  },
+  "Do you miss more returns than you get back?": {
+    "fix": "Get more returns back"
+  },
+  "Do your returns sit up for the net players?": {
+    "fix": "Keep my returns low"
+  },
+  "Do you miss returns at tight scores?": {
+    "fix": "Get my returns in at tight scores"
+  },
+  "Do your lobs land short in the middle of the court?": {
+    "fix": "Lob higher and deeper"
+  },
+  "Do your lobs go long or out over the glass?": {
+    "fix": "Keep my lobs in"
+  },
+  "Do your lobs get smashed back at you?": {
+    "fix": "Lob deep enough that it can't be smashed"
+  },
+  "Do you hit the ball before the glass because you're unsure of the rebound?": {
+    "fix": "Let the ball come off the back glass"
+  },
+  "Do you stand too close to the glass and get cramped?": {
+    "fix": "Give myself room from the glass"
+  },
+  "Do fast rebounds off the back glass beat you?": {
+    "fix": "Read fast rebounds earlier"
+  },
+  "Do side glass balls get past you?": {
+    "fix": "Get side glass balls back"
+  },
+  "Are you late on fast balls off the side glass?": {
+    "fix": "Be early on fast side glass balls"
+  },
+  "Do fast balls catch you flat-footed?": {
+    "fix": "Be ready for fast balls"
+  },
+  "Are you still moving when the opponent hits?": {
+    "fix": "Be still and ready when they hit"
+  },
+  "Do you end up at the net at the wrong time, or stay there when you're in trouble?": {
+    "fix": "Go to the net at the right time, and leave it when we're in trouble"
+  },
+  "Do you lose the net after one lob?": {
+    "fix": "Win the net back after a lob"
+  },
+  "Do opponents get you off the net easily?": {
+    "fix": "Hold the net under pressure"
+  },
+  "Do you stand and watch your shot instead of moving?": {
+    "fix": "Move straight after my shot"
+  },
+  "After being pulled wide, are you out of position for the next ball?": {
+    "fix": "Recover quickly after being pulled wide"
+  },
+  "Do you and your partner end up far apart, one at the net and one at the back?": {
+    "fix": "Stay level with my partner"
+  },
+  "Do you both go for the same ball, or both leave it?": {
+    "fix": "Call and split the middle balls"
+  },
+  "Do you go for winners from difficult positions?": {
+    "fix": "Play safe from difficult positions"
+  },
+  "Do you pick power when placement would work better?": {
+    "fix": "Choose placement over power"
+  },
+  "Do you force the attack before the ball is right?": {
+    "fix": "Wait for the right ball to attack"
+  },
+  "Do balls go between you because nobody called?": {
+    "fix": "Call every middle ball"
+  },
+  "Do you play a whole match without agreeing a plan?": {
+    "fix": "Agree a simple plan before we start"
+  },
+  "Do you lose patience and go for a winner too early?": {
+    "fix": "Be patient before going for a winner"
+  },
+  "Do errors make you angry for a while?": {
+    "fix": "Let go of errors quickly"
+  },
+  "Do you rush your shots at tight scores?": {
+    "fix": "Take my time at tight scores"
+  },
+  "Do you play worse at big points?": {
+    "fix": "Play my normal game at big points"
+  },
+  "Does one mistake lead to several more?": {
+    "fix": "Stop one mistake becoming several"
+  },
+  "Does a bad game change how you play the next one?": {
+    "fix": "Start each game fresh"
+  },
+  "Does your mind wander during points?": {
+    "fix": "Keep my mind on the point"
+  },
+  "Do you lose focus after a long rally or a lost point?": {
+    "fix": "Refocus after long rallies or lost points"
+  },
+  "Do rallies end within a couple of shots because of your errors?": {
+    "fix": "Keep the rally going longer"
+  },
+  "Do you hit the ball too hard from the back and miss?": {
+    "fix": "Hit softer and safer from the back"
+  },
+  "Do your shots from the back sit up for the net players?": {
+    "fix": "Keep my shots from the back low"
+  },
+  "Do you end up in no man's land, the middle of the court?": {
+    "fix": "Stay out of the middle of the court"
+  },
+  "Are you unsure where to stand when serving or returning?": {
+    "fix": "Know where to stand when serving and returning"
+  },
+  "Do you leave gaps when your partner is pulled wide?": {
+    "fix": "Cover the gap when my partner is pulled wide"
+  },
+  "Do easy volleys go into the net or out?": {
+    "fix": "Get easy volleys back in"
+  },
+  "Do your volleys pop up high for the opponents to smash?": {
+    "fix": "Keep my volleys low, not popping up"
+  },
+  "Do fast balls at the net beat you?": {
+    "fix": "Handle fast balls at the net"
+  },
+  "Do you smash lobs that are too deep and lose the point?": {
+    "fix": "Only smash the short lobs"
+  },
+  "Does your smash come back off the glass for an easy return?": {
+    "fix": "Place my smash so it doesn't come back easily"
+  },
+  "Do you try the x3 when it isn't on and lose the point?": {
+    "fix": "Only try the x3 when it's on"
+  },
+  "Do double glass balls beat you?": {
+    "fix": "Get double glass balls back"
+  },
+  "Do you misjudge which wall the ball will hit first?": {
+    "fix": "Read which wall the ball will hit first"
+  },
+  "Do you give up on smashes you could reach?": {
+    "fix": "Chase smashes I can reach"
+  },
+  "Do you misread where a smash will bounce?": {
+    "fix": "Read where smashes will bounce"
+  },
+  "Does your soft ball sit up and get attacked?": {
+    "fix": "Keep my chiquita low"
+  },
+  "After a chiquita, do you stay at the back instead of moving up?": {
+    "fix": "Move up after a chiquita"
+  },
+  "Do your blocks sit up for the opponents to attack?": {
+    "fix": "Keep my blocks low"
+  },
+  "Does your drop volley sit up or go into the net?": {
+    "fix": "Land my drop volley short and low"
+  },
+  "Do you miss high balls at the net because you can't turn in time?": {
+    "fix": "Turn in time on high balls at the net"
+  },
+  "Does your topspin smash sit up off the glass?": {
+    "fix": "Keep my topspin smash low off the glass"
+  },
+  "Do you try the x4 when it isn't on and lose the point?": {
+    "fix": "Only try the x4 when it's on"
+  },
+  "Does your drop shot sit up or go into the net?": {
+    "fix": "Land my drop shot short and low"
+  },
+  "Do you lose the point when you can't hit the ball forwards?": {
+    "fix": "Use the back wall when I can't hit forwards"
+  },
+  "Does your attacking lob go long or get smashed?": {
+    "fix": "Get the attacking lob over and in"
+  },
+  "Do your passing shots go into the net or long?": {
+    "fix": "Keep my passing shots low and in"
+  },
+  "Do your half volleys pop up high?": {
+    "fix": "Keep my half volleys low"
+  },
+  "Do you stay stuck in the middle after a half volley?": {
+    "fix": "Move forward or back after a half volley"
+  }
+}

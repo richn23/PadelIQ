@@ -1,5 +1,5 @@
 {
-  "_note": "Skills and shots glossary (draft v0.2). name = English, or the padel word when there is no English one. es = Spanish. aka = other words players use (helps search). checked = assessed in the app. Specialist shots are glossary only.",
+  "_note": "Generated from 2-framework/framework-v3/padel-iq-skills.csv by npm run import-framework. name = English (or the padel word), es = Spanish, aka = other words (search).",
   "groups": [
     {
       "id": "attacking",
@@ -41,23 +41,39 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": false,
       "firstLevel": "beginner",
-      "what": "Underarm serve: bounce the ball behind the line and hit it at or below waist height, diagonally into the box.",
-      "when": "Starts every point. At first, just get it in. Later, use depth, spin and aim.",
-      "source": "draft"
+      "what": "Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",
+      "when": "To start the point. Depth means deeper inside the service box.",
+      "source": "v3"
     },
     {
-      "id": "volley",
-      "name": "Volley",
-      "es": "Volea",
+      "id": "volley_forehand",
+      "name": "Forehand volley",
+      "es": "Volea de derecha",
       "aka": "",
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
-      "what": "Hitting the ball before it bounces, usually at the net, forehand or backhand.",
+      "what": "A forehand hit before the ball bounces, usually at the net.",
       "when": "When you're at the net and the ball comes to you in the air.",
-      "source": "draft"
+      "source": "v3"
+    },
+    {
+      "id": "volley_backhand",
+      "name": "Backhand volley",
+      "es": "Volea de revés",
+      "aka": "",
+      "group": "attacking",
+      "area": "attack",
+      "checked": true,
+      "optional": false,
+      "firstLevel": "D",
+      "what": "A backhand hit before the ball bounces, usually at the net.",
+      "when": "When you're at the net and the ball comes to you in the air.",
+      "source": "v3"
     },
     {
       "id": "block_volley",
@@ -67,10 +83,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": true,
       "firstLevel": "C",
       "what": "A short, firm volley with almost no swing that uses the ball's own pace.",
       "when": "Against fast balls at the net, or to get the ball low at their feet.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "drop_volley",
@@ -80,10 +97,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": true,
       "firstLevel": "B",
       "what": "A soft volley that drops just over the net.",
       "when": "When both opponents are deep at the back.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "overhead_basic",
@@ -93,10 +111,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
       "what": "Hitting a high ball above your head with control rather than power.",
       "when": "When a lob is short enough to reach without running back.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "bandeja",
@@ -106,10 +125,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
-      "what": "A sliced overhead hit above the head, out to the side. Flatter and slower than a smash, it keeps you at the net.",
-      "when": "Against lobs you can't safely smash. The most common overhead in padel.",
-      "source": "draft"
+      "what": "A controlled sliced overhead used to manage a lob and keep or regain a useful net position.",
+      "when": "On a reachable lob when a controlled overhead is safer than a smash.",
+      "source": "v3"
     },
     {
       "id": "vibora",
@@ -119,10 +139,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": true,
       "firstLevel": "B",
-      "what": "A faster, more aggressive bandeja with side spin, aimed low into the side glass.",
+      "what": "An attacking overhead with sidespin, played from a suitable lob with balance.",
       "when": "Against medium lobs when you want to put more pressure on.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "smash",
@@ -132,10 +153,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "A full, hard overhead hit downwards.",
       "when": "When a lob is short and you have time to set up.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "gancho",
@@ -145,23 +167,25 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": true,
       "firstLevel": "B",
       "what": "A quick overhead hit in front of the body from the side, near the net, without turning fully sideways.",
       "when": "When a ball comes high and fast to you at the net with no time to set up.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "rulo",
       "name": "Topspin smash",
-      "es": "Rulo",
-      "aka": "rulo, topspin",
+      "es": "Remate liftado",
+      "aka": "topspin smash; kick smash (terms vary)",
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": true,
       "firstLevel": "A",
       "what": "A smash with heavy topspin that kicks up off the back glass.",
       "when": "To push opponents back or force a weak reply.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "smash_x3",
@@ -171,23 +195,25 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
-      "firstLevel": "A",
-      "what": "A smash that bounces and flies out over the side fence, so it can't be returned (unless they run outside).",
+      "optional": true,
+      "firstLevel": "B",
+      "what": "A smash that bounces in court and exits above the side enclosure. It may remain returnable where outside play is authorized.",
       "when": "Against a short lob in the middle of the court when you can finish the point.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "smash_x4",
       "name": "Smash out the back (x4)",
       "es": "Por cuatro",
-      "aka": "x4, por 4, por cuatro",
+      "aka": "",
       "group": "attacking",
       "area": "attack",
       "checked": true,
-      "firstLevel": "A",
-      "what": "A powerful flat smash that bounces high enough to fly out over the back wall and fence.",
-      "when": "On short, high balls when you have time to set up. Advanced.",
-      "source": "draft"
+      "optional": true,
+      "firstLevel": "B",
+      "what": "A smash that bounces in court and exits above the end enclosure.",
+      "when": "Very short high balls close to the net.",
+      "source": "v3"
     },
     {
       "id": "bajada",
@@ -197,10 +223,11 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": false,
       "firstLevel": "B",
       "what": "An attacking shot hit after the ball has come off the back glass and risen high.",
       "when": "When a deep lob or smash rebounds high off the back wall.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "drop_shot",
@@ -210,10 +237,25 @@
       "group": "attacking",
       "area": "attack",
       "checked": true,
+      "optional": true,
       "firstLevel": "B",
       "what": "A soft shot that lands just over the net and dies.",
       "when": "When opponents are deep or out of position.",
-      "source": "draft"
+      "source": "v3"
+    },
+    {
+      "id": "second_serve",
+      "name": "Second serve",
+      "es": "Segundo saque",
+      "aka": "",
+      "group": "attacking",
+      "area": "attack",
+      "checked": true,
+      "optional": false,
+      "firstLevel": "D",
+      "what": "A dependable legal serve after the first serve misses.",
+      "when": "After a first-serve fault.",
+      "source": "v3"
     },
     {
       "id": "return_of_serve",
@@ -223,23 +265,39 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "beginner",
       "what": "Getting the serve back into play.",
       "when": "Every point you receive. Low and to the middle is the safe default.",
-      "source": "draft"
+      "source": "v3"
     },
     {
-      "id": "groundstrokes",
-      "name": "Forehand and backhand",
-      "es": "Derecha y revés",
+      "id": "groundstroke_forehand",
+      "name": "Forehand groundstroke",
+      "es": "Derecha",
       "aka": "drive",
       "group": "defensive",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "beginner",
-      "what": "Basic shots after the ball bounces, from the back of the court.",
+      "what": "A forehand shot after the bounce, before any wall rebound.",
       "when": "Most balls at the back. At first, just get it back over the net.",
-      "source": "draft"
+      "source": "v3"
+    },
+    {
+      "id": "groundstroke_backhand",
+      "name": "Backhand groundstroke",
+      "es": "Revés",
+      "aka": "drive",
+      "group": "defensive",
+      "area": "defence",
+      "checked": true,
+      "optional": false,
+      "firstLevel": "beginner",
+      "what": "A backhand shot after the bounce, before any wall rebound.",
+      "when": "Most balls at the back. At first, just get it back over the net.",
+      "source": "v3"
     },
     {
       "id": "defensive_lob",
@@ -249,10 +307,11 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
       "what": "A high, deep ball over the net players.",
       "when": "To push opponents back and win the net back.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "back_glass_return",
@@ -262,10 +321,11 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
       "what": "Letting the ball hit the back wall, then playing it as it comes off.",
       "when": "When a ball is going to reach the back glass.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "side_glass_return",
@@ -275,10 +335,11 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "Playing a ball that has bounced and come off the side wall.",
       "when": "When a ball goes wide into the side glass.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "double_glass",
@@ -288,10 +349,11 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
-      "firstLevel": "B",
+      "optional": false,
+      "firstLevel": "C",
       "what": "Playing a ball that hits two walls, back then side or side then back.",
       "when": "Balls into the back corners.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "contrapared",
@@ -301,10 +363,11 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
+      "optional": true,
       "firstLevel": "B",
       "what": "Hitting the ball into your own back wall so it goes over the net.",
       "when": "An emergency shot when you can't hit the ball forwards.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "smash_defence",
@@ -314,10 +377,11 @@
       "group": "defensive",
       "area": "defence",
       "checked": true,
-      "firstLevel": "B",
-      "what": "Reading and returning a smash, including running down balls that come off the glass.",
-      "when": "When opponents smash, especially x3 or x4.",
-      "source": "draft"
+      "optional": false,
+      "firstLevel": "C",
+      "what": "Read and return reachable smash rebounds and recognize when the point has ended.",
+      "when": "When a smash remains live and safely reachable inside the court.",
+      "source": "v3"
     },
     {
       "id": "chiquita",
@@ -327,10 +391,11 @@
       "group": "transition",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "A soft, low ball from the back that lands at the net players' feet.",
-      "when": "To make them volley upwards so you can move up to the net.",
-      "source": "draft"
+      "when": "To make a net player volley up. Advance only if the reply gives you time.",
+      "source": "v3"
     },
     {
       "id": "attacking_lob",
@@ -340,10 +405,11 @@
       "group": "transition",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "A lower, faster lob that gets behind opponents quickly.",
       "when": "When opponents are very close to the net.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "passing_shot",
@@ -353,10 +419,11 @@
       "group": "transition",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "B",
       "what": "A low, fast shot past a net player, down the line or through the middle.",
       "when": "When there's a gap, or a net player is out of position.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "half_volley",
@@ -366,10 +433,11 @@
       "group": "transition",
       "area": "defence",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "Hitting the ball just after it bounces, close to your feet.",
       "when": "When you're caught between the back and the net.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "tweener",
@@ -379,10 +447,11 @@
       "group": "specialist",
       "area": "defence",
       "checked": false,
+      "optional": true,
       "firstLevel": "Pro",
       "what": "Hitting a ball between your legs while running away from the net.",
       "when": "Emergency only, after a lob gets over you.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "behind_back",
@@ -392,10 +461,11 @@
       "group": "specialist",
       "area": "defence",
       "checked": false,
+      "optional": true,
       "firstLevel": "Pro",
       "what": "Hitting the ball behind your body when there's no time to turn.",
       "when": "Emergency only.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "out_of_court",
@@ -405,10 +475,25 @@
       "group": "specialist",
       "area": "defence",
       "checked": false,
+      "optional": true,
       "firstLevel": "Pro",
-      "what": "Running out through the door to play a ball that has bounced out.",
-      "when": "After an x3 or x4 smash, where the court allows it.",
-      "source": "draft"
+      "what": "Leave through an access to return a live ball only on a court where outside play is authorized and safely possible.",
+      "when": "For a playable side or door exit where outside play is authorized; never after an exit over the back enclosure.",
+      "source": "v3"
+    },
+    {
+      "id": "fence_rebound",
+      "name": "Fence rebound",
+      "es": "Rebote de reja",
+      "aka": "",
+      "group": "defensive",
+      "area": "defence",
+      "checked": true,
+      "optional": false,
+      "firstLevel": "D",
+      "what": "Return a live rally ball after its floor bounce and an irregular fence rebound.",
+      "when": "During a rally when the ball bounces and reaches the fence.",
+      "source": "v3"
     },
     {
       "id": "positioning",
@@ -418,10 +503,11 @@
       "group": "movement",
       "area": "movement",
       "checked": true,
+      "optional": false,
       "firstLevel": "beginner",
       "what": "Where to be on court: back or net, left or right, and who covers what.",
       "when": "All the time. The first thing new players learn.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "ready_position",
@@ -431,10 +517,11 @@
       "group": "movement",
       "area": "movement",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
-      "what": "Knees bent, racket up, and a small hop as the opponent hits.",
+      "what": "Prepare the racket and use a small timed split step or loading action around the opponent's contact.",
       "when": "Before every shot you receive.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "net_play",
@@ -444,10 +531,11 @@
       "group": "movement",
       "area": "movement",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
       "what": "Moving up to the net together and staying there.",
       "when": "After a good lob, chiquita or return.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "recovery",
@@ -457,10 +545,11 @@
       "group": "movement",
       "area": "movement",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "Getting back into position after each shot.",
       "when": "After every shot, especially after being pulled wide.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "moving_as_pair",
@@ -470,10 +559,11 @@
       "group": "movement",
       "area": "movement",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "Moving forwards, back and sideways together with your partner.",
       "when": "All the time. Gaps between partners lose points.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "shot_choice",
@@ -483,10 +573,11 @@
       "group": "tactics",
       "area": "tactics",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
       "what": "Picking the right shot for the situation.",
       "when": "Every shot. Placement over power.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "partner_communication",
@@ -496,10 +587,11 @@
       "group": "tactics",
       "area": "tactics",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
       "what": "Calls like mine, yours, leave, and agreeing a plan.",
       "when": "During points and between them.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "building_points",
@@ -509,10 +601,39 @@
       "group": "tactics",
       "area": "tactics",
       "checked": true,
+      "optional": false,
       "firstLevel": "B",
       "what": "Using several shots to set up a winner, rather than forcing one.",
       "when": "Once rallies are steady.",
-      "source": "draft"
+      "source": "v3"
+    },
+    {
+      "id": "middle_ball",
+      "name": "Middle ball responsibility",
+      "es": "Responsabilidad del centro",
+      "aka": "",
+      "group": "tactics",
+      "area": "tactics",
+      "checked": true,
+      "optional": false,
+      "firstLevel": "D",
+      "what": "Decide who takes a shared ball and cover the space left by the hitter.",
+      "when": "Middle balls, central lobs and changes of sides.",
+      "source": "v3"
+    },
+    {
+      "id": "rules_scoring",
+      "name": "Rules and scoring",
+      "es": "Reglas y tanteo",
+      "aka": "",
+      "group": "tactics",
+      "area": "tactics",
+      "checked": true,
+      "optional": false,
+      "firstLevel": "beginner",
+      "what": "Use the agreed scoring format and recognize common legal and illegal play.",
+      "when": "Before and during a match.",
+      "source": "v3"
     },
     {
       "id": "composure",
@@ -522,10 +643,11 @@
       "group": "mentality",
       "area": "mentality",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
-      "what": "Staying calm and playing your normal game under pressure.",
-      "when": "Tight scores, golden points, match points.",
-      "source": "draft"
+      "what": "Prepare deliberately for the next point, including at tight scores.",
+      "when": "Before the next point, especially when the score feels important.",
+      "source": "v3"
     },
     {
       "id": "bouncing_back",
@@ -535,10 +657,11 @@
       "group": "mentality",
       "area": "mentality",
       "checked": true,
+      "optional": false,
       "firstLevel": "C",
-      "what": "Letting go of mistakes quickly.",
+      "what": "Refocus after a mistake and use it to choose a useful next action.",
       "when": "After a bad point or a run of errors.",
-      "source": "draft"
+      "source": "v3"
     },
     {
       "id": "focus",
@@ -548,10 +671,11 @@
       "group": "mentality",
       "area": "mentality",
       "checked": true,
+      "optional": false,
       "firstLevel": "D",
-      "what": "Keeping attention on the ball and the next point.",
+      "what": "Return attention to the ball, score and next-point preparation when it drifts.",
       "when": "Through long rallies and long matches.",
-      "source": "draft"
+      "source": "v3"
     }
   ]
 }

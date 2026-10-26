@@ -1,3 +1,5 @@
+> **Superseded (26 Oct 2026):** the framework now lives in `framework-v3/padel-iq-skills.csv`. Edit that, then run `npm run import-framework` in `6-app`.
+
 # Padel IQ: Skills and shots (draft v0.1)
 
 Structure: **5 areas** (the pentagon) contain **skills**. Most skills are **shots**, grouped as attacking, defensive, transition and specialist. Every item has a glossary entry.

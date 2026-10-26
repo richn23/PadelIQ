@@ -138,7 +138,7 @@ function Explore({ onOpen }) {
             <p className="eyebrow">{g.name}</p>
             {g.note && <p className="soft">{g.note}</p>}
             <ul className="list">
-              {items.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<span className="soft es">{s.es}</span>} />)}
+              {items.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<>{s.optional && g.id !== 'specialist' && <span className="tag">Optional</span>}<span className="soft es">{s.es}</span></>} />)}
             </ul>
           </section>
         );
@@ -329,6 +329,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
         <p className="eyebrow">{['transition', 'specialist'].includes(skill.group) ? groups.find((g) => g.id === skill.group)?.name : axisById[skill.axis].name}</p>
         <h2 className="skill-title">{skill.name}</h2>
         {skill.es && skill.es !== skill.name && <p className="soft">Spanish: <em>{skill.es}</em></p>}
+        {skill.optional && <p className="soft">Optional shot: nice to have, never needed for a level.</p>}
         {skill.aka && skill.aka.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() !== skill.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() && <p className="soft">Also called: {skill.aka}</p>}
         <p className="skill-what">{skill.what}</p>
         <p className="soft"><strong>When:</strong> {skill.when}</p>

@@ -45,7 +45,7 @@ export default function Home({ player, onGo }) {
           <div className="panel tile">
             <p className="eyebrow">Your level</p>
             <p className={'tile-value' + (level.length > 2 ? ' small' : '')}>{level}</p>
-            {player.provisional && <p className="tile-note">Starting estimate</p>}
+            <p className="tile-note">{player.provisional ? 'Starting estimate' : 'Self-assessed'}</p>
           </div>
           <div className="panel tile">
             <p className="eyebrow">Active goals</p>

@@ -23,6 +23,8 @@ export const allSkills = glossary.items.map((g) => ({
   axis: g.area,
   levels: skillById[g.id]?.levels || {},
   statements: skillById[g.id]?.statements || [],
+  warnings: skillById[g.id]?.warnings || [],
+  optional: g.optional ?? skillById[g.id]?.optional ?? false,
 }));
 export const allSkillById = Object.fromEntries(allSkills.map((s) => [s.id, s]));
 export { default as goalDiagnosis } from '../../5-data/goal-diagnosis.json';

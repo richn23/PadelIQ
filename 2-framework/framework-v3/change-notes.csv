@@ -1,0 +1,548 @@
+﻿Source row ID,Revised record ID,Skill,Level,Field,Before,After,Reason
+SRC001,P001,Serve,Beginner,Definition,"Underarm serve: bounce the ball behind the line and hit it at or below waist height, diagonally into the box.","Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",Aligned description and player claim; made the action observable and individual.
+SRC001,P001,Serve,Beginner,When to use it,"Starts every point. At first, just get it in. Later, use depth, spin and aim.",To start the point. Depth means deeper inside the service box.,Aligned description and player claim; made the action observable and individual.
+SRC001,P001,Serve,Beginner,What it looks like,Learning the serve. Often faults. Just trying to get it in the box.,Can start a point with the correct bounce and serving action. Placement is still developing.,Aligned description and player claim; made the action observable and individual.
+SRC001,P001,Serve,Beginner,Statements (I can...),"I know how to serve: bounce, hit below the waist, diagonally into the box.",I can bounce the ball and serve at or below waist height into the diagonal box.,Aligned description and player claim; made the action observable and individual.
+SRC001,P001,Serve,Beginner,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC002,P002,Serve,D,Definition,"Underarm serve: bounce the ball behind the line and hit it at or below waist height, diagonally into the box.","Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",Aligned description and player claim; made the action observable and individual.
+SRC002,P002,Serve,D,When to use it,"Starts every point. At first, just get it in. Later, use depth, spin and aim.",To start the point. Depth means deeper inside the service box.,Aligned description and player claim; made the action observable and individual.
+SRC002,P002,Serve,D,What it looks like,"In the right box about 7 or 8 out of 10. Soft and floaty. Not deep, no slice, no aiming at the side glass. The goal is just getting it in.",Gets most routine serves into the correct box from either side.,Aligned description and player claim; made the action observable and individual.
+SRC002,P002,Serve,D,Statements (I can...),My serve goes in.,I can get most of my serves into the correct box.,Aligned description and player claim; made the action observable and individual.
+SRC002,P002,Serve,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC003,P003,Serve,C,Definition,"Underarm serve: bounce the ball behind the line and hit it at or below waist height, diagonally into the box.","Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",Aligned description and player claim; made the action observable and individual.
+SRC003,P003,Serve,C,When to use it,"Starts every point. At first, just get it in. Later, use depth, spin and aim.",To start the point. Depth means deeper inside the service box.,Aligned description and player claim; made the action observable and individual.
+SRC003,P003,Serve,C,What it looks like,"Usually in, with some depth. Can aim to a side or the body. Less reliable under pressure.",Can serve deeper inside the service box and aim toward the side glass or body in ordinary games.,Aligned description and player claim; made the action observable and individual.
+SRC003,P003,Serve,C,Statements (I can...),"I can serve deep, close to the back glass.
+I can aim my serve at the side glass or the body.","I can serve deep inside the service box.
+I can aim toward the side glass or the body.",Aligned description and player claim; made the action observable and individual.
+SRC003,P003,Serve,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC004,P004,Serve,B,Definition,"Underarm serve: bounce the ball behind the line and hit it at or below waist height, diagonally into the box.","Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",Aligned description and player claim; made the action observable and individual.
+SRC004,P004,Serve,B,When to use it,"Starts every point. At first, just get it in. Later, use depth, spin and aim.",To start the point. Depth means deeper inside the service box.,Aligned description and player claim; made the action observable and individual.
+SRC004,P004,Serve,B,What it looks like,Reliable first serve with pace or slice. Placement is chosen on purpose and holds up when the score is tight.,"Uses reliable placement with controlled pace or slice, including at tight scores.",Aligned description and player claim; made the action observable and individual.
+SRC004,P004,Serve,B,Statements (I can...),"My first serve rarely misses, even at tight scores.
+I can add pace without missing.
+I can slice it so it stays low off the glass.","I can choose my serve placement at tight scores.
+I can add pace or slice without losing control.",Aligned description and player claim; made the action observable and individual.
+SRC004,P004,Serve,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC005,P005,Serve,A,Definition,"Underarm serve: bounce the ball behind the line and hit it at or below waist height, diagonally into the box.","Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",Aligned description and player claim; made the action observable and individual.
+SRC005,P005,Serve,A,When to use it,"Starts every point. At first, just get it in. Later, use depth, spin and aim.",To start the point. Depth means deeper inside the service box.,Aligned description and player claim; made the action observable and individual.
+SRC005,P005,Serve,A,What it looks like,"Varies pace, spin and direction to set up the next shot. Targets weaknesses on purpose.","Adapts pace, spin and direction to the returner and prepares for the likely next ball.",Aligned description and player claim; made the action observable and individual.
+SRC005,P005,Serve,A,Statements (I can...),"I choose the serve to suit the returner.
+I mix pace, spin and direction so the returner can't settle.","I can vary my serve to suit the returner.
+I can use my serve to prepare the next shot.",Aligned description and player claim; made the action observable and individual.
+SRC005,P005,Serve,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC006,P006-FH,Forehand volley,D,Skill,Volley,Forehand volley,Split wings so one cannot mask the other.
+SRC006,P006-FH,Forehand volley,D,Spanish,Volea,Volea de derecha,Split wings so one cannot mask the other.
+SRC006,P006-FH,Forehand volley,D,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A forehand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC006,P006-FH,Forehand volley,D,What it looks like,Gets most easy volleys back over the net. Swings too much on fast balls.,"Can return most easy forehand volleys, with limited placement.",Split wings so one cannot mask the other.
+SRC006,P006-FH,Forehand volley,D,Statements (I can...),I get most easy volleys back over the net.,I can get most easy forehand volleys back into court.,Split wings so one cannot mask the other.
+SRC006,P006-FH,Forehand volley,D,Warning questions,Do easy volleys go into the net or out?,Does your forehand volley pop up or miss on routine balls?,Split wings so one cannot mask the other.
+SRC006,P006-FH,Forehand volley,D,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,Skill,Volley,Backhand volley,Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,Spanish,Volea,Volea de revés,Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A backhand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,What it looks like,Gets most easy volleys back over the net. Swings too much on fast balls.,"Can return most easy backhand volleys, with limited placement.",Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,Statements (I can...),I get most easy volleys back over the net.,I can get most easy backhand volleys back into court.,Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,Warning questions,Do easy volleys go into the net or out?,Does your backhand volley pop up or miss on routine balls?,Split wings so one cannot mask the other.
+SRC006,P006-BH,Backhand volley,D,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,Skill,Volley,Forehand volley,Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,Spanish,Volea,Volea de derecha,Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A forehand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,What it looks like,Steady forehand and backhand volleys with a short swing. Aims deep or to the middle. Struggles with low and fast balls.,Uses a compact forehand volley and aims deep or to the middle.,Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,Statements (I can...),"I volley with a short, compact swing.
+I can volley forehand and backhand with control.
+I aim my volleys deep or to the middle.","I can play a compact forehand volley.
+I can aim it deep or to the middle.",Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,Warning questions,Do your volleys pop up high for the opponents to smash?,Does your forehand volley pop up or miss on routine balls?,Split wings so one cannot mask the other.
+SRC007,P007-FH,Forehand volley,C,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,Skill,Volley,Backhand volley,Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,Spanish,Volea,Volea de revés,Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A backhand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,What it looks like,Steady forehand and backhand volleys with a short swing. Aims deep or to the middle. Struggles with low and fast balls.,Uses a compact backhand volley and aims deep or to the middle.,Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,Statements (I can...),"I volley with a short, compact swing.
+I can volley forehand and backhand with control.
+I aim my volleys deep or to the middle.","I can play a compact backhand volley.
+I can aim it deep or to the middle.",Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,Warning questions,Do your volleys pop up high for the opponents to smash?,Does your backhand volley pop up or miss on routine balls?,Split wings so one cannot mask the other.
+SRC007,P007-BH,Backhand volley,C,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,Skill,Volley,Forehand volley,Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,Spanish,Volea,Volea de derecha,Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A forehand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,What it looks like,"Controls low, high and fast volleys. Changes depth and pace on purpose: deep to push back, short or at the feet to finish.",Controls low and fast forehand volleys and changes depth to suit the ball.,Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,Statements (I can...),"I can control low volleys at my feet.
+I handle fast balls at the net without panicking.
+I change depth on purpose: deep to push back, short to finish.","I can control low and fast forehand volleys.
+I can change their depth on purpose.",Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,Warning questions,Do fast balls at the net beat you?,Does your forehand volley pop up or miss on routine balls?,Split wings so one cannot mask the other.
+SRC008,P008-FH,Forehand volley,B,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,Skill,Volley,Backhand volley,Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,Spanish,Volea,Volea de revés,Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A backhand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,What it looks like,"Controls low, high and fast volleys. Changes depth and pace on purpose: deep to push back, short or at the feet to finish.",Controls low and fast backhand volleys and changes depth to suit the ball.,Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,Statements (I can...),"I can control low volleys at my feet.
+I handle fast balls at the net without panicking.
+I change depth on purpose: deep to push back, short to finish.","I can control low and fast backhand volleys.
+I can change their depth on purpose.",Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,Warning questions,Do fast balls at the net beat you?,Does your backhand volley pop up or miss on routine balls?,Split wings so one cannot mask the other.
+SRC008,P008-BH,Backhand volley,B,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC009,P009-FH,Forehand volley,A,Skill,Volley,Forehand volley,Split wings so one cannot mask the other.
+SRC009,P009-FH,Forehand volley,A,Spanish,Volea,Volea de derecha,Split wings so one cannot mask the other.
+SRC009,P009-FH,Forehand volley,A,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A forehand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC009,P009-FH,Forehand volley,A,What it looks like,"Wins fast net exchanges. Uses block, drop and angled volleys to set up or finish, and rarely gives away an easy ball.",Adapts forehand volley pace and angle in live exchanges while keeping difficult balls safe.,Split wings so one cannot mask the other.
+SRC009,P009-FH,Forehand volley,A,Statements (I can...),"I win most fast exchanges at the net.
+I use angles and drop volleys to finish points.","I can change pace and angle on my forehand volley.
+I can keep a difficult volley safe instead of forcing a winner.",Split wings so one cannot mask the other.
+SRC009,P009-FH,Forehand volley,A,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC009,P009-BH,Backhand volley,A,Skill,Volley,Backhand volley,Split wings so one cannot mask the other.
+SRC009,P009-BH,Backhand volley,A,Spanish,Volea,Volea de revés,Split wings so one cannot mask the other.
+SRC009,P009-BH,Backhand volley,A,Definition,"Hitting the ball before it bounces, usually at the net, forehand or backhand.","A backhand hit before the ball bounces, usually at the net.",Split wings so one cannot mask the other.
+SRC009,P009-BH,Backhand volley,A,What it looks like,"Wins fast net exchanges. Uses block, drop and angled volleys to set up or finish, and rarely gives away an easy ball.",Adapts backhand volley pace and angle in live exchanges while keeping difficult balls safe.,Split wings so one cannot mask the other.
+SRC009,P009-BH,Backhand volley,A,Statements (I can...),"I win most fast exchanges at the net.
+I use angles and drop volleys to finish points.","I can change pace and angle on my backhand volley.
+I can keep a difficult volley safe instead of forcing a winner.",Split wings so one cannot mask the other.
+SRC009,P009-BH,Backhand volley,A,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC010,P010,Block volley,C,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC010,P010,Block volley,C,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC011,P011,Block volley,B,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC011,P011,Block volley,B,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC012,P012,Block volley,A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC012,P012,Block volley,A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC013,P013,Drop volley,B,Expected at this level,Yes,Optional,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC013,P013,Drop volley,B,What it looks like,Tries the drop volley when opponents are deep. It works some of the time.,Can soften a volley short when balanced and the opponents are deep.,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC013,P013,Drop volley,B,Statements (I can...),"I try a drop volley when both opponents are deep.
+My drop volley lands short and doesn't sit up.",I can play a short drop volley when I am balanced and the opponents are deep.,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC013,P013,Drop volley,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC014,P014,Drop volley,A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC014,P014,Drop volley,A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC015,P015,Basic overhead,D,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC016,P016,Basic overhead,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC017,P017,Bandeja,C,Definition,"A sliced overhead hit above the head, out to the side. Flatter and slower than a smash, it keeps you at the net.",A controlled sliced overhead used to manage a lob and keep or regain a useful net position.,Aligned description and player claim; made the action observable and individual.
+SRC017,P017,Bandeja,C,When to use it,Against lobs you can't safely smash. The most common overhead in padel.,On a reachable lob when a controlled overhead is safer than a smash.,Aligned description and player claim; made the action observable and individual.
+SRC017,P017,Bandeja,C,What it looks like,Can hit a bandeja in a friendly game to hold the net. Depth and direction vary.,Can play a controlled bandeja on a comfortable lob and recover toward the net when the reply allows.,Aligned description and player claim; made the action observable and individual.
+SRC017,P017,Bandeja,C,Statements (I can...),"I can hit a bandeja in a friendly game.
+After my bandeja, I stay at the net.","I can play a bandeja from a comfortable lob.
+I can recover toward the net when my shot gives me time.",Aligned description and player claim; made the action observable and individual.
+SRC017,P017,Bandeja,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC018,P018,Bandeja,B,Definition,"A sliced overhead hit above the head, out to the side. Flatter and slower than a smash, it keeps you at the net.",A controlled sliced overhead used to manage a lob and keep or regain a useful net position.,Aligned description and player claim; made the action observable and individual.
+SRC018,P018,Bandeja,B,When to use it,Against lobs you can't safely smash. The most common overhead in padel.,On a reachable lob when a controlled overhead is safer than a smash.,Aligned description and player claim; made the action observable and individual.
+SRC018,P018,Bandeja,B,What it looks like,"Reliable bandeja that keeps opponents back and holds the net, even when rushed.",Places the bandeja from varied reachable lobs and usually recovers a useful net position.,Aligned description and player claim; made the action observable and individual.
+SRC018,P018,Bandeja,B,Statements (I can...),"My bandeja lands deep, so opponents stay back.
+I can hit it when I'm rushed or moving back.
+I can choose cross-court or straight.","I can place my bandeja cross-court or straight.
+I can keep control when I have to move back.
+I can recover to the position the reply allows.",Aligned description and player claim; made the action observable and individual.
+SRC018,P018,Bandeja,B,Warning questions,Does your bandeja land short or in the middle when you're rushed?,Does your bandeja lose depth or control when you move back?,Aligned description and player claim; made the action observable and individual.
+SRC018,P018,Bandeja,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC019,P019,Bandeja,A,Definition,"A sliced overhead hit above the head, out to the side. Flatter and slower than a smash, it keeps you at the net.",A controlled sliced overhead used to manage a lob and keep or regain a useful net position.,Retained useful original content; review status updated.
+SRC019,P019,Bandeja,A,When to use it,Against lobs you can't safely smash. The most common overhead in padel.,On a reachable lob when a controlled overhead is safer than a smash.,Retained useful original content; review status updated.
+SRC019,P019,Bandeja,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC020,P020,Víbora,B,Definition,"A faster, more aggressive bandeja with side spin, aimed low into the side glass.","An attacking overhead with sidespin, played from a suitable lob with balance.",Optional: excluded from level requirements and missing-skill penalties.
+SRC020,P020,Víbora,B,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC020,P020,Víbora,B,Statements (I can...),"I can hit a víbora with side spin.
+My víbora lands low into the side glass.","I can hit a víbora with side spin.
+I can place my víbora into a useful attacking lane.",Optional: excluded from level requirements and missing-skill penalties.
+SRC020,P020,Víbora,B,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC021,P021,Víbora,A,Definition,"A faster, more aggressive bandeja with side spin, aimed low into the side glass.","An attacking overhead with sidespin, played from a suitable lob with balance.",Optional: excluded from level requirements and missing-skill penalties.
+SRC021,P021,Víbora,A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC021,P021,Víbora,A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC022,P022,Smash,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC023,P023,Smash,B,What it looks like,"Picks the right lobs to smash. Places it to a corner or the feet, and gets back to the net after.","Chooses suitable short lobs, controls placement and checks the likely rebound before recovering.",Aligned description and player claim; made the action observable and individual.
+SRC023,P023,Smash,B,Statements (I can...),"I place my smash to a corner or the feet.
+I get back to the net after smashing.","I can choose a short lob to smash.
+I can place my smash without giving away an easy rebound.",Aligned description and player claim; made the action observable and individual.
+SRC023,P023,Smash,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC024,P024,Smash,A,What it looks like,"Smashes with control from most short lobs, using flat, kick and topspin to finish or push opponents back.","Adapts smash placement and power to the defenders, with a safer overhead available.",Aligned description and player claim; made the action observable and individual.
+SRC024,P024,Smash,A,Statements (I can...),"I use flat, kick or topspin smashes on purpose.
+My smash finishes points or pushes opponents well back.","I can change my smash placement and power to suit the defenders.
+I can choose a safer overhead when the smash is not on.",Aligned description and player claim; made the action observable and individual.
+SRC024,P024,Smash,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC025,P025,Hook,B,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC025,P025,Hook,B,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC026,P026,Hook,A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC026,P026,Hook,A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC027,P027,Topspin smash,A,Spanish,Rulo,Remate liftado,Separated topspin-smash terminology from a rulo toward the fence. Optional: excluded from level requirements and missing-skill penalties.
+SRC027,P027,Topspin smash,A,Also called,"rulo, topspin",topspin smash; kick smash (terms vary),Separated topspin-smash terminology from a rulo toward the fence. Optional: excluded from level requirements and missing-skill penalties.
+SRC027,P027,Topspin smash,A,Expected at this level,Yes,Optional,Separated topspin-smash terminology from a rulo toward the fence. Optional: excluded from level requirements and missing-skill penalties.
+SRC027,P027,Topspin smash,A,Review status,Draft,Revised draft,Separated topspin-smash terminology from a rulo toward the fence. Optional: excluded from level requirements and missing-skill penalties.
+SRC027,P027,Topspin smash,A,Notes,,Rulo is not treated as an exact synonym. Coach terminology varies.,Separated topspin-smash terminology from a rulo toward the fence. Optional: excluded from level requirements and missing-skill penalties.
+SRC028,P028,Smash out the side (x3),B,Definition,"A smash that bounces and flies out over the side fence, so it can't be returned (unless they run outside).",A smash that bounces in court and exits above the side enclosure. It may remain returnable where outside play is authorized.,Optional: excluded from level requirements and missing-skill penalties.
+SRC028,P028,Smash out the side (x3),B,Expected at this level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC028,P028,Smash out the side (x3),B,What it looks like,Tries the x3 on very short lobs and gets it out about half the time.,Can produce an x3 from a very short favorable lob and recognizes when not to try it.,Optional: excluded from level requirements and missing-skill penalties.
+SRC028,P028,Smash out the side (x3),B,Statements (I can...),I try the x3 on very short lobs.,"I can get an x3 out from a very short favorable lob.
+I can choose a safer shot when it is not on.",Optional: excluded from level requirements and missing-skill penalties.
+SRC028,P028,Smash out the side (x3),B,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC029,P029,Smash out the side (x3),A,Definition,"A smash that bounces and flies out over the side fence, so it can't be returned (unless they run outside).",A smash that bounces in court and exits above the side enclosure. It may remain returnable where outside play is authorized.,Optional: excluded from level requirements and missing-skill penalties.
+SRC029,P029,Smash out the side (x3),A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC029,P029,Smash out the side (x3),A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC030,P030,Smash out the back (x4),A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC030,P030,Smash out the back (x4),A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC031,P031,Bajada,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC032,P032,Bajada,A,What it looks like,Uses the bajada to finish points with placement and power.,"Uses placement and controlled power on a high rebound, then advances when the shot earns an opening.",Retained useful original content; review status updated.
+SRC032,P032,Bajada,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC033,P033,Drop shot,B,Expected at this level,Yes,Optional,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC033,P033,Drop shot,B,What it looks like,Plays a drop shot when opponents are deep. Sometimes it sits up.,"Can play a short, soft shot from a comfortable ball when the opponents are deep.",Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC033,P033,Drop shot,B,Statements (I can...),"I play a drop shot when opponents are deep.
+My drop shot lands short and low, not sitting up.",I can land a drop shot short from a comfortable ball when the opponents are deep.,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC033,P033,Drop shot,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Optional: excluded from level requirements and missing-skill penalties.
+SRC034,P034,Drop shot,A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC034,P034,Drop shot,A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC035,P035,Return of serve,Beginner,What it looks like,"Gets some serves back, but often misses or hits it out.",Can find a receiving position and return some easy serves after the bounce.,Aligned description and player claim; made the action observable and individual.
+SRC035,P035,Return of serve,Beginner,Statements (I can...),I know where to stand to return.,I can get some easy serves back after they bounce.,Aligned description and player claim; made the action observable and individual.
+SRC035,P035,Return of serve,Beginner,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC036,P036,Return of serve,D,What it looks like,Gets the ball over the net. Soft and floaty. Backhand is weaker.,"Returns most easy serves into court, with limited placement.",Aligned description and player claim; made the action observable and individual.
+SRC036,P036,Return of serve,D,Statements (I can...),I get most serves back.,I can get most easy serves back into court.,Aligned description and player claim; made the action observable and individual.
+SRC036,P036,Return of serve,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC037,P037,Return of serve,C,What it looks like,"Usually a safe, deep return. Backhand is steadier. Starts choosing direction.","Returns routine serves safely, including simple side-glass rebounds.",Aligned description and player claim; made the action observable and individual.
+SRC037,P037,Return of serve,C,Statements (I can...),"My return goes low or to the middle.
+I can return serves that come off the side glass.","I can return routine serves low or through the middle.
+I can return simple serves off the side glass.",Aligned description and player claim; made the action observable and individual.
+SRC037,P037,Return of serve,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC038,P038,Return of serve,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC039,P039,Return of serve,A,What it looks like,Returns on purpose to win the net and hurts weak serves.,Adapts returns to the serving pair and attacks weak serves when the opening is there.,Aligned description and player claim; made the action observable and individual.
+SRC039,P039,Return of serve,A,Statements (I can...),"I choose the return to suit the server and their partner.
+My return puts us on the attack.","I can choose my return to suit the serving pair.
+I can attack a weak serve without forcing a difficult one.",Aligned description and player claim; made the action observable and individual.
+SRC039,P039,Return of serve,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC040,P040-FH,Forehand groundstroke,Beginner,Skill,Forehand and backhand,Forehand groundstroke,Split wings so one cannot mask the other.
+SRC040,P040-FH,Forehand groundstroke,Beginner,Spanish,Derecha y revés,Derecha,Split wings so one cannot mask the other.
+SRC040,P040-FH,Forehand groundstroke,Beginner,Definition,"Basic shots after the ball bounces, from the back of the court.","A forehand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC040,P040-FH,Forehand groundstroke,Beginner,What it looks like,Gets the ball back over the net now and then. The walls are still confusing.,Can return some easy forehand feeds after the bounce.,Split wings so one cannot mask the other.
+SRC040,P040-FH,Forehand groundstroke,Beginner,Statements (I can...),I can get the ball over the net from the back.,I can get some easy forehand balls over the net after they bounce.,Split wings so one cannot mask the other.
+SRC040,P040-FH,Forehand groundstroke,Beginner,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC040,P040-BH,Backhand groundstroke,Beginner,Skill,Forehand and backhand,Backhand groundstroke,Split wings so one cannot mask the other.
+SRC040,P040-BH,Backhand groundstroke,Beginner,Spanish,Derecha y revés,Revés,Split wings so one cannot mask the other.
+SRC040,P040-BH,Backhand groundstroke,Beginner,Definition,"Basic shots after the ball bounces, from the back of the court.","A backhand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC040,P040-BH,Backhand groundstroke,Beginner,What it looks like,Gets the ball back over the net now and then. The walls are still confusing.,Can return some easy backhand feeds after the bounce.,Split wings so one cannot mask the other.
+SRC040,P040-BH,Backhand groundstroke,Beginner,Statements (I can...),I can get the ball over the net from the back.,I can get some easy backhand balls over the net after they bounce.,Split wings so one cannot mask the other.
+SRC040,P040-BH,Backhand groundstroke,Beginner,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,Skill,Forehand and backhand,Forehand groundstroke,Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,Spanish,Derecha y revés,Derecha,Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,Definition,"Basic shots after the ball bounces, from the back of the court.","A forehand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,What it looks like,"Gets most balls back over the net from the back, mostly cross-court. Little control of height or speed.","Can keep an easy forehand rally going, with limited placement.",Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,Statements (I can...),"I keep a simple rally going from the back.
+I use a short swing, not a big tennis swing.",I can keep an easy rally going with my forehand.,Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,Warning questions,Do rallies end within a couple of shots because of your errors?,Does your forehand break down in a routine rally?,Split wings so one cannot mask the other.
+SRC041,P041-FH,Forehand groundstroke,D,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,Skill,Forehand and backhand,Backhand groundstroke,Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,Spanish,Derecha y revés,Revés,Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,Definition,"Basic shots after the ball bounces, from the back of the court.","A backhand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,What it looks like,"Gets most balls back over the net from the back, mostly cross-court. Little control of height or speed.","Can keep an easy backhand rally going, with limited placement.",Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,Statements (I can...),"I keep a simple rally going from the back.
+I use a short swing, not a big tennis swing.",I can keep an easy rally going with my backhand.,Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,Warning questions,Do rallies end within a couple of shots because of your errors?,Does your backhand break down in a routine rally?,Split wings so one cannot mask the other.
+SRC041,P041-BH,Backhand groundstroke,D,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,Skill,Forehand and backhand,Forehand groundstroke,Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,Spanish,Derecha y revés,Derecha,Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,Definition,"Basic shots after the ball bounces, from the back of the court.","A forehand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,What it looks like,Keeps a steady rally from the back with a short swing. Aims low or to the middle.,Controls routine forehand shots toward the middle or cross-court.,Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,Statements (I can...),"I keep the ball low over the net.
+I aim to the middle or a side on purpose.",I can control routine forehand shots to the middle or cross-court.,Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,Warning questions,Do you hit the ball too hard from the back and miss?,Does your forehand break down in a routine rally?,Split wings so one cannot mask the other.
+SRC042,P042-FH,Forehand groundstroke,C,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,Skill,Forehand and backhand,Backhand groundstroke,Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,Spanish,Derecha y revés,Revés,Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,Definition,"Basic shots after the ball bounces, from the back of the court.","A backhand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,What it looks like,Keeps a steady rally from the back with a short swing. Aims low or to the middle.,Controls routine backhand shots toward the middle or cross-court.,Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,Statements (I can...),"I keep the ball low over the net.
+I aim to the middle or a side on purpose.",I can control routine backhand shots to the middle or cross-court.,Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,Warning questions,Do you hit the ball too hard from the back and miss?,Does your backhand break down in a routine rally?,Split wings so one cannot mask the other.
+SRC042,P042-BH,Backhand groundstroke,C,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,Skill,Forehand and backhand,Forehand groundstroke,Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,Spanish,Derecha y revés,Derecha,Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,Definition,"Basic shots after the ball bounces, from the back of the court.","A forehand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,What it looks like,"Controls height, pace and direction. Hits to the feet, through the middle or down the line on purpose.","Changes forehand height, pace and direction to suit the available ball.",Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,Statements (I can...),"I control height, pace and direction.
+I can hit to the feet of net players when I need to.","I can change height, pace and direction on my forehand.",Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,Warning questions,Do your shots from the back sit up for the net players?,Does your forehand break down in a routine rally?,Split wings so one cannot mask the other.
+SRC043,P043-FH,Forehand groundstroke,B,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,Skill,Forehand and backhand,Backhand groundstroke,Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,Spanish,Derecha y revés,Revés,Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,Definition,"Basic shots after the ball bounces, from the back of the court.","A backhand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,What it looks like,"Controls height, pace and direction. Hits to the feet, through the middle or down the line on purpose.","Changes backhand height, pace and direction to suit the available ball.",Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,Statements (I can...),"I control height, pace and direction.
+I can hit to the feet of net players when I need to.","I can change height, pace and direction on my backhand.",Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,Warning questions,Do your shots from the back sit up for the net players?,Does your backhand break down in a routine rally?,Split wings so one cannot mask the other.
+SRC043,P043-BH,Backhand groundstroke,B,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC044,P044-FH,Forehand groundstroke,A,Skill,Forehand and backhand,Forehand groundstroke,Split wings so one cannot mask the other.
+SRC044,P044-FH,Forehand groundstroke,A,Spanish,Derecha y revés,Derecha,Split wings so one cannot mask the other.
+SRC044,P044-FH,Forehand groundstroke,A,Definition,"Basic shots after the ball bounces, from the back of the court.","A forehand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC044,P044-FH,Forehand groundstroke,A,What it looks like,"Uses slice, pace and angles to move opponents and set up the net. Rarely makes errors from the back.",Uses forehand placement and variation to create openings while defending safely when stretched.,Split wings so one cannot mask the other.
+SRC044,P044-FH,Forehand groundstroke,A,Statements (I can...),"I use slice, pace and angles to move opponents.
+I rarely make errors from the back.","I can vary my forehand to move opponents.
+I can use a safe forehand when I am stretched.",Split wings so one cannot mask the other.
+SRC044,P044-FH,Forehand groundstroke,A,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC044,P044-BH,Backhand groundstroke,A,Skill,Forehand and backhand,Backhand groundstroke,Split wings so one cannot mask the other.
+SRC044,P044-BH,Backhand groundstroke,A,Spanish,Derecha y revés,Revés,Split wings so one cannot mask the other.
+SRC044,P044-BH,Backhand groundstroke,A,Definition,"Basic shots after the ball bounces, from the back of the court.","A backhand shot after the bounce, before any wall rebound.",Split wings so one cannot mask the other.
+SRC044,P044-BH,Backhand groundstroke,A,What it looks like,"Uses slice, pace and angles to move opponents and set up the net. Rarely makes errors from the back.",Uses backhand placement and variation to create openings while defending safely when stretched.,Split wings so one cannot mask the other.
+SRC044,P044-BH,Backhand groundstroke,A,Statements (I can...),"I use slice, pace and angles to move opponents.
+I rarely make errors from the back.","I can vary my backhand to move opponents.
+I can use a safe backhand when I am stretched.",Split wings so one cannot mask the other.
+SRC044,P044-BH,Backhand groundstroke,A,Review status,Draft,Revised draft,Split wings so one cannot mask the other.
+SRC045,P045,Defensive lob,D,What it looks like,"Can get the lob over the net sometimes, but it's often too low or too short. Only works in an easy rally with plenty of time.","Can lob over a net player from an easy ball, though depth is not yet reliable.",Aligned description and player claim; made the action observable and individual.
+SRC045,P045,Defensive lob,D,Statements (I can...),I can lob the ball over the net players.,I can lob over a net player when I have time.,Aligned description and player claim; made the action observable and individual.
+SRC045,P045,Defensive lob,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC046,P046,Defensive lob,C,What it looks like,Usually gets a lob over in a friendly game when there is time. Height and depth are hit or miss. Falls apart when rushed or off the glass.,"Can hit a high, deep lob from a comfortable ball. Rushed contacts and wall rebounds remain harder.",Aligned description and player claim; made the action observable and individual.
+SRC046,P046,Defensive lob,C,Statements (I can...),"My lob goes high and deep, not short.
+After a good lob, I move up to the net.","I can lob high and deep when I have time.
+I can move forward when my lob pushes the opponents back.",Aligned description and player claim; made the action observable and individual.
+SRC046,P046,Defensive lob,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC047,P047,Defensive lob,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC048,P048,Defensive lob,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC049,P049,Back glass return,D,What it looks like,"Rarely plays off the glass, and often doesn't succeed when it does.","Can return easy back-glass rebounds, with limited direction.",Aligned description and player claim; made the action observable and individual.
+SRC049,P049,Back glass return,D,Statements (I can...),"I let some balls hit the back glass before I play them.
+I get easy rebounds back over the net.",I can let an easy ball reach the back glass and return the rebound.,Aligned description and player claim; made the action observable and individual.
+SRC049,P049,Back glass return,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC050,P050,Back glass return,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC051,P051,Back glass return,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC052,P052,Back glass return,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC053,P053,Side glass return,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC054,P054,Side glass return,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC055,P055,Side glass return,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC056,P056,Double glass,C,Expected at this level,,Yes,Retained useful original content; review status updated.
+SRC056,P056,Double glass,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC057,P057,Double glass,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC058,P058,Double glass,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC059,P059,Back wall rescue,B,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC059,P059,Back wall rescue,B,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC060,P060,Back wall rescue,A,Expected at this level,Yes,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC060,P060,Back wall rescue,A,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC061,P061,Defending a smash,C,Definition,"Reading and returning a smash, including running down balls that come off the glass.",Read and return reachable smash rebounds and recognize when the point has ended.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC061,P061,Defending a smash,C,When to use it,"When opponents smash, especially x3 or x4.",When a smash remains live and safely reachable inside the court.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC061,P061,Defending a smash,C,Expected at this level,,Yes,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC061,P061,Defending a smash,C,What it looks like,Gets some smashes back when they come off the glass. Often gives up on hard ones.,Can read and return straightforward reachable smash rebounds inside the court.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC061,P061,Defending a smash,C,Statements (I can...),I get some smashes back when they come off the glass.,I can get straightforward smash rebounds back from inside the court.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC061,P061,Defending a smash,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC062,P062,Defending a smash,B,Definition,"Reading and returning a smash, including running down balls that come off the glass.",Read and return reachable smash rebounds and recognize when the point has ended.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC062,P062,Defending a smash,B,When to use it,"When opponents smash, especially x3 or x4.",When a smash remains live and safely reachable inside the court.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC062,P062,Defending a smash,B,What it looks like,"Reads where a smash will bounce and gets most back, including off the back glass.",Reads varied reachable smash rebounds and chooses a safe return without giving up too early.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC062,P062,Defending a smash,B,Statements (I can...),"I read where a smash will bounce.
+I get most smashes back, including off the back glass.","I can read where a reachable smash will rebound.
+I can choose a low return or lob from the rebound.",Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC062,P062,Defending a smash,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC063,P063,Defending a smash,A,Definition,"Reading and returning a smash, including running down balls that come off the glass.",Read and return reachable smash rebounds and recognize when the point has ended.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC063,P063,Defending a smash,A,When to use it,"When opponents smash, especially x3 or x4.",When a smash remains live and safely reachable inside the court.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC063,P063,Defending a smash,A,What it looks like,"Gets back x3 and x4 smashes by running round or out of court where allowed, and turns some into counter-attacks.",Anticipates smash patterns and counterattacks suitable reachable rebounds while recognizing when the point is over.,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC063,P063,Defending a smash,A,Statements (I can...),"I chase x3 and x4 smashes where the court allows.
+I turn some smash defences into counter-attacks.","I can turn a reachable smash rebound into a counterattack.
+I can recognize when an exit over the back enclosure has ended the point.",Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC063,P063,Defending a smash,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Removed x4 retrieval: an exit over the end enclosure ends the point.
+SRC064,P064,Chiquita,C,When to use it,To make them volley upwards so you can move up to the net.,To make a net player volley up. Advance only if the reply gives you time.,Aligned description and player claim; made the action observable and individual.
+SRC064,P064,Chiquita,C,What it looks like,"Plays a soft, low ball to the net players' feet some of the time, then moves up.",Can play a soft low ball to a net player from a comfortable contact. Advances only if the reply allows.,Aligned description and player claim; made the action observable and individual.
+SRC064,P064,Chiquita,C,Statements (I can...),"I can play a soft, low ball to the net players' feet.
+After a chiquita, I move up.","I can play a soft ball toward a net player's feet when I have time.
+I can move forward if the reply gives me an opening.",Aligned description and player claim; made the action observable and individual.
+SRC064,P064,Chiquita,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC065,P065,Chiquita,B,When to use it,To make them volley upwards so you can move up to the net.,To make a net player volley up. Advance only if the reply gives you time.,Aligned description and player claim; made the action observable and individual.
+SRC065,P065,Chiquita,B,What it looks like,"Uses the chiquita on purpose to make opponents volley up, and moves up together with partner.",Chooses the low ball to make opponents volley up and coordinates movement according to the reply.,Aligned description and player claim; made the action observable and individual.
+SRC065,P065,Chiquita,B,Statements (I can...),"I use it on purpose to make opponents volley up.
+My partner and I move up together after it.","I can use a chiquita to make an opponent volley up.
+I can move with my partner when the reply lets us advance.",Aligned description and player claim; made the action observable and individual.
+SRC065,P065,Chiquita,B,Warning questions,"After a chiquita, do you stay at the back instead of moving up?",Do you move forward even when your chiquita sits up?,Aligned description and player claim; made the action observable and individual.
+SRC065,P065,Chiquita,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC066,P066,Chiquita,A,When to use it,To make them volley upwards so you can move up to the net.,To make a net player volley up. Advance only if the reply gives you time.,Retained useful original content; review status updated.
+SRC066,P066,Chiquita,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC067,P067,Attacking lob,C,What it looks like,"Tries a lower, faster lob when opponents are very close to the net.",Can use a faster lob to clear opponents standing close to the net from a comfortable ball.,Aligned description and player claim; made the action observable and individual.
+SRC067,P067,Attacking lob,C,Statements (I can...),"I try a lower, faster lob when opponents are close to the net.",I can clear players close to the net with a faster lob when I have time.,Aligned description and player claim; made the action observable and individual.
+SRC067,P067,Attacking lob,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC068,P068,Attacking lob,B,What it looks like,Uses the attacking lob on purpose to get behind net players and then moves up.,Chooses the attacking lob from opponent position and advances when it earns enough time.,Aligned description and player claim; made the action observable and individual.
+SRC068,P068,Attacking lob,B,Statements (I can...),"I use it on purpose to get behind net players.
+I move up after it.","I can use an attacking lob to get behind net players.
+I can judge whether it gives me time to move forward.",Aligned description and player claim; made the action observable and individual.
+SRC068,P068,Attacking lob,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC069,P069,Attacking lob,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC070,P070,Passing shot,B,What it looks like,Hits a passing shot when there's an obvious gap. Often goes long or into the net.,Can direct a controlled passing shot through an obvious gap from a balanced position.,Aligned description and player claim; made the action observable and individual.
+SRC070,P070,Passing shot,B,Statements (I can...),"I hit a passing shot when there's a clear gap.
+My passing shots stay low.",I can play a low passing shot through a clear gap when I am balanced.,Aligned description and player claim; made the action observable and individual.
+SRC070,P070,Passing shot,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC071,P071,Passing shot,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC072,P072,Half volley,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC073,P073,Half volley,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC074,P074,Half volley,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC075,P075,Between the legs,Optional,Level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC075,P075,Between the legs,Optional,Expected at this level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC075,P075,Between the legs,Optional,What it looks like,,"Uses the rescue only when a simpler safe return is unavailable, with a clear swing path.",Optional: excluded from level requirements and missing-skill penalties.
+SRC075,P075,Between the legs,Optional,Statements (I can...),,I can use this rescue safely when there is no simpler return.,Optional: excluded from level requirements and missing-skill penalties.
+SRC075,P075,Between the legs,Optional,Warning questions,,"Is there a simpler, safer return available?",Optional: excluded from level requirements and missing-skill penalties.
+SRC075,P075,Between the legs,Optional,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC076,P076,Behind the back,Optional,Level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC076,P076,Behind the back,Optional,Expected at this level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC076,P076,Behind the back,Optional,What it looks like,,"Uses the rescue only when a simpler safe return is unavailable, with a clear swing path.",Optional: excluded from level requirements and missing-skill penalties.
+SRC076,P076,Behind the back,Optional,Statements (I can...),,I can use this rescue safely when there is no simpler return.,Optional: excluded from level requirements and missing-skill penalties.
+SRC076,P076,Behind the back,Optional,Warning questions,,"Is there a simpler, safer return available?",Optional: excluded from level requirements and missing-skill penalties.
+SRC076,P076,Behind the back,Optional,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,Definition,Running out through the door to play a ball that has bounced out.,Leave through an access to return a live ball only on a court where outside play is authorized and safely possible.,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,When to use it,"After an x3 or x4 smash, where the court allows it.",For a playable side or door exit where outside play is authorized; never after an exit over the back enclosure.,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,Level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,Expected at this level,,Optional,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,What it looks like,,Checks that the point is live and the route is clear before a permitted outside return.,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,Statements (I can...),,I can recognize when an outside return is allowed and safely reachable.,Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,Warning questions,,"Is outside play authorized, and is the route clear?",Optional: excluded from level requirements and missing-skill penalties.
+SRC077,P077,Playing outside the court,Optional,Review status,Draft,Revised draft,Optional: excluded from level requirements and missing-skill penalties.
+SRC078,P078,Knowing where to stand,Beginner,What it looks like,"Not sure where to stand yet: back or net, left or right.","Can identify basic back-court and net positions, though still needs reminders during play.",Aligned description and player claim; made the action observable and individual.
+SRC078,P078,Knowing where to stand,Beginner,Statements (I can...),"I know the basic spots: both back, or both at the net.",I can point out the basic positions at the back and at the net.,Aligned description and player claim; made the action observable and individual.
+SRC078,P078,Knowing where to stand,Beginner,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC079,P079,Knowing where to stand,D,What it looks like,Knows the basic spots: both back or both at the net. Covers own side and doesn't get stuck in the middle of the court.,Uses basic court positions and avoids stopping unprepared between back and net.,Aligned description and player claim; made the action observable and individual.
+SRC079,P079,Knowing where to stand,D,Statements (I can...),"I cover my own side of the court.
+I don't get stuck in the middle of the court.","I can cover my side from a useful position.
+I can get ready for the reply when I move through the middle of the court.",Aligned description and player claim; made the action observable and individual.
+SRC079,P079,Knowing where to stand,D,Warning questions,"Do you end up in no man's land, the middle of the court?",Do you stop in the middle of the court without getting ready for the reply?,Aligned description and player claim; made the action observable and individual.
+SRC079,P079,Knowing where to stand,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC080,P080,Knowing where to stand,C,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC081,P081,Knowing where to stand,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC082,P082,Knowing where to stand,A,What it looks like,Reads opponents' habits and is already in position for the next ball.,Uses opponent patterns to prepare early and adjusts when the expected reply changes.,Aligned description and player claim; made the action observable and individual.
+SRC082,P082,Knowing where to stand,A,Statements (I can...),I'm already in position for the next ball.,"I can use opponents' habits to prepare early.
+I can adjust when they change the reply.",Aligned description and player claim; made the action observable and individual.
+SRC082,P082,Knowing where to stand,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC083,P083,Ready position and split step,D,Definition,"Knees bent, racket up, and a small hop as the opponent hits.",Prepare the racket and use a small timed split step or loading action around the opponent's contact.,Retained useful original content; review status updated.
+SRC083,P083,Ready position and split step,D,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC084,P084,Ready position and split step,C,Definition,"Knees bent, racket up, and a small hop as the opponent hits.",Prepare the racket and use a small timed split step or loading action around the opponent's contact.,Aligned description and player claim; made the action observable and individual.
+SRC084,P084,Ready position and split step,C,What it looks like,Usually ready before the opponent hits. Split step is inconsistent.,Usually prepares before opponent contact and uses a small timed split step or loading action in routine rallies.,Aligned description and player claim; made the action observable and individual.
+SRC084,P084,Ready position and split step,C,Statements (I can...),"I'm ready before the opponent hits.
+I do a small split step as they hit.","I can get my racket ready before the opponent hits.
+I can time a small split step with their contact in routine rallies.",Aligned description and player claim; made the action observable and individual.
+SRC084,P084,Ready position and split step,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC085,P085,Taking and holding the net,D,What it looks like,"Nothing consistent yet. Sometimes ends up at the net at the wrong time, or stays at the net all the time. Volleys are often a block that goes into the net or too high.",Recognizes clear chances to move to the net and can stop ready for the reply.,Aligned description and player claim; made the action observable and individual.
+SRC085,P085,Taking and holding the net,D,Statements (I can...),I sometimes play at the net.,I can move to the net behind an easy opening and get ready for the reply.,Aligned description and player claim; made the action observable and individual.
+SRC085,P085,Taking and holding the net,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC086,P086,Taking and holding the net,C,What it looks like,Takes the net when the chance is clear and holds it with steady volleys.,"Takes the net behind a good ball, holds with controlled volleys and retreats when beaten.",Aligned description and player claim; made the action observable and individual.
+SRC086,P086,Taking and holding the net,C,Statements (I can...),"I take the net when the chance is clear.
+Once I'm there, I stay with steady volleys.
+I leave the net when we're in trouble, instead of staying there.","I can take the net when my shot gives me time.
+I can hold it with controlled volleys.
+I can move back when a lob beats me.",Aligned description and player claim; made the action observable and individual.
+SRC086,P086,Taking and holding the net,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC087,P087,Taking and holding the net,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC088,P088,Taking and holding the net,A,What it looks like,"Dominates the net. Redirects, finishes and recovers position quickly.","Uses placement and recovery to preserve net pressure, adapting when opponents change the pattern.",Aligned description and player claim; made the action observable and individual.
+SRC088,P088,Taking and holding the net,A,Statements (I can...),"We control most points from the net.
+I get back into my net position quickly after each shot.","I can change my placement to keep pressure at the net.
+I can recover or retreat according to the next threat.",Aligned description and player claim; made the action observable and individual.
+SRC088,P088,Taking and holding the net,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC089,P089,Recovery,C,What it looks like,Sometimes gets back into position after a shot. Often caught out of place.,"Usually starts recovering after a routine shot, though wide balls can leave gaps.",Aligned description and player claim; made the action observable and individual.
+SRC089,P089,Recovery,C,Statements (I can...),"After each shot, I move back into position.",I can start moving back into position after a routine shot.,Aligned description and player claim; made the action observable and individual.
+SRC089,P089,Recovery,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC090,P090,Recovery,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC091,P091,Recovery,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC092,P092,Moving as a pair,C,What it looks like,"Aware of partner, but often both end up in the same spot or leave gaps.",Adjusts forward and backward movement to the partner in routine points.,Aligned description and player claim; made the action observable and individual.
+SRC092,P092,Moving as a pair,C,Statements (I can...),"My partner and I move forward together.
+We move back together.",I can move forward or back with my partner in routine points.,Aligned description and player claim; made the action observable and individual.
+SRC092,P092,Moving as a pair,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC093,P093,Moving as a pair,B,What it looks like,Moves forward and back with partner most of the time.,Adjusts sideways spacing and covers when a partner is pulled wide.,Aligned description and player claim; made the action observable and individual.
+SRC093,P093,Moving as a pair,B,Statements (I can...),"We move sideways together and keep the gap small.
+We rarely go for the same ball.","I can shift sideways with my partner.
+I can cover the space when my partner is pulled wide.",Aligned description and player claim; made the action observable and individual.
+SRC093,P093,Moving as a pair,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC094,P094,Moving as a pair,A,What it looks like,Moves as one unit and covers the middle without thinking.,Coordinates switches and repairs gaps without relying on a fixed court side.,Aligned description and player claim; made the action observable and individual.
+SRC094,P094,Moving as a pair,A,Statements (I can...),"We move as one, even when we switch sides.","I can adjust my position when my partner and I switch sides.
+I can cover the middle while the pair recovers.",Aligned description and player claim; made the action observable and individual.
+SRC094,P094,Moving as a pair,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC095,P095,Shot choice,D,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC096,P096,Shot choice,C,What it looks like,Starts to choose between safe and attacking shots. Often tries too much too soon.,Checks opponents' positions and usually chooses a safe or attacking option to suit a routine ball.,Aligned description and player claim; made the action observable and individual.
+SRC096,P096,Shot choice,C,Statements (I can...),"I look at where the opponents are before I choose.
+I choose placement over power.","I can check where the opponents are before choosing.
+I can use a safer shot when I am out of position.",Aligned description and player claim; made the action observable and individual.
+SRC096,P096,Shot choice,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC097,P097,Shot choice,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC098,P098,Shot choice,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC099,P099,Talking to your partner,C,What it looks like,Calls 'mine' or 'leave' sometimes. Middle balls often cause confusion.,Uses clear calls on routine shared balls and helps agree who takes the middle.,Aligned description and player claim; made the action observable and individual.
+SRC099,P099,Talking to your partner,C,Statements (I can...),"We call ""mine"", ""yours"" and ""leave"".
+We agree who takes the middle.","I can call mine, yours or leave in time.
+I can agree who takes the middle.",Aligned description and player claim; made the action observable and individual.
+SRC099,P099,Talking to your partner,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC100,P100,Talking to your partner,B,What it looks like,"Clear calls and agreed roles, including the middle.",Helps agree a simple plan and communicates useful information between points.,Aligned description and player claim; made the action observable and individual.
+SRC100,P100,Talking to your partner,B,Statements (I can...),"We agree a simple plan before we start.
+We talk between points, including after mistakes.","I can agree a simple plan before play.
+I can share useful information between points, including after mistakes.",Aligned description and player claim; made the action observable and individual.
+SRC100,P100,Talking to your partner,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC101,P101,Talking to your partner,A,What it looks like,Adjusts tactics with partner during the match.,Recognizes when the plan needs changing and discusses a useful adjustment.,Aligned description and player claim; made the action observable and individual.
+SRC101,P101,Talking to your partner,A,Statements (I can...),We change the plan during the match.,I can suggest a change of plan from what is happening in the match.,Aligned description and player claim; made the action observable and individual.
+SRC101,P101,Talking to your partner,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual.
+SRC102,P102,Building points,B,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC103,P103,Building points,A,Review status,Draft,Revised draft,Retained useful original content; review status updated.
+SRC104,P104,Composure,D,Definition,Staying calm and playing your normal game under pressure.,"Prepare deliberately for the next point, including at tight scores.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC104,P104,Composure,D,When to use it,"Tight scores, golden points, match points.","Before the next point, especially when the score feels important.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC104,P104,Composure,D,What it looks like,"Stays calm in easy rallies, but gets frustrated after errors.",Uses a simple preparation cue before the next point in relaxed games.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC104,P104,Composure,D,Statements (I can...),I stay calm in easy rallies.,I can get ready for the next point without rushing in a relaxed game.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC104,P104,Composure,D,Warning questions,Do errors make you angry for a while?,Does the score make you rush or skip your preparation?,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC104,P104,Composure,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC104,P104,Composure,D,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,Definition,Staying calm and playing your normal game under pressure.,"Prepare deliberately for the next point, including at tight scores.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,When to use it,"Tight scores, golden points, match points.","Before the next point, especially when the score feels important.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,What it looks like,Stays calm in relaxed games. Tight scores bring rushed shots.,Keeps a useful preparation routine after errors in ordinary games.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,Statements (I can...),"I stay calm in friendly games, even after errors.",I can use my next-point routine after an error in an ordinary game.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,Warning questions,Do you rush your shots at tight scores?,Does the score make you rush or skip your preparation?,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC105,P105,Composure,C,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,Definition,Staying calm and playing your normal game under pressure.,"Prepare deliberately for the next point, including at tight scores.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,When to use it,"Tight scores, golden points, match points.","Before the next point, especially when the score feels important.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,What it looks like,Usually calm at big points.,Uses a preparation routine and a clear intention at tight scores.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,Statements (I can...),"I stay calm at big points.
+I don't rush my shots at tight scores.",I can prepare and choose a clear plan at tight scores.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,Warning questions,Do you play worse at big points?,Does the score make you rush or skip your preparation?,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC106,P106,Composure,B,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,Definition,Staying calm and playing your normal game under pressure.,"Prepare deliberately for the next point, including at tight scores.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,When to use it,"Tight scores, golden points, match points.","Before the next point, especially when the score feels important.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,What it looks like,Plays the same whether ahead or behind.,Keeps deliberate preparation when ahead or behind and adjusts the plan when needed.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,Statements (I can...),I play the same whether we're ahead or behind.,"I can keep preparing deliberately when I am ahead or behind.
+I can change an unhelpful plan without rushing.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,Warning questions,,Does the score make you rush or skip your preparation?,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC107,P107,Composure,A,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC108,P108,Bouncing back,C,Definition,Letting go of mistakes quickly.,Refocus after a mistake and use it to choose a useful next action.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC108,P108,Bouncing back,C,What it looks like,Takes a few points to settle after a mistake.,Recognizes when an error is affecting the next point and uses a reset cue.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC108,P108,Bouncing back,C,Statements (I can...),"After a mistake, I'm over it within a few points.","I can notice when I am carrying an error into the next point.
+I can use a cue to refocus.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC108,P108,Bouncing back,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC108,P108,Bouncing back,C,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC109,P109,Bouncing back,B,Definition,Letting go of mistakes quickly.,Refocus after a mistake and use it to choose a useful next action.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC109,P109,Bouncing back,B,What it looks like,Resets quickly after errors.,Resets attention before the next point after an ordinary mistake.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC109,P109,Bouncing back,B,Statements (I can...),"I'm over it by the next point.
+I use a routine to reset between points.",I can use a reset routine and get ready for the next point after a mistake.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC109,P109,Bouncing back,B,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC109,P109,Bouncing back,B,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC110,P110,Bouncing back,A,Definition,Letting go of mistakes quickly.,Refocus after a mistake and use it to choose a useful next action.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC110,P110,Bouncing back,A,What it looks like,Treats errors as information and moves on right away.,"Uses mistakes as information, changes an unhelpful choice and returns attention to the next point.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC110,P110,Bouncing back,A,Statements (I can...),Mistakes don't change how I play.,"I can learn from a mistake and choose what to change.
+I can return my attention to the next point.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC110,P110,Bouncing back,A,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC110,P110,Bouncing back,A,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC111,P111,Focus,D,Definition,Keeping attention on the ball and the next point.,"Return attention to the ball, score and next-point preparation when it drifts.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC111,P111,Focus,D,What it looks like,Stays focused for short spells. Attention drifts after long rallies or lost points.,Returns attention to the ball and ready position after a reminder or brief distraction.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC111,P111,Focus,D,Statements (I can...),I stay focused in short spells.,I can bring my attention back to the ball and get ready again.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC111,P111,Focus,D,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC111,P111,Focus,D,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC112,P112,Focus,C,Definition,Keeping attention on the ball and the next point.,"Return attention to the ball, score and next-point preparation when it drifts.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC112,P112,Focus,C,What it looks like,"Focused for most of the match, with dips when tired.",Recognizes a lapse and uses a cue to prepare for the next point in ordinary games.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC112,P112,Focus,C,Statements (I can...),"I stay focused for most of the match.
+I refocus quickly after a long rally or a lost point.",I can notice a lapse in concentration and refocus for the next point.,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC112,P112,Focus,C,Review status,Draft,Revised draft,Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+SRC112,P112,Focus,C,Notes,,"PadelIQ coaching construct; reflects observable performance behavior, not feelings or character.",Aligned description and player claim; made the action observable and individual. Kept in Mentality for the player profile; labeled as behavior rather than technical ability.
+Added,NEW-second-serve-D,Second serve,D,Entire row,,I can get a simple second serve into either box.,Added missing coverage or completed progression. 
+Added,NEW-second-serve-C,Second serve,C,Entire row,,I can use a reliable second serve without aiming too close to the lines.,Added missing coverage or completed progression. 
+Added,NEW-second-serve-B,Second serve,B,Entire row,,I can keep my second serve controlled at tight scores.,Added missing coverage or completed progression. 
+Added,NEW-second-serve-A,Second serve,A,Entire row,,I can vary my second-serve placement while keeping a safe margin.,Added missing coverage or completed progression. 
+Added,NEW-fence-rebound-D,Fence rebound,D,Entire row,,I can return some gentle balls off the fence.,Added missing coverage or completed progression. This is a rally situation. Service-fence faults are covered under rules.
+Added,NEW-fence-rebound-C,Fence rebound,C,Entire row,,I can wait for a fence rebound and adjust before hitting.,Added missing coverage or completed progression. This is a rally situation. Service-fence faults are covered under rules.
+Added,NEW-fence-rebound-B,Fence rebound,B,Entire row,,I can choose a low ball or lob from a reachable fence rebound.,Added missing coverage or completed progression. This is a rally situation. Service-fence faults are covered under rules.
+Added,NEW-fence-rebound-A,Fence rebound,A,Entire row,,I can handle awkward fence rebounds and choose a safe return when I am cramped.,Added missing coverage or completed progression. This is a rally situation. Service-fence faults are covered under rules.
+Added,NEW-middle-ball-responsibility-D,Middle ball responsibility,D,Entire row,,I can agree who takes an easy middle ball and respond to a call.,Added missing coverage or completed progression. 
+Added,NEW-middle-ball-responsibility-C,Middle ball responsibility,C,Entire row,,I can call a middle ball early and cover when my partner takes it.,Added missing coverage or completed progression. 
+Added,NEW-middle-ball-responsibility-B,Middle ball responsibility,B,Entire row,,"I can decide who has the better contact, rather than always taking the forehand.",Added missing coverage or completed progression. 
+Added,NEW-middle-ball-responsibility-A,Middle ball responsibility,A,Entire row,,I can sort out a shared ball and cover the gap even after we switch sides.,Added missing coverage or completed progression. 
+Added,NEW-rules-and-scoring-Beginner,Rules and scoring,Beginner,Entire row,,I can explain the basic bounce rules and follow the score.,Added missing coverage or completed progression. Knowledge supports the profile but is not a direct measure of competitive playing strength. Agree the scoring format; do not assume golden point.
+Added,NEW-rules-and-scoring-D,Rules and scoring,D,Entire row,,I can serve and return within the basic rules and keep score.,Added missing coverage or completed progression. Knowledge supports the profile but is not a direct measure of competitive playing strength. Agree the scoring format; do not assume golden point.
+Added,NEW-rules-and-scoring-C,Rules and scoring,C,Entire row,,"I can tell a service-fence fault from a live fence rebound.
+I can recognize a common service let.",Added missing coverage or completed progression. Knowledge supports the profile but is not a direct measure of competitive playing strength. Agree the scoring format; do not assume golden point.
+Added,NEW-rules-and-scoring-B,Rules and scoring,B,Entire row,,"I can follow our agreed tiebreak and service order.
+I can recognize when a ball leaving the court ends the point.",Added missing coverage or completed progression. Knowledge supports the profile but is not a direct measure of competitive playing strength. Agree the scoring format; do not assume golden point.
+Added,NEW-rules-and-scoring-A,Rules and scoring,A,Entire row,,I can resolve an unfamiliar rules question by checking the current rules.,Added missing coverage or completed progression. Knowledge supports the profile but is not a direct measure of competitive playing strength. Agree the scoring format; do not assume golden point.
+Added,NEW-ready-position-and-split-step-B,Ready position and split step,B,Entire row,,I can get ready at opponent contact while moving around the court.,Added missing coverage or completed progression. 
+Added,NEW-ready-position-and-split-step-A,Ready position and split step,A,Entire row,,I can adjust my preparation in fast exchanges and when opponents disguise the shot.,Added missing coverage or completed progression. 
+Added,NEW-focus-B,Focus,B,Entire row,,I can refocus at tight scores and after a long rally.,Added missing coverage or completed progression. PadelIQ coaching construct; observable behavior rather than a validated mentality level.
+Added,NEW-focus-A,Focus,A,Entire row,,I can notice a recurring distraction and change my preparation to refocus.,Added missing coverage or completed progression. PadelIQ coaching construct; observable behavior rather than a validated mentality level.
+Added,NEW-basic-overhead-B,Basic overhead,B,Entire row,,"I can control an overhead from different reachable lobs.
+I can let a lob bounce when it is too deep.",Added missing coverage or completed progression. General overhead ability continues beyond C; named variants are not all mandatory.
+Added,NEW-basic-overhead-A,Basic overhead,A,Entire row,,I can adapt my controlled overhead to the defenders and recover for the reply.,Added missing coverage or completed progression. General overhead ability continues beyond C; named variants are not all mandatory.
+Added,NEW-smash-out-the-back-x4-B,Smash out the back (x4),B,Entire row,,"I can get an x4 out from a very short favorable ball.
+I can choose a safer shot when it is not on.",Added missing coverage or completed progression. Provisional introduction at B; not a requirement for B or A. The exit over the back enclosure ends the point.

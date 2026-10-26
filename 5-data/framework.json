@@ -1,5 +1,5 @@
 {
-  "_note": "Padel IQ framework v0.1 (placeholder). Descriptors marked source=richard came from Richard; source=draft are first guesses for coaches to correct. Self-check quiz questions will live in a separate file and point to skill ids.",
+  "_note": "Skills come from 2-framework/framework-v3/padel-iq-skills.csv via npm run import-framework. Edit the CSV, not this file.",
   "axes": [
     {
       "id": "attack",
@@ -156,2063 +156,326 @@
         "lower": "Not good enough at the level, or the warning happens often"
       },
       "playerDecides": "If the answers suggest a lower level, the player chooses to keep their level (marked 'set by you') or switch."
-    }
+    },
+    "optional": "Optional rows and skills are never required: they are left out of both sides of any level sum, never cap a level, and checking more optional shots never raises a level."
   },
   "skills": [
     {
       "id": "serve",
       "axis": "attack",
       "name": "Serve",
+      "optional": false,
+      "recordType": "Player competency",
       "levels": {
         "beginner": {
           "master": true,
-          "source": "richard",
-          "text": "Learning the serve. Often faults. Just trying to get it in the box."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P001",
+          "text": "Can start a point with the correct bounce and serving action. Placement is still developing."
         },
         "D": {
           "master": true,
-          "source": "richard",
-          "text": "In the right box about 7 or 8 out of 10. Soft and floaty. Not deep, no slice, no aiming at the side glass. The goal is just getting it in."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P002",
+          "text": "Gets most routine serves into the correct box from either side."
         },
         "C": {
           "master": true,
-          "source": "draft",
-          "text": "Usually in, with some depth. Can aim to a side or the body. Less reliable under pressure."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P003",
+          "text": "Can serve deeper inside the service box and aim toward the side glass or body in ordinary games."
         },
         "B": {
           "master": true,
-          "source": "draft",
-          "text": "Reliable first serve with pace or slice. Placement is chosen on purpose and holds up when the score is tight."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P004",
+          "text": "Uses reliable placement with controlled pace or slice, including at tight scores."
         },
         "A": {
           "master": true,
-          "source": "draft",
-          "text": "Varies pace, spin and direction to set up the next shot. Targets weaknesses on purpose."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P005",
+          "text": "Adapts pace, spin and direction to the returner and prepares for the likely next ball."
         }
       },
       "statements": [
         {
-          "id": "serve_1",
+          "id": "P001_s1",
           "level": "beginner",
-          "text": "I know how to serve: bounce, hit below the waist, diagonally into the box.",
-          "source": "draft"
+          "text": "I can bounce the ball and serve at or below waist height into the diagonal box.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_2",
+          "id": "P002_s1",
           "level": "D",
-          "text": "My serve goes in.",
-          "source": "draft"
+          "text": "I can get most of my serves into the correct box.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_3",
+          "id": "P003_s1",
           "level": "C",
-          "text": "I can serve deep, close to the back glass.",
-          "source": "draft"
+          "text": "I can serve deep inside the service box.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_4",
+          "id": "P003_s2",
           "level": "C",
-          "text": "I can aim my serve at the side glass or the body.",
-          "source": "draft"
+          "text": "I can aim toward the side glass or the body.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_5",
+          "id": "P004_s1",
           "level": "B",
-          "text": "My first serve rarely misses, even at tight scores.",
-          "source": "draft"
+          "text": "I can choose my serve placement at tight scores.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_6",
+          "id": "P004_s2",
           "level": "B",
-          "text": "I can add pace without missing.",
-          "source": "draft"
+          "text": "I can add pace or slice without losing control.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_7",
-          "level": "B",
-          "text": "I can slice it so it stays low off the glass.",
-          "source": "draft"
-        },
-        {
-          "id": "serve_8",
+          "id": "P005_s1",
           "level": "A",
-          "text": "I choose the serve to suit the returner.",
-          "source": "draft"
+          "text": "I can vary my serve to suit the returner.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "serve_9",
+          "id": "P005_s2",
           "level": "A",
-          "text": "I mix pace, spin and direction so the returner can't settle.",
-          "source": "draft"
+          "text": "I can use my serve to prepare the next shot.",
+          "optional": false,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "serve_w1",
+          "id": "P002_w1",
           "level": "D",
           "text": "Do you fault more serves than you get in?",
-          "source": "draft",
-          "fix": "Get more first serves in"
+          "fix": "Get more first serves in",
+          "source": "v3"
         },
         {
-          "id": "serve_w2",
+          "id": "P003_w2",
           "level": "C",
           "text": "Do you double fault in most games?",
-          "source": "draft",
-          "fix": "Cut out double faults"
+          "fix": "Cut out double faults",
+          "source": "v3"
         },
         {
-          "id": "serve_w3",
+          "id": "P004_w3",
           "level": "B",
           "text": "Does your serve go short and easy to attack when the score is tight?",
-          "source": "draft",
-          "fix": "Keep my serve deep at tight scores"
+          "fix": "Keep my serve deep at tight scores",
+          "source": "v3"
         }
       ]
     },
     {
-      "id": "overhead_basic",
+      "id": "volley_forehand",
       "axis": "attack",
-      "name": "Basic overhead",
+      "name": "Forehand volley",
+      "optional": false,
+      "recordType": "Player competency",
       "levels": {
         "D": {
           "master": true,
-          "source": "draft",
-          "text": "Gets some easy lobs back with an overhead, mostly pushing the ball rather than hitting through it."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P006-FH",
+          "text": "Can return most easy forehand volleys, with limited placement."
         },
         "C": {
           "master": true,
-          "source": "draft",
-          "text": "Gets under most lobs and hits a controlled overhead back, usually deep."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P007-FH",
+          "text": "Uses a compact forehand volley and aims deep or to the middle."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P008-FH",
+          "text": "Controls low and fast forehand volleys and changes depth to suit the ball."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P009-FH",
+          "text": "Adapts forehand volley pace and angle in live exchanges while keeping difficult balls safe."
         }
       },
       "statements": [
         {
-          "id": "overhead_basic_1",
+          "id": "P006-FH_s1",
           "level": "D",
-          "text": "I can get under easy lobs.",
-          "source": "draft"
+          "text": "I can get most easy forehand volleys back into court.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "overhead_basic_2",
-          "level": "D",
-          "text": "I can hit an overhead back over the net.",
-          "source": "draft"
-        },
-        {
-          "id": "overhead_basic_3",
+          "id": "P007-FH_s1",
           "level": "C",
-          "text": "My overhead goes back deep and controlled.",
-          "source": "draft"
+          "text": "I can play a compact forehand volley.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "overhead_basic_4",
+          "id": "P007-FH_s2",
           "level": "C",
-          "text": "I turn sideways and move back for lobs.",
-          "source": "draft"
+          "text": "I can aim it deep or to the middle.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P008-FH_s1",
+          "level": "B",
+          "text": "I can control low and fast forehand volleys.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P008-FH_s2",
+          "level": "B",
+          "text": "I can change their depth on purpose.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P009-FH_s1",
+          "level": "A",
+          "text": "I can change pace and angle on my forehand volley.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P009-FH_s2",
+          "level": "A",
+          "text": "I can keep a difficult volley safe instead of forcing a winner.",
+          "optional": false,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "overhead_basic_w1",
+          "id": "P006-FH_w1",
           "level": "D",
-          "text": "Do you let lobs go because you can't hit them?",
-          "source": "draft",
-          "fix": "Go for lobs instead of letting them go"
-        },
-        {
-          "id": "overhead_basic_w2",
-          "level": "C",
-          "text": "Do your overheads land short and get attacked?",
-          "source": "draft",
-          "fix": "Hit my overheads deeper"
+          "text": "Does your forehand volley pop up or miss on routine balls?",
+          "fix": "Keep routine forehand volleys low and in",
+          "source": "v3"
         }
       ]
     },
     {
-      "id": "bandeja",
+      "id": "volley_backhand",
       "axis": "attack",
-      "name": "Bandeja",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Can hit a bandeja in a friendly game to hold the net. Depth and direction vary."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Reliable bandeja that keeps opponents back and holds the net, even when rushed."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Chooses between attacking and defensive bandeja depending on the situation."
-        }
-      },
-      "statements": [
-        {
-          "id": "bandeja_1",
-          "level": "C",
-          "text": "I can hit a bandeja in a friendly game.",
-          "source": "draft"
-        },
-        {
-          "id": "bandeja_2",
-          "level": "C",
-          "text": "After my bandeja, I stay at the net.",
-          "source": "draft"
-        },
-        {
-          "id": "bandeja_3",
-          "level": "B",
-          "text": "My bandeja lands deep, so opponents stay back.",
-          "source": "draft"
-        },
-        {
-          "id": "bandeja_4",
-          "level": "B",
-          "text": "I can hit it when I'm rushed or moving back.",
-          "source": "draft"
-        },
-        {
-          "id": "bandeja_5",
-          "level": "B",
-          "text": "I can choose cross-court or straight.",
-          "source": "draft"
-        },
-        {
-          "id": "bandeja_6",
-          "level": "A",
-          "text": "I choose an attacking or a defensive bandeja depending on the ball.",
-          "source": "draft"
-        },
-        {
-          "id": "bandeja_7",
-          "level": "A",
-          "text": "I control slice and pace so it stays low off the glass.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "bandeja_w1",
-          "level": "C",
-          "text": "Do you lose the net after your bandeja?",
-          "source": "draft",
-          "fix": "Stay at the net after my bandeja"
-        },
-        {
-          "id": "bandeja_w2",
-          "level": "B",
-          "text": "Does your bandeja land short or in the middle when you're rushed?",
-          "source": "draft",
-          "fix": "Keep my bandeja deep when I'm rushed"
-        }
-      ]
-    },
-    {
-      "id": "vibora",
-      "axis": "attack",
-      "name": "Víbora",
-      "levels": {
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Can use a víbora to add pace and angle when the ball is right for it."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Chooses víbora versus bandeja on purpose and places it under pressure."
-        }
-      },
-      "statements": [
-        {
-          "id": "vibora_1",
-          "level": "B",
-          "text": "I can hit a víbora with side spin.",
-          "source": "draft"
-        },
-        {
-          "id": "vibora_2",
-          "level": "B",
-          "text": "My víbora lands low into the side glass.",
-          "source": "draft"
-        },
-        {
-          "id": "vibora_3",
-          "level": "A",
-          "text": "I choose víbora or bandeja depending on the lob.",
-          "source": "draft"
-        },
-        {
-          "id": "vibora_4",
-          "level": "A",
-          "text": "I hit it hard without losing control, even under pressure.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "vibora_w1",
-          "level": "B",
-          "text": "Does your víbora go long or into the net?",
-          "source": "draft",
-          "fix": "Keep my víbora in"
-        }
-      ]
-    },
-    {
-      "id": "bajada",
-      "axis": "attack",
-      "name": "Bajada",
-      "levels": {
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Can attack a ball coming off the back glass with control."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Uses the bajada to finish points with placement and power."
-        }
-      },
-      "statements": [
-        {
-          "id": "bajada_1",
-          "level": "B",
-          "text": "I attack balls that come off the back glass high.",
-          "source": "draft"
-        },
-        {
-          "id": "bajada_2",
-          "level": "B",
-          "text": "I wait for the right height before hitting.",
-          "source": "draft"
-        },
-        {
-          "id": "bajada_3",
-          "level": "A",
-          "text": "I place my bajada low, to the feet or down the middle.",
-          "source": "draft"
-        },
-        {
-          "id": "bajada_4",
-          "level": "A",
-          "text": "I use the bajada to win the net back.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "bajada_w1",
-          "level": "B",
-          "text": "Do you hit balls off the back glass too early or too late to attack them?",
-          "source": "draft",
-          "fix": "Wait for the right height before my bajada"
-        }
-      ]
-    },
-    {
-      "id": "return_of_serve",
-      "axis": "defence",
-      "name": "Return of serve",
-      "levels": {
-        "beginner": {
-          "master": true,
-          "source": "richard",
-          "text": "Gets some serves back, but often misses or hits it out."
-        },
-        "D": {
-          "master": true,
-          "source": "richard",
-          "text": "Gets the ball over the net. Soft and floaty. Backhand is weaker."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Usually a safe, deep return. Backhand is steadier. Starts choosing direction."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Reliable return under pressure. Can choose a low, a lob or an attacking return."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Returns on purpose to win the net and hurts weak serves."
-        }
-      },
-      "statements": [
-        {
-          "id": "return_of_serve_1",
-          "level": "beginner",
-          "text": "I know where to stand to return.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_2",
-          "level": "D",
-          "text": "I get most serves back.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_3",
-          "level": "C",
-          "text": "My return goes low or to the middle.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_4",
-          "level": "C",
-          "text": "I can return serves that come off the side glass.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_5",
-          "level": "B",
-          "text": "I aim my return on purpose: low cross-court, middle or lob.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_6",
-          "level": "B",
-          "text": "I return well, even at tight scores.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_7",
-          "level": "A",
-          "text": "I choose the return to suit the server and their partner.",
-          "source": "draft"
-        },
-        {
-          "id": "return_of_serve_8",
-          "level": "A",
-          "text": "My return puts us on the attack.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "return_of_serve_w1",
-          "level": "D",
-          "text": "Do you miss more returns than you get back?",
-          "source": "draft",
-          "fix": "Get more returns back"
-        },
-        {
-          "id": "return_of_serve_w2",
-          "level": "C",
-          "text": "Do your returns sit up for the net players?",
-          "source": "draft",
-          "fix": "Keep my returns low"
-        },
-        {
-          "id": "return_of_serve_w3",
-          "level": "B",
-          "text": "Do you miss returns at tight scores?",
-          "source": "draft",
-          "fix": "Get my returns in at tight scores"
-        }
-      ]
-    },
-    {
-      "id": "defensive_lob",
-      "axis": "defence",
-      "name": "Defensive lob",
+      "name": "Backhand volley",
+      "optional": false,
+      "recordType": "Player competency",
       "levels": {
         "D": {
           "master": true,
-          "source": "draft",
-          "text": "Can get the lob over the net sometimes, but it's often too low or too short. Only works in an easy rally with plenty of time."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P006-BH",
+          "text": "Can return most easy backhand volleys, with limited placement."
         },
         "C": {
           "master": true,
-          "source": "draft",
-          "text": "Usually gets a lob over in a friendly game when there is time. Height and depth are hit or miss. Falls apart when rushed or off the glass."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P007-BH",
+          "text": "Uses a compact backhand volley and aims deep or to the middle."
         },
         "B": {
           "master": true,
-          "source": "draft",
-          "text": "Usually lands a deep lob in matches, even when rushed. Pushes opponents back and lets you win the net. Mostly holds when the score is tight."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P008-BH",
+          "text": "Controls low and fast backhand volleys and changes depth to suit the ball."
         },
         "A": {
           "master": true,
-          "source": "draft",
-          "text": "Chooses the lob on purpose: side, height, depth. Works from awkward positions and at big points against strong opponents."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P009-BH",
+          "text": "Adapts backhand volley pace and angle in live exchanges while keeping difficult balls safe."
         }
       },
       "statements": [
         {
-          "id": "defensive_lob_1",
+          "id": "P006-BH_s1",
           "level": "D",
-          "text": "I can lob the ball over the net players.",
-          "source": "draft"
+          "text": "I can get most easy backhand volleys back into court.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "defensive_lob_2",
+          "id": "P007-BH_s1",
           "level": "C",
-          "text": "My lob goes high and deep, not short.",
-          "source": "draft"
+          "text": "I can play a compact backhand volley.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "defensive_lob_3",
+          "id": "P007-BH_s2",
           "level": "C",
-          "text": "After a good lob, I move up to the net.",
-          "source": "draft"
+          "text": "I can aim it deep or to the middle.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "defensive_lob_4",
+          "id": "P008-BH_s1",
           "level": "B",
-          "text": "I can lob from difficult spots, like off the glass or from the corner.",
-          "source": "draft"
+          "text": "I can control low and fast backhand volleys.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "defensive_lob_5",
+          "id": "P008-BH_s2",
           "level": "B",
-          "text": "I aim my lob over the weaker overhead player, or down the middle.",
-          "source": "draft"
+          "text": "I can change their depth on purpose.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "defensive_lob_6",
+          "id": "P009-BH_s1",
           "level": "A",
-          "text": "I lob on purpose to win the net back, even under pressure.",
-          "source": "draft"
+          "text": "I can change pace and angle on my backhand volley.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P009-BH_s2",
+          "level": "A",
+          "text": "I can keep a difficult volley safe instead of forcing a winner.",
+          "optional": false,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "defensive_lob_w1",
+          "id": "P006-BH_w1",
           "level": "D",
-          "text": "Do your lobs land short in the middle of the court?",
-          "source": "draft",
-          "fix": "Lob higher and deeper"
-        },
-        {
-          "id": "defensive_lob_w2",
-          "level": "C",
-          "text": "Do your lobs go long or out over the glass?",
-          "source": "draft",
-          "fix": "Keep my lobs in"
-        },
-        {
-          "id": "defensive_lob_w3",
-          "level": "B",
-          "text": "Do your lobs get smashed back at you?",
-          "source": "draft",
-          "fix": "Lob deep enough that it can't be smashed"
-        }
-      ]
-    },
-    {
-      "id": "back_glass_return",
-      "axis": "defence",
-      "name": "Back glass return",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "richard",
-          "text": "Rarely plays off the glass, and often doesn't succeed when it does."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Can return most slow or medium balls off the back glass. Struggles with fast or awkward rebounds."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Reads rebounds early and returns most balls off the back glass with control."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Uses the glass to buy time and turn defence into attack."
-        }
-      },
-      "statements": [
-        {
-          "id": "back_glass_return_1",
-          "level": "D",
-          "text": "I let some balls hit the back glass before I play them.",
-          "source": "draft"
-        },
-        {
-          "id": "back_glass_return_2",
-          "level": "D",
-          "text": "I get easy rebounds back over the net.",
-          "source": "draft"
-        },
-        {
-          "id": "back_glass_return_3",
-          "level": "C",
-          "text": "I return most slow and medium rebounds.",
-          "source": "draft"
-        },
-        {
-          "id": "back_glass_return_4",
-          "level": "C",
-          "text": "I stand at the right distance from the glass.",
-          "source": "draft"
-        },
-        {
-          "id": "back_glass_return_5",
-          "level": "B",
-          "text": "I read fast rebounds early and return them with control.",
-          "source": "draft"
-        },
-        {
-          "id": "back_glass_return_6",
-          "level": "B",
-          "text": "After the glass, I can choose a lob or a low ball.",
-          "source": "draft"
-        },
-        {
-          "id": "back_glass_return_7",
-          "level": "A",
-          "text": "I use the glass to buy time and turn defence into attack.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "back_glass_return_w1",
-          "level": "D",
-          "text": "Do you hit the ball before the glass because you're unsure of the rebound?",
-          "source": "draft",
-          "fix": "Let the ball come off the back glass"
-        },
-        {
-          "id": "back_glass_return_w2",
-          "level": "C",
-          "text": "Do you stand too close to the glass and get cramped?",
-          "source": "draft",
-          "fix": "Give myself room from the glass"
-        },
-        {
-          "id": "back_glass_return_w3",
-          "level": "B",
-          "text": "Do fast rebounds off the back glass beat you?",
-          "source": "draft",
-          "fix": "Read fast rebounds earlier"
-        }
-      ]
-    },
-    {
-      "id": "side_glass_return",
-      "axis": "defence",
-      "name": "Side glass return",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Can return simple balls off the side glass. Often late on faster ones."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Reads side-glass angles and returns with control most of the time."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Handles fast and awkward side glass angles under pressure, and places the return."
-        }
-      },
-      "statements": [
-        {
-          "id": "side_glass_return_1",
-          "level": "C",
-          "text": "I return simple balls off the side glass.",
-          "source": "draft"
-        },
-        {
-          "id": "side_glass_return_2",
-          "level": "B",
-          "text": "I read the angle off the side glass early.",
-          "source": "draft"
-        },
-        {
-          "id": "side_glass_return_3",
-          "level": "B",
-          "text": "I return side glass balls with control most of the time.",
-          "source": "draft"
-        },
-        {
-          "id": "side_glass_return_4",
-          "level": "A",
-          "text": "I handle fast, awkward side glass balls under pressure, and place the return.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "side_glass_return_w1",
-          "level": "C",
-          "text": "Do side glass balls get past you?",
-          "source": "draft",
-          "fix": "Get side glass balls back"
-        },
-        {
-          "id": "side_glass_return_w2",
-          "level": "B",
-          "text": "Are you late on fast balls off the side glass?",
-          "source": "draft",
-          "fix": "Be early on fast side glass balls"
-        }
-      ]
-    },
-    {
-      "id": "ready_position",
-      "axis": "movement",
-      "name": "Ready position and split step",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Knows the ready position and uses it on slow balls, but is often late on fast ones."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Usually ready before the opponent hits. Split step is inconsistent."
-        }
-      },
-      "statements": [
-        {
-          "id": "ready_position_1",
-          "level": "D",
-          "text": "I stand in a ready position between shots.",
-          "source": "draft"
-        },
-        {
-          "id": "ready_position_2",
-          "level": "D",
-          "text": "I'm ready before slow balls arrive.",
-          "source": "draft"
-        },
-        {
-          "id": "ready_position_3",
-          "level": "C",
-          "text": "I'm ready before the opponent hits.",
-          "source": "draft"
-        },
-        {
-          "id": "ready_position_4",
-          "level": "C",
-          "text": "I do a small split step as they hit.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "ready_position_w1",
-          "level": "D",
-          "text": "Do fast balls catch you flat-footed?",
-          "source": "draft",
-          "fix": "Be ready for fast balls"
-        },
-        {
-          "id": "ready_position_w2",
-          "level": "C",
-          "text": "Are you still moving when the opponent hits?",
-          "source": "draft",
-          "fix": "Be still and ready when they hit"
-        }
-      ]
-    },
-    {
-      "id": "net_play",
-      "axis": "movement",
-      "name": "Taking and holding the net",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "richard",
-          "text": "Nothing consistent yet. Sometimes ends up at the net at the wrong time, or stays at the net all the time. Volleys are often a block that goes into the net or too high."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Takes the net when the chance is clear and holds it with steady volleys."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Wins and holds the net on purpose. Volleys have direction, attacking or defensive as needed."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Dominates the net. Redirects, finishes and recovers position quickly."
-        }
-      },
-      "statements": [
-        {
-          "id": "net_play_1",
-          "level": "D",
-          "text": "I sometimes play at the net.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_2",
-          "level": "C",
-          "text": "I take the net when the chance is clear.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_3",
-          "level": "C",
-          "text": "Once I'm there, I stay with steady volleys.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_4",
-          "level": "C",
-          "text": "I leave the net when we're in trouble, instead of staying there.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_5",
-          "level": "B",
-          "text": "I win the net back on purpose, for example after a good lob.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_6",
-          "level": "B",
-          "text": "I hold the net under pressure.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_7",
-          "level": "A",
-          "text": "We control most points from the net.",
-          "source": "draft"
-        },
-        {
-          "id": "net_play_8",
-          "level": "A",
-          "text": "I get back into my net position quickly after each shot.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "net_play_w1",
-          "level": "D",
-          "text": "Do you end up at the net at the wrong time, or stay there when you're in trouble?",
-          "source": "draft",
-          "fix": "Go to the net at the right time, and leave it when we're in trouble"
-        },
-        {
-          "id": "net_play_w2",
-          "level": "C",
-          "text": "Do you lose the net after one lob?",
-          "source": "draft",
-          "fix": "Win the net back after a lob"
-        },
-        {
-          "id": "net_play_w3",
-          "level": "B",
-          "text": "Do opponents get you off the net easily?",
-          "source": "draft",
-          "fix": "Hold the net under pressure"
-        }
-      ]
-    },
-    {
-      "id": "recovery",
-      "axis": "movement",
-      "name": "Recovery",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Sometimes gets back into position after a shot. Often caught out of place."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Usually recovers to a good position before the next ball."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Recovers automatically, even after being pulled wide."
-        }
-      },
-      "statements": [
-        {
-          "id": "recovery_1",
-          "level": "C",
-          "text": "After each shot, I move back into position.",
-          "source": "draft"
-        },
-        {
-          "id": "recovery_2",
-          "level": "B",
-          "text": "I recover quickly after being pulled wide.",
-          "source": "draft"
-        },
-        {
-          "id": "recovery_3",
-          "level": "B",
-          "text": "I move straight after hitting, instead of watching my shot.",
-          "source": "draft"
-        },
-        {
-          "id": "recovery_4",
-          "level": "A",
-          "text": "I'm balanced and ready for the next ball, even in long rallies.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "recovery_w1",
-          "level": "C",
-          "text": "Do you stand and watch your shot instead of moving?",
-          "source": "draft",
-          "fix": "Move straight after my shot"
-        },
-        {
-          "id": "recovery_w2",
-          "level": "B",
-          "text": "After being pulled wide, are you out of position for the next ball?",
-          "source": "draft",
-          "fix": "Recover quickly after being pulled wide"
-        }
-      ]
-    },
-    {
-      "id": "moving_as_pair",
-      "axis": "movement",
-      "name": "Moving as a pair",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Aware of partner, but often both end up in the same spot or leave gaps."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Moves forward and back with partner most of the time."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Moves as one unit and covers the middle without thinking."
-        }
-      },
-      "statements": [
-        {
-          "id": "moving_as_pair_1",
-          "level": "C",
-          "text": "My partner and I move forward together.",
-          "source": "draft"
-        },
-        {
-          "id": "moving_as_pair_2",
-          "level": "C",
-          "text": "We move back together.",
-          "source": "draft"
-        },
-        {
-          "id": "moving_as_pair_3",
-          "level": "B",
-          "text": "We move sideways together and keep the gap small.",
-          "source": "draft"
-        },
-        {
-          "id": "moving_as_pair_4",
-          "level": "B",
-          "text": "We rarely go for the same ball.",
-          "source": "draft"
-        },
-        {
-          "id": "moving_as_pair_5",
-          "level": "A",
-          "text": "We move as one, even when we switch sides.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "moving_as_pair_w1",
-          "level": "C",
-          "text": "Do you and your partner end up far apart, one at the net and one at the back?",
-          "source": "draft",
-          "fix": "Stay level with my partner"
-        },
-        {
-          "id": "moving_as_pair_w2",
-          "level": "B",
-          "text": "Do you both go for the same ball, or both leave it?",
-          "source": "draft",
-          "fix": "Call and split the middle balls"
-        }
-      ]
-    },
-    {
-      "id": "shot_choice",
-      "axis": "tactics",
-      "name": "Shot choice",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Mostly just returns the ball. Knows the scoring but not yet when to attack or defend."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Starts to choose between safe and attacking shots. Often tries too much too soon."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Usually picks the right shot for the situation."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Chooses shots to set up the next one and targets weaknesses."
-        }
-      },
-      "statements": [
-        {
-          "id": "shot_choice_1",
-          "level": "D",
-          "text": "When I'm in trouble, I just get the ball back safely.",
-          "source": "draft"
-        },
-        {
-          "id": "shot_choice_2",
-          "level": "C",
-          "text": "I look at where the opponents are before I choose.",
-          "source": "draft"
-        },
-        {
-          "id": "shot_choice_3",
-          "level": "C",
-          "text": "I choose placement over power.",
-          "source": "draft"
-        },
-        {
-          "id": "shot_choice_4",
-          "level": "B",
-          "text": "I play the safe shot when I'm out of position.",
-          "source": "draft"
-        },
-        {
-          "id": "shot_choice_5",
-          "level": "B",
-          "text": "I only go for winners when the ball is right.",
-          "source": "draft"
-        },
-        {
-          "id": "shot_choice_6",
-          "level": "A",
-          "text": "I plan a few shots ahead.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "shot_choice_w1",
-          "level": "D",
-          "text": "Do you go for winners from difficult positions?",
-          "source": "draft",
-          "fix": "Play safe from difficult positions"
-        },
-        {
-          "id": "shot_choice_w2",
-          "level": "C",
-          "text": "Do you pick power when placement would work better?",
-          "source": "draft",
-          "fix": "Choose placement over power"
-        },
-        {
-          "id": "shot_choice_w3",
-          "level": "B",
-          "text": "Do you force the attack before the ball is right?",
-          "source": "draft",
-          "fix": "Wait for the right ball to attack"
-        }
-      ]
-    },
-    {
-      "id": "partner_communication",
-      "axis": "tactics",
-      "name": "Talking to your partner",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Calls 'mine' or 'leave' sometimes. Middle balls often cause confusion."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Clear calls and agreed roles, including the middle."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Adjusts tactics with partner during the match."
-        }
-      },
-      "statements": [
-        {
-          "id": "partner_communication_1",
-          "level": "C",
-          "text": "We call \"mine\", \"yours\" and \"leave\".",
-          "source": "draft"
-        },
-        {
-          "id": "partner_communication_2",
-          "level": "C",
-          "text": "We agree who takes the middle.",
-          "source": "draft"
-        },
-        {
-          "id": "partner_communication_3",
-          "level": "B",
-          "text": "We agree a simple plan before we start.",
-          "source": "draft"
-        },
-        {
-          "id": "partner_communication_4",
-          "level": "B",
-          "text": "We talk between points, including after mistakes.",
-          "source": "draft"
-        },
-        {
-          "id": "partner_communication_5",
-          "level": "A",
-          "text": "We change the plan during the match.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "partner_communication_w1",
-          "level": "C",
-          "text": "Do balls go between you because nobody called?",
-          "source": "draft",
-          "fix": "Call every middle ball"
-        },
-        {
-          "id": "partner_communication_w2",
-          "level": "B",
-          "text": "Do you play a whole match without agreeing a plan?",
-          "source": "draft",
-          "fix": "Agree a simple plan before we start"
-        }
-      ]
-    },
-    {
-      "id": "building_points",
-      "axis": "tactics",
-      "name": "Building points",
-      "levels": {
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Builds pressure over several shots instead of going for winners too early."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Changes plan when the opponent adapts."
-        }
-      },
-      "statements": [
-        {
-          "id": "building_points_1",
-          "level": "B",
-          "text": "I'm patient and wait for the right ball to attack.",
-          "source": "draft"
-        },
-        {
-          "id": "building_points_2",
-          "level": "B",
-          "text": "I use several shots to set up a winner.",
-          "source": "draft"
-        },
-        {
-          "id": "building_points_3",
-          "level": "A",
-          "text": "I change pace, height and direction to create openings.",
-          "source": "draft"
-        },
-        {
-          "id": "building_points_4",
-          "level": "A",
-          "text": "I build pressure over several shots, instead of forcing it.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "building_points_w1",
-          "level": "B",
-          "text": "Do you lose patience and go for a winner too early?",
-          "source": "draft",
-          "fix": "Be patient before going for a winner"
-        }
-      ]
-    },
-    {
-      "id": "composure",
-      "axis": "mentality",
-      "name": "Composure",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Stays calm in easy rallies, but gets frustrated after errors."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Stays calm in relaxed games. Tight scores bring rushed shots."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Usually calm at big points."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Plays the same whether ahead or behind."
-        }
-      },
-      "statements": [
-        {
-          "id": "composure_1",
-          "level": "D",
-          "text": "I stay calm in easy rallies.",
-          "source": "draft"
-        },
-        {
-          "id": "composure_2",
-          "level": "C",
-          "text": "I stay calm in friendly games, even after errors.",
-          "source": "draft"
-        },
-        {
-          "id": "composure_3",
-          "level": "B",
-          "text": "I stay calm at big points.",
-          "source": "draft"
-        },
-        {
-          "id": "composure_4",
-          "level": "B",
-          "text": "I don't rush my shots at tight scores.",
-          "source": "draft"
-        },
-        {
-          "id": "composure_5",
-          "level": "A",
-          "text": "I play the same whether we're ahead or behind.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "composure_w1",
-          "level": "D",
-          "text": "Do errors make you angry for a while?",
-          "source": "draft",
-          "fix": "Let go of errors quickly"
-        },
-        {
-          "id": "composure_w2",
-          "level": "C",
-          "text": "Do you rush your shots at tight scores?",
-          "source": "draft",
-          "fix": "Take my time at tight scores"
-        },
-        {
-          "id": "composure_w3",
-          "level": "B",
-          "text": "Do you play worse at big points?",
-          "source": "draft",
-          "fix": "Play my normal game at big points"
-        }
-      ]
-    },
-    {
-      "id": "bouncing_back",
-      "axis": "mentality",
-      "name": "Bouncing back",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Takes a few points to settle after a mistake."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Resets quickly after errors."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Treats errors as information and moves on right away."
-        }
-      },
-      "statements": [
-        {
-          "id": "bouncing_back_1",
-          "level": "C",
-          "text": "After a mistake, I'm over it within a few points.",
-          "source": "draft"
-        },
-        {
-          "id": "bouncing_back_2",
-          "level": "B",
-          "text": "I'm over it by the next point.",
-          "source": "draft"
-        },
-        {
-          "id": "bouncing_back_3",
-          "level": "B",
-          "text": "I use a routine to reset between points.",
-          "source": "draft"
-        },
-        {
-          "id": "bouncing_back_4",
-          "level": "A",
-          "text": "Mistakes don't change how I play.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "bouncing_back_w1",
-          "level": "C",
-          "text": "Does one mistake lead to several more?",
-          "source": "draft",
-          "fix": "Stop one mistake becoming several"
-        },
-        {
-          "id": "bouncing_back_w2",
-          "level": "B",
-          "text": "Does a bad game change how you play the next one?",
-          "source": "draft",
-          "fix": "Start each game fresh"
-        }
-      ]
-    },
-    {
-      "id": "focus",
-      "axis": "mentality",
-      "name": "Focus",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Stays focused for short spells. Attention drifts after long rallies or lost points."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Focused for most of the match, with dips when tired."
-        }
-      },
-      "statements": [
-        {
-          "id": "focus_1",
-          "level": "D",
-          "text": "I stay focused in short spells.",
-          "source": "draft"
-        },
-        {
-          "id": "focus_2",
-          "level": "C",
-          "text": "I stay focused for most of the match.",
-          "source": "draft"
-        },
-        {
-          "id": "focus_3",
-          "level": "C",
-          "text": "I refocus quickly after a long rally or a lost point.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "focus_w1",
-          "level": "D",
-          "text": "Does your mind wander during points?",
-          "source": "draft",
-          "fix": "Keep my mind on the point"
-        },
-        {
-          "id": "focus_w2",
-          "level": "C",
-          "text": "Do you lose focus after a long rally or a lost point?",
-          "source": "draft",
-          "fix": "Refocus after long rallies or lost points"
-        }
-      ]
-    },
-    {
-      "id": "groundstrokes",
-      "axis": "defence",
-      "name": "Forehand and backhand",
-      "levels": {
-        "beginner": {
-          "master": true,
-          "source": "richard",
-          "text": "Gets the ball back over the net now and then. The walls are still confusing."
-        },
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Gets most balls back over the net from the back, mostly cross-court. Little control of height or speed."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Keeps a steady rally from the back with a short swing. Aims low or to the middle."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Controls height, pace and direction. Hits to the feet, through the middle or down the line on purpose."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Uses slice, pace and angles to move opponents and set up the net. Rarely makes errors from the back."
-        }
-      },
-      "statements": [
-        {
-          "id": "groundstrokes_1",
-          "level": "beginner",
-          "text": "I can get the ball over the net from the back.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_2",
-          "level": "D",
-          "text": "I keep a simple rally going from the back.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_3",
-          "level": "D",
-          "text": "I use a short swing, not a big tennis swing.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_4",
-          "level": "C",
-          "text": "I keep the ball low over the net.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_5",
-          "level": "C",
-          "text": "I aim to the middle or a side on purpose.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_6",
-          "level": "B",
-          "text": "I control height, pace and direction.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_7",
-          "level": "B",
-          "text": "I can hit to the feet of net players when I need to.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_8",
-          "level": "A",
-          "text": "I use slice, pace and angles to move opponents.",
-          "source": "draft"
-        },
-        {
-          "id": "groundstrokes_9",
-          "level": "A",
-          "text": "I rarely make errors from the back.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "groundstrokes_w1",
-          "level": "D",
-          "text": "Do rallies end within a couple of shots because of your errors?",
-          "source": "draft",
-          "fix": "Keep the rally going longer"
-        },
-        {
-          "id": "groundstrokes_w2",
-          "level": "C",
-          "text": "Do you hit the ball too hard from the back and miss?",
-          "source": "draft",
-          "fix": "Hit softer and safer from the back"
-        },
-        {
-          "id": "groundstrokes_w3",
-          "level": "B",
-          "text": "Do your shots from the back sit up for the net players?",
-          "source": "draft",
-          "fix": "Keep my shots from the back low"
-        }
-      ]
-    },
-    {
-      "id": "positioning",
-      "axis": "movement",
-      "name": "Knowing where to stand",
-      "levels": {
-        "beginner": {
-          "master": true,
-          "source": "richard",
-          "text": "Not sure where to stand yet: back or net, left or right."
-        },
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Knows the basic spots: both back or both at the net. Covers own side and doesn't get stuck in the middle of the court."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Moves forward and back with the play. Knows who covers the middle, and where to stand when serving and returning."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Adjusts position to the ball and the opponents, and covers for a partner who is pulled wide."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Reads opponents' habits and is already in position for the next ball."
-        }
-      },
-      "statements": [
-        {
-          "id": "positioning_1",
-          "level": "beginner",
-          "text": "I know the basic spots: both back, or both at the net.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_2",
-          "level": "D",
-          "text": "I cover my own side of the court.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_3",
-          "level": "D",
-          "text": "I don't get stuck in the middle of the court.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_4",
-          "level": "C",
-          "text": "I know where to stand when serving and returning.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_5",
-          "level": "C",
-          "text": "I know who covers the middle.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_6",
-          "level": "B",
-          "text": "I adjust my position to where the ball and opponents are.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_7",
-          "level": "B",
-          "text": "I cover for my partner when they're pulled wide.",
-          "source": "draft"
-        },
-        {
-          "id": "positioning_8",
-          "level": "A",
-          "text": "I'm already in position for the next ball.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "positioning_w1",
-          "level": "D",
-          "text": "Do you end up in no man's land, the middle of the court?",
-          "source": "draft",
-          "fix": "Stay out of the middle of the court"
-        },
-        {
-          "id": "positioning_w2",
-          "level": "C",
-          "text": "Are you unsure where to stand when serving or returning?",
-          "source": "draft",
-          "fix": "Know where to stand when serving and returning"
-        },
-        {
-          "id": "positioning_w3",
-          "level": "B",
-          "text": "Do you leave gaps when your partner is pulled wide?",
-          "source": "draft",
-          "fix": "Cover the gap when my partner is pulled wide"
-        }
-      ]
-    },
-    {
-      "id": "volley",
-      "axis": "attack",
-      "name": "Volley",
-      "levels": {
-        "D": {
-          "master": true,
-          "source": "draft",
-          "text": "Gets most easy volleys back over the net. Swings too much on fast balls."
-        },
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Steady forehand and backhand volleys with a short swing. Aims deep or to the middle. Struggles with low and fast balls."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Controls low, high and fast volleys. Changes depth and pace on purpose: deep to push back, short or at the feet to finish."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Wins fast net exchanges. Uses block, drop and angled volleys to set up or finish, and rarely gives away an easy ball."
-        }
-      },
-      "statements": [
-        {
-          "id": "volley_1",
-          "level": "D",
-          "text": "I get most easy volleys back over the net.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_2",
-          "level": "C",
-          "text": "I volley with a short, compact swing.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_3",
-          "level": "C",
-          "text": "I can volley forehand and backhand with control.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_4",
-          "level": "C",
-          "text": "I aim my volleys deep or to the middle.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_5",
-          "level": "B",
-          "text": "I can control low volleys at my feet.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_6",
-          "level": "B",
-          "text": "I handle fast balls at the net without panicking.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_7",
-          "level": "B",
-          "text": "I change depth on purpose: deep to push back, short to finish.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_8",
-          "level": "A",
-          "text": "I win most fast exchanges at the net.",
-          "source": "draft"
-        },
-        {
-          "id": "volley_9",
-          "level": "A",
-          "text": "I use angles and drop volleys to finish points.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "volley_w1",
-          "level": "D",
-          "text": "Do easy volleys go into the net or out?",
-          "source": "draft",
-          "fix": "Get easy volleys back in"
-        },
-        {
-          "id": "volley_w2",
-          "level": "C",
-          "text": "Do your volleys pop up high for the opponents to smash?",
-          "source": "draft",
-          "fix": "Keep my volleys low, not popping up"
-        },
-        {
-          "id": "volley_w3",
-          "level": "B",
-          "text": "Do fast balls at the net beat you?",
-          "source": "draft",
-          "fix": "Handle fast balls at the net"
-        }
-      ]
-    },
-    {
-      "id": "smash",
-      "axis": "attack",
-      "name": "Smash",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Smashes short, easy lobs and keeps them in. Often hits too hard, and the ball comes back off the glass."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Picks the right lobs to smash. Places it to a corner or the feet, and gets back to the net after."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Smashes with control from most short lobs, using flat, kick and topspin to finish or push opponents back."
-        }
-      },
-      "statements": [
-        {
-          "id": "smash_1",
-          "level": "C",
-          "text": "I smash short, easy lobs and keep them in.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_2",
-          "level": "C",
-          "text": "I don't smash every lob. I pick the short ones.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_3",
-          "level": "B",
-          "text": "I place my smash to a corner or the feet.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_4",
-          "level": "B",
-          "text": "I get back to the net after smashing.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_5",
-          "level": "A",
-          "text": "I use flat, kick or topspin smashes on purpose.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_6",
-          "level": "A",
-          "text": "My smash finishes points or pushes opponents well back.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "smash_w1",
-          "level": "C",
-          "text": "Do you smash lobs that are too deep and lose the point?",
-          "source": "draft",
-          "fix": "Only smash the short lobs"
-        },
-        {
-          "id": "smash_w2",
-          "level": "B",
-          "text": "Does your smash come back off the glass for an easy return?",
-          "source": "draft",
-          "fix": "Place my smash so it doesn't come back easily"
-        }
-      ]
-    },
-    {
-      "id": "smash_x3",
-      "axis": "attack",
-      "name": "Smash out the side (x3)",
-      "levels": {
-        "B": {
-          "master": false,
-          "source": "draft",
-          "text": "Tries the x3 on very short lobs and gets it out about half the time."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Gets the x3 out over the side wall from short lobs in the middle, and knows when to try it and when not to."
-        }
-      },
-      "statements": [
-        {
-          "id": "smash_x3_1",
-          "level": "B",
-          "text": "I try the x3 on very short lobs.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_x3_2",
-          "level": "A",
-          "text": "I get the x3 out over the side fence most times I try.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_x3_3",
-          "level": "A",
-          "text": "I know when the x3 is on, and when to play safe.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "smash_x3_w1",
-          "level": "A",
-          "text": "Do you try the x3 when it isn't on and lose the point?",
-          "source": "draft",
-          "fix": "Only try the x3 when it's on"
-        }
-      ]
-    },
-    {
-      "id": "double_glass",
-      "axis": "defence",
-      "name": "Double glass",
-      "levels": {
-        "C": {
-          "master": false,
-          "source": "draft",
-          "text": "Gets some double glass balls back, often late or with little control."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Reads most double glass balls, waits for the ball and gets them back, often with a lob."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Handles double glass from both corners, and chooses a lob or a low ball depending on where opponents are."
-        }
-      },
-      "statements": [
-        {
-          "id": "double_glass_1",
-          "level": "C",
-          "text": "I get some double glass balls back.",
-          "source": "draft"
-        },
-        {
-          "id": "double_glass_2",
-          "level": "B",
-          "text": "I can tell which wall the ball will hit first.",
-          "source": "draft"
-        },
-        {
-          "id": "double_glass_3",
-          "level": "B",
-          "text": "I wait for the ball and get most double glass balls back, often with a lob.",
-          "source": "draft"
-        },
-        {
-          "id": "double_glass_4",
-          "level": "A",
-          "text": "I choose a lob or a low ball depending on where the opponents are.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "double_glass_w1",
-          "level": "C",
-          "text": "Do double glass balls beat you?",
-          "source": "draft",
-          "fix": "Get double glass balls back"
-        },
-        {
-          "id": "double_glass_w2",
-          "level": "B",
-          "text": "Do you misjudge which wall the ball will hit first?",
-          "source": "draft",
-          "fix": "Read which wall the ball will hit first"
-        }
-      ]
-    },
-    {
-      "id": "smash_defence",
-      "axis": "defence",
-      "name": "Defending a smash",
-      "levels": {
-        "C": {
-          "master": false,
-          "source": "draft",
-          "text": "Gets some smashes back when they come off the glass. Often gives up on hard ones."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Reads where a smash will bounce and gets most back, including off the back glass."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Gets back x3 and x4 smashes by running round or out of court where allowed, and turns some into counter-attacks."
-        }
-      },
-      "statements": [
-        {
-          "id": "smash_defence_1",
-          "level": "C",
-          "text": "I get some smashes back when they come off the glass.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_defence_2",
-          "level": "B",
-          "text": "I read where a smash will bounce.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_defence_3",
-          "level": "B",
-          "text": "I get most smashes back, including off the back glass.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_defence_4",
-          "level": "A",
-          "text": "I chase x3 and x4 smashes where the court allows.",
-          "source": "draft"
-        },
-        {
-          "id": "smash_defence_5",
-          "level": "A",
-          "text": "I turn some smash defences into counter-attacks.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "smash_defence_w1",
-          "level": "C",
-          "text": "Do you give up on smashes you could reach?",
-          "source": "draft",
-          "fix": "Chase smashes I can reach"
-        },
-        {
-          "id": "smash_defence_w2",
-          "level": "B",
-          "text": "Do you misread where a smash will bounce?",
-          "source": "draft",
-          "fix": "Read where smashes will bounce"
-        }
-      ]
-    },
-    {
-      "id": "chiquita",
-      "axis": "defence",
-      "name": "Chiquita",
-      "levels": {
-        "C": {
-          "master": true,
-          "source": "draft",
-          "text": "Plays a soft, low ball to the net players' feet some of the time, then moves up."
-        },
-        "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Uses the chiquita on purpose to make opponents volley up, and moves up together with partner."
-        },
-        "A": {
-          "master": true,
-          "source": "draft",
-          "text": "Disguises the chiquita and mixes it with lobs and passing shots so opponents can't predict it."
-        }
-      },
-      "statements": [
-        {
-          "id": "chiquita_1",
-          "level": "C",
-          "text": "I can play a soft, low ball to the net players' feet.",
-          "source": "draft"
-        },
-        {
-          "id": "chiquita_2",
-          "level": "C",
-          "text": "After a chiquita, I move up.",
-          "source": "draft"
-        },
-        {
-          "id": "chiquita_3",
-          "level": "B",
-          "text": "I use it on purpose to make opponents volley up.",
-          "source": "draft"
-        },
-        {
-          "id": "chiquita_4",
-          "level": "B",
-          "text": "My partner and I move up together after it.",
-          "source": "draft"
-        },
-        {
-          "id": "chiquita_5",
-          "level": "A",
-          "text": "I disguise it and mix it with lobs and passing shots.",
-          "source": "draft"
-        }
-      ],
-      "warnings": [
-        {
-          "id": "chiquita_w1",
-          "level": "C",
-          "text": "Does your soft ball sit up and get attacked?",
-          "source": "draft",
-          "fix": "Keep my chiquita low"
-        },
-        {
-          "id": "chiquita_w2",
-          "level": "B",
-          "text": "After a chiquita, do you stay at the back instead of moving up?",
-          "source": "draft",
-          "fix": "Move up after a chiquita"
+          "text": "Does your backhand volley pop up or miss on routine balls?",
+          "fix": "Keep routine backhand volleys low and in",
+          "source": "v3"
         }
       ]
     },
@@ -2220,50 +483,61 @@
       "id": "block_volley",
       "axis": "attack",
       "name": "Block volley",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
         "C": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P010",
           "text": "Can block a fast ball back at the net, but it often sits up for the opponents."
         },
         "B": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P011",
           "text": "Blocks fast balls low and deep with a short, firm racket."
         },
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P012",
           "text": "Uses the block to change pace, landing it short or at the feet on purpose."
         }
       },
       "statements": [
         {
-          "id": "block_volley_1",
+          "id": "P010_s1",
           "level": "C",
           "text": "I can block a fast ball back at the net.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "block_volley_2",
+          "id": "P011_s1",
           "level": "B",
           "text": "My blocks land low or deep, not sitting up.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "block_volley_3",
+          "id": "P012_s1",
           "level": "A",
           "text": "I use the block to change pace and land it at their feet.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "block_volley_w1",
+          "id": "P010_w1",
           "level": "C",
           "text": "Do your blocks sit up for the opponents to attack?",
-          "source": "draft",
-          "fix": "Keep my blocks low"
+          "fix": "Keep my blocks low",
+          "source": "v3"
         }
       ]
     },
@@ -2271,45 +545,407 @@
       "id": "drop_volley",
       "axis": "attack",
       "name": "Drop volley",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
         "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Tries the drop volley when opponents are deep. It works some of the time."
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P013",
+          "text": "Can soften a volley short when balanced and the opponents are deep."
         },
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P014",
           "text": "Disguises the drop volley and uses it at the right moment to win the point."
         }
       },
       "statements": [
         {
-          "id": "drop_volley_1",
+          "id": "P013_s1",
           "level": "B",
-          "text": "I try a drop volley when both opponents are deep.",
-          "source": "draft"
+          "text": "I can play a short drop volley when I am balanced and the opponents are deep.",
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "drop_volley_2",
-          "level": "B",
-          "text": "My drop volley lands short and doesn't sit up.",
-          "source": "draft"
-        },
-        {
-          "id": "drop_volley_3",
+          "id": "P014_s1",
           "level": "A",
           "text": "I disguise it so opponents don't see it coming.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "drop_volley_w1",
+          "id": "P013_w1",
           "level": "B",
           "text": "Does your drop volley sit up or go into the net?",
-          "source": "draft",
-          "fix": "Land my drop volley short and low"
+          "fix": "Land my drop volley short and low",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "overhead_basic",
+      "axis": "attack",
+      "name": "Basic overhead",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P015",
+          "text": "Gets some easy lobs back with an overhead, mostly pushing the ball rather than hitting through it."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P016",
+          "text": "Gets under most lobs and hits a controlled overhead back, usually deep."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-basic-overhead-B",
+          "text": "Controls a general overhead from varied reachable lobs and lets over-deep lobs bounce."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-basic-overhead-A",
+          "text": "Adapts placement and pace of a controlled overhead to the defenders and recovers appropriately."
+        }
+      },
+      "statements": [
+        {
+          "id": "P015_s1",
+          "level": "D",
+          "text": "I can get under easy lobs.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P015_s2",
+          "level": "D",
+          "text": "I can hit an overhead back over the net.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P016_s1",
+          "level": "C",
+          "text": "My overhead goes back deep and controlled.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P016_s2",
+          "level": "C",
+          "text": "I turn sideways and move back for lobs.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-basic-overhead-B_s1",
+          "level": "B",
+          "text": "I can control an overhead from different reachable lobs.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-basic-overhead-B_s2",
+          "level": "B",
+          "text": "I can let a lob bounce when it is too deep.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-basic-overhead-A_s1",
+          "level": "A",
+          "text": "I can adapt my controlled overhead to the defenders and recover for the reply.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P015_w1",
+          "level": "D",
+          "text": "Do you let lobs go because you can't hit them?",
+          "fix": "Go for lobs instead of letting them go",
+          "source": "v3"
+        },
+        {
+          "id": "P016_w2",
+          "level": "C",
+          "text": "Do your overheads land short and get attacked?",
+          "fix": "Hit my overheads deeper",
+          "source": "v3"
+        },
+        {
+          "id": "NEW-basic-overhead-B_w3",
+          "level": "B",
+          "text": "Do you force an overhead on a lob that has already beaten you?",
+          "fix": "Let lobs that have beaten me go to the glass",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "bandeja",
+      "axis": "attack",
+      "name": "Bandeja",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P017",
+          "text": "Can play a controlled bandeja on a comfortable lob and recover toward the net when the reply allows."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P018",
+          "text": "Places the bandeja from varied reachable lobs and usually recovers a useful net position."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P019",
+          "text": "Chooses between attacking and defensive bandeja depending on the situation."
+        }
+      },
+      "statements": [
+        {
+          "id": "P017_s1",
+          "level": "C",
+          "text": "I can play a bandeja from a comfortable lob.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P017_s2",
+          "level": "C",
+          "text": "I can recover toward the net when my shot gives me time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P018_s1",
+          "level": "B",
+          "text": "I can place my bandeja cross-court or straight.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P018_s2",
+          "level": "B",
+          "text": "I can keep control when I have to move back.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P018_s3",
+          "level": "B",
+          "text": "I can recover to the position the reply allows.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P019_s1",
+          "level": "A",
+          "text": "I choose an attacking or a defensive bandeja depending on the ball.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P019_s2",
+          "level": "A",
+          "text": "I control slice and pace so it stays low off the glass.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P017_w1",
+          "level": "C",
+          "text": "Do you lose the net after your bandeja?",
+          "fix": "Stay at the net after my bandeja",
+          "source": "v3"
+        },
+        {
+          "id": "P018_w2",
+          "level": "B",
+          "text": "Does your bandeja lose depth or control when you move back?",
+          "fix": "Keep my bandeja deep when I move back",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "vibora",
+      "axis": "attack",
+      "name": "Víbora",
+      "optional": true,
+      "recordType": "Player competency",
+      "levels": {
+        "B": {
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P020",
+          "text": "Can use a víbora to add pace and angle when the ball is right for it."
+        },
+        "A": {
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P021",
+          "text": "Chooses víbora versus bandeja on purpose and places it under pressure."
+        }
+      },
+      "statements": [
+        {
+          "id": "P020_s1",
+          "level": "B",
+          "text": "I can hit a víbora with side spin.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P020_s2",
+          "level": "B",
+          "text": "I can place my víbora into a useful attacking lane.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P021_s1",
+          "level": "A",
+          "text": "I choose víbora or bandeja depending on the lob.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P021_s2",
+          "level": "A",
+          "text": "I hit it hard without losing control, even under pressure.",
+          "optional": true,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P020_w1",
+          "level": "B",
+          "text": "Does your víbora go long or into the net?",
+          "fix": "Keep my víbora in",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "smash",
+      "axis": "attack",
+      "name": "Smash",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P022",
+          "text": "Smashes short, easy lobs and keeps them in. Often hits too hard, and the ball comes back off the glass."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P023",
+          "text": "Chooses suitable short lobs, controls placement and checks the likely rebound before recovering."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P024",
+          "text": "Adapts smash placement and power to the defenders, with a safer overhead available."
+        }
+      },
+      "statements": [
+        {
+          "id": "P022_s1",
+          "level": "C",
+          "text": "I smash short, easy lobs and keep them in.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P022_s2",
+          "level": "C",
+          "text": "I don't smash every lob. I pick the short ones.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P023_s1",
+          "level": "B",
+          "text": "I can choose a short lob to smash.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P023_s2",
+          "level": "B",
+          "text": "I can place my smash without giving away an easy rebound.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P024_s1",
+          "level": "A",
+          "text": "I can change my smash placement and power to suit the defenders.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P024_s2",
+          "level": "A",
+          "text": "I can choose a safer overhead when the smash is not on.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P022_w1",
+          "level": "C",
+          "text": "Do you smash lobs that are too deep and lose the point?",
+          "fix": "Only smash the short lobs",
+          "source": "v3"
+        },
+        {
+          "id": "P023_w2",
+          "level": "B",
+          "text": "Does your smash come back off the glass for an easy return?",
+          "fix": "Place my smash so it doesn't come back easily",
+          "source": "v3"
         }
       ]
     },
@@ -2317,39 +953,47 @@
       "id": "gancho",
       "axis": "attack",
       "name": "Hook",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
         "B": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P025",
           "text": "Can play a quick hook at the net on high balls, mostly to keep the ball in play."
         },
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P026",
           "text": "Uses the hook to attack fast high balls at the net with control and placement."
         }
       },
       "statements": [
         {
-          "id": "gancho_1",
+          "id": "P025_s1",
           "level": "B",
           "text": "I can hit a quick hook on a high ball at the net.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "gancho_2",
+          "id": "P026_s1",
           "level": "A",
           "text": "I use the hook to attack, with control and placement.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "gancho_w1",
+          "id": "P025_w1",
           "level": "B",
           "text": "Do you miss high balls at the net because you can't turn in time?",
-          "source": "draft",
-          "fix": "Turn in time on high balls at the net"
+          "fix": "Turn in time on high balls at the net",
+          "source": "v3"
         }
       ]
     },
@@ -2357,34 +1001,102 @@
       "id": "rulo",
       "axis": "attack",
       "name": "Topspin smash",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P027",
           "text": "Hits a topspin smash that kicks up off the back glass and pushes opponents back."
         }
       },
       "statements": [
         {
-          "id": "rulo_1",
+          "id": "P027_s1",
           "level": "A",
           "text": "I can hit a topspin smash that kicks up off the back glass.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "rulo_2",
+          "id": "P027_s2",
           "level": "A",
           "text": "I use it on purpose to push opponents back.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "rulo_w1",
+          "id": "P027_w1",
           "level": "A",
           "text": "Does your topspin smash sit up off the glass?",
-          "source": "draft",
-          "fix": "Keep my topspin smash low off the glass"
+          "fix": "Keep my topspin smash low off the glass",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "smash_x3",
+      "axis": "attack",
+      "name": "Smash out the side (x3)",
+      "optional": true,
+      "recordType": "Player competency",
+      "levels": {
+        "B": {
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P028",
+          "text": "Can produce an x3 from a very short favorable lob and recognizes when not to try it."
+        },
+        "A": {
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P029",
+          "text": "Gets the x3 out over the side wall from short lobs in the middle, and knows when to try it and when not to."
+        }
+      },
+      "statements": [
+        {
+          "id": "P028_s1",
+          "level": "B",
+          "text": "I can get an x3 out from a very short favorable lob.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P028_s2",
+          "level": "B",
+          "text": "I can choose a safer shot when it is not on.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P029_s1",
+          "level": "A",
+          "text": "I get the x3 out over the side fence most times I try.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P029_s2",
+          "level": "A",
+          "text": "I know when the x3 is on, and when to play safe.",
+          "optional": true,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P029_w1",
+          "level": "A",
+          "text": "Do you try the x3 when it isn't on and lose the point?",
+          "fix": "Only try the x3 when it's on",
+          "source": "v3"
         }
       ]
     },
@@ -2392,34 +1104,130 @@
       "id": "smash_x4",
       "axis": "attack",
       "name": "Smash out the back (x4)",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
+        "B": {
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "NEW-smash-out-the-back-x4-B",
+          "text": "Can produce an x4 from a very short favorable ball and declines it when the contact is unsuitable."
+        },
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P030",
           "text": "Can hit the x4 from very short balls near the net, and knows when it's on."
         }
       },
       "statements": [
         {
-          "id": "smash_x4_1",
-          "level": "A",
-          "text": "I can hit an x4 out over the back on short, high balls.",
-          "source": "draft"
+          "id": "NEW-smash-out-the-back-x4-B_s1",
+          "level": "B",
+          "text": "I can get an x4 out from a very short favorable ball.",
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "smash_x4_2",
+          "id": "NEW-smash-out-the-back-x4-B_s2",
+          "level": "B",
+          "text": "I can choose a safer shot when it is not on.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P030_s1",
+          "level": "A",
+          "text": "I can hit an x4 out over the back on short, high balls.",
+          "optional": true,
+          "source": "v3"
+        },
+        {
+          "id": "P030_s2",
           "level": "A",
           "text": "I know when the x4 is on, and when to play safe.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "smash_x4_w1",
+          "id": "NEW-smash-out-the-back-x4-B_w1",
+          "level": "B",
+          "text": "Do you force an x4 from a ball that is too deep?",
+          "fix": "Only try the x4 on short balls",
+          "source": "v3"
+        },
+        {
+          "id": "P030_w2",
           "level": "A",
           "text": "Do you try the x4 when it isn't on and lose the point?",
-          "source": "draft",
-          "fix": "Only try the x4 when it's on"
+          "fix": "Only try the x4 when it's on",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "bajada",
+      "axis": "attack",
+      "name": "Bajada",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P031",
+          "text": "Can attack a ball coming off the back glass with control."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P032",
+          "text": "Uses placement and controlled power on a high rebound, then advances when the shot earns an opening."
+        }
+      },
+      "statements": [
+        {
+          "id": "P031_s1",
+          "level": "B",
+          "text": "I attack balls that come off the back glass high.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P031_s2",
+          "level": "B",
+          "text": "I wait for the right height before hitting.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P032_s1",
+          "level": "A",
+          "text": "I place my bajada low, to the feet or down the middle.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P032_s2",
+          "level": "A",
+          "text": "I use the bajada to win the net back.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P031_w1",
+          "level": "B",
+          "text": "Do you hit balls off the back glass too early or too late to attack them?",
+          "fix": "Wait for the right height before my bajada",
+          "source": "v3"
         }
       ]
     },
@@ -2427,45 +1235,802 @@
       "id": "drop_shot",
       "axis": "attack",
       "name": "Drop shot",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
         "B": {
-          "master": true,
-          "source": "draft",
-          "text": "Plays a drop shot when opponents are deep. Sometimes it sits up."
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P033",
+          "text": "Can play a short, soft shot from a comfortable ball when the opponents are deep."
         },
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P034",
           "text": "Disguises the drop shot and lands it short and low at the right moment."
         }
       },
       "statements": [
         {
-          "id": "drop_shot_1",
+          "id": "P033_s1",
           "level": "B",
-          "text": "I play a drop shot when opponents are deep.",
-          "source": "draft"
+          "text": "I can land a drop shot short from a comfortable ball when the opponents are deep.",
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "drop_shot_2",
-          "level": "B",
-          "text": "My drop shot lands short and low, not sitting up.",
-          "source": "draft"
-        },
-        {
-          "id": "drop_shot_3",
+          "id": "P034_s1",
           "level": "A",
           "text": "I disguise it and pick the right moment.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "drop_shot_w1",
+          "id": "P033_w1",
           "level": "B",
           "text": "Does your drop shot sit up or go into the net?",
-          "source": "draft",
-          "fix": "Land my drop shot short and low"
+          "fix": "Land my drop shot short and low",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "second_serve",
+      "axis": "attack",
+      "name": "Second serve",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-second-serve-D",
+          "text": "Can use a simple second serve into either service box."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-second-serve-C",
+          "text": "Uses a repeatable second serve with a safe margin inside the box."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-second-serve-B",
+          "text": "Keeps the second serve controlled after a first fault at tight scores."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-second-serve-A",
+          "text": "Varies safe second-serve placement to avoid a predictable weak reply."
+        }
+      },
+      "statements": [
+        {
+          "id": "NEW-second-serve-D_s1",
+          "level": "D",
+          "text": "I can get a simple second serve into either box.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-second-serve-C_s1",
+          "level": "C",
+          "text": "I can use a reliable second serve without aiming too close to the lines.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-second-serve-B_s1",
+          "level": "B",
+          "text": "I can keep my second serve controlled at tight scores.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-second-serve-A_s1",
+          "level": "A",
+          "text": "I can vary my second-serve placement while keeping a safe margin.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "NEW-second-serve-D_w1",
+          "level": "D",
+          "text": "Do first-serve misses lead to rushed second serves or double faults?",
+          "fix": "Take my time on the second serve",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "return_of_serve",
+      "axis": "defence",
+      "name": "Return of serve",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P035",
+          "text": "Can find a receiving position and return some easy serves after the bounce."
+        },
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P036",
+          "text": "Returns most easy serves into court, with limited placement."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P037",
+          "text": "Returns routine serves safely, including simple side-glass rebounds."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P038",
+          "text": "Reliable return under pressure. Can choose a low, a lob or an attacking return."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P039",
+          "text": "Adapts returns to the serving pair and attacks weak serves when the opening is there."
+        }
+      },
+      "statements": [
+        {
+          "id": "P035_s1",
+          "level": "beginner",
+          "text": "I can get some easy serves back after they bounce.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P036_s1",
+          "level": "D",
+          "text": "I can get most easy serves back into court.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P037_s1",
+          "level": "C",
+          "text": "I can return routine serves low or through the middle.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P037_s2",
+          "level": "C",
+          "text": "I can return simple serves off the side glass.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P038_s1",
+          "level": "B",
+          "text": "I aim my return on purpose: low cross-court, middle or lob.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P038_s2",
+          "level": "B",
+          "text": "I return well, even at tight scores.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P039_s1",
+          "level": "A",
+          "text": "I can choose my return to suit the serving pair.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P039_s2",
+          "level": "A",
+          "text": "I can attack a weak serve without forcing a difficult one.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P036_w1",
+          "level": "D",
+          "text": "Do you miss more returns than you get back?",
+          "fix": "Get more returns back",
+          "source": "v3"
+        },
+        {
+          "id": "P037_w2",
+          "level": "C",
+          "text": "Do your returns sit up for the net players?",
+          "fix": "Keep my returns low",
+          "source": "v3"
+        },
+        {
+          "id": "P038_w3",
+          "level": "B",
+          "text": "Do you miss returns at tight scores?",
+          "fix": "Get my returns in at tight scores",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "groundstroke_forehand",
+      "axis": "defence",
+      "name": "Forehand groundstroke",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P040-FH",
+          "text": "Can return some easy forehand feeds after the bounce."
+        },
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P041-FH",
+          "text": "Can keep an easy forehand rally going, with limited placement."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P042-FH",
+          "text": "Controls routine forehand shots toward the middle or cross-court."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P043-FH",
+          "text": "Changes forehand height, pace and direction to suit the available ball."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P044-FH",
+          "text": "Uses forehand placement and variation to create openings while defending safely when stretched."
+        }
+      },
+      "statements": [
+        {
+          "id": "P040-FH_s1",
+          "level": "beginner",
+          "text": "I can get some easy forehand balls over the net after they bounce.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P041-FH_s1",
+          "level": "D",
+          "text": "I can keep an easy rally going with my forehand.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P042-FH_s1",
+          "level": "C",
+          "text": "I can control routine forehand shots to the middle or cross-court.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P043-FH_s1",
+          "level": "B",
+          "text": "I can change height, pace and direction on my forehand.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P044-FH_s1",
+          "level": "A",
+          "text": "I can vary my forehand to move opponents.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P044-FH_s2",
+          "level": "A",
+          "text": "I can use a safe forehand when I am stretched.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P041-FH_w1",
+          "level": "D",
+          "text": "Does your forehand break down in a routine rally?",
+          "fix": "Keep my forehand steady in rallies",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "groundstroke_backhand",
+      "axis": "defence",
+      "name": "Backhand groundstroke",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P040-BH",
+          "text": "Can return some easy backhand feeds after the bounce."
+        },
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P041-BH",
+          "text": "Can keep an easy backhand rally going, with limited placement."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P042-BH",
+          "text": "Controls routine backhand shots toward the middle or cross-court."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P043-BH",
+          "text": "Changes backhand height, pace and direction to suit the available ball."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P044-BH",
+          "text": "Uses backhand placement and variation to create openings while defending safely when stretched."
+        }
+      },
+      "statements": [
+        {
+          "id": "P040-BH_s1",
+          "level": "beginner",
+          "text": "I can get some easy backhand balls over the net after they bounce.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P041-BH_s1",
+          "level": "D",
+          "text": "I can keep an easy rally going with my backhand.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P042-BH_s1",
+          "level": "C",
+          "text": "I can control routine backhand shots to the middle or cross-court.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P043-BH_s1",
+          "level": "B",
+          "text": "I can change height, pace and direction on my backhand.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P044-BH_s1",
+          "level": "A",
+          "text": "I can vary my backhand to move opponents.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P044-BH_s2",
+          "level": "A",
+          "text": "I can use a safe backhand when I am stretched.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P041-BH_w1",
+          "level": "D",
+          "text": "Does your backhand break down in a routine rally?",
+          "fix": "Keep my backhand steady in rallies",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "defensive_lob",
+      "axis": "defence",
+      "name": "Defensive lob",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P045",
+          "text": "Can lob over a net player from an easy ball, though depth is not yet reliable."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P046",
+          "text": "Can hit a high, deep lob from a comfortable ball. Rushed contacts and wall rebounds remain harder."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P047",
+          "text": "Usually lands a deep lob in matches, even when rushed. Pushes opponents back and lets you win the net. Mostly holds when the score is tight."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P048",
+          "text": "Chooses the lob on purpose: side, height, depth. Works from awkward positions and at big points against strong opponents."
+        }
+      },
+      "statements": [
+        {
+          "id": "P045_s1",
+          "level": "D",
+          "text": "I can lob over a net player when I have time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P046_s1",
+          "level": "C",
+          "text": "I can lob high and deep when I have time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P046_s2",
+          "level": "C",
+          "text": "I can move forward when my lob pushes the opponents back.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P047_s1",
+          "level": "B",
+          "text": "I can lob from difficult spots, like off the glass or from the corner.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P047_s2",
+          "level": "B",
+          "text": "I aim my lob over the weaker overhead player, or down the middle.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P048_s1",
+          "level": "A",
+          "text": "I lob on purpose to win the net back, even under pressure.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P045_w1",
+          "level": "D",
+          "text": "Do your lobs land short in the middle of the court?",
+          "fix": "Lob higher and deeper",
+          "source": "v3"
+        },
+        {
+          "id": "P046_w2",
+          "level": "C",
+          "text": "Do your lobs go long or out over the glass?",
+          "fix": "Keep my lobs in",
+          "source": "v3"
+        },
+        {
+          "id": "P047_w3",
+          "level": "B",
+          "text": "Do your lobs get smashed back at you?",
+          "fix": "Lob deep enough that it can't be smashed",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "back_glass_return",
+      "axis": "defence",
+      "name": "Back glass return",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P049",
+          "text": "Can return easy back-glass rebounds, with limited direction."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P050",
+          "text": "Can return most slow or medium balls off the back glass. Struggles with fast or awkward rebounds."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P051",
+          "text": "Reads rebounds early and returns most balls off the back glass with control."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P052",
+          "text": "Uses the glass to buy time and turn defence into attack."
+        }
+      },
+      "statements": [
+        {
+          "id": "P049_s1",
+          "level": "D",
+          "text": "I can let an easy ball reach the back glass and return the rebound.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P050_s1",
+          "level": "C",
+          "text": "I return most slow and medium rebounds.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P050_s2",
+          "level": "C",
+          "text": "I stand at the right distance from the glass.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P051_s1",
+          "level": "B",
+          "text": "I read fast rebounds early and return them with control.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P051_s2",
+          "level": "B",
+          "text": "After the glass, I can choose a lob or a low ball.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P052_s1",
+          "level": "A",
+          "text": "I use the glass to buy time and turn defence into attack.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P049_w1",
+          "level": "D",
+          "text": "Do you hit the ball before the glass because you're unsure of the rebound?",
+          "fix": "Let the ball come off the back glass",
+          "source": "v3"
+        },
+        {
+          "id": "P050_w2",
+          "level": "C",
+          "text": "Do you stand too close to the glass and get cramped?",
+          "fix": "Give myself room from the glass",
+          "source": "v3"
+        },
+        {
+          "id": "P051_w3",
+          "level": "B",
+          "text": "Do fast rebounds off the back glass beat you?",
+          "fix": "Read fast rebounds earlier",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "side_glass_return",
+      "axis": "defence",
+      "name": "Side glass return",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P053",
+          "text": "Can return simple balls off the side glass. Often late on faster ones."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P054",
+          "text": "Reads side-glass angles and returns with control most of the time."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P055",
+          "text": "Handles fast and awkward side glass angles under pressure, and places the return."
+        }
+      },
+      "statements": [
+        {
+          "id": "P053_s1",
+          "level": "C",
+          "text": "I return simple balls off the side glass.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P054_s1",
+          "level": "B",
+          "text": "I read the angle off the side glass early.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P054_s2",
+          "level": "B",
+          "text": "I return side glass balls with control most of the time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P055_s1",
+          "level": "A",
+          "text": "I handle fast, awkward side glass balls under pressure, and place the return.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P053_w1",
+          "level": "C",
+          "text": "Do side glass balls get past you?",
+          "fix": "Get side glass balls back",
+          "source": "v3"
+        },
+        {
+          "id": "P054_w2",
+          "level": "B",
+          "text": "Are you late on fast balls off the side glass?",
+          "fix": "Be early on fast side glass balls",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "double_glass",
+      "axis": "defence",
+      "name": "Double glass",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P056",
+          "text": "Gets some double glass balls back, often late or with little control."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P057",
+          "text": "Reads most double glass balls, waits for the ball and gets them back, often with a lob."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P058",
+          "text": "Handles double glass from both corners, and chooses a lob or a low ball depending on where opponents are."
+        }
+      },
+      "statements": [
+        {
+          "id": "P056_s1",
+          "level": "C",
+          "text": "I get some double glass balls back.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P057_s1",
+          "level": "B",
+          "text": "I can tell which wall the ball will hit first.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P057_s2",
+          "level": "B",
+          "text": "I wait for the ball and get most double glass balls back, often with a lob.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P058_s1",
+          "level": "A",
+          "text": "I choose a lob or a low ball depending on where the opponents are.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P056_w1",
+          "level": "C",
+          "text": "Do double glass balls beat you?",
+          "fix": "Get double glass balls back",
+          "source": "v3"
+        },
+        {
+          "id": "P057_w2",
+          "level": "B",
+          "text": "Do you misjudge which wall the ball will hit first?",
+          "fix": "Read which wall the ball will hit first",
+          "source": "v3"
         }
       ]
     },
@@ -2473,39 +2038,213 @@
       "id": "contrapared",
       "axis": "defence",
       "name": "Back wall rescue",
+      "optional": true,
+      "recordType": "Player competency",
       "levels": {
         "B": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P059",
           "text": "Can get the ball back with a back wall boast in emergencies."
         },
         "A": {
-          "master": true,
-          "source": "draft",
+          "master": false,
+          "optional": true,
+          "source": "v3",
+          "recordId": "P060",
           "text": "Uses the back wall boast as a planned option when there's no other way forwards."
         }
       },
       "statements": [
         {
-          "id": "contrapared_1",
+          "id": "P059_s1",
           "level": "B",
           "text": "In an emergency, I can hit the ball into my own back wall to get it over.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         },
         {
-          "id": "contrapared_2",
+          "id": "P060_s1",
           "level": "A",
           "text": "I use it as a planned option when there's no way to hit forwards.",
-          "source": "draft"
+          "optional": true,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "contrapared_w1",
+          "id": "P059_w1",
           "level": "B",
           "text": "Do you lose the point when you can't hit the ball forwards?",
-          "source": "draft",
-          "fix": "Use the back wall when I can't hit forwards"
+          "fix": "Use the back wall when I can't hit forwards",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "smash_defence",
+      "axis": "defence",
+      "name": "Defending a smash",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P061",
+          "text": "Can read and return straightforward reachable smash rebounds inside the court."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P062",
+          "text": "Reads varied reachable smash rebounds and chooses a safe return without giving up too early."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P063",
+          "text": "Anticipates smash patterns and counterattacks suitable reachable rebounds while recognizing when the point is over."
+        }
+      },
+      "statements": [
+        {
+          "id": "P061_s1",
+          "level": "C",
+          "text": "I can get straightforward smash rebounds back from inside the court.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P062_s1",
+          "level": "B",
+          "text": "I can read where a reachable smash will rebound.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P062_s2",
+          "level": "B",
+          "text": "I can choose a low return or lob from the rebound.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P063_s1",
+          "level": "A",
+          "text": "I can turn a reachable smash rebound into a counterattack.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P063_s2",
+          "level": "A",
+          "text": "I can recognize when an exit over the back enclosure has ended the point.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P061_w1",
+          "level": "C",
+          "text": "Do you give up on smashes you could reach?",
+          "fix": "Chase smashes I can reach",
+          "source": "v3"
+        },
+        {
+          "id": "P062_w2",
+          "level": "B",
+          "text": "Do you misread where a smash will bounce?",
+          "fix": "Read where smashes will bounce",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "chiquita",
+      "axis": "defence",
+      "name": "Chiquita",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P064",
+          "text": "Can play a soft low ball to a net player from a comfortable contact. Advances only if the reply allows."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P065",
+          "text": "Chooses the low ball to make opponents volley up and coordinates movement according to the reply."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P066",
+          "text": "Disguises the chiquita and mixes it with lobs and passing shots so opponents can't predict it."
+        }
+      },
+      "statements": [
+        {
+          "id": "P064_s1",
+          "level": "C",
+          "text": "I can play a soft ball toward a net player's feet when I have time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P064_s2",
+          "level": "C",
+          "text": "I can move forward if the reply gives me an opening.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P065_s1",
+          "level": "B",
+          "text": "I can use a chiquita to make an opponent volley up.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P065_s2",
+          "level": "B",
+          "text": "I can move with my partner when the reply lets us advance.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P066_s1",
+          "level": "A",
+          "text": "I disguise it and mix it with lobs and passing shots.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P064_w1",
+          "level": "C",
+          "text": "Does your soft ball sit up and get attacked?",
+          "fix": "Keep my chiquita low",
+          "source": "v3"
+        },
+        {
+          "id": "P065_w2",
+          "level": "B",
+          "text": "Do you move forward even when your chiquita sits up?",
+          "fix": "Only move up when my chiquita stays low",
+          "source": "v3"
         }
       ]
     },
@@ -2513,56 +2252,68 @@
       "id": "attacking_lob",
       "axis": "defence",
       "name": "Attacking lob",
+      "optional": false,
+      "recordType": "Player competency",
       "levels": {
         "C": {
           "master": true,
-          "source": "draft",
-          "text": "Tries a lower, faster lob when opponents are very close to the net."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P067",
+          "text": "Can use a faster lob to clear opponents standing close to the net from a comfortable ball."
         },
         "B": {
           "master": true,
-          "source": "draft",
-          "text": "Uses the attacking lob on purpose to get behind net players and then moves up."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P068",
+          "text": "Chooses the attacking lob from opponent position and advances when it earns enough time."
         },
         "A": {
           "master": true,
-          "source": "draft",
+          "optional": false,
+          "source": "v3",
+          "recordId": "P069",
           "text": "Disguises the attacking lob, so opponents can't move back early."
         }
       },
       "statements": [
         {
-          "id": "attacking_lob_1",
+          "id": "P067_s1",
           "level": "C",
-          "text": "I try a lower, faster lob when opponents are close to the net.",
-          "source": "draft"
+          "text": "I can clear players close to the net with a faster lob when I have time.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "attacking_lob_2",
+          "id": "P068_s1",
           "level": "B",
-          "text": "I use it on purpose to get behind net players.",
-          "source": "draft"
+          "text": "I can use an attacking lob to get behind net players.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "attacking_lob_3",
+          "id": "P068_s2",
           "level": "B",
-          "text": "I move up after it.",
-          "source": "draft"
+          "text": "I can judge whether it gives me time to move forward.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "attacking_lob_4",
+          "id": "P069_s1",
           "level": "A",
           "text": "I disguise it so opponents can't move back early.",
-          "source": "draft"
+          "optional": false,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "attacking_lob_w1",
+          "id": "P067_w1",
           "level": "C",
           "text": "Does your attacking lob go long or get smashed?",
-          "source": "draft",
-          "fix": "Get the attacking lob over and in"
+          "fix": "Get the attacking lob over and in",
+          "source": "v3"
         }
       ]
     },
@@ -2570,45 +2321,47 @@
       "id": "passing_shot",
       "axis": "defence",
       "name": "Passing shot",
+      "optional": false,
+      "recordType": "Player competency",
       "levels": {
         "B": {
           "master": true,
-          "source": "draft",
-          "text": "Hits a passing shot when there's an obvious gap. Often goes long or into the net."
+          "optional": false,
+          "source": "v3",
+          "recordId": "P070",
+          "text": "Can direct a controlled passing shot through an obvious gap from a balanced position."
         },
         "A": {
           "master": true,
-          "source": "draft",
+          "optional": false,
+          "source": "v3",
+          "recordId": "P071",
           "text": "Passes net players low down the line or through the middle on purpose."
         }
       },
       "statements": [
         {
-          "id": "passing_shot_1",
+          "id": "P070_s1",
           "level": "B",
-          "text": "I hit a passing shot when there's a clear gap.",
-          "source": "draft"
+          "text": "I can play a low passing shot through a clear gap when I am balanced.",
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "passing_shot_2",
-          "level": "B",
-          "text": "My passing shots stay low.",
-          "source": "draft"
-        },
-        {
-          "id": "passing_shot_3",
+          "id": "P071_s1",
           "level": "A",
           "text": "I pass net players down the line or through the middle on purpose.",
-          "source": "draft"
+          "optional": false,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "passing_shot_w1",
+          "id": "P070_w1",
           "level": "B",
           "text": "Do your passing shots go into the net or long?",
-          "source": "draft",
-          "fix": "Keep my passing shots low and in"
+          "fix": "Keep my passing shots low and in",
+          "source": "v3"
         }
       ]
     },
@@ -2616,63 +2369,1380 @@
       "id": "half_volley",
       "axis": "defence",
       "name": "Half volley",
+      "optional": false,
+      "recordType": "Player competency",
       "levels": {
         "C": {
           "master": true,
-          "source": "draft",
+          "optional": false,
+          "source": "v3",
+          "recordId": "P072",
           "text": "Gets half volleys back when caught in the middle of the court, but they often pop up."
         },
         "B": {
           "master": true,
-          "source": "draft",
+          "optional": false,
+          "source": "v3",
+          "recordId": "P073",
           "text": "Keeps half volleys low and moves forward or back after them."
         },
         "A": {
           "master": true,
-          "source": "draft",
+          "optional": false,
+          "source": "v3",
+          "recordId": "P074",
           "text": "Uses the half volley to stay in a strong position, landing it low and deep."
         }
       },
       "statements": [
         {
-          "id": "half_volley_1",
+          "id": "P072_s1",
           "level": "C",
           "text": "I get half volleys back when I'm caught in the middle.",
-          "source": "draft"
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "half_volley_2",
+          "id": "P073_s1",
           "level": "B",
           "text": "My half volleys stay low.",
-          "source": "draft"
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "half_volley_3",
+          "id": "P073_s2",
           "level": "B",
           "text": "After a half volley, I move forward or back, not stay in the middle.",
-          "source": "draft"
+          "optional": false,
+          "source": "v3"
         },
         {
-          "id": "half_volley_4",
+          "id": "P074_s1",
           "level": "A",
           "text": "I use the half volley to keep a strong position.",
-          "source": "draft"
+          "optional": false,
+          "source": "v3"
         }
       ],
       "warnings": [
         {
-          "id": "half_volley_w1",
+          "id": "P072_w1",
           "level": "C",
           "text": "Do your half volleys pop up high?",
-          "source": "draft",
-          "fix": "Keep my half volleys low"
+          "fix": "Keep my half volleys low",
+          "source": "v3"
         },
         {
-          "id": "half_volley_w2",
+          "id": "P073_w2",
           "level": "B",
           "text": "Do you stay stuck in the middle after a half volley?",
-          "source": "draft",
-          "fix": "Move forward or back after a half volley"
+          "fix": "Move forward or back after a half volley",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "tweener",
+      "axis": "defence",
+      "name": "Between the legs",
+      "optional": true,
+      "recordType": "Player competency",
+      "levels": {},
+      "statements": [],
+      "warnings": []
+    },
+    {
+      "id": "behind_back",
+      "axis": "defence",
+      "name": "Behind the back",
+      "optional": true,
+      "recordType": "Player competency",
+      "levels": {},
+      "statements": [],
+      "warnings": []
+    },
+    {
+      "id": "out_of_court",
+      "axis": "defence",
+      "name": "Playing outside the court",
+      "optional": true,
+      "recordType": "Player competency",
+      "levels": {},
+      "statements": [],
+      "warnings": []
+    },
+    {
+      "id": "fence_rebound",
+      "axis": "defence",
+      "name": "Fence rebound",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-fence-rebound-D",
+          "text": "Tracks and returns some gentle fence rebounds without giving up on the ball."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-fence-rebound-C",
+          "text": "Waits for a routine fence rebound and adjusts position for contact."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-fence-rebound-B",
+          "text": "Returns varied reachable fence rebounds with a safe low ball or lob."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-fence-rebound-A",
+          "text": "Adapts to awkward reachable rebounds and avoids forcing an attack when cramped."
+        }
+      },
+      "statements": [
+        {
+          "id": "NEW-fence-rebound-D_s1",
+          "level": "D",
+          "text": "I can return some gentle balls off the fence.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-fence-rebound-C_s1",
+          "level": "C",
+          "text": "I can wait for a fence rebound and adjust before hitting.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-fence-rebound-B_s1",
+          "level": "B",
+          "text": "I can choose a low ball or lob from a reachable fence rebound.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-fence-rebound-A_s1",
+          "level": "A",
+          "text": "I can handle awkward fence rebounds and choose a safe return when I am cramped.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "NEW-fence-rebound-D_w1",
+          "level": "D",
+          "text": "Do you decide where to swing before you have seen the fence rebound?",
+          "fix": "Watch the fence rebound before choosing my swing",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "positioning",
+      "axis": "movement",
+      "name": "Knowing where to stand",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P078",
+          "text": "Can identify basic back-court and net positions, though still needs reminders during play."
+        },
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P079",
+          "text": "Uses basic court positions and avoids stopping unprepared between back and net."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P080",
+          "text": "Moves forward and back with the play. Knows who covers the middle, and where to stand when serving and returning."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P081",
+          "text": "Adjusts position to the ball and the opponents, and covers for a partner who is pulled wide."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P082",
+          "text": "Uses opponent patterns to prepare early and adjusts when the expected reply changes."
+        }
+      },
+      "statements": [
+        {
+          "id": "P078_s1",
+          "level": "beginner",
+          "text": "I can point out the basic positions at the back and at the net.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P079_s1",
+          "level": "D",
+          "text": "I can cover my side from a useful position.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P079_s2",
+          "level": "D",
+          "text": "I can get ready for the reply when I move through the middle of the court.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P080_s1",
+          "level": "C",
+          "text": "I know where to stand when serving and returning.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P080_s2",
+          "level": "C",
+          "text": "I know who covers the middle.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P081_s1",
+          "level": "B",
+          "text": "I adjust my position to where the ball and opponents are.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P081_s2",
+          "level": "B",
+          "text": "I cover for my partner when they're pulled wide.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P082_s1",
+          "level": "A",
+          "text": "I can use opponents' habits to prepare early.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P082_s2",
+          "level": "A",
+          "text": "I can adjust when they change the reply.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P079_w1",
+          "level": "D",
+          "text": "Do you stop in the middle of the court without getting ready for the reply?",
+          "fix": "Be ready for the reply wherever I stop",
+          "source": "v3"
+        },
+        {
+          "id": "P080_w2",
+          "level": "C",
+          "text": "Are you unsure where to stand when serving or returning?",
+          "fix": "Know where to stand when serving and returning",
+          "source": "v3"
+        },
+        {
+          "id": "P081_w3",
+          "level": "B",
+          "text": "Do you leave gaps when your partner is pulled wide?",
+          "fix": "Cover the gap when my partner is pulled wide",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "ready_position",
+      "axis": "movement",
+      "name": "Ready position and split step",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P083",
+          "text": "Knows the ready position and uses it on slow balls, but is often late on fast ones."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P084",
+          "text": "Usually prepares before opponent contact and uses a small timed split step or loading action in routine rallies."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-ready-position-and-split-step-B",
+          "text": "Keeps preparation and split-step timing while moving forward, back and sideways."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-ready-position-and-split-step-A",
+          "text": "Adjusts preparation timing in fast exchanges and against disguised shots."
+        }
+      },
+      "statements": [
+        {
+          "id": "P083_s1",
+          "level": "D",
+          "text": "I stand in a ready position between shots.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P083_s2",
+          "level": "D",
+          "text": "I'm ready before slow balls arrive.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P084_s1",
+          "level": "C",
+          "text": "I can get my racket ready before the opponent hits.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P084_s2",
+          "level": "C",
+          "text": "I can time a small split step with their contact in routine rallies.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-ready-position-and-split-step-B_s1",
+          "level": "B",
+          "text": "I can get ready at opponent contact while moving around the court.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-ready-position-and-split-step-A_s1",
+          "level": "A",
+          "text": "I can adjust my preparation in fast exchanges and when opponents disguise the shot.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P083_w1",
+          "level": "D",
+          "text": "Do fast balls catch you flat-footed?",
+          "fix": "Be ready for fast balls",
+          "source": "v3"
+        },
+        {
+          "id": "P084_w2",
+          "level": "C",
+          "text": "Are you still moving when the opponent hits?",
+          "fix": "Be still and ready when they hit",
+          "source": "v3"
+        },
+        {
+          "id": "NEW-ready-position-and-split-step-B_w3",
+          "level": "B",
+          "text": "Do you arrive at the next ball still off balance?",
+          "fix": "Be balanced before the next ball",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "net_play",
+      "axis": "movement",
+      "name": "Taking and holding the net",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P085",
+          "text": "Recognizes clear chances to move to the net and can stop ready for the reply."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P086",
+          "text": "Takes the net behind a good ball, holds with controlled volleys and retreats when beaten."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P087",
+          "text": "Wins and holds the net on purpose. Volleys have direction, attacking or defensive as needed."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P088",
+          "text": "Uses placement and recovery to preserve net pressure, adapting when opponents change the pattern."
+        }
+      },
+      "statements": [
+        {
+          "id": "P085_s1",
+          "level": "D",
+          "text": "I can move to the net behind an easy opening and get ready for the reply.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P086_s1",
+          "level": "C",
+          "text": "I can take the net when my shot gives me time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P086_s2",
+          "level": "C",
+          "text": "I can hold it with controlled volleys.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P086_s3",
+          "level": "C",
+          "text": "I can move back when a lob beats me.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P087_s1",
+          "level": "B",
+          "text": "I win the net back on purpose, for example after a good lob.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P087_s2",
+          "level": "B",
+          "text": "I hold the net under pressure.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P088_s1",
+          "level": "A",
+          "text": "I can change my placement to keep pressure at the net.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P088_s2",
+          "level": "A",
+          "text": "I can recover or retreat according to the next threat.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P085_w1",
+          "level": "D",
+          "text": "Do you end up at the net at the wrong time, or stay there when you're in trouble?",
+          "fix": "Go to the net at the right time, and leave it when we're in trouble",
+          "source": "v3"
+        },
+        {
+          "id": "P086_w2",
+          "level": "C",
+          "text": "Do you lose the net after one lob?",
+          "fix": "Win the net back after a lob",
+          "source": "v3"
+        },
+        {
+          "id": "P087_w3",
+          "level": "B",
+          "text": "Do opponents get you off the net easily?",
+          "fix": "Hold the net under pressure",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "axis": "movement",
+      "name": "Recovery",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P089",
+          "text": "Usually starts recovering after a routine shot, though wide balls can leave gaps."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P090",
+          "text": "Usually recovers to a good position before the next ball."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P091",
+          "text": "Recovers automatically, even after being pulled wide."
+        }
+      },
+      "statements": [
+        {
+          "id": "P089_s1",
+          "level": "C",
+          "text": "I can start moving back into position after a routine shot.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P090_s1",
+          "level": "B",
+          "text": "I recover quickly after being pulled wide.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P090_s2",
+          "level": "B",
+          "text": "I move straight after hitting, instead of watching my shot.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P091_s1",
+          "level": "A",
+          "text": "I'm balanced and ready for the next ball, even in long rallies.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P089_w1",
+          "level": "C",
+          "text": "Do you stand and watch your shot instead of moving?",
+          "fix": "Move straight after my shot",
+          "source": "v3"
+        },
+        {
+          "id": "P090_w2",
+          "level": "B",
+          "text": "After being pulled wide, are you out of position for the next ball?",
+          "fix": "Recover quickly after being pulled wide",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "moving_as_pair",
+      "axis": "movement",
+      "name": "Moving as a pair",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P092",
+          "text": "Adjusts forward and backward movement to the partner in routine points."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P093",
+          "text": "Adjusts sideways spacing and covers when a partner is pulled wide."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P094",
+          "text": "Coordinates switches and repairs gaps without relying on a fixed court side."
+        }
+      },
+      "statements": [
+        {
+          "id": "P092_s1",
+          "level": "C",
+          "text": "I can move forward or back with my partner in routine points.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P093_s1",
+          "level": "B",
+          "text": "I can shift sideways with my partner.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P093_s2",
+          "level": "B",
+          "text": "I can cover the space when my partner is pulled wide.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P094_s1",
+          "level": "A",
+          "text": "I can adjust my position when my partner and I switch sides.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P094_s2",
+          "level": "A",
+          "text": "I can cover the middle while the pair recovers.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P092_w1",
+          "level": "C",
+          "text": "Do you and your partner end up far apart, one at the net and one at the back?",
+          "fix": "Stay level with my partner",
+          "source": "v3"
+        },
+        {
+          "id": "P093_w2",
+          "level": "B",
+          "text": "Do you both go for the same ball, or both leave it?",
+          "fix": "Call and split the middle balls",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "shot_choice",
+      "axis": "tactics",
+      "name": "Shot choice",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P095",
+          "text": "Mostly just returns the ball. Knows the scoring but not yet when to attack or defend."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P096",
+          "text": "Checks opponents' positions and usually chooses a safe or attacking option to suit a routine ball."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P097",
+          "text": "Usually picks the right shot for the situation."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P098",
+          "text": "Chooses shots to set up the next one and targets weaknesses."
+        }
+      },
+      "statements": [
+        {
+          "id": "P095_s1",
+          "level": "D",
+          "text": "When I'm in trouble, I just get the ball back safely.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P096_s1",
+          "level": "C",
+          "text": "I can check where the opponents are before choosing.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P096_s2",
+          "level": "C",
+          "text": "I can use a safer shot when I am out of position.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P097_s1",
+          "level": "B",
+          "text": "I play the safe shot when I'm out of position.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P097_s2",
+          "level": "B",
+          "text": "I only go for winners when the ball is right.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P098_s1",
+          "level": "A",
+          "text": "I plan a few shots ahead.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P095_w1",
+          "level": "D",
+          "text": "Do you go for winners from difficult positions?",
+          "fix": "Play safe from difficult positions",
+          "source": "v3"
+        },
+        {
+          "id": "P096_w2",
+          "level": "C",
+          "text": "Do you pick power when placement would work better?",
+          "fix": "Choose placement over power",
+          "source": "v3"
+        },
+        {
+          "id": "P097_w3",
+          "level": "B",
+          "text": "Do you force the attack before the ball is right?",
+          "fix": "Wait for the right ball to attack",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "partner_communication",
+      "axis": "tactics",
+      "name": "Talking to your partner",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P099",
+          "text": "Uses clear calls on routine shared balls and helps agree who takes the middle."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P100",
+          "text": "Helps agree a simple plan and communicates useful information between points."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P101",
+          "text": "Recognizes when the plan needs changing and discusses a useful adjustment."
+        }
+      },
+      "statements": [
+        {
+          "id": "P099_s1",
+          "level": "C",
+          "text": "I can call mine, yours or leave in time.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P099_s2",
+          "level": "C",
+          "text": "I can agree who takes the middle.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P100_s1",
+          "level": "B",
+          "text": "I can agree a simple plan before play.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P100_s2",
+          "level": "B",
+          "text": "I can share useful information between points, including after mistakes.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P101_s1",
+          "level": "A",
+          "text": "I can suggest a change of plan from what is happening in the match.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P099_w1",
+          "level": "C",
+          "text": "Do balls go between you because nobody called?",
+          "fix": "Call every middle ball",
+          "source": "v3"
+        },
+        {
+          "id": "P100_w2",
+          "level": "B",
+          "text": "Do you play a whole match without agreeing a plan?",
+          "fix": "Agree a simple plan before we start",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "building_points",
+      "axis": "tactics",
+      "name": "Building points",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P102",
+          "text": "Builds pressure over several shots instead of going for winners too early."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P103",
+          "text": "Changes plan when the opponent adapts."
+        }
+      },
+      "statements": [
+        {
+          "id": "P102_s1",
+          "level": "B",
+          "text": "I'm patient and wait for the right ball to attack.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P102_s2",
+          "level": "B",
+          "text": "I use several shots to set up a winner.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P103_s1",
+          "level": "A",
+          "text": "I change pace, height and direction to create openings.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P103_s2",
+          "level": "A",
+          "text": "I build pressure over several shots, instead of forcing it.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P102_w1",
+          "level": "B",
+          "text": "Do you lose patience and go for a winner too early?",
+          "fix": "Be patient before going for a winner",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "middle_ball",
+      "axis": "tactics",
+      "name": "Middle ball responsibility",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-middle-ball-responsibility-D",
+          "text": "Agrees a simple middle-ball rule and responds to a clear call."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-middle-ball-responsibility-C",
+          "text": "Calls shared balls early and covers when the partner takes them."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-middle-ball-responsibility-B",
+          "text": "Adjusts responsibility to ball direction, reach and both players' handedness."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-middle-ball-responsibility-A",
+          "text": "Coordinates shared balls and coverage even after switches or difficult recoveries."
+        }
+      },
+      "statements": [
+        {
+          "id": "NEW-middle-ball-responsibility-D_s1",
+          "level": "D",
+          "text": "I can agree who takes an easy middle ball and respond to a call.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-middle-ball-responsibility-C_s1",
+          "level": "C",
+          "text": "I can call a middle ball early and cover when my partner takes it.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-middle-ball-responsibility-B_s1",
+          "level": "B",
+          "text": "I can decide who has the better contact, rather than always taking the forehand.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-middle-ball-responsibility-A_s1",
+          "level": "A",
+          "text": "I can sort out a shared ball and cover the gap even after we switch sides.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "NEW-middle-ball-responsibility-D_w1",
+          "level": "D",
+          "text": "Do you both hit, or both leave, balls through the middle?",
+          "fix": "Agree who takes the middle balls",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "rules_scoring",
+      "axis": "tactics",
+      "name": "Rules and scoring",
+      "optional": false,
+      "recordType": "Player competency",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-rules-and-scoring-Beginner",
+          "text": "Understands the first bounce, the two-bounce limit and basic score order."
+        },
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-rules-and-scoring-D",
+          "text": "Knows legal serve and return basics and keeps score in an ordinary game."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-rules-and-scoring-C",
+          "text": "Distinguishes a service-fence fault from a live rally rebound and recognizes common lets."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-rules-and-scoring-B",
+          "text": "Applies the agreed tiebreak and service order and recognizes point-ending exits."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-rules-and-scoring-A",
+          "text": "Handles unusual situations by checking the current rules when uncertain."
+        }
+      },
+      "statements": [
+        {
+          "id": "NEW-rules-and-scoring-Beginner_s1",
+          "level": "beginner",
+          "text": "I can explain the basic bounce rules and follow the score.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-rules-and-scoring-D_s1",
+          "level": "D",
+          "text": "I can serve and return within the basic rules and keep score.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-rules-and-scoring-C_s1",
+          "level": "C",
+          "text": "I can tell a service-fence fault from a live fence rebound.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-rules-and-scoring-C_s2",
+          "level": "C",
+          "text": "I can recognize a common service let.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-rules-and-scoring-B_s1",
+          "level": "B",
+          "text": "I can follow our agreed tiebreak and service order.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-rules-and-scoring-B_s2",
+          "level": "B",
+          "text": "I can recognize when a ball leaving the court ends the point.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-rules-and-scoring-A_s1",
+          "level": "A",
+          "text": "I can resolve an unfamiliar rules question by checking the current rules.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "NEW-rules-and-scoring-Beginner_w1",
+          "level": "beginner",
+          "text": "Are you using the same scoring format, and do you know when the ball is still live?",
+          "fix": "Agree the scoring format before we start",
+          "invert": true,
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "composure",
+      "axis": "mentality",
+      "name": "Composure",
+      "optional": false,
+      "recordType": "Performance behavior",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P104",
+          "text": "Uses a simple preparation cue before the next point in relaxed games."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P105",
+          "text": "Keeps a useful preparation routine after errors in ordinary games."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P106",
+          "text": "Uses a preparation routine and a clear intention at tight scores."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P107",
+          "text": "Keeps deliberate preparation when ahead or behind and adjusts the plan when needed."
+        }
+      },
+      "statements": [
+        {
+          "id": "P104_s1",
+          "level": "D",
+          "text": "I can get ready for the next point without rushing in a relaxed game.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P105_s1",
+          "level": "C",
+          "text": "I can use my next-point routine after an error in an ordinary game.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P106_s1",
+          "level": "B",
+          "text": "I can prepare and choose a clear plan at tight scores.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P107_s1",
+          "level": "A",
+          "text": "I can keep preparing deliberately when I am ahead or behind.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P107_s2",
+          "level": "A",
+          "text": "I can change an unhelpful plan without rushing.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P104_w1",
+          "level": "D",
+          "text": "Does the score make you rush or skip your preparation?",
+          "fix": "Keep my routine when the score is tight",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "bouncing_back",
+      "axis": "mentality",
+      "name": "Bouncing back",
+      "optional": false,
+      "recordType": "Performance behavior",
+      "levels": {
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P108",
+          "text": "Recognizes when an error is affecting the next point and uses a reset cue."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P109",
+          "text": "Resets attention before the next point after an ordinary mistake."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P110",
+          "text": "Uses mistakes as information, changes an unhelpful choice and returns attention to the next point."
+        }
+      },
+      "statements": [
+        {
+          "id": "P108_s1",
+          "level": "C",
+          "text": "I can notice when I am carrying an error into the next point.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P108_s2",
+          "level": "C",
+          "text": "I can use a cue to refocus.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P109_s1",
+          "level": "B",
+          "text": "I can use a reset routine and get ready for the next point after a mistake.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P110_s1",
+          "level": "A",
+          "text": "I can learn from a mistake and choose what to change.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P110_s2",
+          "level": "A",
+          "text": "I can return my attention to the next point.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P108_w1",
+          "level": "C",
+          "text": "Does one mistake lead to several more?",
+          "fix": "Stop one mistake becoming several",
+          "source": "v3"
+        },
+        {
+          "id": "P109_w2",
+          "level": "B",
+          "text": "Does a bad game change how you play the next one?",
+          "fix": "Start each game fresh",
+          "source": "v3"
+        }
+      ]
+    },
+    {
+      "id": "focus",
+      "axis": "mentality",
+      "name": "Focus",
+      "optional": false,
+      "recordType": "Performance behavior",
+      "levels": {
+        "D": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P111",
+          "text": "Returns attention to the ball and ready position after a reminder or brief distraction."
+        },
+        "C": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "P112",
+          "text": "Recognizes a lapse and uses a cue to prepare for the next point in ordinary games."
+        },
+        "B": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-focus-B",
+          "text": "Uses an attention cue at tight scores and after a long rally."
+        },
+        "A": {
+          "master": true,
+          "optional": false,
+          "source": "v3",
+          "recordId": "NEW-focus-A",
+          "text": "Recognizes recurring distractions and adjusts the cue or preparation to stay engaged."
+        }
+      },
+      "statements": [
+        {
+          "id": "P111_s1",
+          "level": "D",
+          "text": "I can bring my attention back to the ball and get ready again.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P112_s1",
+          "level": "C",
+          "text": "I can notice a lapse in concentration and refocus for the next point.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-focus-B_s1",
+          "level": "B",
+          "text": "I can refocus at tight scores and after a long rally.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "NEW-focus-A_s1",
+          "level": "A",
+          "text": "I can notice a recurring distraction and change my preparation to refocus.",
+          "optional": false,
+          "source": "v3"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "P111_w1",
+          "level": "D",
+          "text": "Does your mind wander during points?",
+          "fix": "Keep my mind on the point",
+          "source": "v3"
+        },
+        {
+          "id": "P112_w2",
+          "level": "C",
+          "text": "Do you lose focus after a long rally or a lost point?",
+          "fix": "Refocus after long rallies or lost points",
+          "source": "v3"
+        },
+        {
+          "id": "NEW-focus-B_w3",
+          "level": "B",
+          "text": "Do you miss the next point's preparation after a distraction?",
+          "fix": "Reset and prepare after a distraction",
+          "source": "v3"
         }
       ]
     }

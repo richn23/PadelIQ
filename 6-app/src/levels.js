@@ -38,7 +38,8 @@ export function currentAxisLevels(player) {
   const result = {};
   axes.forEach((a) => {
     // Only skills you've checked yourself move an area. Quiz answers already set the starting areas.
-    const orders = allSkills.filter((s) => s.axis === a.id && checks[s.id] && checks[s.id].from !== 'quiz').map((s) => levelOrder(checks[s.id].level));
+    // Optional shots never count towards an area (having more of them mustn't raise it, missing them mustn't cap it).
+    const orders = allSkills.filter((s) => s.axis === a.id && !s.optional && checks[s.id] && checks[s.id].from !== 'quiz').map((s) => levelOrder(checks[s.id].level));
     result[a.id] = orders.length
       ? levelByOrder(Math.floor(orders.reduce((x, y) => x + y, 0) / orders.length + 0.5)).id
       : player.axisLevels[a.id];
@@ -135,7 +136,8 @@ export function quickScore(skill, claimed, q, ans) {
   const atGood = q.at.filter((st) => good.includes(ans[st.id])).length;
   const atWeak = q.at.filter((st) => ans[st.id] && !good.includes(ans[st.id]));
   const w = q.warning ? ans[q.warning.id] : null;
-  const warnOften = w === 'often';
+  // Most warning questions are bad when 'Often'. A few are worded the other way round (invert).
+  const warnOften = q.warning?.invert ? (w === 'never' || w === 'rarely') : w === 'often';
   const warnSome = w === 'sometimes';
   const stretchGood = q.stretch && good.includes(ans[q.stretch.id]);
   const lower = levelByOrder(Math.max(levelOrder(claimed) - 1, 0)).id;
@@ -149,6 +151,10 @@ export function quickScore(skill, claimed, q, ans) {
     ...atWeak.map((st) => asGoal(st.text)),
     ...(warnOften || warnSome ? [q.warning.fix || q.warning.text] : []),
     ...(outcome === 'solid' && q.stretch ? [asGoal(q.stretch.text)] : []),
+    // Solid and close to the next level: the next thing from that level you weren't asked about.
+    ...(outcome === 'solid_close' && q.stretch
+      ? skill.statements.filter((st) => st.level === q.stretch.level && st.id !== q.stretch.id).slice(0, 1).map((st) => asGoal(st.text))
+      : []),
   ];
   return { outcome, level: outcome === 'lower' ? lower : claimed, suggested: outcome === 'lower' ? lower : claimed, focus };
 }
