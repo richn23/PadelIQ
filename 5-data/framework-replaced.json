@@ -1,0 +1,570 @@
+{
+  "_note": "Padel IQ framework v0.1 (placeholder). Descriptors marked source=richard came from Richard; source=draft are first guesses for coaches to correct. Self-check quiz questions will live in a separate file and point to skill ids.",
+  "axes": [
+    {
+      "id": "attack",
+      "name": "Attack",
+      "short": "Smash, bandeja, víbora, serve"
+    },
+    {
+      "id": "defence",
+      "name": "Defence",
+      "short": "Lobs, glass, returns"
+    },
+    {
+      "id": "movement",
+      "name": "Movement",
+      "short": "Position, recovery, moving as a pair"
+    },
+    {
+      "id": "tactics",
+      "name": "Tactics and teamwork",
+      "short": "Choices, calls, game plan"
+    },
+    {
+      "id": "mentality",
+      "name": "Mentality",
+      "short": "Focus, composure, bouncing back"
+    }
+  ],
+  "levels": [
+    {
+      "id": "beginner",
+      "order": 0,
+      "name": "Beginner",
+      "assessable": true,
+      "description": "Learning the rules and the court. Rarely gets the ball over the net. Everything before D."
+    },
+    {
+      "id": "D",
+      "order": 1,
+      "name": "D",
+      "assessable": true,
+      "description": "Consistent basics: you return reliably, serve in, and keep a simple rally going."
+    },
+    {
+      "id": "C",
+      "order": 2,
+      "name": "C",
+      "assessable": true,
+      "description": "Controlled shots in friendly games: lobs, bandeja, basic glass play."
+    },
+    {
+      "id": "B",
+      "order": 3,
+      "name": "B",
+      "assessable": true,
+      "description": "Reliable in matches: wins points on purpose, handles pressure."
+    },
+    {
+      "id": "A",
+      "order": 4,
+      "name": "A",
+      "assessable": true,
+      "description": "Complete player: tactics, variety, strong play against good opponents."
+    },
+    {
+      "id": "Pro",
+      "order": 5,
+      "name": "Pro",
+      "assessable": false,
+      "description": "Professional level. The top benchmark, not an assessment target for most players."
+    }
+  ],
+  "rules": {
+    "_note": "Draft rules from design chats. Not final.",
+    "levelPass": {
+      "method": "most_of_master_list",
+      "requiredShare": 0.8,
+      "note": "OPEN: all items, or most (placeholder 4 out of 5, no big gaps)."
+    },
+    "axisLevel": "Highest level whose master skills the player passes, worked out per axis.",
+    "overallLevel": "OPEN: not decided. Simple option: where most axes sit. Shown smaller than the pentagon.",
+    "pushingAhead": "A skill is 'pushing ahead' when the player's level is below the skill's first master level. It never raises or lowers their level.",
+    "unratedSkills": "Skills not yet rated are excluded from the calculation. They are not counted as D.",
+    "plusLevels": "OPEN: 'D+' could mean passed D and working through the C list. No minus levels.",
+    "goals": {
+      "defaultMax": 3,
+      "absoluteMax": 4
+    },
+    "postMatch": {
+      "goalCheck": "Current goals only.",
+      "journalPrompts": [
+        "What worked today?",
+        "What didn't?",
+        "One thing to try next match?"
+      ],
+      "changesLevel": false
+    },
+    "checkIn": {
+      "defaultEveryMatches": 5,
+      "minimumEveryMatches": 5,
+      "skillsPerAxisPerCheckIn": "1-2",
+      "pickSkillsBy": [
+        "linked to current goals",
+        "longest since last checked",
+        "mentioned often in journal notes"
+      ],
+      "playerApprovesChanges": true
+    }
+  },
+  "skills": [
+    {
+      "id": "serve",
+      "axis": "attack",
+      "name": "Serve",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "source": "richard",
+          "text": "Learning the serve. Often faults. Just trying to get it in the box."
+        },
+        "D": {
+          "master": true,
+          "source": "richard",
+          "text": "In the right box about 7 or 8 out of 10. Soft and floaty. Not deep, no slice, no aiming at the side glass. The goal is just getting it in."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually in, with some depth. Can aim to a side or the body. Less reliable under pressure."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Reliable first serve with pace or slice. Placement is chosen on purpose and holds up when the score is tight."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Varies pace, spin and direction to set up the next shot. Targets weaknesses on purpose."
+        }
+      }
+    },
+    {
+      "id": "overhead_basic",
+      "axis": "attack",
+      "name": "Basic overhead",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "draft",
+          "text": "Avoids lobs or misjudges them. Pushes the ball back rather than hitting through it."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Gets under most lobs and hits a controlled overhead back, usually deep."
+        }
+      }
+    },
+    {
+      "id": "bandeja",
+      "axis": "attack",
+      "name": "Bandeja",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Can hit a bandeja in a friendly game to hold the net. Depth and direction vary."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Reliable bandeja that keeps opponents back and holds the net, even when rushed."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Chooses between attacking and defensive bandeja depending on the situation."
+        }
+      }
+    },
+    {
+      "id": "vibora",
+      "axis": "attack",
+      "name": "Víbora",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Can use a víbora to add pace and angle when the ball is right for it."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Chooses víbora versus bandeja on purpose and places it under pressure."
+        }
+      }
+    },
+    {
+      "id": "bajada",
+      "axis": "attack",
+      "name": "Bajada",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Can attack a ball coming off the back glass with control."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the bajada to finish points with placement and power."
+        }
+      }
+    },
+    {
+      "id": "return_of_serve",
+      "axis": "defence",
+      "name": "Return of serve",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "source": "richard",
+          "text": "Gets some serves back, but often misses or hits it out."
+        },
+        "D": {
+          "master": true,
+          "source": "richard",
+          "text": "Gets the ball over the net. Soft and floaty. Backhand is weaker."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually a safe, deep return. Backhand is steadier. Starts choosing direction."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Reliable return under pressure. Can choose a low, a lob or an attacking return."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Returns on purpose to win the net and hurts weak serves."
+        }
+      }
+    },
+    {
+      "id": "defensive_lob",
+      "axis": "defence",
+      "name": "Defensive lob",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "draft",
+          "text": "Can get the lob over the net sometimes, but it's often too low or too short. Only works in an easy rally with plenty of time."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually gets a lob over in a friendly game when there is time. Height and depth are hit or miss. Falls apart when rushed or off the glass."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually lands a deep lob in matches, even when rushed. Pushes opponents back and lets you win the net. Mostly holds when the score is tight."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Chooses the lob on purpose: side, height, depth. Works from awkward positions and at big points against strong opponents."
+        }
+      }
+    },
+    {
+      "id": "back_glass_return",
+      "axis": "defence",
+      "name": "Back-glass return",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "richard",
+          "text": "Rarely plays off the glass, and often doesn't succeed when it does."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Can return most slow or medium balls off the back glass. Struggles with fast or awkward rebounds."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Reads rebounds early and returns most balls off the back glass with control."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the glass to buy time and turn defence into attack."
+        }
+      }
+    },
+    {
+      "id": "side_glass_return",
+      "axis": "defence",
+      "name": "Side-glass return",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Can return simple balls off the side glass. Often late on faster ones."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Reads side-glass angles and returns with control most of the time."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Handles double-glass balls and awkward angles under pressure."
+        }
+      }
+    },
+    {
+      "id": "ready_position",
+      "axis": "movement",
+      "name": "Ready position and split step",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "draft",
+          "text": "Reacts late. Often flat-footed when the ball arrives."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually ready before the opponent hits. Split step is inconsistent."
+        }
+      }
+    },
+    {
+      "id": "net_play",
+      "axis": "movement",
+      "name": "Net play",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "richard",
+          "text": "Rarely takes the net. Stays at the back after serving and returning. When at the net, volleys are a block that often goes into the net or too high."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Takes the net when the chance is clear and holds it with steady volleys."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Wins and holds the net on purpose. Volleys have direction, attacking or defensive as needed."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Dominates the net. Redirects, finishes and recovers position quickly."
+        }
+      }
+    },
+    {
+      "id": "recovery",
+      "axis": "movement",
+      "name": "Recovery after a shot",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Sometimes gets back into position after a shot. Often caught out of place."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually recovers to a good position before the next ball."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Recovers automatically, even after being pulled wide."
+        }
+      }
+    },
+    {
+      "id": "moving_as_pair",
+      "axis": "movement",
+      "name": "Moving as a pair",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Aware of partner, but often both end up in the same spot or leave gaps."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Moves forward and back with partner most of the time."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Moves as one unit and covers the middle without thinking."
+        }
+      }
+    },
+    {
+      "id": "shot_choice",
+      "axis": "tactics",
+      "name": "Choosing the shot",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "draft",
+          "text": "Mostly just returns the ball. Knows the scoring but not yet when to attack or defend."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Starts to choose between safe and attacking shots. Often tries too much too soon."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually picks the right shot for the situation."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Chooses shots to set up the next one and targets weaknesses."
+        }
+      }
+    },
+    {
+      "id": "partner_communication",
+      "axis": "tactics",
+      "name": "Partner communication",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Calls 'mine' or 'leave' sometimes. Middle balls often cause confusion."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Clear calls and agreed roles, including the middle."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Adjusts tactics with partner during the match."
+        }
+      }
+    },
+    {
+      "id": "building_points",
+      "axis": "tactics",
+      "name": "Building a point",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Builds pressure over several shots instead of going for winners too early."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Changes plan when the opponent adapts."
+        }
+      }
+    },
+    {
+      "id": "composure",
+      "axis": "mentality",
+      "name": "Composure",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "draft",
+          "text": "Gets frustrated after errors. Focus drops during long rallies."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Stays calm in relaxed games. Tight scores bring rushed shots."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Usually calm at big points."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Plays the same whether ahead or behind."
+        }
+      }
+    },
+    {
+      "id": "bouncing_back",
+      "axis": "mentality",
+      "name": "Bouncing back after mistakes",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Takes a few points to settle after a mistake."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Resets quickly after errors."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Treats errors as information and moves on right away."
+        }
+      }
+    },
+    {
+      "id": "focus",
+      "axis": "mentality",
+      "name": "Focus",
+      "levels": {
+        "D": {
+          "master": true,
+          "source": "draft",
+          "text": "Attention drifts, especially after a long rally or a lost point."
+        },
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Focused for most of the match, with dips when tired."
+        }
+      }
+    },
+    {
+      "id": "groundstrokes",
+      "axis": "defence",
+      "name": "Forehand and backhand",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "source": "richard",
+          "text": "Gets the ball back over the net now and then. The walls are still confusing."
+        }
+      }
+    },
+    {
+      "id": "positioning",
+      "axis": "movement",
+      "name": "Knowing where to stand",
+      "levels": {
+        "beginner": {
+          "master": true,
+          "source": "richard",
+          "text": "Not sure where to stand yet: back or net, left or right."
+        }
+      }
+    }
+  ]
+}

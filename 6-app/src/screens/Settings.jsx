@@ -120,6 +120,13 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
         </div>
         <p className="soft">Redoing the quiz keeps your matches, goals and skill checks.</p>
       </section>
+      <section className="panel">
+        <p className="eyebrow">Admin</p>
+        <p className="soft">See and edit every skill, level and statement. Best on a laptop, for reviewing with a coach.</p>
+        <div className="session-actions" style={{ marginTop: 10 }}>
+          <a className="mini" href="?admin">Open the skills framework</a>
+        </div>
+      </section>
       {msg && <p className="soft center">{msg}</p>}
     </main>
   );

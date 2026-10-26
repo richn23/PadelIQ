@@ -45,7 +45,8 @@
       "firstLevel": "beginner",
       "what": "Bounce the ball and serve at or below waist height into the diagonal service box, following the serving rules.",
       "when": "To start the point. Depth means deeper inside the service box.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "volley_forehand",
@@ -59,7 +60,8 @@
       "firstLevel": "D",
       "what": "A forehand hit before the ball bounces, usually at the net.",
       "when": "When you're at the net and the ball comes to you in the air.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "volley_backhand",
@@ -73,7 +75,8 @@
       "firstLevel": "D",
       "what": "A backhand hit before the ball bounces, usually at the net.",
       "when": "When you're at the net and the ball comes to you in the air.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "block_volley",
@@ -115,7 +118,8 @@
       "firstLevel": "D",
       "what": "Hitting a high ball above your head with control rather than power.",
       "when": "When a lob is short enough to reach without running back.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "bandeja",
@@ -269,13 +273,14 @@
       "firstLevel": "beginner",
       "what": "Getting the serve back into play.",
       "when": "Every point you receive. Low and to the middle is the safe default.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "groundstroke_forehand",
-      "name": "Forehand groundstroke",
+      "name": "Forehand",
       "es": "Derecha",
-      "aka": "drive",
+      "aka": "drive, Forehand groundstroke",
       "group": "defensive",
       "area": "defence",
       "checked": true,
@@ -283,13 +288,14 @@
       "firstLevel": "beginner",
       "what": "A forehand shot after the bounce, before any wall rebound.",
       "when": "Most balls at the back. At first, just get it back over the net.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "groundstroke_backhand",
-      "name": "Backhand groundstroke",
+      "name": "Backhand",
       "es": "Revés",
-      "aka": "drive",
+      "aka": "drive, Backhand groundstroke",
       "group": "defensive",
       "area": "defence",
       "checked": true,
@@ -297,7 +303,8 @@
       "firstLevel": "beginner",
       "what": "A backhand shot after the bounce, before any wall rebound.",
       "when": "Most balls at the back. At first, just get it back over the net.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "defensive_lob",
@@ -311,7 +318,8 @@
       "firstLevel": "D",
       "what": "A high, deep ball over the net players.",
       "when": "To push opponents back and win the net back.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "back_glass_return",
@@ -325,7 +333,8 @@
       "firstLevel": "D",
       "what": "Letting the ball hit the back wall, then playing it as it comes off.",
       "when": "When a ball is going to reach the back glass.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "side_glass_return",
@@ -507,7 +516,8 @@
       "firstLevel": "beginner",
       "what": "Where to be on court: back or net, left or right, and who covers what.",
       "when": "All the time. The first thing new players learn.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "ready_position",
@@ -535,7 +545,8 @@
       "firstLevel": "D",
       "what": "Moving up to the net together and staying there.",
       "when": "After a good lob, chiquita or return.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "recovery",
@@ -577,7 +588,8 @@
       "firstLevel": "D",
       "what": "Picking the right shot for the situation.",
       "when": "Every shot. Placement over power.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "partner_communication",
@@ -609,9 +621,9 @@
     },
     {
       "id": "middle_ball",
-      "name": "Middle ball responsibility",
+      "name": "The middle ball",
       "es": "Responsabilidad del centro",
-      "aka": "",
+      "aka": "Middle ball responsibility",
       "group": "tactics",
       "area": "tactics",
       "checked": true,
@@ -647,7 +659,8 @@
       "firstLevel": "D",
       "what": "Prepare deliberately for the next point, including at tight scores.",
       "when": "Before the next point, especially when the score feels important.",
-      "source": "v3"
+      "source": "v3",
+      "key": true
     },
     {
       "id": "bouncing_back",

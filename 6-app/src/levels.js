@@ -1,4 +1,4 @@
-import { levels, axes, allSkills, onboarding, rules } from './data.js';
+import { levels, axes, allSkills, rules } from './data.js';
 
 const byId = Object.fromEntries(levels.map((l) => [l.id.toLowerCase(), l]));
 const find = (id) => (id ? byId[String(id).toLowerCase()] : undefined);
@@ -17,16 +17,10 @@ export function overallLevel(axisLevels) {
   return levelByOrder(mid).id;
 }
 
-// Skill checks: your saved answers, plus quiz answers for skills you haven't checked yourself.
+// Skill checks: your own checks, plus starting points from the quiz for skills you haven't checked yourself.
 export function skillChecks(player) {
   const out = {};
-  const answers = player.answers || {};
-  onboarding.questions.forEach((q) => {
-    if (typeof answers[q.id] === 'number') {
-      const id = onboarding.answerLevels[Math.min(answers[q.id], onboarding.answerLevels.length - 2)];
-      out[q.skill] = { level: id, from: 'quiz' };
-    }
-  });
+  Object.entries(player.quizChecks || {}).forEach(([k, v]) => { out[k] = { ...v, from: 'quiz' }; });
   Object.entries(player.skillChecks || {}).forEach(([k, v]) => { out[k] = { ...v, from: 'you' }; });
   return out;
 }

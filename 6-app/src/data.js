@@ -27,4 +27,22 @@ export const allSkills = glossary.items.map((g) => ({
   optional: g.optional ?? skillById[g.id]?.optional ?? false,
 }));
 export const allSkillById = Object.fromEntries(allSkills.map((s) => [s.id, s]));
-export { default as goalDiagnosis } from '../../5-data/goal-diagnosis.json';
+import goalDiagnosis from '../../5-data/goal-diagnosis.json';
+export { goalDiagnosis };
+
+// The goal conversation's options for a skill: its own shot type first, else its group.
+const typeOf = Object.fromEntries(Object.values(goalDiagnosis.skillTypes || {}).flatMap((t) => t.skills.map((id) => [id, t])));
+const NON_SHOT = ['movement', 'tactics', 'mentality'];
+export function goalOptions(skill) {
+  const t = typeOf[skill.id];
+  const gd = goalDiagnosis;
+  return {
+    problems: (t ? t.problems : gd.problemsByGroup[skill.group] || gd.problemsByGroup.attacking).filter((p) => !p.only || p.only.includes(skill.id)),
+    when: t ? t.when : NON_SHOT.includes(skill.group) ? gd.whenNonShot : gd.when,
+  };
+}
+// The label for a saved "when" answer, from any list.
+export function whenLabel(skill, id) {
+  const all = [...goalOptions(skill).when, ...goalDiagnosis.when, ...goalDiagnosis.whenNonShot];
+  return all.find((w) => w.id === id)?.label;
+}

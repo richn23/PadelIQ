@@ -22,7 +22,7 @@ const message = {
   lower: (l, _n, lower) => `Your answers sound more like ${lower} for now.`,
 };
 
-// You say your level, then 4 quick questions confirm it.
+// You say your level, then a few quick questions confirm it.
 export default function QuickCheck({ skill, startLevel, onSave, onCancel, onDetail, onGoal }) {
   const [claim, setClaim] = useState(startLevel && startLevel !== 'Pro' ? startLevel : null);
   const [step, setStep] = useState('claim');
@@ -40,7 +40,7 @@ export default function QuickCheck({ skill, startLevel, onSave, onCancel, onDeta
           {options.map((l) => <button key={l.id} className={claim === l.id ? 'on' : ''} onClick={() => setClaim(l.id)}>{l.name}</button>)}
         </div>
         {claim && <p className="soft hint">{skill.levels[claim]?.text || levels.find((l) => l.id === claim)?.description}</p>}
-        <button className="btn" disabled={!claim} onClick={() => setStep(items.length ? 'ask' : 'result')}>Check it: 4 quick questions</button>
+        <button className="btn" disabled={!claim} onClick={() => setStep(items.length ? 'ask' : 'result')}>{items.length ? `Check it: ${items.length} quick question${items.length === 1 ? '' : 's'}` : 'Check it'}</button>
         <button className="btn ghost" disabled={!claim} onClick={() => onSave({ level: claim, claimed: claim, outcome: 'self', focus: [], answers: {}, mode: 'quick', setByYou: true })}>Skip, just set {claim ? levelName(claim) : 'it'}</button>
         <button className="ans skip" onClick={onCancel}>Cancel</button>
       </div>

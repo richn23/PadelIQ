@@ -1,5 +1,5 @@
 {
-  "_note": "Goal diagnosis (draft v0.1). Before making a goal, the coach asks what's wrong and when. Each problem has a kind (technique, decision, position, pressure) for the coach, and a suggested goal the player can edit.",
+  "_note": "Goal diagnosis (draft v0.2). Before making a goal, the coach asks what's wrong and when. skillTypes gives each kind of shot its own problems and 'when' list; problemsByGroup is the fallback (specialist shots, movement, tactics, mentality). Each problem has a kind (technique, decision, position, pressure) for the coach, and a suggested goal the player can edit.",
   "problemsByGroup": {
     "attacking": [
       {
@@ -332,32 +332,868 @@
   },
   "goalOverrides": {
     "vibora": {
-      "sits_up": "Keep it low into the side glass",
-      "long": "Keep it in, into the side glass"
+      "short": "Keep it low into the side glass",
+      "too_hard": "Control first, aimed low into the side glass"
     },
-    "bandeja": {
-      "sits_up": "Keep it deep and low off the glass"
+    "overhead_basic": {
+      "short": "Land it deep and steady"
     },
-    "smash": {
-      "sits_up": "Place it so it doesn't come back easily"
+    "smash_x3": {
+      "not_out": "More power and angle to get it out the side"
+    },
+    "smash_x4": {
+      "not_out": "Enough power and height to get it out the back"
     }
   },
-  "whenOverrides": {
-    "skills": [
-      "overhead_basic",
-      "bandeja",
-      "vibora",
-      "smash",
-      "gancho",
-      "rulo",
-      "smash_x3",
-      "smash_x4"
-    ],
-    "replace": {
-      "fast": {
-        "id": "deep_lobs",
-        "label": "On deep lobs"
-      }
+  "skillTypes": {
+    "serve": {
+      "skills": [
+        "serve",
+        "second_serve"
+      ],
+      "problems": [
+        {
+          "id": "double",
+          "label": "Double faults",
+          "kind": "technique",
+          "goal": "Fewer double faults"
+        },
+        {
+          "id": "short",
+          "label": "Lands short, so they attack it",
+          "kind": "technique",
+          "goal": "Serve deep, near the back glass"
+        },
+        {
+          "id": "predictable",
+          "label": "Always the same place",
+          "kind": "decision",
+          "goal": "Mix it up: body, side glass and middle"
+        },
+        {
+          "id": "bounces_up",
+          "label": "Bounces up high off the glass",
+          "kind": "technique",
+          "goal": "Add slice so it stays low off the glass"
+        },
+        {
+          "id": "waist",
+          "label": "I hit it above the waist",
+          "kind": "technique",
+          "goal": "Hit it below the waist every time"
+        },
+        {
+          "id": "tense",
+          "label": "Nerves at tight scores",
+          "kind": "pressure",
+          "goal": "Same routine before every serve"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "second_serve",
+          "label": "On second serves"
+        },
+        {
+          "id": "pace",
+          "label": "When I try to add pace"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "late_match",
+          "label": "Late in the match"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "control_overhead": {
+      "skills": [
+        "overhead_basic",
+        "bandeja",
+        "vibora"
+      ],
+      "problems": [
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "Hit the ball in front of me, with the arm up high"
+        },
+        {
+          "id": "too_hard",
+          "label": "Too hard, it comes back off the glass",
+          "kind": "technique",
+          "goal": "Control first, not power"
+        },
+        {
+          "id": "short",
+          "label": "Lands short, so they attack it",
+          "kind": "technique",
+          "goal": "Land it deep, so they stay back"
+        },
+        {
+          "id": "pushed_back",
+          "label": "I lose the net after it",
+          "kind": "position",
+          "goal": "Stay at the net after my overhead"
+        },
+        {
+          "id": "late",
+          "label": "I'm late getting under the lob",
+          "kind": "position",
+          "goal": "Turn sideways early and move back"
+        },
+        {
+          "id": "let_go",
+          "label": "I let lobs go over me",
+          "kind": "decision",
+          "goal": "Take more lobs in the air"
+        },
+        {
+          "id": "tense",
+          "label": "I tense up when I play it",
+          "kind": "pressure",
+          "goal": "Stay loose and play it calmly"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "deep_lobs",
+          "label": "On deep lobs"
+        },
+        {
+          "id": "moving_back",
+          "label": "When I'm moving back"
+        },
+        {
+          "id": "backhand_side",
+          "label": "On the backhand side"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "smash": {
+      "skills": [
+        "smash",
+        "gancho",
+        "rulo",
+        "smash_x3",
+        "smash_x4"
+      ],
+      "problems": [
+        {
+          "id": "wrong_ball",
+          "label": "I smash balls I shouldn't",
+          "kind": "decision",
+          "goal": "Only smash the right ball, bandeja the rest"
+        },
+        {
+          "id": "comes_back",
+          "label": "It comes back too easily",
+          "kind": "technique",
+          "goal": "Place it, don't just hit it hard"
+        },
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "Hit up and through the ball, not down"
+        },
+        {
+          "id": "not_out",
+          "label": "It doesn't bounce out of the court",
+          "kind": "technique",
+          "goal": "More power and the right angle to get it out"
+        },
+        {
+          "id": "balance",
+          "label": "I'm off balance",
+          "kind": "position",
+          "goal": "Get set under the ball before I hit"
+        },
+        {
+          "id": "recover",
+          "label": "I get caught after it",
+          "kind": "position",
+          "goal": "Get back to the net right after smashing"
+        },
+        {
+          "id": "tense",
+          "label": "I tense up when I play it",
+          "kind": "pressure",
+          "goal": "Stay loose and play it calmly"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "deep_lobs",
+          "label": "On deep lobs"
+        },
+        {
+          "id": "short_lobs",
+          "label": "On short, easy lobs"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "late_match",
+          "label": "Late in the match"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "bajada": {
+      "skills": [
+        "bajada"
+      ],
+      "problems": [
+        {
+          "id": "misread",
+          "label": "I misread the ball off the glass",
+          "kind": "position",
+          "goal": "Read the rebound earlier"
+        },
+        {
+          "id": "late",
+          "label": "I'm late or too close to it",
+          "kind": "position",
+          "goal": "Give it space and get set early"
+        },
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "Hit through the ball with more margin"
+        },
+        {
+          "id": "too_hard",
+          "label": "I force it and miss",
+          "kind": "decision",
+          "goal": "Control first, then add pace"
+        },
+        {
+          "id": "sits_up",
+          "label": "It sits up for them",
+          "kind": "technique",
+          "goal": "Keep it low and deep"
+        },
+        {
+          "id": "avoid",
+          "label": "I don't try it",
+          "kind": "pressure",
+          "goal": "Try it on easy balls in friendly games"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "fast_rebounds",
+          "label": "On fast rebounds"
+        },
+        {
+          "id": "high_balls",
+          "label": "On high balls off the glass"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "volley": {
+      "skills": [
+        "volley_forehand",
+        "volley_backhand",
+        "block_volley",
+        "drop_volley",
+        "half_volley"
+      ],
+      "problems": [
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "Firm wrist, open face, hit through the ball"
+        },
+        {
+          "id": "long",
+          "label": "Goes long or hits the back glass",
+          "kind": "technique",
+          "goal": "Shorter swing, more control"
+        },
+        {
+          "id": "sits_up",
+          "label": "Pops up for them to attack",
+          "kind": "technique",
+          "goal": "Keep it low, at their feet"
+        },
+        {
+          "id": "middle",
+          "label": "Always goes to the same place",
+          "kind": "decision",
+          "goal": "Aim for the feet or the gaps"
+        },
+        {
+          "id": "swing",
+          "label": "I swing at it like tennis",
+          "kind": "technique",
+          "goal": "A short punch, no big swing"
+        },
+        {
+          "id": "too_deep",
+          "label": "My drop volley is too deep",
+          "kind": "technique",
+          "goal": "Softer hands, so it dies after the bounce",
+          "only": [
+            "drop_volley"
+          ]
+        },
+        {
+          "id": "slow",
+          "label": "I'm too slow to react",
+          "kind": "position",
+          "goal": "Ready position, paddle up"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "fast",
+          "label": "On fast balls"
+        },
+        {
+          "id": "low",
+          "label": "On low balls at my feet"
+        },
+        {
+          "id": "body",
+          "label": "When they hit at my body"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "touch": {
+      "skills": [
+        "drop_shot",
+        "chiquita"
+      ],
+      "problems": [
+        {
+          "id": "too_deep",
+          "label": "Too deep, they reach it easily",
+          "kind": "technique",
+          "goal": "Softer hands, so it stays short and low"
+        },
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "A little more margin over the net"
+        },
+        {
+          "id": "sits_up",
+          "label": "It sits up for them",
+          "kind": "technique",
+          "goal": "Keep it low, at their feet"
+        },
+        {
+          "id": "wrong_time",
+          "label": "I play it at the wrong time",
+          "kind": "decision",
+          "goal": "Only when they're in the wrong place"
+        },
+        {
+          "id": "seen",
+          "label": "They see it coming",
+          "kind": "decision",
+          "goal": "Disguise it: same set-up as a normal shot"
+        },
+        {
+          "id": "no_follow",
+          "label": "I don't follow it up",
+          "kind": "position",
+          "goal": "Move forward after it"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "they_net",
+          "label": "When they're at the net"
+        },
+        {
+          "id": "they_deep",
+          "label": "When they're deep"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "return": {
+      "skills": [
+        "return_of_serve"
+      ],
+      "problems": [
+        {
+          "id": "miss",
+          "label": "I miss too many",
+          "kind": "technique",
+          "goal": "Get most returns back, safe and steady"
+        },
+        {
+          "id": "high",
+          "label": "Goes high, so the net player attacks it",
+          "kind": "technique",
+          "goal": "Keep it low, away from the net player"
+        },
+        {
+          "id": "too_much",
+          "label": "I try to do too much with it",
+          "kind": "decision",
+          "goal": "Safe first, placement second"
+        },
+        {
+          "id": "side_glass",
+          "label": "Serves off the side glass catch me out",
+          "kind": "position",
+          "goal": "Let it come off the side glass and stay calm"
+        },
+        {
+          "id": "position",
+          "label": "I stand in the wrong place",
+          "kind": "position",
+          "goal": "Stand in the right place to return"
+        },
+        {
+          "id": "same",
+          "label": "It always goes to the same place",
+          "kind": "decision",
+          "goal": "Mix it: low cross-court, middle or lob"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "first_serve",
+          "label": "On first serves"
+        },
+        {
+          "id": "side_glass_serve",
+          "label": "On serves off the side glass"
+        },
+        {
+          "id": "slice_serve",
+          "label": "On slice serves"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "ground": {
+      "skills": [
+        "groundstroke_forehand",
+        "groundstroke_backhand"
+      ],
+      "problems": [
+        {
+          "id": "swing",
+          "label": "I use a big tennis swing",
+          "kind": "technique",
+          "goal": "Shorter swing, more control"
+        },
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "More margin over the net"
+        },
+        {
+          "id": "too_hard",
+          "label": "I hit too hard from the back",
+          "kind": "decision",
+          "goal": "Play with control from the back, attack from the net"
+        },
+        {
+          "id": "sits_up",
+          "label": "It sits up for the net players",
+          "kind": "technique",
+          "goal": "Keep it low, at the net players' feet"
+        },
+        {
+          "id": "backhand",
+          "label": "My backhand is weak",
+          "kind": "technique",
+          "goal": "A steadier backhand"
+        },
+        {
+          "id": "late",
+          "label": "I'm late on it",
+          "kind": "position",
+          "goal": "Get set early, side on"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "fast",
+          "label": "On fast balls"
+        },
+        {
+          "id": "backhand_side",
+          "label": "On the backhand side"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "lob": {
+      "skills": [
+        "defensive_lob",
+        "attacking_lob"
+      ],
+      "problems": [
+        {
+          "id": "short",
+          "label": "Too short, they smash it",
+          "kind": "technique",
+          "goal": "Lob higher and deeper"
+        },
+        {
+          "id": "long",
+          "label": "Goes out or too long",
+          "kind": "technique",
+          "goal": "Lob with control, inside the back glass"
+        },
+        {
+          "id": "predictable",
+          "label": "They see it coming",
+          "kind": "decision",
+          "goal": "Disguise it and pick the right moment"
+        },
+        {
+          "id": "no_follow",
+          "label": "I don't move up after a good lob",
+          "kind": "position",
+          "goal": "After a good lob, move up to the net"
+        },
+        {
+          "id": "wrong_target",
+          "label": "I lob to the wrong place",
+          "kind": "decision",
+          "goal": "Lob over the weaker overhead, or down the middle"
+        },
+        {
+          "id": "avoid",
+          "label": "I don't lob enough",
+          "kind": "decision",
+          "goal": "Lob more instead of hitting flat at the net"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "off_glass",
+          "label": "From the back glass"
+        },
+        {
+          "id": "they_close",
+          "label": "When they're close to the net"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "glass": {
+      "skills": [
+        "back_glass_return",
+        "side_glass_return",
+        "double_glass",
+        "contrapared",
+        "fence_rebound"
+      ],
+      "problems": [
+        {
+          "id": "too_early",
+          "label": "I hit it before it reaches the glass",
+          "kind": "decision",
+          "goal": "Let it come off the glass more"
+        },
+        {
+          "id": "too_close",
+          "label": "I stand too close to the glass",
+          "kind": "position",
+          "goal": "Give the glass space and step away"
+        },
+        {
+          "id": "misread",
+          "label": "I misread the bounce",
+          "kind": "position",
+          "goal": "Read the rebound earlier"
+        },
+        {
+          "id": "sits_up",
+          "label": "My return is short or sits up",
+          "kind": "technique",
+          "goal": "Get it back deep, or lob"
+        },
+        {
+          "id": "forcing",
+          "label": "I try to hit it too hard",
+          "kind": "decision",
+          "goal": "Play it back safe"
+        },
+        {
+          "id": "panic",
+          "label": "I panic on fast ones",
+          "kind": "pressure",
+          "goal": "Stay calm, turn and let it come"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "fast_rebounds",
+          "label": "On fast rebounds"
+        },
+        {
+          "id": "high_balls",
+          "label": "On high balls off the glass"
+        },
+        {
+          "id": "corner",
+          "label": "In the corner (two walls)"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "smash_defence": {
+      "skills": [
+        "smash_defence"
+      ],
+      "problems": [
+        {
+          "id": "too_close",
+          "label": "I stand too close",
+          "kind": "position",
+          "goal": "Stand deeper and let it come off the glass"
+        },
+        {
+          "id": "out",
+          "label": "Smashes out of the court catch me out",
+          "kind": "position",
+          "goal": "Watch for smashes going out the side or back"
+        },
+        {
+          "id": "sits_up",
+          "label": "My defence sits up for another smash",
+          "kind": "technique",
+          "goal": "Lob it back high and deep"
+        },
+        {
+          "id": "panic",
+          "label": "I panic and rush it",
+          "kind": "pressure",
+          "goal": "Stay calm, the glass gives me time"
+        },
+        {
+          "id": "partner",
+          "label": "My partner and I get split up",
+          "kind": "position",
+          "goal": "Move back together with my partner"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "hard_smash",
+          "label": "On hard smashes"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
+    },
+    "passing": {
+      "skills": [
+        "passing_shot"
+      ],
+      "problems": [
+        {
+          "id": "reached",
+          "label": "The net player reaches it",
+          "kind": "decision",
+          "goal": "Only go for it when there's a real gap"
+        },
+        {
+          "id": "net",
+          "label": "Goes into the net",
+          "kind": "technique",
+          "goal": "More margin over the net"
+        },
+        {
+          "id": "out",
+          "label": "Goes out",
+          "kind": "technique",
+          "goal": "Aim inside the lines, not at them"
+        },
+        {
+          "id": "wrong_time",
+          "label": "I go for it too often",
+          "kind": "decision",
+          "goal": "Lob or play safe more, pass less"
+        },
+        {
+          "id": "seen",
+          "label": "They see it coming",
+          "kind": "decision",
+          "goal": "Disguise it: lob and pass from the same set-up"
+        }
+      ],
+      "when": [
+        {
+          "id": "always",
+          "label": "Most of the time"
+        },
+        {
+          "id": "they_close",
+          "label": "When they're close to the net"
+        },
+        {
+          "id": "pressure",
+          "label": "Under pressure or tight scores"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure"
+        }
+      ]
     }
-  }
+  },
+  "whenNonShot": [
+    {
+      "id": "always",
+      "label": "Most of the time"
+    },
+    {
+      "id": "pressure",
+      "label": "Under pressure or tight scores"
+    },
+    {
+      "id": "late_match",
+      "label": "Late in the match"
+    },
+    {
+      "id": "stronger",
+      "label": "Against stronger players"
+    },
+    {
+      "id": "new_partner",
+      "label": "With a new partner"
+    },
+    {
+      "id": "unsure",
+      "label": "Not sure"
+    }
+  ]
 }

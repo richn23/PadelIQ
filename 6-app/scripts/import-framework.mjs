@@ -46,6 +46,8 @@ const IDS = {
   'Moving as a pair': 'moving_as_pair', 'Shot choice': 'shot_choice', 'Talking to your partner': 'partner_communication',
   'Building points': 'building_points', 'Middle ball responsibility': 'middle_ball', 'Rules and scoring': 'rules_scoring',
   'Composure': 'composure', 'Bouncing back': 'bouncing_back', 'Focus': 'focus',
+  // Friendlier names used in the app (the old name stays in "Also called")
+  'Forehand': 'groundstroke_forehand', 'Backhand': 'groundstroke_backhand', 'The middle ball': 'middle_ball',
 };
 const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 const AREA = { 'Attack': 'attack', 'Defence': 'defence', 'Movement': 'movement', 'Tactics and teamwork': 'tactics', 'Mentality': 'mentality' };
@@ -64,6 +66,7 @@ const fixes = JSON.parse(read('5-data/warning-fixes.json'));
 const framework = JSON.parse(read('5-data/framework.json'));
 const glossary = JSON.parse(read('5-data/skills-glossary.json'));
 
+const first0 = (rs) => rs[0];
 const bySkill = new Map();
 rows.forEach((r) => { if (!bySkill.has(r.Skill)) bySkill.set(r.Skill, []); bySkill.get(r.Skill).push(r); });
 
@@ -71,7 +74,7 @@ const skills = [];
 const items = [];
 const missingFix = new Set();
 for (const [name, rs] of bySkill) {
-  const id = IDS[name] || slug(name);
+  const id = first0(rs)['App ID'] || IDS[name] || slug(name);
   const first = rs[0];
   const area = AREA[first.Area];
   if (!area) throw new Error(`Unknown area "${first.Area}" for ${name}`);
@@ -102,6 +105,8 @@ for (const [name, rs] of bySkill) {
     id, name, es: first.Spanish, aka: first['Also called'], group, area,
     checked: leveled.length > 0 && statements.length > 0,
     optional: optionalSkill, firstLevel, what: first.Definition, when: first['When to use it'], source: 'v3',
+    // "Quick check" = Yes: asked in the short version of the starting quiz.
+    ...(rs.some((r) => r['Quick check'] === 'Yes') ? { key: true } : {}),
   });
 }
 

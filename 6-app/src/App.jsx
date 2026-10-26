@@ -12,7 +12,7 @@ import TabBar from './components/TabBar.jsx';
 import TopBar from './components/TopBar.jsx';
 import CoachButton from './components/CoachButton.jsx';
 import { pickTheme, applyTheme } from './theme.js';
-import { loadPlayer, savePlayer, clearPlayer } from './store.js';
+import { loadPlayer, savePlayer, clearPlayer, migratePlayer } from './store.js';
 import { player as samplePlayer } from './data.js';
 import { shiftAreas } from './levels.js';
 
@@ -39,7 +39,7 @@ export default function App() {
   const [tapCount, setTapCount] = useState(0); // tapping a tab again goes back to its start
   const [intent, setIntent] = useState(null); // e.g. open a session's plan, or Skills on 'Work on next'
   const go = (id, opts = null) => { setIntent({ ...(opts || {}), fresh: true }); setTapCount((n) => n + 1); setScreen(id); };
-  const [player, setPlayer] = useState(() => (params.has('demo') ? samplePlayer : loadPlayer()));
+  const [player, setPlayer] = useState(() => (params.has('demo') ? migratePlayer(samplePlayer) : loadPlayer()));
 
   useEffect(() => {
     applyTheme(pickTheme());
@@ -63,11 +63,13 @@ export default function App() {
       name: result.name || old.name || 'Player',
       provisional: true,
       level: result.level,
-      levelSetByPlayer: false,
+      levelSetByPlayer: !!result.setByPlayer,
       axisLevels: result.axisLevels, // already moved to match a level you picked
       about: result.about,
       extra: result.extra,
       answers: result.answers,
+      quizChecks: result.quizChecks || {},
+      quiz: result.quiz,
       goals: old.goals || [],
       sessions: old.sessions || [],
       skillChecks: old.skillChecks || {},

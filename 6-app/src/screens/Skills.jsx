@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
-import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd } from '../data.js';
+import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd, goalOptions } from '../data.js';
 import think from '../assets/mascot-think.png';
 import StatementCheck from '../components/StatementCheck.jsx';
 import QuickCheck from '../components/QuickCheck.jsx';
 import CoachChat from '../components/CoachChat.jsx';
+import { Checklist, rowsAt, key, quizChecks } from '../components/LevelChecklist.jsx';
 import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus, scoreSkill } from '../levels.js';
 
 const views = [
@@ -20,6 +21,14 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
   const axisLevels = currentAxisLevels(player);
   const level = currentLevel(player);
 
+  // Skills at your level that nobody has checked yet (e.g. after the quick check).
+  const toCheck = rowsAt(level, (s) => !checks[s.id]);
+  const [checkingRest, setCheckingRest] = useState(false);
+  if (checkingRest) {
+    return <CheckRest level={level} list={toCheck} onCancel={() => setCheckingRest(false)}
+      onSave={(add) => { updatePlayer((p) => ({ ...p, quizChecks: { ...(p.quizChecks || {}), ...add } })); setCheckingRest(false); }} />;
+  }
+
   if (open) {
     return <SkillPage skill={allSkillById[open]} check={checks[open]} player={player} updatePlayer={updatePlayer} onBack={() => setOpen(null)} />;
   }
@@ -31,9 +40,37 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
           <button key={v.id} role="tab" aria-selected={view === v.id} className={view === v.id ? 'on' : ''} onClick={() => setView(v.id)}>{v.label}</button>
         ))}
       </div>
+      {view === 'have' && toCheck.length > 0 && (
+        <section className="panel rest-card">
+          <p className="eyebrow">Finish your check</p>
+          <p className="insight">{toCheck.length} {levelName(level)} skill{toCheck.length === 1 ? '' : 's'} not checked yet.</p>
+          <p className="soft">Do them now or a few at a time. It makes your profile and suggestions more accurate.</p>
+          <button className="btn" onClick={() => setCheckingRest(true)}>Check the rest</button>
+        </section>
+      )}
       {view === 'have' && <Have axisLevels={axisLevels} level={level} checks={checks} onOpen={setOpen} />}
       {view === 'next' && <Next level={level} checks={checks} onOpen={setOpen} />}
       {view === 'explore' && <Explore onOpen={setOpen} />}
+    </main>
+  );
+}
+
+// "Check the rest": the same checklist as the quiz, for the skills still to do. Save any time.
+function CheckRest({ level, list, onSave, onCancel }) {
+  const [ans, setAns] = useState({});
+  const ids = new Set(list.map((s) => s.id));
+  const answered = list.filter((s) => ans[key(s, level)]);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
+    <main className="page ob-like">
+      <button className="back" onClick={onCancel}>‹ Skills</button>
+      <p className="insight">Here's what a {levelName(level)} player can do. How about you?</p>
+      <p className="soft">Think about your normal games, not your best day. Answer as many as you like, then save.</p>
+      <Checklist levelId={level} ans={ans} setAns={setAns} pick={(s) => ids.has(s.id)} showEarlier={false} />
+      <button className="btn" disabled={!answered.length} onClick={() => onSave(quizChecks(level, ans, (s) => answered.some((a) => a.id === s.id)))}>
+        {answered.length ? `Save ${answered.length} answer${answered.length === 1 ? '' : 's'}` : 'Answer one to save'}
+      </button>
+      <button className="ans skip" onClick={onCancel}>Cancel</button>
     </main>
   );
 }
@@ -87,16 +124,19 @@ function Next({ level, checks, onOpen }) {
   const [all, setAll] = useState(false);
   const now = levelOrder(level);
   const nextLevel = levelByOrder(Math.min(now + 1, 4)); // A is the top checked level
+  // Gap: below what your own level asks for. Towards: fine at your level, but the next level asks for more.
   const rows = allSkills
     .filter((s) => s.checked)
     .map((s) => {
-      const need = requiredFor(s, nextLevel.id);
+      const needNow = requiredFor(s, level);
+      const needNext = requiredFor(s, nextLevel.id);
       const have = checks[s.id] ? levelOrder(checks[s.id].level) : null;
-      return { s, need, have };
+      const gap = needNow !== null && (have === null || have < needNow);
+      return { s, need: gap ? needNow : needNext, have, gap };
     })
     .filter((r) => r.need !== null && (r.have === null || r.have < r.need));
-  const gaps = rows.filter((r) => r.need <= now);
-  const ahead = rows.filter((r) => r.need > now);
+  const gaps = rows.filter((r) => r.gap);
+  const ahead = rows.filter((r) => !r.gap);
   const right = (r) => (r.have === null ? <span className="tag">Not checked</span> : <span className="soft">{levelName(levelByOrder(r.have).id)} → {levelName(levelByOrder(r.need).id)}</span>);
   return (
     <>
@@ -149,14 +189,13 @@ function Explore({ onOpen }) {
 
 // The goal-setting coach (scripted for now): what's wrong, when, then a suggested goal.
 function GoalChat({ skill, level, player, form, setForm, onSave, onCancel }) {
-  const problems = gd.problemsByGroup[skill.group] || gd.problemsByGroup.attacking;
+  const { problems, when: whenList } = goalOptions(skill);
   // Padel words keep their capital (Bandeja); English names go lower case in a sentence ("your serve").
   const name = skill.name === skill.es ? skill.name : skill.name.toLowerCase();
   const line = (k) => gd.lines[k].replace('{skill}', name);
   const toggle = (id) => setForm({ ...form, problems: form.problems.includes(id) ? form.problems.filter((x) => x !== id) : form.problems.length < 2 ? [...form.problems, id] : form.problems });
   const goalFor = (p) => gd.goalOverrides?.[skill.id]?.[p.id] || p.goal;
   const suggestion = () => problems.filter((p) => form.problems.includes(p.id)).map(goalFor).map((t, i) => (i ? t[0].toLowerCase() + t.slice(1) : t)).join(', and ') || goalIdea(skill);
-  const whenList = gd.whenOverrides?.skills.includes(skill.id) ? gd.when.map((w) => gd.whenOverrides.replace[w.id] || w) : gd.when;
 
   return (
     <section className="panel goal-chat">
@@ -212,7 +251,7 @@ function GoalChat({ skill, level, player, form, setForm, onSave, onCancel }) {
 // A concrete example goal, to show what "specific" looks like.
 function goalIdea(skill) {
   const ideas = {
-    serve: 'Serve deep to the backhand', volley: 'Keep my volleys low and deep', bandeja: 'Bandeja cross-court, not to the middle',
+    serve: 'Serve deep to the backhand', volley_forehand: 'Keep my volleys low and deep', volley_backhand: 'Keep my backhand volley low', bandeja: 'Bandeja cross-court, not to the middle',
     net_play: 'Follow my lobs to the net', back_glass_return: 'Wait for the ball off the back glass', chiquita: 'Play one chiquita each game',
     composure: 'Same routine on big points', defensive_lob: 'Lob high and deep, not short',
   };

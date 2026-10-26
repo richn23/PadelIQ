@@ -207,7 +207,7 @@
         {
           "id": "P001_s1",
           "level": "beginner",
-          "text": "I can bounce the ball and serve at or below waist height into the diagonal box.",
+          "text": "I can bounce the ball and serve it underarm into the right box.",
           "optional": false,
           "source": "v3"
         },
@@ -332,7 +332,7 @@
         {
           "id": "P007-FH_s1",
           "level": "C",
-          "text": "I can play a compact forehand volley.",
+          "text": "I keep my forehand volley short and simple, with no big swing.",
           "optional": false,
           "source": "v3"
         },
@@ -429,7 +429,7 @@
         {
           "id": "P007-BH_s1",
           "level": "C",
-          "text": "I can play a compact backhand volley.",
+          "text": "I keep my backhand volley short and simple, with no big swing.",
           "optional": false,
           "source": "v3"
         },
@@ -657,21 +657,21 @@
         {
           "id": "NEW-basic-overhead-B_s1",
           "level": "B",
-          "text": "I can control an overhead from different reachable lobs.",
+          "text": "I can control my overhead on most lobs I can reach.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-basic-overhead-B_s2",
           "level": "B",
-          "text": "I can let a lob bounce when it is too deep.",
+          "text": "I let a lob bounce when it's too deep to hit.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-basic-overhead-A_s1",
           "level": "A",
-          "text": "I can adapt my controlled overhead to the defenders and recover for the reply.",
+          "text": "I adjust my overhead to the defenders, and get ready for their reply.",
           "optional": false,
           "source": "v3"
         }
@@ -754,14 +754,14 @@
         {
           "id": "P018_s2",
           "level": "B",
-          "text": "I can keep control when I have to move back.",
+          "text": "I keep control when I have to move back.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P018_s3",
           "level": "B",
-          "text": "I can recover to the position the reply allows.",
+          "text": "After it, I move to the right place for their reply.",
           "optional": false,
           "source": "v3"
         },
@@ -1064,14 +1064,14 @@
         {
           "id": "P028_s1",
           "level": "B",
-          "text": "I can get an x3 out from a very short favourable lob.",
+          "text": "I can get an x3 out from a very short, easy lob.",
           "optional": true,
           "source": "v3"
         },
         {
           "id": "P028_s2",
           "level": "B",
-          "text": "I can choose a safer shot when it is not on.",
+          "text": "I play a safer shot when it isn't on.",
           "optional": true,
           "source": "v3"
         },
@@ -1126,14 +1126,14 @@
         {
           "id": "NEW-smash-out-the-back-x4-B_s1",
           "level": "B",
-          "text": "I can get an x4 out from a very short favourable ball.",
+          "text": "I can get an x4 out from a very short, easy ball.",
           "optional": true,
           "source": "v3"
         },
         {
           "id": "NEW-smash-out-the-back-x4-B_s2",
           "level": "B",
-          "text": "I can choose a safer shot when it is not on.",
+          "text": "I play a safer shot when it isn't on.",
           "optional": true,
           "source": "v3"
         },
@@ -1326,7 +1326,7 @@
         {
           "id": "NEW-second-serve-C_s1",
           "level": "C",
-          "text": "I can use a reliable second serve without aiming too close to the lines.",
+          "text": "My second serve is reliable. I don't aim too close to the lines.",
           "optional": false,
           "source": "v3"
         },
@@ -1483,7 +1483,7 @@
     {
       "id": "groundstroke_forehand",
       "axis": "defence",
-      "name": "Forehand groundstroke",
+      "name": "Forehand",
       "optional": false,
       "recordType": "Player competency",
       "levels": {
@@ -1580,7 +1580,7 @@
     {
       "id": "groundstroke_backhand",
       "axis": "defence",
-      "name": "Backhand groundstroke",
+      "name": "Backhand",
       "optional": false,
       "recordType": "Player competency",
       "levels": {
@@ -1818,7 +1818,7 @@
         {
           "id": "P049_s1",
           "level": "D",
-          "text": "I can let an easy ball reach the back glass and return the rebound.",
+          "text": "I can let an easy ball hit the back glass, then hit it back.",
           "optional": false,
           "source": "v3"
         },
@@ -2115,7 +2115,7 @@
         {
           "id": "P061_s1",
           "level": "C",
-          "text": "I can get straightforward smash rebounds back from inside the court.",
+          "text": "I can get easy smashes back after they come off the glass.",
           "optional": false,
           "source": "v3"
         },
@@ -2136,14 +2136,7 @@
         {
           "id": "P063_s1",
           "level": "A",
-          "text": "I can turn a reachable smash rebound into a counterattack.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "P063_s2",
-          "level": "A",
-          "text": "I can recognise when an exit over the back enclosure has ended the point.",
+          "text": "I can turn a smash I reach into a counterattack.",
           "optional": false,
           "source": "v3"
         }
@@ -2511,14 +2504,14 @@
         {
           "id": "NEW-fence-rebound-D_s1",
           "level": "D",
-          "text": "I can return some gentle balls off the fence.",
+          "text": "I can get some gentle balls back after they hit the fence.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-fence-rebound-C_s1",
           "level": "C",
-          "text": "I can wait for a fence rebound and adjust before hitting.",
+          "text": "I wait to see how the ball comes off the fence before I swing.",
           "optional": false,
           "source": "v3"
         },
@@ -2541,8 +2534,8 @@
         {
           "id": "NEW-fence-rebound-D_w1",
           "level": "D",
-          "text": "Do you decide where to swing before you have seen the fence rebound?",
-          "fix": "Watch the fence rebound before choosing my swing",
+          "text": "Do you swing before you've seen how the ball comes off the fence?",
+          "fix": "Wait to see the fence bounce before I swing",
           "source": "v3"
         }
       ]
@@ -2559,7 +2552,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P078",
-          "text": "Can identify basic back-court and net positions, though still needs reminders during play."
+          "text": "Knows the basic places to stand, but still needs reminders during play."
         },
         "D": {
           "master": true,
@@ -2594,35 +2587,28 @@
         {
           "id": "P078_s1",
           "level": "beginner",
-          "text": "I can point out the basic positions at the back and at the net.",
+          "text": "I know the basic places to stand: at the back, or at the net.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P079_s1",
           "level": "D",
-          "text": "I can cover my side from a useful position.",
+          "text": "I cover my side of the court.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P079_s2",
           "level": "D",
-          "text": "I can get ready for the reply when I move through the middle of the court.",
+          "text": "I don't get stuck in the middle of the court.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P080_s1",
           "level": "C",
-          "text": "I know where to stand when serving and returning.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "P080_s2",
-          "level": "C",
-          "text": "I know who covers the middle.",
+          "text": "I know where to stand when we serve and when we return.",
           "optional": false,
           "source": "v3"
         },
@@ -2643,14 +2629,14 @@
         {
           "id": "P082_s1",
           "level": "A",
-          "text": "I can use opponents' habits to prepare early.",
+          "text": "I use the opponents' habits to get into position early.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P082_s2",
           "level": "A",
-          "text": "I can adjust when they change the reply.",
+          "text": "I adjust when they change their reply.",
           "optional": false,
           "source": "v3"
         }
@@ -2698,7 +2684,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P084",
-          "text": "Usually prepares before opponent contact and uses a small timed split step or loading action in routine rallies."
+          "text": "Usually ready before the opponent hits, with a small split step in normal rallies."
         },
         "B": {
           "master": true,
@@ -2733,28 +2719,28 @@
         {
           "id": "P084_s1",
           "level": "C",
-          "text": "I can get my racket ready before the opponent hits.",
+          "text": "I'm ready before the opponent hits.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P084_s2",
           "level": "C",
-          "text": "I can time a small split step with their contact in routine rallies.",
+          "text": "I do a small hop (a split step) as they hit.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-ready-position-and-split-step-B_s1",
           "level": "B",
-          "text": "I can get ready at opponent contact while moving around the court.",
+          "text": "I'm ready when the opponent hits, even while I'm moving.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-ready-position-and-split-step-A_s1",
           "level": "A",
-          "text": "I can adjust my preparation in fast exchanges and when opponents disguise the shot.",
+          "text": "I stay ready in fast exchanges, even when opponents hide their shot.",
           "optional": false,
           "source": "v3"
         }
@@ -2823,7 +2809,14 @@
         {
           "id": "P085_s1",
           "level": "D",
-          "text": "I can move to the net behind an easy opening and get ready for the reply.",
+          "text": "I move up to the net when I get an easy chance.",
+          "optional": false,
+          "source": "v3"
+        },
+        {
+          "id": "P085_s2",
+          "level": "D",
+          "text": "When I get there, I'm ready for their reply.",
           "optional": false,
           "source": "v3"
         },
@@ -3107,14 +3100,14 @@
         {
           "id": "P096_s1",
           "level": "C",
-          "text": "I can check where the opponents are before choosing.",
+          "text": "I check where the opponents are before I choose my shot.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P096_s2",
           "level": "C",
-          "text": "I can use a safer shot when I am out of position.",
+          "text": "When I'm out of position, I play a safer shot.",
           "optional": false,
           "source": "v3"
         },
@@ -3197,14 +3190,7 @@
         {
           "id": "P099_s1",
           "level": "C",
-          "text": "I can call mine, yours or leave in time.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "P099_s2",
-          "level": "C",
-          "text": "I can agree who takes the middle.",
+          "text": "I call \"mine\", \"yours\" or \"leave\" in time.",
           "optional": false,
           "source": "v3"
         },
@@ -3312,7 +3298,7 @@
     {
       "id": "middle_ball",
       "axis": "tactics",
-      "name": "Middle ball responsibility",
+      "name": "The middle ball",
       "optional": false,
       "recordType": "Player competency",
       "levels": {
@@ -3349,28 +3335,28 @@
         {
           "id": "NEW-middle-ball-responsibility-D_s1",
           "level": "D",
-          "text": "I can agree who takes an easy middle ball and respond to a call.",
+          "text": "My partner and I agree who takes easy balls down the middle.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-middle-ball-responsibility-C_s1",
           "level": "C",
-          "text": "I can call a middle ball early and cover when my partner takes it.",
+          "text": "I call middle balls early, and cover when my partner takes one.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-middle-ball-responsibility-B_s1",
           "level": "B",
-          "text": "I can decide who has the better contact, rather than always taking the forehand.",
+          "text": "On middle balls, whoever is in the better position takes it, not always the forehand.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-middle-ball-responsibility-A_s1",
           "level": "A",
-          "text": "I can sort out a shared ball and cover the gap even after we switch sides.",
+          "text": "I sort out middle balls with my partner and cover the gap, even after we switch sides.",
           "optional": false,
           "source": "v3"
         }
@@ -3397,84 +3383,28 @@
           "optional": false,
           "source": "v3",
           "recordId": "NEW-rules-and-scoring-Beginner",
-          "text": "Understands the first bounce, the two-bounce limit and basic score order."
+          "text": "Knows that the ball can bounce once, and can follow the score."
         },
         "D": {
           "master": true,
           "optional": false,
           "source": "v3",
           "recordId": "NEW-rules-and-scoring-D",
-          "text": "Knows legal serve and return basics and keeps score in an ordinary game."
-        },
-        "C": {
-          "master": true,
-          "optional": false,
-          "source": "v3",
-          "recordId": "NEW-rules-and-scoring-C",
-          "text": "Distinguishes a service-fence fault from a live rally rebound and recognises common lets."
-        },
-        "B": {
-          "master": true,
-          "optional": false,
-          "source": "v3",
-          "recordId": "NEW-rules-and-scoring-B",
-          "text": "Applies the agreed tiebreak and service order and recognises point-ending exits."
-        },
-        "A": {
-          "master": true,
-          "optional": false,
-          "source": "v3",
-          "recordId": "NEW-rules-and-scoring-A",
-          "text": "Handles unusual situations by checking the current rules when uncertain."
+          "text": "Knows the serve and return rules and keeps score in a normal game."
         }
       },
       "statements": [
         {
           "id": "NEW-rules-and-scoring-Beginner_s1",
           "level": "beginner",
-          "text": "I can explain the basic bounce rules and follow the score.",
+          "text": "I know the basic rules and can keep the score.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "NEW-rules-and-scoring-D_s1",
           "level": "D",
-          "text": "I can serve and return within the basic rules and keep score.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "NEW-rules-and-scoring-C_s1",
-          "level": "C",
-          "text": "I can tell a service-fence fault from a live fence rebound.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "NEW-rules-and-scoring-C_s2",
-          "level": "C",
-          "text": "I can recognise a common service let.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "NEW-rules-and-scoring-B_s1",
-          "level": "B",
-          "text": "I can follow our agreed tiebreak and service order.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "NEW-rules-and-scoring-B_s2",
-          "level": "B",
-          "text": "I can recognise when a ball leaving the court ends the point.",
-          "optional": false,
-          "source": "v3"
-        },
-        {
-          "id": "NEW-rules-and-scoring-A_s1",
-          "level": "A",
-          "text": "I can resolve an unfamiliar rules question by checking the current rules.",
+          "text": "I know the rules for serving and returning, and keep score in a normal game.",
           "optional": false,
           "source": "v3"
         }
@@ -3483,9 +3413,8 @@
         {
           "id": "NEW-rules-and-scoring-Beginner_w1",
           "level": "beginner",
-          "text": "Are you using the same scoring format, and do you know when the ball is still live?",
-          "fix": "Agree the scoring format before we start",
-          "invert": true,
+          "text": "Do you sometimes lose track of the score or the rules?",
+          "fix": "Keep track of the score and the basic rules",
           "source": "v3"
         }
       ]
@@ -3502,7 +3431,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P104",
-          "text": "Uses a simple preparation cue before the next point in relaxed games."
+          "text": "Takes a moment to get ready before the next point in relaxed games."
         },
         "C": {
           "master": true,
@@ -3530,35 +3459,35 @@
         {
           "id": "P104_s1",
           "level": "D",
-          "text": "I can get ready for the next point without rushing in a relaxed game.",
+          "text": "I take a moment to get ready before each point.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P105_s1",
           "level": "C",
-          "text": "I can use my next-point routine after an error in an ordinary game.",
+          "text": "After a mistake, I still get ready properly for the next point.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P106_s1",
           "level": "B",
-          "text": "I can prepare and choose a clear plan at tight scores.",
+          "text": "At tight scores, I take my time and choose a clear plan.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P107_s1",
           "level": "A",
-          "text": "I can keep preparing deliberately when I am ahead or behind.",
+          "text": "I prepare the same way whether we're ahead or behind.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P107_s2",
           "level": "A",
-          "text": "I can change an unhelpful plan without rushing.",
+          "text": "I can change a plan that isn't working, without rushing.",
           "optional": false,
           "source": "v3"
         }
@@ -3585,7 +3514,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P108",
-          "text": "Recognises when an error is affecting the next point and uses a reset cue."
+          "text": "Notices when a mistake is affecting the next point, and uses something simple to reset."
         },
         "B": {
           "master": true,
@@ -3606,21 +3535,21 @@
         {
           "id": "P108_s1",
           "level": "C",
-          "text": "I can notice when I am carrying an error into the next point.",
+          "text": "I notice when a mistake is starting to affect the next point.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P108_s2",
           "level": "C",
-          "text": "I can use a cue to refocus.",
+          "text": "I have a simple way to reset, like a breath or a word to myself.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P109_s1",
           "level": "B",
-          "text": "I can use a reset routine and get ready for the next point after a mistake.",
+          "text": "After a mistake, I reset and get ready for the next point.",
           "optional": false,
           "source": "v3"
         },
@@ -3668,14 +3597,14 @@
           "optional": false,
           "source": "v3",
           "recordId": "P111",
-          "text": "Returns attention to the ball and ready position after a reminder or brief distraction."
+          "text": "Gets back to watching the ball after a short distraction."
         },
         "C": {
           "master": true,
           "optional": false,
           "source": "v3",
           "recordId": "P112",
-          "text": "Recognises a lapse and uses a cue to prepare for the next point in ordinary games."
+          "text": "Notices a lapse in concentration and refocuses for the next point."
         },
         "B": {
           "master": true,
@@ -3696,14 +3625,14 @@
         {
           "id": "P111_s1",
           "level": "D",
-          "text": "I can bring my attention back to the ball and get ready again.",
+          "text": "If my mind wanders, I can get back to watching the ball.",
           "optional": false,
           "source": "v3"
         },
         {
           "id": "P112_s1",
           "level": "C",
-          "text": "I can notice a lapse in concentration and refocus for the next point.",
+          "text": "When I lose concentration, I notice and refocus before the next point.",
           "optional": false,
           "source": "v3"
         },
@@ -3717,7 +3646,7 @@
         {
           "id": "NEW-focus-A_s1",
           "level": "A",
-          "text": "I can notice a recurring distraction and change my preparation to refocus.",
+          "text": "I know what usually distracts me, and I have a way to refocus.",
           "optional": false,
           "source": "v3"
         }

@@ -1,179 +1,71 @@
 {
-  "_note": "Onboarding content. Edit the words here. Six answers per question, from beginner up to pro. DRAFT: the answer-to-level mapping is a placeholder. A self-rating can't give Pro, so the result stops at A.",
-  "answerLevels": [
-    "beginner",
-    "D",
-    "C",
-    "B",
-    "A",
-    "Pro"
-  ],
-  "yearsPlaying": [
-    "Less than 6 months",
-    "6 to 12 months",
-    "1 to 3 years",
-    "More than 3 years"
-  ],
+  "_note": "Onboarding content. Edit the words here. Flow: name and how often you play, pick your own level, then a checklist of the skills that are new at that level (earlier levels are collapsed and assumed done, but can be opened and changed). Skill names and level descriptions come from framework.json.",
   "playsPerWeek": [
     "Less than once a week",
     "Once a week",
     "Twice a week",
     "3 or more times a week"
   ],
-  "questions": [
+  "levelChoices": [
     {
-      "id": "q1",
-      "axis": "attack",
-      "skill": "serve",
-      "ask": "When you serve, what usually happens?",
-      "answers": [
-        "I'm still learning it. Lots of faults.",
-        "It mostly goes in, but slowly.",
-        "It goes in, with a bit of depth.",
-        "It goes in most of the time, and I can aim it.",
-        "I mix pace, spin and direction on purpose.",
-        "My serve wins me points."
-      ]
+      "id": "beginner",
+      "text": "New to padel, learning the basic shots and where to stand."
     },
     {
-      "id": "q2",
-      "axis": "attack",
-      "skill": "bandeja",
-      "ask": "You're at the net and the opponents lob you. What do you usually do?",
-      "answers": [
-        "I let it go, or just try to get it back.",
-        "I hit it hard and hope.",
-        "I try a bandeja. Sometimes it works.",
-        "I hit a steady bandeja and stay at the net.",
-        "I choose bandeja, víbora or smash, depending on the lob.",
-        "I finish points with my overheads."
-      ]
+      "id": "D",
+      "text": "I can rally slowly. Still learning to use the glass."
     },
     {
-      "id": "q3",
-      "axis": "defence",
-      "skill": "return_of_serve",
-      "ask": "When you return a serve, what usually happens?",
-      "answers": [
-        "I miss quite a few.",
-        "I get most back, but anywhere.",
-        "I get most back, low or to the middle.",
-        "I aim my returns on purpose.",
-        "I pick the return to suit the server.",
-        "My return starts the attack."
-      ]
+      "id": "C",
+      "text": "Steady rallies. Starting to come to the net and hit bandejas."
     },
     {
-      "id": "q4",
-      "axis": "defence",
-      "skill": "back_glass_return",
-      "ask": "The ball bounces and heads for the back glass. What do you do?",
-      "answers": [
-        "I try to hit it before it reaches the glass.",
-        "I let it hit the glass, but often miss it.",
-        "I get the easy ones back.",
-        "I read most of them and get them back deep.",
-        "I use the glass to buy time and set up my next shot.",
-        "I turn glass balls into attacks."
-      ]
+      "id": "B",
+      "text": "Comfortable at the net. I use the glass well and play with a plan."
     },
     {
-      "id": "q5",
-      "axis": "movement",
-      "skill": "net_play",
-      "ask": "How often do you play at the net?",
-      "answers": [
-        "Hardly ever. I stay at the back.",
-        "Sometimes, but I'm not sure when to go.",
-        "When my partner goes.",
-        "Often, and I can stay there.",
-        "I win the net back after lobs.",
-        "I control points from the net."
-      ]
+      "id": "A",
+      "text": "Strong competitive player. I choose my shots on purpose under pressure."
     },
     {
-      "id": "q6",
-      "axis": "movement",
-      "skill": "moving_as_pair",
-      "ask": "How do you and your partner move together?",
-      "answers": [
-        "We often end up in the wrong place.",
-        "We sometimes go for the same ball.",
-        "We're fine when the ball is slow.",
-        "Mostly together, forwards and back.",
-        "Together, even when we switch sides.",
-        "Like one player, without thinking."
-      ]
+      "id": "Pro",
+      "text": "Coming soon. For now I'll check you at A."
+    }
+  ],
+  "answers": [
+    {
+      "id": "yes",
+      "label": "Yes",
+      "pass": true
     },
     {
-      "id": "q7",
-      "axis": "tactics",
-      "skill": "shot_choice",
-      "ask": "How do you choose your shots?",
-      "answers": [
-        "I just try to get it back.",
-        "I hit whatever I can reach.",
-        "I usually play my favourite shot.",
-        "I look at where the opponents are.",
-        "I build the point and choose on purpose.",
-        "I plan a few shots ahead."
-      ]
+      "id": "getting_there",
+      "label": "Getting there",
+      "pass": true
     },
     {
-      "id": "q8",
-      "axis": "tactics",
-      "skill": "partner_communication",
-      "ask": "How much do you talk with your partner during a match?",
-      "answers": [
-        "We don't really talk.",
-        "A little.",
-        "We call \"mine\" and \"yours\".",
-        "We agree a plan before we start.",
-        "We change the plan during the match.",
-        "We read each other and the opponents all match long."
-      ]
-    },
-    {
-      "id": "q9",
-      "axis": "mentality",
-      "skill": "composure",
-      "ask": "It's 5-5 in a tight set. How do you play?",
-      "answers": [
-        "I get very nervous.",
-        "I tighten up and make mistakes.",
-        "It depends on the day.",
-        "I mostly stay calm.",
-        "I play the same as at 0-0.",
-        "I play better under pressure."
-      ]
-    },
-    {
-      "id": "q10",
-      "axis": "mentality",
-      "skill": "bouncing_back",
-      "ask": "After a bad mistake, what happens next?",
-      "answers": [
-        "It spoils the rest of my match.",
-        "It stays with me for a while.",
-        "I'm annoyed, but I recover after a few points.",
-        "I'm over it by the next point.",
-        "I use a quick routine to reset.",
-        "I don't dwell on it at all."
-      ]
+      "id": "not_yet",
+      "label": "Not yet",
+      "pass": false
     }
   ],
   "levelNote": "Levels like A, B, C and D mean different things at different clubs and in different countries. Your level here comes from this app's skills checklist, so it may not match your club. That's fine.",
   "disclaimer": "This is a starting point, not an official rating. You can change it any time.",
   "lines": {
-    "welcome": "Hi! I'm your Padel IQ coach. Answer a few quick questions and I'll find your starting level. It takes about 3 minutes.",
-    "name": "First, what should I call you?",
-    "years": "How long have you been playing padel?",
+    "welcome": "Hi! I'm your Padel IQ coach. Three quick steps and I'll find your starting level. It takes about a minute.",
+    "name": "What should I call you? (optional)",
     "often": "How often do you play?",
-    "hint": "Do you already have a level, from Playtomic or your club? It's optional. I'll use it as a hint, not the answer.",
-    "playtomic": "Playtomic level (e.g. 3.2)",
-    "club": "Your club level (e.g. \"C at my club\")",
-    "result": "Here's where you're starting. Does it feel right?",
-    "pick": "No problem. Which level feels closer?",
-    "go": "Let's go"
+    "level": "What level would you say you are?",
+    "checks": "Here's what a {level} player can do. How about you?",
+    "go": "Let's go",
+    "resultPass": "You're {level}. Does that feel right?",
+    "resultMixed": "You're {level}, with a few skills to work on.",
+    "resultAllYes": "You're a solid {level}. Want to check the level above?",
+    "resultLower": "{level} might be a stretch for now. {lower} looks closer.",
+    "resultLowest": "Great place to start. Everyone begins here.",
+    "upFailed": "{up} isn't there yet, so you stay at {level}. Good to know what's next.",
+    "checksNote": "Think about your normal games, not your best day. There are no wrong answers. Earlier levels are ticked for you. Open one to change anything.",
+    "checksBeginner": "Just starting out? Great. A few quick ones. There are no wrong answers.",
+    "length": "Quick check or the full one? Either is fine."
   }
 }

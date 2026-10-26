@@ -1,0 +1,59 @@
+﻿Skill,Level,What changed,v3 text,App text
+Serve,Beginner,statements,I can bounce the ball and serve at or below waist height into the diagonal box.,I can bounce the ball and serve it underarm into the right box.
+Forehand volley,C,statements,I can play a compact forehand volley. | I can aim it deep or to the middle.,"I keep my forehand volley short and simple, with no big swing. | I can aim it deep or to the middle."
+Backhand volley,C,statements,I can play a compact backhand volley. | I can aim it deep or to the middle.,"I keep my backhand volley short and simple, with no big swing. | I can aim it deep or to the middle."
+Basic overhead,B,statements,I can control an overhead from different reachable lobs. | I can let a lob bounce when it is too deep.,I can control my overhead on most lobs I can reach. | I let a lob bounce when it's too deep to hit.
+Basic overhead,A,statements,I can adapt my controlled overhead to the defenders and recover for the reply.,"I adjust my overhead to the defenders, and get ready for their reply."
+Bandeja,B,statements,I can place my bandeja cross-court or straight. | I can keep control when I have to move back. | I can recover to the position the reply allows.,"I can place my bandeja cross-court or straight. | I keep control when I have to move back. | After it, I move to the right place for their reply."
+Smash out the side (x3),B,statements,I can get an x3 out from a very short favorable lob. | I can choose a safer shot when it is not on.,"I can get an x3 out from a very short, easy lob. | I play a safer shot when it isn't on."
+Smash out the back (x4),B,statements,I can get an x4 out from a very short favorable ball. | I can choose a safer shot when it is not on.,"I can get an x4 out from a very short, easy ball. | I play a safer shot when it isn't on."
+Second serve,C,statements,I can use a reliable second serve without aiming too close to the lines.,My second serve is reliable. I don't aim too close to the lines.
+Back glass return,D,statements,I can let an easy ball reach the back glass and return the rebound.,"I can let an easy ball hit the back glass, then hit it back."
+Defending a smash,C,statements,I can get straightforward smash rebounds back from inside the court.,I can get easy smashes back after they come off the glass.
+Defending a smash,A,statements,I can turn a reachable smash rebound into a counterattack. | I can recognize when an exit over the back enclosure has ended the point.,I can turn a smash I reach into a counterattack.
+Fence rebound,D,statements,I can return some gentle balls off the fence.,I can get some gentle balls back after they hit the fence.
+Fence rebound,D,warning,Do you decide where to swing before you have seen the fence rebound?,Do you swing before you've seen how the ball comes off the fence?
+Fence rebound,C,statements,I can wait for a fence rebound and adjust before hitting.,I wait to see how the ball comes off the fence before I swing.
+Fence rebound,C,warning,Do you decide where to swing before you have seen the fence rebound?,Do you swing before you've seen how the ball comes off the fence?
+Fence rebound,B,warning,Do you decide where to swing before you have seen the fence rebound?,Do you swing before you've seen how the ball comes off the fence?
+Fence rebound,A,warning,Do you decide where to swing before you have seen the fence rebound?,Do you swing before you've seen how the ball comes off the fence?
+Knowing where to stand,Beginner,description,"Can identify basic back-court and net positions, though still needs reminders during play.","Knows the basic places to stand, but still needs reminders during play."
+Knowing where to stand,Beginner,statements,I can point out the basic positions at the back and at the net.,"I know the basic places to stand: at the back, or at the net."
+Knowing where to stand,D,statements,I can cover my side from a useful position. | I can get ready for the reply when I move through the middle of the court.,I cover my side of the court. | I don't get stuck in the middle of the court.
+Knowing where to stand,C,statements,I know where to stand when serving and returning. | I know who covers the middle.,I know where to stand when we serve and when we return.
+Knowing where to stand,A,statements,I can use opponents' habits to prepare early. | I can adjust when they change the reply.,I use the opponents' habits to get into position early. | I adjust when they change their reply.
+Ready position and split step,C,description,Usually prepares before opponent contact and uses a small timed split step or loading action in routine rallies.,"Usually ready before the opponent hits, with a small split step in normal rallies."
+Ready position and split step,C,statements,I can get my racket ready before the opponent hits. | I can time a small split step with their contact in routine rallies.,I'm ready before the opponent hits. | I do a small hop (a split step) as they hit.
+Ready position and split step,B,statements,I can get ready at opponent contact while moving around the court.,"I'm ready when the opponent hits, even while I'm moving."
+Ready position and split step,A,statements,I can adjust my preparation in fast exchanges and when opponents disguise the shot.,"I stay ready in fast exchanges, even when opponents hide their shot."
+Taking and holding the net,D,statements,I can move to the net behind an easy opening and get ready for the reply.,"I move up to the net when I get an easy chance. | When I get there, I'm ready for their reply."
+Shot choice,C,statements,I can check where the opponents are before choosing. | I can use a safer shot when I am out of position.,"I check where the opponents are before I choose my shot. | When I'm out of position, I play a safer shot."
+Talking to your partner,C,statements,"I can call mine, yours or leave in time. | I can agree who takes the middle.","I call ""mine"", ""yours"" or ""leave"" in time."
+Middle ball responsibility,D,statements,I can agree who takes an easy middle ball and respond to a call.,My partner and I agree who takes easy balls down the middle.
+Middle ball responsibility,C,statements,I can call a middle ball early and cover when my partner takes it.,"I call middle balls early, and cover when my partner takes one."
+Middle ball responsibility,B,statements,"I can decide who has the better contact, rather than always taking the forehand.","On middle balls, whoever is in the better position takes it, not always the forehand."
+Middle ball responsibility,A,statements,I can sort out a shared ball and cover the gap even after we switch sides.,"I sort out middle balls with my partner and cover the gap, even after we switch sides."
+Rules and scoring,Beginner,description,"Understands the first bounce, the two-bounce limit and basic score order.","Knows that the ball can bounce once, and can follow the score."
+Rules and scoring,Beginner,statements,I can explain the basic bounce rules and follow the score.,I know the basic rules and can keep the score.
+Rules and scoring,Beginner,warning,"Are you using the same scoring format, and do you know when the ball is still live?",Do you sometimes lose track of the score or the rules?
+Rules and scoring,D,description,Knows legal serve and return basics and keeps score in an ordinary game.,Knows the serve and return rules and keeps score in a normal game.
+Rules and scoring,D,statements,I can serve and return within the basic rules and keep score.,"I know the rules for serving and returning, and keep score in a normal game."
+Rules and scoring,D,warning,"Are you using the same scoring format, and do you know when the ball is still live?",Do you sometimes lose track of the score or the rules?
+Rules and scoring,C,removed row,"I can tell a service-fence fault from a live fence rebound.
+I can recognize a common service let.",
+Rules and scoring,B,removed row,"I can follow our agreed tiebreak and service order.
+I can recognize when a ball leaving the court ends the point.",
+Rules and scoring,A,removed row,I can resolve an unfamiliar rules question by checking the current rules.,
+Composure,D,description,Uses a simple preparation cue before the next point in relaxed games.,Takes a moment to get ready before the next point in relaxed games.
+Composure,D,statements,I can get ready for the next point without rushing in a relaxed game.,I take a moment to get ready before each point.
+Composure,C,statements,I can use my next-point routine after an error in an ordinary game.,"After a mistake, I still get ready properly for the next point."
+Composure,B,statements,I can prepare and choose a clear plan at tight scores.,"At tight scores, I take my time and choose a clear plan."
+Composure,A,statements,I can keep preparing deliberately when I am ahead or behind. | I can change an unhelpful plan without rushing.,"I prepare the same way whether we're ahead or behind. | I can change a plan that isn't working, without rushing."
+Bouncing back,C,description,Recognizes when an error is affecting the next point and uses a reset cue.,"Notices when a mistake is affecting the next point, and uses something simple to reset."
+Bouncing back,C,statements,I can notice when I am carrying an error into the next point. | I can use a cue to refocus.,"I notice when a mistake is starting to affect the next point. | I have a simple way to reset, like a breath or a word to myself."
+Bouncing back,B,statements,I can use a reset routine and get ready for the next point after a mistake.,"After a mistake, I reset and get ready for the next point."
+Focus,D,description,Returns attention to the ball and ready position after a reminder or brief distraction.,Gets back to watching the ball after a short distraction.
+Focus,D,statements,I can bring my attention back to the ball and get ready again.,"If my mind wanders, I can get back to watching the ball."
+Focus,C,description,Recognizes a lapse and uses a cue to prepare for the next point in ordinary games.,Notices a lapse in concentration and refocuses for the next point.
+Focus,C,statements,I can notice a lapse in concentration and refocus for the next point.,"When I lose concentration, I notice and refocus before the next point."
+Focus,A,statements,I can notice a recurring distraction and change my preparation to refocus.,"I know what usually distracts me, and I have a way to refocus."

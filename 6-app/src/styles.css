@@ -398,3 +398,41 @@ i.played { background: #fff; }
 
 .sources { margin-top: 8px; font-size: 12px; color: var(--text-soft); }
 .sources a { color: var(--accent); }
+
+/* Onboarding: level picker and 3-answer quick checks */
+.ans.level-pick { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.ans.level-pick strong { font-size: 17px; }
+.ans.level-pick span { font-size: 13px; font-weight: 500; opacity: 0.85; text-align: left; }
+.seg3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: rgba(255,255,255,0.06); border-radius: 10px; padding: 3px; }
+.seg3 button { border: 0; background: none; color: var(--text-soft); border-radius: 8px; min-height: 44px; font-size: 14px; font-weight: 700; }
+.seg3 button.on { background: var(--accent); color: var(--accent-text); }
+.stmt .eyebrow { margin: 0 0 2px; }
+.soft.small, p.small { font-size: 13px; }
+.level-group { padding: 0; overflow: hidden; }
+.level-group .stmt-list { padding: 0 14px 14px; }
+.level-head { display: grid; grid-template-columns: auto 1fr auto; grid-template-rows: auto auto; align-items: center; gap: 6px 10px; width: 100%; min-height: 56px; padding: 12px 14px; background: none; border: 0; color: inherit; text-align: left; }
+.level-head .level-name { font-weight: 800; font-size: 18px; }
+.level-head .level-score { justify-self: end; font-size: 13px; font-weight: 700; color: var(--text-soft); }
+.level-head .chev { grid-row: 1; grid-column: 3; display: none; }
+.level-group.done .level-head { grid-template-columns: auto 1fr auto auto; }
+.level-group.done .level-head .chev { display: block; grid-column: 4; color: var(--text-soft); }
+.level-head .level-bar { grid-column: 1 / -1; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.level-head .level-bar span { display: block; height: 100%; background: var(--accent); }
+.level-group.current { border-color: var(--accent); }
+a.mini { text-decoration: none; display: inline-block; }
+
+/* Quiz checklist v3: "I can" lines, and the level heading above the areas */
+.ican { margin: 2px 0 8px; padding-left: 18px; font-size: 14px; color: var(--text-soft); line-height: 1.4; }
+p.ican { padding-left: 0; }
+.ican li { margin: 2px 0; }
+.level-now { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; padding: 6px 2px 0; }
+.level-now .level-name { font-weight: 800; font-size: 22px; }
+.level-now .level-score { justify-self: end; font-size: 13px; font-weight: 700; color: var(--text-soft); }
+.level-now .level-bar { grid-column: 1 / -1; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.level-now .level-bar span { display: block; height: 100%; background: var(--accent); }
+.level-head .area-name { font-size: 16px; }
+.level-group.area.finished .level-score { color: var(--accent); }
+.level-group.area .level-head .chev { display: block; grid-column: 4; color: var(--text-soft); }
+.level-group.area .level-head { grid-template-columns: auto 1fr auto auto; }
+.rest-card { border-color: var(--accent); }
+.ob-like { display: flex; flex-direction: column; gap: 14px; }

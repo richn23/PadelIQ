@@ -269,5 +269,11 @@
   },
   "Do you stay stuck in the middle after a half volley?": {
     "fix": "Move forward or back after a half volley"
+  },
+  "Do you sometimes lose track of the score or the rules?": {
+    "fix": "Keep track of the score and the basic rules"
+  },
+  "Do you swing before you've seen how the ball comes off the fence?": {
+    "fix": "Wait to see the fence bounce before I swing"
   }
 }
