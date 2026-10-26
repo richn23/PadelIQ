@@ -186,7 +186,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P003",
-          "text": "Can serve deeper inside the service box and aim toward the side glass or body in ordinary games."
+          "text": "Can serve deeper inside the service box and aim towards the side glass or body in ordinary games."
         },
         "B": {
           "master": true,
@@ -228,7 +228,7 @@
         {
           "id": "P003_s2",
           "level": "C",
-          "text": "I can aim toward the side glass or the body.",
+          "text": "I can aim towards the side glass or the body.",
           "optional": false,
           "source": "v3"
         },
@@ -712,7 +712,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P017",
-          "text": "Can play a controlled bandeja on a comfortable lob and recover toward the net when the reply allows."
+          "text": "Can play a controlled bandeja on a comfortable lob and recover towards the net when the reply allows."
         },
         "B": {
           "master": true,
@@ -740,7 +740,7 @@
         {
           "id": "P017_s2",
           "level": "C",
-          "text": "I can recover toward the net when my shot gives me time.",
+          "text": "I can recover towards the net when my shot gives me time.",
           "optional": false,
           "source": "v3"
         },
@@ -1050,7 +1050,7 @@
           "optional": true,
           "source": "v3",
           "recordId": "P028",
-          "text": "Can produce an x3 from a very short favorable lob and recognizes when not to try it."
+          "text": "Can produce an x3 from a very short favourable lob and recognises when not to try it."
         },
         "A": {
           "master": false,
@@ -1064,7 +1064,7 @@
         {
           "id": "P028_s1",
           "level": "B",
-          "text": "I can get an x3 out from a very short favorable lob.",
+          "text": "I can get an x3 out from a very short favourable lob.",
           "optional": true,
           "source": "v3"
         },
@@ -1112,7 +1112,7 @@
           "optional": true,
           "source": "v3",
           "recordId": "NEW-smash-out-the-back-x4-B",
-          "text": "Can produce an x4 from a very short favorable ball and declines it when the contact is unsuitable."
+          "text": "Can produce an x4 from a very short favourable ball and declines it when the contact is unsuitable."
         },
         "A": {
           "master": false,
@@ -1126,7 +1126,7 @@
         {
           "id": "NEW-smash-out-the-back-x4-B_s1",
           "level": "B",
-          "text": "I can get an x4 out from a very short favorable ball.",
+          "text": "I can get an x4 out from a very short favourable ball.",
           "optional": true,
           "source": "v3"
         },
@@ -1506,7 +1506,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P042-FH",
-          "text": "Controls routine forehand shots toward the middle or cross-court."
+          "text": "Controls routine forehand shots towards the middle or cross-court."
         },
         "B": {
           "master": true,
@@ -1603,7 +1603,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P042-BH",
-          "text": "Controls routine backhand shots toward the middle or cross-court."
+          "text": "Controls routine backhand shots towards the middle or cross-court."
         },
         "B": {
           "master": true,
@@ -2108,7 +2108,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P063",
-          "text": "Anticipates smash patterns and counterattacks suitable reachable rebounds while recognizing when the point is over."
+          "text": "Anticipates smash patterns and counterattacks suitable reachable rebounds while recognising when the point is over."
         }
       },
       "statements": [
@@ -2143,7 +2143,7 @@
         {
           "id": "P063_s2",
           "level": "A",
-          "text": "I can recognize when an exit over the back enclosure has ended the point.",
+          "text": "I can recognise when an exit over the back enclosure has ended the point.",
           "optional": false,
           "source": "v3"
         }
@@ -2198,7 +2198,7 @@
         {
           "id": "P064_s1",
           "level": "C",
-          "text": "I can play a soft ball toward a net player's feet when I have time.",
+          "text": "I can play a soft ball towards a net player's feet when I have time.",
           "optional": false,
           "source": "v3"
         },
@@ -2795,7 +2795,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P085",
-          "text": "Recognizes clear chances to move to the net and can stop ready for the reply."
+          "text": "Recognises clear chances to move to the net and can stop ready for the reply."
         },
         "C": {
           "master": true,
@@ -3190,7 +3190,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P101",
-          "text": "Recognizes when the plan needs changing and discusses a useful adjustment."
+          "text": "Recognises when the plan needs changing and discusses a useful adjustment."
         }
       },
       "statements": [
@@ -3411,14 +3411,14 @@
           "optional": false,
           "source": "v3",
           "recordId": "NEW-rules-and-scoring-C",
-          "text": "Distinguishes a service-fence fault from a live rally rebound and recognizes common lets."
+          "text": "Distinguishes a service-fence fault from a live rally rebound and recognises common lets."
         },
         "B": {
           "master": true,
           "optional": false,
           "source": "v3",
           "recordId": "NEW-rules-and-scoring-B",
-          "text": "Applies the agreed tiebreak and service order and recognizes point-ending exits."
+          "text": "Applies the agreed tiebreak and service order and recognises point-ending exits."
         },
         "A": {
           "master": true,
@@ -3453,7 +3453,7 @@
         {
           "id": "NEW-rules-and-scoring-C_s2",
           "level": "C",
-          "text": "I can recognize a common service let.",
+          "text": "I can recognise a common service let.",
           "optional": false,
           "source": "v3"
         },
@@ -3467,7 +3467,7 @@
         {
           "id": "NEW-rules-and-scoring-B_s2",
           "level": "B",
-          "text": "I can recognize when a ball leaving the court ends the point.",
+          "text": "I can recognise when a ball leaving the court ends the point.",
           "optional": false,
           "source": "v3"
         },
@@ -3495,7 +3495,7 @@
       "axis": "mentality",
       "name": "Composure",
       "optional": false,
-      "recordType": "Performance behavior",
+      "recordType": "Performance behaviour",
       "levels": {
         "D": {
           "master": true,
@@ -3578,14 +3578,14 @@
       "axis": "mentality",
       "name": "Bouncing back",
       "optional": false,
-      "recordType": "Performance behavior",
+      "recordType": "Performance behaviour",
       "levels": {
         "C": {
           "master": true,
           "optional": false,
           "source": "v3",
           "recordId": "P108",
-          "text": "Recognizes when an error is affecting the next point and uses a reset cue."
+          "text": "Recognises when an error is affecting the next point and uses a reset cue."
         },
         "B": {
           "master": true,
@@ -3661,7 +3661,7 @@
       "axis": "mentality",
       "name": "Focus",
       "optional": false,
-      "recordType": "Performance behavior",
+      "recordType": "Performance behaviour",
       "levels": {
         "D": {
           "master": true,
@@ -3675,7 +3675,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "P112",
-          "text": "Recognizes a lapse and uses a cue to prepare for the next point in ordinary games."
+          "text": "Recognises a lapse and uses a cue to prepare for the next point in ordinary games."
         },
         "B": {
           "master": true,
@@ -3689,7 +3689,7 @@
           "optional": false,
           "source": "v3",
           "recordId": "NEW-focus-A",
-          "text": "Recognizes recurring distractions and adjusts the cue or preparation to stay engaged."
+          "text": "Recognises recurring distractions and adjusts the cue or preparation to stay engaged."
         }
       },
       "statements": [

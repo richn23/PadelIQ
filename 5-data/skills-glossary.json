@@ -197,7 +197,7 @@
       "checked": true,
       "optional": true,
       "firstLevel": "B",
-      "what": "A smash that bounces in court and exits above the side enclosure. It may remain returnable where outside play is authorized.",
+      "what": "A smash that bounces in court and exits above the side enclosure. It may remain returnable where outside play is authorised.",
       "when": "Against a short lob in the middle of the court when you can finish the point.",
       "source": "v3"
     },
@@ -379,7 +379,7 @@
       "checked": true,
       "optional": false,
       "firstLevel": "C",
-      "what": "Read and return reachable smash rebounds and recognize when the point has ended.",
+      "what": "Read and return reachable smash rebounds and recognise when the point has ended.",
       "when": "When a smash remains live and safely reachable inside the court.",
       "source": "v3"
     },
@@ -477,8 +477,8 @@
       "checked": false,
       "optional": true,
       "firstLevel": "Pro",
-      "what": "Leave through an access to return a live ball only on a court where outside play is authorized and safely possible.",
-      "when": "For a playable side or door exit where outside play is authorized; never after an exit over the back enclosure.",
+      "what": "Leave through an access to return a live ball only on a court where outside play is authorised and safely possible.",
+      "when": "For a playable side or door exit where outside play is authorised; never after an exit over the back enclosure.",
       "source": "v3"
     },
     {
@@ -631,7 +631,7 @@
       "checked": true,
       "optional": false,
       "firstLevel": "beginner",
-      "what": "Use the agreed scoring format and recognize common legal and illegal play.",
+      "what": "Use the agreed scoring format and recognise common legal and illegal play.",
       "when": "Before and during a match.",
       "source": "v3"
     },

@@ -31,7 +31,7 @@
     "fix": "Pick the simpler, safer return when there is one",
     "invert": true
   },
-  "Is outside play authorized, and is the route clear?": {
+  "Is outside play authorised, and is the route clear?": {
     "fix": "Only play outside when it's allowed and clear",
     "invert": true
   },
