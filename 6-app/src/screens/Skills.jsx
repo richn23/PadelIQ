@@ -224,13 +224,14 @@ const OUTCOME = {
   solid: 'Solid at this level.',
   not_solid: 'At this level, but not solid yet.',
   lower: 'Your answers sounded lower.',
+  self: 'Set by you, not checked yet.',
 };
 function QuickSummary({ skill, check, onGoal }) {
   return (
     <div className="result-card">
       <p className="soft">
         You said {levelName(check.claimed)}. {OUTCOME[check.outcome]}
-        {check.setByYou ? ' You kept your level.' : ''}
+        {check.setByYou && check.outcome !== 'self' ? ' You kept your level.' : ''}
       </p>
       {check.focus?.length > 0 && (
         <div className="focus-point" style={{ marginTop: 8 }}>
@@ -329,7 +330,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
             <>
               {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}
               {shown && <ResultCard skill={skill} result={shown} />}
-              <button className="btn" onClick={() => setChecking('quick')}>{check && check.from !== 'quiz' ? 'Check again' : 'Check my level'}</button>
+              <button className="btn" onClick={() => setChecking('quick')}>{check?.outcome === 'self' ? 'Check it now' : check && check.from !== 'quiz' ? 'Check again' : 'Check my level'}</button>
               <button className="linkish center-self" onClick={() => setChecking('detail')}>Check in detail (all statements)</button>
             </>
           )}

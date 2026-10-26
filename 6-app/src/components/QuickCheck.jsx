@@ -41,6 +41,7 @@ export default function QuickCheck({ skill, startLevel, onSave, onCancel, onDeta
         </div>
         {claim && <p className="soft hint">{skill.levels[claim]?.text || levels.find((l) => l.id === claim)?.description}</p>}
         <button className="btn" disabled={!claim} onClick={() => setStep(items.length ? 'ask' : 'result')}>Check it: 4 quick questions</button>
+        <button className="btn ghost" disabled={!claim} onClick={() => onSave({ level: claim, claimed: claim, outcome: 'self', focus: [], answers: {}, mode: 'quick', setByYou: true })}>Skip, just set {claim ? levelName(claim) : 'it'}</button>
         <button className="ans skip" onClick={onCancel}>Cancel</button>
       </div>
     );
