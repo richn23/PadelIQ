@@ -394,3 +394,4 @@ i.played { background: #fff; }
 .dots i:nth-child(3) { animation-delay: 0.3s; }
 .thinking .msg-body p { color: var(--text-soft); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { .bob, .dots i { animation: none; } }
+.list-row.link.col { align-items: flex-start; text-align: left; }
