@@ -118,6 +118,24 @@
         "mentioned often in journal notes"
       ],
       "playerApprovesChanges": true
+    },
+    "statementCheck": {
+      "answers": [
+        "always",
+        "usually",
+        "sometimes",
+        "not_yet"
+      ],
+      "goodEnough": [
+        "always",
+        "usually"
+      ],
+      "mastered": [
+        "always"
+      ],
+      "share": 0.75,
+      "rule": "A player has a level for a skill when they are good enough at that level's statements (about 3 in 4 'usually' or 'always') AND have mastered every level below it (about 3 in 4 'always').",
+      "note": "Agreed with Richard 26 Oct: mastery = always, good enough = usually. The 3-in-4 share is a placeholder."
     }
   },
   "skills": [
@@ -151,7 +169,63 @@
           "source": "draft",
           "text": "Varies pace, spin and direction to set up the next shot. Targets weaknesses on purpose."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "serve_1",
+          "level": "beginner",
+          "text": "I know how to serve: bounce, hit below the waist, diagonally into the box.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_2",
+          "level": "D",
+          "text": "My serve goes in.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_3",
+          "level": "C",
+          "text": "I can serve deep, close to the back glass.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_4",
+          "level": "C",
+          "text": "I can aim my serve at the side glass or the body.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_5",
+          "level": "B",
+          "text": "My first serve rarely misses, even at tight scores.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_6",
+          "level": "B",
+          "text": "I can add pace without missing.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_7",
+          "level": "B",
+          "text": "I can slice it so it stays low off the glass.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_8",
+          "level": "A",
+          "text": "I choose the serve to suit the returner.",
+          "source": "draft"
+        },
+        {
+          "id": "serve_9",
+          "level": "A",
+          "text": "I mix pace, spin and direction so the returner can't settle.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "overhead_basic",
@@ -168,7 +242,33 @@
           "source": "draft",
           "text": "Gets under most lobs and hits a controlled overhead back, usually deep."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "overhead_basic_1",
+          "level": "D",
+          "text": "I can get under easy lobs.",
+          "source": "draft"
+        },
+        {
+          "id": "overhead_basic_2",
+          "level": "D",
+          "text": "I can hit an overhead back over the net.",
+          "source": "draft"
+        },
+        {
+          "id": "overhead_basic_3",
+          "level": "C",
+          "text": "My overhead goes back deep and controlled.",
+          "source": "draft"
+        },
+        {
+          "id": "overhead_basic_4",
+          "level": "C",
+          "text": "I turn sideways and move back for lobs.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "bandeja",
@@ -190,7 +290,51 @@
           "source": "draft",
           "text": "Chooses between attacking and defensive bandeja depending on the situation."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "bandeja_1",
+          "level": "C",
+          "text": "I can hit a bandeja in a friendly game.",
+          "source": "draft"
+        },
+        {
+          "id": "bandeja_2",
+          "level": "C",
+          "text": "After my bandeja, I stay at the net.",
+          "source": "draft"
+        },
+        {
+          "id": "bandeja_3",
+          "level": "B",
+          "text": "My bandeja lands deep, so opponents stay back.",
+          "source": "draft"
+        },
+        {
+          "id": "bandeja_4",
+          "level": "B",
+          "text": "I can hit it when I'm rushed or moving back.",
+          "source": "draft"
+        },
+        {
+          "id": "bandeja_5",
+          "level": "B",
+          "text": "I can choose cross-court or straight.",
+          "source": "draft"
+        },
+        {
+          "id": "bandeja_6",
+          "level": "A",
+          "text": "I choose an attacking or a defensive bandeja depending on the ball.",
+          "source": "draft"
+        },
+        {
+          "id": "bandeja_7",
+          "level": "A",
+          "text": "I control slice and pace so it stays low off the glass.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "vibora",
@@ -207,7 +351,33 @@
           "source": "draft",
           "text": "Chooses víbora versus bandeja on purpose and places it under pressure."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "vibora_1",
+          "level": "B",
+          "text": "I can hit a víbora with side spin.",
+          "source": "draft"
+        },
+        {
+          "id": "vibora_2",
+          "level": "B",
+          "text": "My víbora lands low into the side glass.",
+          "source": "draft"
+        },
+        {
+          "id": "vibora_3",
+          "level": "A",
+          "text": "I choose víbora or bandeja depending on the lob.",
+          "source": "draft"
+        },
+        {
+          "id": "vibora_4",
+          "level": "A",
+          "text": "I hit it hard without losing control, even under pressure.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "bajada",
@@ -224,7 +394,33 @@
           "source": "draft",
           "text": "Uses the bajada to finish points with placement and power."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "bajada_1",
+          "level": "B",
+          "text": "I attack balls that come off the back glass high.",
+          "source": "draft"
+        },
+        {
+          "id": "bajada_2",
+          "level": "B",
+          "text": "I wait for the right height before hitting.",
+          "source": "draft"
+        },
+        {
+          "id": "bajada_3",
+          "level": "A",
+          "text": "I place my bajada low, to the feet or down the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "bajada_4",
+          "level": "A",
+          "text": "I use the bajada to win the net back.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "return_of_serve",
@@ -256,7 +452,57 @@
           "source": "draft",
           "text": "Returns on purpose to win the net and hurts weak serves."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "return_of_serve_1",
+          "level": "beginner",
+          "text": "I know where to stand to return.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_2",
+          "level": "D",
+          "text": "I get most serves back.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_3",
+          "level": "C",
+          "text": "My return goes low or to the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_4",
+          "level": "C",
+          "text": "I can return serves that come off the side glass.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_5",
+          "level": "B",
+          "text": "I aim my return on purpose: low cross-court, middle or lob.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_6",
+          "level": "B",
+          "text": "I return well, even at tight scores.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_7",
+          "level": "A",
+          "text": "I choose the return to suit the server and their partner.",
+          "source": "draft"
+        },
+        {
+          "id": "return_of_serve_8",
+          "level": "A",
+          "text": "My return puts us on the attack.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "defensive_lob",
@@ -283,7 +529,45 @@
           "source": "draft",
           "text": "Chooses the lob on purpose: side, height, depth. Works from awkward positions and at big points against strong opponents."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "defensive_lob_1",
+          "level": "D",
+          "text": "I can lob the ball over the net players.",
+          "source": "draft"
+        },
+        {
+          "id": "defensive_lob_2",
+          "level": "C",
+          "text": "My lob goes high and deep, not short.",
+          "source": "draft"
+        },
+        {
+          "id": "defensive_lob_3",
+          "level": "C",
+          "text": "After a good lob, I move up to the net.",
+          "source": "draft"
+        },
+        {
+          "id": "defensive_lob_4",
+          "level": "B",
+          "text": "I can lob from difficult spots, like off the glass or from the corner.",
+          "source": "draft"
+        },
+        {
+          "id": "defensive_lob_5",
+          "level": "B",
+          "text": "I aim my lob over the weaker overhead player, or down the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "defensive_lob_6",
+          "level": "A",
+          "text": "I lob on purpose to win the net back, even under pressure.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "back_glass_return",
@@ -310,7 +594,51 @@
           "source": "draft",
           "text": "Uses the glass to buy time and turn defence into attack."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "back_glass_return_1",
+          "level": "D",
+          "text": "I let some balls hit the back glass before I play them.",
+          "source": "draft"
+        },
+        {
+          "id": "back_glass_return_2",
+          "level": "D",
+          "text": "I get easy rebounds back over the net.",
+          "source": "draft"
+        },
+        {
+          "id": "back_glass_return_3",
+          "level": "C",
+          "text": "I return most slow and medium rebounds.",
+          "source": "draft"
+        },
+        {
+          "id": "back_glass_return_4",
+          "level": "C",
+          "text": "I stand at the right distance from the glass.",
+          "source": "draft"
+        },
+        {
+          "id": "back_glass_return_5",
+          "level": "B",
+          "text": "I read fast rebounds early and return them with control.",
+          "source": "draft"
+        },
+        {
+          "id": "back_glass_return_6",
+          "level": "B",
+          "text": "After the glass, I can choose a lob or a low ball.",
+          "source": "draft"
+        },
+        {
+          "id": "back_glass_return_7",
+          "level": "A",
+          "text": "I use the glass to buy time and turn defence into attack.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "side_glass_return",
@@ -332,7 +660,33 @@
           "source": "draft",
           "text": "Handles fast and awkward side glass angles under pressure, and places the return."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "side_glass_return_1",
+          "level": "C",
+          "text": "I return simple balls off the side glass.",
+          "source": "draft"
+        },
+        {
+          "id": "side_glass_return_2",
+          "level": "B",
+          "text": "I read the angle off the side glass early.",
+          "source": "draft"
+        },
+        {
+          "id": "side_glass_return_3",
+          "level": "B",
+          "text": "I return side glass balls with control most of the time.",
+          "source": "draft"
+        },
+        {
+          "id": "side_glass_return_4",
+          "level": "A",
+          "text": "I handle fast, awkward side glass balls under pressure, and place the return.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "ready_position",
@@ -349,7 +703,33 @@
           "source": "draft",
           "text": "Usually ready before the opponent hits. Split step is inconsistent."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "ready_position_1",
+          "level": "D",
+          "text": "I stand in a ready position between shots.",
+          "source": "draft"
+        },
+        {
+          "id": "ready_position_2",
+          "level": "D",
+          "text": "I'm ready before slow balls arrive.",
+          "source": "draft"
+        },
+        {
+          "id": "ready_position_3",
+          "level": "C",
+          "text": "I'm ready before the opponent hits.",
+          "source": "draft"
+        },
+        {
+          "id": "ready_position_4",
+          "level": "C",
+          "text": "I do a small split step as they hit.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "net_play",
@@ -376,7 +756,57 @@
           "source": "draft",
           "text": "Dominates the net. Redirects, finishes and recovers position quickly."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "net_play_1",
+          "level": "D",
+          "text": "I sometimes play at the net.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_2",
+          "level": "C",
+          "text": "I take the net when the chance is clear.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_3",
+          "level": "C",
+          "text": "Once I'm there, I stay with steady volleys.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_4",
+          "level": "C",
+          "text": "I leave the net when we're in trouble, instead of staying there.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_5",
+          "level": "B",
+          "text": "I win the net back on purpose, for example after a good lob.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_6",
+          "level": "B",
+          "text": "I hold the net under pressure.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_7",
+          "level": "A",
+          "text": "We control most points from the net.",
+          "source": "draft"
+        },
+        {
+          "id": "net_play_8",
+          "level": "A",
+          "text": "I get back into my net position quickly after each shot.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "recovery",
@@ -398,7 +828,33 @@
           "source": "draft",
           "text": "Recovers automatically, even after being pulled wide."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "recovery_1",
+          "level": "C",
+          "text": "After each shot, I move back into position.",
+          "source": "draft"
+        },
+        {
+          "id": "recovery_2",
+          "level": "B",
+          "text": "I recover quickly after being pulled wide.",
+          "source": "draft"
+        },
+        {
+          "id": "recovery_3",
+          "level": "B",
+          "text": "I move straight after hitting, instead of watching my shot.",
+          "source": "draft"
+        },
+        {
+          "id": "recovery_4",
+          "level": "A",
+          "text": "I'm balanced and ready for the next ball, even in long rallies.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "moving_as_pair",
@@ -420,7 +876,39 @@
           "source": "draft",
           "text": "Moves as one unit and covers the middle without thinking."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "moving_as_pair_1",
+          "level": "C",
+          "text": "My partner and I move forward together.",
+          "source": "draft"
+        },
+        {
+          "id": "moving_as_pair_2",
+          "level": "C",
+          "text": "We move back together.",
+          "source": "draft"
+        },
+        {
+          "id": "moving_as_pair_3",
+          "level": "B",
+          "text": "We move sideways together and keep the gap small.",
+          "source": "draft"
+        },
+        {
+          "id": "moving_as_pair_4",
+          "level": "B",
+          "text": "We rarely go for the same ball.",
+          "source": "draft"
+        },
+        {
+          "id": "moving_as_pair_5",
+          "level": "A",
+          "text": "We move as one, even when we switch sides.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "shot_choice",
@@ -447,7 +935,45 @@
           "source": "draft",
           "text": "Chooses shots to set up the next one and targets weaknesses."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "shot_choice_1",
+          "level": "D",
+          "text": "When I'm in trouble, I just get the ball back safely.",
+          "source": "draft"
+        },
+        {
+          "id": "shot_choice_2",
+          "level": "C",
+          "text": "I look at where the opponents are before I choose.",
+          "source": "draft"
+        },
+        {
+          "id": "shot_choice_3",
+          "level": "C",
+          "text": "I choose placement over power.",
+          "source": "draft"
+        },
+        {
+          "id": "shot_choice_4",
+          "level": "B",
+          "text": "I play the safe shot when I'm out of position.",
+          "source": "draft"
+        },
+        {
+          "id": "shot_choice_5",
+          "level": "B",
+          "text": "I only go for winners when the ball is right.",
+          "source": "draft"
+        },
+        {
+          "id": "shot_choice_6",
+          "level": "A",
+          "text": "I plan a few shots ahead.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "partner_communication",
@@ -469,7 +995,39 @@
           "source": "draft",
           "text": "Adjusts tactics with partner during the match."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "partner_communication_1",
+          "level": "C",
+          "text": "We call \"mine\", \"yours\" and \"leave\".",
+          "source": "draft"
+        },
+        {
+          "id": "partner_communication_2",
+          "level": "C",
+          "text": "We agree who takes the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "partner_communication_3",
+          "level": "B",
+          "text": "We agree a simple plan before we start.",
+          "source": "draft"
+        },
+        {
+          "id": "partner_communication_4",
+          "level": "B",
+          "text": "We talk between points, including after mistakes.",
+          "source": "draft"
+        },
+        {
+          "id": "partner_communication_5",
+          "level": "A",
+          "text": "We change the plan during the match.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "building_points",
@@ -486,7 +1044,33 @@
           "source": "draft",
           "text": "Changes plan when the opponent adapts."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "building_points_1",
+          "level": "B",
+          "text": "I'm patient and wait for the right ball to attack.",
+          "source": "draft"
+        },
+        {
+          "id": "building_points_2",
+          "level": "B",
+          "text": "I use several shots to set up a winner.",
+          "source": "draft"
+        },
+        {
+          "id": "building_points_3",
+          "level": "A",
+          "text": "I change pace, height and direction to create openings.",
+          "source": "draft"
+        },
+        {
+          "id": "building_points_4",
+          "level": "A",
+          "text": "I build pressure over several shots, instead of forcing it.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "composure",
@@ -513,7 +1097,39 @@
           "source": "draft",
           "text": "Plays the same whether ahead or behind."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "composure_1",
+          "level": "D",
+          "text": "I stay calm in easy rallies.",
+          "source": "draft"
+        },
+        {
+          "id": "composure_2",
+          "level": "C",
+          "text": "I stay calm in friendly games, even after errors.",
+          "source": "draft"
+        },
+        {
+          "id": "composure_3",
+          "level": "B",
+          "text": "I stay calm at big points.",
+          "source": "draft"
+        },
+        {
+          "id": "composure_4",
+          "level": "B",
+          "text": "I don't rush my shots at tight scores.",
+          "source": "draft"
+        },
+        {
+          "id": "composure_5",
+          "level": "A",
+          "text": "I play the same whether we're ahead or behind.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "bouncing_back",
@@ -535,7 +1151,33 @@
           "source": "draft",
           "text": "Treats errors as information and moves on right away."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "bouncing_back_1",
+          "level": "C",
+          "text": "After a mistake, I'm over it within a few points.",
+          "source": "draft"
+        },
+        {
+          "id": "bouncing_back_2",
+          "level": "B",
+          "text": "I'm over it by the next point.",
+          "source": "draft"
+        },
+        {
+          "id": "bouncing_back_3",
+          "level": "B",
+          "text": "I use a routine to reset between points.",
+          "source": "draft"
+        },
+        {
+          "id": "bouncing_back_4",
+          "level": "A",
+          "text": "Mistakes don't change how I play.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "focus",
@@ -552,7 +1194,27 @@
           "source": "draft",
           "text": "Focused for most of the match, with dips when tired."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "focus_1",
+          "level": "D",
+          "text": "I stay focused in short spells.",
+          "source": "draft"
+        },
+        {
+          "id": "focus_2",
+          "level": "C",
+          "text": "I stay focused for most of the match.",
+          "source": "draft"
+        },
+        {
+          "id": "focus_3",
+          "level": "C",
+          "text": "I refocus quickly after a long rally or a lost point.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "groundstrokes",
@@ -584,7 +1246,63 @@
           "source": "draft",
           "text": "Uses slice, pace and angles to move opponents and set up the net. Rarely makes errors from the back."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "groundstrokes_1",
+          "level": "beginner",
+          "text": "I can get the ball over the net from the back.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_2",
+          "level": "D",
+          "text": "I keep a simple rally going from the back.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_3",
+          "level": "D",
+          "text": "I use a short swing, not a big tennis swing.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_4",
+          "level": "C",
+          "text": "I keep the ball low over the net.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_5",
+          "level": "C",
+          "text": "I aim to the middle or a side on purpose.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_6",
+          "level": "B",
+          "text": "I control height, pace and direction.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_7",
+          "level": "B",
+          "text": "I can hit to the feet of net players when I need to.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_8",
+          "level": "A",
+          "text": "I use slice, pace and angles to move opponents.",
+          "source": "draft"
+        },
+        {
+          "id": "groundstrokes_9",
+          "level": "A",
+          "text": "I rarely make errors from the back.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "positioning",
@@ -616,7 +1334,57 @@
           "source": "draft",
           "text": "Reads opponents' habits and is already in position for the next ball."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "positioning_1",
+          "level": "beginner",
+          "text": "I know the basic spots: both back, or both at the net.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_2",
+          "level": "D",
+          "text": "I cover my own side of the court.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_3",
+          "level": "D",
+          "text": "I don't get stuck in the middle of the court.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_4",
+          "level": "C",
+          "text": "I know where to stand when serving and returning.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_5",
+          "level": "C",
+          "text": "I know who covers the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_6",
+          "level": "B",
+          "text": "I adjust my position to where the ball and opponents are.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_7",
+          "level": "B",
+          "text": "I cover for my partner when they're pulled wide.",
+          "source": "draft"
+        },
+        {
+          "id": "positioning_8",
+          "level": "A",
+          "text": "I'm already in position for the next ball.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "volley",
@@ -643,7 +1411,63 @@
           "source": "draft",
           "text": "Wins fast net exchanges. Uses block, drop and angled volleys to set up or finish, and rarely gives away an easy ball."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "volley_1",
+          "level": "D",
+          "text": "I get most easy volleys back over the net.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_2",
+          "level": "C",
+          "text": "I volley with a short, compact swing.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_3",
+          "level": "C",
+          "text": "I can volley forehand and backhand with control.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_4",
+          "level": "C",
+          "text": "I aim my volleys deep or to the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_5",
+          "level": "B",
+          "text": "I can control low volleys at my feet.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_6",
+          "level": "B",
+          "text": "I handle fast balls at the net without panicking.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_7",
+          "level": "B",
+          "text": "I change depth on purpose: deep to push back, short to finish.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_8",
+          "level": "A",
+          "text": "I win most fast exchanges at the net.",
+          "source": "draft"
+        },
+        {
+          "id": "volley_9",
+          "level": "A",
+          "text": "I use angles and drop volleys to finish points.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "smash",
@@ -665,7 +1489,45 @@
           "source": "draft",
           "text": "Smashes with control from most short lobs, using flat, kick and topspin to finish or push opponents back."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "smash_1",
+          "level": "C",
+          "text": "I smash short, easy lobs and keep them in.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_2",
+          "level": "C",
+          "text": "I don't smash every lob. I pick the short ones.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_3",
+          "level": "B",
+          "text": "I place my smash to a corner or the feet.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_4",
+          "level": "B",
+          "text": "I get back to the net after smashing.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_5",
+          "level": "A",
+          "text": "I use flat, kick or topspin smashes on purpose.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_6",
+          "level": "A",
+          "text": "My smash finishes points or pushes opponents well back.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "smash_x3",
@@ -682,7 +1544,27 @@
           "source": "draft",
           "text": "Gets the x3 out over the side wall from short lobs in the middle, and knows when to try it and when not to."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "smash_x3_1",
+          "level": "B",
+          "text": "I try the x3 on very short lobs.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_x3_2",
+          "level": "A",
+          "text": "I get the x3 out over the side fence most times I try.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_x3_3",
+          "level": "A",
+          "text": "I know when the x3 is on, and when to play safe.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "double_glass",
@@ -704,7 +1586,33 @@
           "source": "draft",
           "text": "Handles double glass from both corners, and chooses a lob or a low ball depending on where opponents are."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "double_glass_1",
+          "level": "C",
+          "text": "I get some double glass balls back.",
+          "source": "draft"
+        },
+        {
+          "id": "double_glass_2",
+          "level": "B",
+          "text": "I can tell which wall the ball will hit first.",
+          "source": "draft"
+        },
+        {
+          "id": "double_glass_3",
+          "level": "B",
+          "text": "I wait for the ball and get most double glass balls back, often with a lob.",
+          "source": "draft"
+        },
+        {
+          "id": "double_glass_4",
+          "level": "A",
+          "text": "I choose a lob or a low ball depending on where the opponents are.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "smash_defence",
@@ -726,7 +1634,39 @@
           "source": "draft",
           "text": "Gets back x3 and x4 smashes by running round or out of court where allowed, and turns some into counter-attacks."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "smash_defence_1",
+          "level": "C",
+          "text": "I get some smashes back when they come off the glass.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_defence_2",
+          "level": "B",
+          "text": "I read where a smash will bounce.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_defence_3",
+          "level": "B",
+          "text": "I get most smashes back, including off the back glass.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_defence_4",
+          "level": "A",
+          "text": "I chase x3 and x4 smashes where the court allows.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_defence_5",
+          "level": "A",
+          "text": "I turn some smash defences into counter-attacks.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "chiquita",
@@ -748,7 +1688,39 @@
           "source": "draft",
           "text": "Disguises the chiquita and mixes it with lobs and passing shots so opponents can't predict it."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "chiquita_1",
+          "level": "C",
+          "text": "I can play a soft, low ball to the net players' feet.",
+          "source": "draft"
+        },
+        {
+          "id": "chiquita_2",
+          "level": "C",
+          "text": "After a chiquita, I move up.",
+          "source": "draft"
+        },
+        {
+          "id": "chiquita_3",
+          "level": "B",
+          "text": "I use it on purpose to make opponents volley up.",
+          "source": "draft"
+        },
+        {
+          "id": "chiquita_4",
+          "level": "B",
+          "text": "My partner and I move up together after it.",
+          "source": "draft"
+        },
+        {
+          "id": "chiquita_5",
+          "level": "A",
+          "text": "I disguise it and mix it with lobs and passing shots.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "block_volley",
@@ -770,7 +1742,27 @@
           "source": "draft",
           "text": "Uses the block to change pace, landing it short or at the feet on purpose."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "block_volley_1",
+          "level": "C",
+          "text": "I can block a fast ball back at the net.",
+          "source": "draft"
+        },
+        {
+          "id": "block_volley_2",
+          "level": "B",
+          "text": "My blocks land low or deep, not sitting up.",
+          "source": "draft"
+        },
+        {
+          "id": "block_volley_3",
+          "level": "A",
+          "text": "I use the block to change pace and land it at their feet.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "drop_volley",
@@ -787,7 +1779,27 @@
           "source": "draft",
           "text": "Disguises the drop volley and uses it at the right moment to win the point."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "drop_volley_1",
+          "level": "B",
+          "text": "I try a drop volley when both opponents are deep.",
+          "source": "draft"
+        },
+        {
+          "id": "drop_volley_2",
+          "level": "B",
+          "text": "My drop volley lands short and doesn't sit up.",
+          "source": "draft"
+        },
+        {
+          "id": "drop_volley_3",
+          "level": "A",
+          "text": "I disguise it so opponents don't see it coming.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "gancho",
@@ -804,7 +1816,21 @@
           "source": "draft",
           "text": "Uses the hook to attack fast high balls at the net with control and placement."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "gancho_1",
+          "level": "B",
+          "text": "I can hit a quick hook on a high ball at the net.",
+          "source": "draft"
+        },
+        {
+          "id": "gancho_2",
+          "level": "A",
+          "text": "I use the hook to attack, with control and placement.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "rulo",
@@ -816,7 +1842,21 @@
           "source": "draft",
           "text": "Hits a topspin smash that kicks up off the back glass and pushes opponents back."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "rulo_1",
+          "level": "A",
+          "text": "I can hit a topspin smash that kicks up off the back glass.",
+          "source": "draft"
+        },
+        {
+          "id": "rulo_2",
+          "level": "A",
+          "text": "I use it on purpose to push opponents back.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "smash_x4",
@@ -828,7 +1868,21 @@
           "source": "draft",
           "text": "Can hit the x4 from very short balls near the net, and knows when it's on."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "smash_x4_1",
+          "level": "A",
+          "text": "I can hit an x4 out over the back on short, high balls.",
+          "source": "draft"
+        },
+        {
+          "id": "smash_x4_2",
+          "level": "A",
+          "text": "I know when the x4 is on, and when to play safe.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "drop_shot",
@@ -845,7 +1899,27 @@
           "source": "draft",
           "text": "Disguises the drop shot and lands it short and low at the right moment."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "drop_shot_1",
+          "level": "B",
+          "text": "I play a drop shot when opponents are deep.",
+          "source": "draft"
+        },
+        {
+          "id": "drop_shot_2",
+          "level": "B",
+          "text": "My drop shot lands short and low, not sitting up.",
+          "source": "draft"
+        },
+        {
+          "id": "drop_shot_3",
+          "level": "A",
+          "text": "I disguise it and pick the right moment.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "contrapared",
@@ -862,7 +1936,21 @@
           "source": "draft",
           "text": "Uses the back wall boast as a planned option when there's no other way forwards."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "contrapared_1",
+          "level": "B",
+          "text": "In an emergency, I can hit the ball into my own back wall to get it over.",
+          "source": "draft"
+        },
+        {
+          "id": "contrapared_2",
+          "level": "A",
+          "text": "I use it as a planned option when there's no way to hit forwards.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "attacking_lob",
@@ -884,7 +1972,33 @@
           "source": "draft",
           "text": "Disguises the attacking lob, so opponents can't move back early."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "attacking_lob_1",
+          "level": "C",
+          "text": "I try a lower, faster lob when opponents are close to the net.",
+          "source": "draft"
+        },
+        {
+          "id": "attacking_lob_2",
+          "level": "B",
+          "text": "I use it on purpose to get behind net players.",
+          "source": "draft"
+        },
+        {
+          "id": "attacking_lob_3",
+          "level": "B",
+          "text": "I move up after it.",
+          "source": "draft"
+        },
+        {
+          "id": "attacking_lob_4",
+          "level": "A",
+          "text": "I disguise it so opponents can't move back early.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "passing_shot",
@@ -901,7 +2015,27 @@
           "source": "draft",
           "text": "Passes net players low down the line or through the middle on purpose."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "passing_shot_1",
+          "level": "B",
+          "text": "I hit a passing shot when there's a clear gap.",
+          "source": "draft"
+        },
+        {
+          "id": "passing_shot_2",
+          "level": "B",
+          "text": "My passing shots stay low.",
+          "source": "draft"
+        },
+        {
+          "id": "passing_shot_3",
+          "level": "A",
+          "text": "I pass net players down the line or through the middle on purpose.",
+          "source": "draft"
+        }
+      ]
     },
     {
       "id": "half_volley",
@@ -923,7 +2057,33 @@
           "source": "draft",
           "text": "Uses the half volley to stay in a strong position, landing it low and deep."
         }
-      }
+      },
+      "statements": [
+        {
+          "id": "half_volley_1",
+          "level": "C",
+          "text": "I get half volleys back when I'm caught in the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "half_volley_2",
+          "level": "B",
+          "text": "My half volleys stay low.",
+          "source": "draft"
+        },
+        {
+          "id": "half_volley_3",
+          "level": "B",
+          "text": "After a half volley, I move forward or back, not stay in the middle.",
+          "source": "draft"
+        },
+        {
+          "id": "half_volley_4",
+          "level": "A",
+          "text": "I use the half volley to keep a strong position.",
+          "source": "draft"
+        }
+      ]
     }
   ]
 }

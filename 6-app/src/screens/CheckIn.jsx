@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { levels, axisById, allSkillById } from '../data.js';
-import { skillChecks, levelName, notYetLevel } from '../levels.js';
+import { skillChecks, levelName, scoreSkill } from '../levels.js';
+import StatementCheck from '../components/StatementCheck.jsx';
 import { buildCheckInList, reviewSummary } from '../checkin.js';
 import { SkillChips } from './Matches.jsx';
 import { goalLine } from '../goals.js';
@@ -77,37 +78,36 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
   if (i < list.length) {
     const s = list[i];
     const prev = before[s.id];
-    const pick = (lv) => { setAnswers({ ...answers, [s.id]: lv }); setI(i + 1); };
+    const save = (ans) => { setAnswers({ ...answers, [s.id]: { answers: ans, level: scoreSkill(s, ans).level } }); setI(i + 1); };
     return (
       <main className="page">
-        <div className="bar ob-bar"><span style={{ width: `${20 + (i / list.length) * 80}%` }} /></div>
-        <p className="eyebrow center">{axisById[s.axis].name} · {i + 1} of {list.length}</p>
-        <div className="mascot-row"><img className="mascot-img" src={think} alt="" /><div className="bubble">{s.name}: which sounds most like you now?</div></div>
-        <p className="soft center">
-          {notWorking.includes(s.id) ? "You said this isn't working. " : working.includes(s.id) ? 'You said this is working. ' : ''}
-          {prev ? `Last time: ${levelName(prev.level)}${prev.from === 'quiz' ? ' (from the quiz)' : ''}` : ''}
-        </p>
-        <div className="ob-answers">
-          {levels.filter((l) => s.levels[l.id]).map((l) => (
-            <button key={l.id} className={'ans' + (prev?.level === l.id ? ' picked' : '')} onClick={() => pick(l.id)}>
-              <strong>{l.name}.</strong> {s.levels[l.id].text}
-            </button>
-          ))}
-          <button className="ans" onClick={() => pick(notYetLevel(s))}><strong>Not yet.</strong> I can't really do this yet.</button>
-          <button className="ans skip" onClick={() => setI(i + 1)}>Skip this one</button>
-          <button className="back center-self" onClick={() => (i > 0 ? setI(i - 1) : setStep('notWorking'))}>‹ Back</button>
+        <div className="ob-top">
+          <button className="back" onClick={() => (i > 0 ? setI(i - 1) : setStep('notWorking'))}>‹ Back</button>
+          <div className="bar ob-bar"><span style={{ width: `${20 + (i / list.length) * 80}%` }} /></div>
         </div>
+        <p className="eyebrow center">{axisById[s.axis].name} · {i + 1} of {list.length}</p>
+        <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{s.name}: how often is each of these true for you now?</div></div>
+        {(notWorking.includes(s.id) || working.includes(s.id) || prev?.answers) && (
+          <p className="soft center">
+            {notWorking.includes(s.id) ? "You said this isn't working. " : working.includes(s.id) ? 'You said this is working. ' : ''}
+            {prev?.answers ? 'Your last answers are filled in. Change what has changed.' : ''}
+          </p>
+        )}
+        <section className="panel">
+          <StatementCheck key={s.id} skill={s} initial={answers[s.id]?.answers || prev?.answers || {}} onSave={save} saveLabel="Next" intro={false} onSkip={() => setI(i + 1)} skipLabel="Skip this skill" />
+        </section>
       </main>
     );
   }
 
   const changes = list.filter((s) => answers[s.id]);
+  const lv = (id) => answers[id]?.level;
   const approve = () => {
     const now = new Date().toISOString();
     updatePlayer((p) => {
       const sc = { ...(p.skillChecks || {}) };
-      changes.forEach((s) => { sc[s.id] = { level: answers[s.id], date: now }; });
-      return { ...p, skillChecks: sc, provisional: false, lastCheckIn: now, checkIns: [...(p.checkIns || []), { date: now, answers, working, notWorking, note: note.trim() }] };
+      changes.forEach((s) => { sc[s.id] = { level: lv(s.id), answers: answers[s.id].answers, date: now }; });
+      return { ...p, skillChecks: sc, provisional: false, lastCheckIn: now, checkIns: [...(p.checkIns || []), { date: now, levels: Object.fromEntries(changes.map((s) => [s.id, lv(s.id)])), working, notWorking, note: note.trim() }] };
     });
     onDone();
   };
@@ -122,9 +122,9 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
             return (
               <li key={s.id} className="list-row">
                 <span>{s.name}</span>
-                {was === answers[s.id]
+                {was === lv(s.id)
                   ? <span className="soft">{levelName(was)} · no change</span>
-                  : <span className="soft">{was ? levelName(was) : '–'} → <strong className="goal-pct">{levelName(answers[s.id])}</strong></span>}
+                  : <span className="soft">{was ? levelName(was) : '–'} → <strong className="goal-pct">{levelName(lv(s.id))}</strong></span>}
               </li>
             );
           })}

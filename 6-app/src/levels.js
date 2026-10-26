@@ -1,4 +1,4 @@
-import { levels, axes, allSkills, onboarding } from './data.js';
+import { levels, axes, allSkills, onboarding, rules } from './data.js';
 
 const byId = Object.fromEntries(levels.map((l) => [l.id.toLowerCase(), l]));
 const find = (id) => (id ? byId[String(id).toLowerCase()] : undefined);
@@ -82,3 +82,32 @@ export const article = (name) => (/^[AEFHILMNORSX]$/.test(name) || /^[aeiou]/i.t
 
 // What the coach prioritises at a level (e.g. D: "Get it back.")
 export const levelFocus = (id) => find(id)?.coachFocus || '';
+
+// ---- Statement checks ("I can..." answered Always / Usually / Sometimes / Not yet) ----
+// Rule (agreed with Richard): good enough = usually or always; mastered = always.
+// You have a level when you're good enough at its statements AND have mastered every level below it.
+export function scoreSkill(skill, answers = {}) {
+  const r = rules.statementCheck;
+  const byLevel = {};
+  (skill.statements || []).forEach((st) => { (byLevel[st.level] = byLevel[st.level] || []).push(st); });
+  const share = (list, ok) => {
+    const answered = list.filter((st) => answers[st.id]);
+    if (!answered.length) return 0;
+    return list.filter((st) => ok.includes(answers[st.id])).length / list.length;
+  };
+  let level = null;
+  for (const l of levels) {
+    const list = byLevel[l.id];
+    if (!list) continue;
+    if (share(list, r.goodEnough) < r.share) break;
+    level = l.id;
+    if (share(list, r.mastered) < r.share) break; // good enough here, but not mastered: stop climbing
+  }
+  const result = level || notYetLevel(skill);
+  // What's missing for the next step up
+  const nextOrder = levelOrder(result) + 1;
+  const nextId = Object.keys(byLevel).map(levelOrder).filter((o) => o >= nextOrder).sort((a, b) => a - b)[0];
+  const gaps = nextId === undefined ? [] : byLevel[levelByOrder(nextId).id].filter((st) => !r.goodEnough.includes(answers[st.id]));
+  const notMastered = level ? (byLevel[level] || []).filter((st) => answers[st.id] !== 'always') : [];
+  return { level: result, gaps, nextLevel: nextId === undefined ? null : levelByOrder(nextId).id, notMastered };
+}

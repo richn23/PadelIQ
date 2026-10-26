@@ -330,3 +330,17 @@ i.played { background: #fff; }
 .mascot-img.small { width: 60px; }
 .goal-chat .bubble { font-size: 15px; }
 .focus-card { border-color: var(--accent); }
+
+/* ---------- Statement checks ---------- */
+.stmt-check { display: flex; flex-direction: column; gap: 12px; }
+.stmt-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.stmt { padding: 12px 0; }
+.stmt + .stmt { border-top: 1px solid var(--panel-border); }
+.stmt-text { font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 8px; }
+.seg4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: rgba(255,255,255,0.06); border-radius: 10px; padding: 3px; }
+.seg4 button { border: 0; background: none; color: var(--text-soft); border-radius: 8px; padding: 8px 2px; font-size: 12px; font-weight: 700; }
+.seg4 button.on { background: var(--accent); color: var(--accent-text); }
+.result-card .gap-list { margin: 6px 0 0; padding-left: 18px; }
+.result-card .gap-list li { margin: 4px 0; line-height: 1.35; }
+.link-row { width: 100%; border: 0; background: none; color: var(--text); padding: 0; }
+.result-card { margin: 8px 0 4px; }

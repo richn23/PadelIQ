@@ -10,6 +10,7 @@ export const defaultTheme = themeFile.defaultTheme;
 export const axes = framework.axes;
 export const levels = framework.levels;
 export const skills = framework.skills;
+export const rules = framework.rules;
 export { player };
 
 export const axisById = Object.fromEntries(axes.map((a) => [a.id, a]));
@@ -21,6 +22,7 @@ export const allSkills = glossary.items.map((g) => ({
   ...g,
   axis: g.area,
   levels: skillById[g.id]?.levels || {},
+  statements: skillById[g.id]?.statements || [],
 }));
 export const allSkillById = Object.fromEntries(allSkills.map((s) => [s.id, s]));
 export { default as goalDiagnosis } from '../../5-data/goal-diagnosis.json';

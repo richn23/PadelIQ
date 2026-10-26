@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd } from '../data.js';
 import think from '../assets/mascot-think.png';
-import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus } from '../levels.js';
+import StatementCheck from '../components/StatementCheck.jsx';
+import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus, scoreSkill } from '../levels.js';
 
 const views = [
   { id: 'have', label: 'My skills' },
@@ -212,19 +213,44 @@ function levelLine(skill, id) {
   return 'Not expected yet at this level.';
 }
 
+// After a check: the level it comes out as, and what's missing for the next step.
+function ResultCard({ skill, result }) {
+  return (
+    <div className="result-card">
+      <p className="soft">From your answers, this comes out as <strong className="goal-pct">{skill.levels[result.level] || levelOrder(result.level) >= (firstMasterOrder(skill) ?? 0) ? levelName(result.level) : 'not yet'}</strong>.</p>
+      {result.notMastered.length > 0 && (
+        <>
+          <p className="soft" style={{ marginTop: 8 }}>To make it solid (always, not just usually):</p>
+          <ul className="gap-list soft">{result.notMastered.map((st) => <li key={st.id}>{st.text}</li>)}</ul>
+        </>
+      )}
+      {result.gaps.length > 0 && (
+        <>
+          <p className="soft" style={{ marginTop: 8 }}>Next step{result.nextLevel ? ` (${levelName(result.nextLevel)})` : ''}:</p>
+          <ul className="gap-list soft">{result.gaps.map((st) => <li key={st.id}>{st.text}</li>)}</ul>
+        </>
+      )}
+    </div>
+  );
+}
+
 function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const [checking, setChecking] = useState(false);
+  const [showLevels, setShowLevels] = useState(false);
+  const [justScored, setJustScored] = useState(null);
   const [note, setNote] = useState('');
   const [goalForm, setGoalForm] = useState(null); // { title, progress }
   const described = levels.filter((l) => skill.levels[l.id]);
   const goals = player.goals || [];
   const isGoal = goals.some((g) => g.skillId === skill.id);
 
-  const saveCheck = (levelId) => {
-    updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [skill.id]: { level: levelId, date: new Date().toISOString() } } }));
+  const saveCheck = (answers) => {
+    const result = scoreSkill(skill, answers);
+    updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [skill.id]: { level: result.level, answers, date: new Date().toISOString() } } }));
     setChecking(false);
-    setNote('Saved.');
+    setJustScored(result);
   };
+  const shown = justScored || (check?.answers ? scoreSkill(skill, check.answers) : null);
   const makeGoal = () => {
     if (isGoal) return;
     if (goals.length >= 3) { setNote('You already have 3 goals. Finish or remove one first.'); return; }
@@ -258,20 +284,12 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           </div>
           {check?.from === 'quiz' && <p className="soft">From your quiz. Check it properly below.</p>}
           {!checking ? (
-            described.length ? <button className="btn" onClick={() => setChecking(true)}>Check myself</button> : <p className="soft">Level descriptions coming soon.</p>
-          ) : (
             <>
-              <p className="insight">Which sounds most like you?</p>
-              <div className="ob-answers">
-                {described.map((l) => (
-                  <button key={l.id} className={'ans' + (check?.level === l.id ? ' picked' : '')} onClick={() => saveCheck(l.id)}>
-                    <strong>{l.name}.</strong> {skill.levels[l.id].text}
-                  </button>
-                ))}
-                <button className="ans" onClick={() => saveCheck(notYetLevel(skill))}><strong>Not yet.</strong> I can't really do this yet.</button>
-                <button className="ans skip" onClick={() => setChecking(false)}>Not sure</button>
-              </div>
+              {shown && <ResultCard skill={skill} result={shown} />}
+              <button className="btn" onClick={() => setChecking(true)}>{check?.answers ? 'Check again' : 'Check myself'}</button>
             </>
+          ) : (
+            <StatementCheck skill={skill} initial={check?.answers || {}} onSave={saveCheck} onSkip={() => setChecking(false)} skipLabel="Cancel" />
           )}
         </section>
       ) : (
@@ -279,15 +297,17 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       )}
 
       <section className="panel">
-        <p className="eyebrow">What it looks like at each level</p>
-        <ul className="list">
+        <button className="row-between link-row" onClick={() => setShowLevels(!showLevels)} aria-expanded={showLevels}>
+          <span className="eyebrow">What it looks like at each level</span><span className="chev">{showLevels ? '▾' : '▸'}</span>
+        </button>
+        {showLevels && <ul className="list">
           {levels.map((l) => (
             <li key={l.id} className={'list-row col' + (check?.level === l.id ? ' you' : '')}>
               <strong>{l.name}{check?.level === l.id ? ' (you)' : ''}</strong>
               <span className="soft">{check?.level === l.id && !skill.levels[l.id] ? 'You said: not yet. That\'s fine at this level.' : levelLine(skill, l.id)}</span>
             </li>
           ))}
-        </ul>
+        </ul>}
       </section>
 
       {skill.checked && !goalForm && <button className="btn" onClick={makeGoal} disabled={isGoal}>{isGoal ? 'This is one of your goals' : 'Make this a goal'}</button>}
