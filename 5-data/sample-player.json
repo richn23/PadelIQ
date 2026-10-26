@@ -1,0 +1,46 @@
+{
+  "_note": "Made-up player used to build and test screens. Replace with real saved data later.",
+  "name": "Alex",
+  "provisional": true,
+  "axisLevels": {
+    "attack": "B",
+    "defence": "C",
+    "movement": "C",
+    "tactics": "C",
+    "mentality": "D"
+  },
+  "goals": [
+    {
+      "id": "g1",
+      "skillId": "net_play",
+      "title": "Take the net more often",
+      "progress": 65
+    },
+    {
+      "id": "g2",
+      "skillId": "back_glass_return",
+      "title": "Read back-glass rebounds earlier",
+      "progress": 30
+    },
+    {
+      "id": "g3",
+      "skillId": "serve",
+      "title": "Add depth to my serve",
+      "progress": 45
+    }
+  ],
+  "nextSession": {
+    "kind": "match",
+    "when": "Sat 24 Oct, 18:00",
+    "partner": "Sam",
+    "opponents": [
+      "Tom",
+      "Javier"
+    ],
+    "venue": "Riverside Padel Club"
+  },
+  "insight": {
+    "text": "Back-glass returns came up in 3 of your last 4 match notes. Want to make it a focus?",
+    "basedOn": "Your last 4 match notes"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "_note": "Placeholder colours. Swap in real values once the court textures exist. Each theme = one court look.",
+  "defaultTheme": "blue",
+  "themes": {
+    "blue": {
+      "name": "Blue court",
+      "background": "#1B3FD1",
+      "backgroundTexture": "assets/backgrounds/court-blue.png",
+      "panel": "rgba(8, 20, 70, 0.72)",
+      "panelBorder": "rgba(255, 255, 255, 0.18)",
+      "text": "#FFFFFF",
+      "textSoft": "rgba(255, 255, 255, 0.72)",
+      "chalk": "#FFFFFF",
+      "accent": "#D7FF00",
+      "accentText": "#0B1A5C",
+      "pentagonFill": "rgba(215, 255, 0, 0.28)",
+      "pentagonLine": "#D7FF00"
+    },
+    "clay": {
+      "name": "Clay court",
+      "background": "#D9542B",
+      "backgroundTexture": "assets/backgrounds/court-clay.png",
+      "panel": "rgba(70, 20, 5, 0.72)",
+      "panelBorder": "rgba(255, 255, 255, 0.18)",
+      "text": "#FFFFFF",
+      "textSoft": "rgba(255, 255, 255, 0.78)",
+      "chalk": "#FFFFFF",
+      "accent": "#FFF04D",
+      "accentText": "#4A1B0C",
+      "pentagonFill": "rgba(255, 240, 77, 0.28)",
+      "pentagonLine": "#FFF04D"
+    },
+    "green": {
+      "name": "Green court",
+      "background": "#1FA855",
+      "backgroundTexture": "assets/backgrounds/court-green.png",
+      "panel": "rgba(5, 50, 25, 0.72)",
+      "panelBorder": "rgba(255, 255, 255, 0.18)",
+      "text": "#FFFFFF",
+      "textSoft": "rgba(255, 255, 255, 0.78)",
+      "chalk": "#FFFFFF",
+      "accent": "#FFF04D",
+      "accentText": "#073B1D",
+      "pentagonFill": "rgba(255, 240, 77, 0.28)",
+      "pentagonLine": "#FFF04D"
+    }
+  }
+}

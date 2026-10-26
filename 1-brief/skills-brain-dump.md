@@ -1,0 +1,609 @@
+Complete Skills & Shot Brain Dump
+Let's go broad. This is a raw competency inventory, not yet a formal assessment framework.
+I'm including technical strokes, variations, tactical decisions, court movement, partner coordination, mental skills and match management.
+Some overlap is intentional. For example, a defensive lob is a shot, but knowing when to lob is a tactical competency.
+We can organise, merge and level-map everything later.
+1. Serve
+- Basic serve technique
+- Legal serve execution
+- Continental grip
+- Ball drop and contact height
+- Stance and body alignment
+- Weight transfer
+- Consistency and first-serve percentage
+- Serve depth
+- Serve speed and power
+- Serve with slice
+- Flat serve
+- Topspin serve
+- Wide serve
+- Serve down the T
+- Serve towards the side glass
+- Serve towards the body
+- Serve from the right side
+- Serve from the left side
+- Backhand serve
+- Variation and disguise
+- Serve placement according to opponent
+- Second-serve reliability
+- Avoiding double faults
+- Serve-and-advance movement
+- Timing the approach to the net
+- Split step after serving
+- First volley after serving
+- Adapting serve to court conditions
+2. Return of Serve
+- Forehand return
+- Backhand return
+- Compact preparation
+- Return consistency
+- Deep return
+- Low return
+- Cross-court return
+- Down-the-line return
+- Return through the middle
+- Return lob
+- Chiquita return
+- Blocked return
+- Attacking a weak serve
+- Returning sliced serves
+- Returning serves near the side glass
+- Returning after a glass rebound
+- Reading serve direction
+- Return positioning
+- Anticipating the server's net approach
+- Choosing safe returns under pressure
+3. Groundstrokes
+- Forehand groundstroke
+- Backhand groundstroke
+- One-handed backhand
+- Two-handed backhand
+- Continental grip control
+- Grip changes where appropriate
+- Ready position
+- Unit turn and preparation
+- Contact point
+- Weight transfer
+- Follow-through
+- Flat forehand
+- Flat backhand
+- Slice forehand
+- Slice backhand
+- Topspin forehand
+- Topspin backhand
+- Cross-court groundstrokes
+- Down-the-line groundstrokes
+- Shots through the middle
+- Deep groundstrokes
+- Short controlled groundstrokes
+- Low-to-high shot trajectory
+- Maintaining rally consistency
+- Controlling ball speed
+- Playing from awkward positions
+- Playing balls close to the feet
+- Handling fast balls
+- Handling slow balls
+- Taking balls early
+- Recovering after a groundstroke
+- Changing direction safely
+4. Volleys
+- Forehand volley
+- Backhand volley
+- Continental grip
+- Grip stability under pressure
+- Ready position at the net
+- Racket position
+- Compact preparation
+- Contact point in front
+- Open racket face
+- Body rotation
+- Forward weight transfer
+- Controlled follow-through
+- Volley consistency
+- Low volley
+- High volley
+- Half volley
+- Block volley
+- Defensive volley
+- Attacking volley
+- Deep volley
+- Short volley
+- Drop volley
+- Cross-court volley
+- Down-the-line volley
+- Volley through the middle
+- Volley towards the side glass
+- Volley towards the back glass
+- Volley towards opponents' feet
+- Volley into open space
+- Controlling volley pace
+- Absorbing ball speed
+- Adding pace
+- Changing volley direction
+- Volleying while moving
+- Volleying while stationary
+- Volleying from an awkward position
+- Handling fast exchanges
+- Volleying under pressure
+- Consecutive volleys
+- Recovering net position after volleys
+- Choosing when not to attack
+5. Overheads
+- Basic overhead
+- Forehand overhead
+- Backhand overhead
+- Overhead preparation
+- Side-on positioning
+- Tracking lobs
+- Moving backwards for overheads
+- Moving diagonally backwards
+- Adjusting contact point
+- Contacting the ball high
+- Controlled overhead placement
+- Overhead consistency
+- Flat overhead
+- Defensive overhead
+- Attacking overhead
+- Overhead to the back glass
+- Overhead towards the side glass
+- Overhead down the middle
+- Overhead to opponents' feet
+- Overhead recovery positioning
+- Maintaining net advantage
+Bandeja
+- Basic bandeja
+- Bandeja preparation
+- Side-on body position
+- Appropriate contact height
+- Slice generation
+- Follow-through
+- Cross-court bandeja
+- Straight bandeja
+- Deep bandeja
+- Bandeja towards side glass
+- Bandeja from right court
+- Bandeja from left court
+- Bandeja while moving backwards
+- Defensive bandeja
+- Maintaining net position after bandeja
+Víbora
+- Basic víbora
+- Víbora mechanics
+- Sidespin generation
+- Contact point
+- Acceleration
+- Placement
+- Cross-court víbora
+- Víbora towards the side glass
+- Víbora towards the back corner
+- Recovery after víbora
+- Choosing víbora versus bandeja
+Smash
+- Basic flat smash
+- Power smash
+- Controlled smash
+- Kick smash
+- Topspin smash
+- Smash preparation
+- Jump smash
+- Timing
+- Leg drive
+- Body rotation
+- Wrist and forearm action
+- Smash placement
+- Smash into side fence
+- X3 / por tres
+- X4 / por cuatro
+- Bringing the ball back to your own side
+- Smash recovery
+- Selecting appropriate smash opportunities
+- Recognising when not to smash
+6. Lobs
+- Forehand lob
+- Backhand lob
+- Defensive lob
+- Attacking lob
+- Recovery lob
+- Emergency lob
+- High, deep lob
+- Lower, faster lob
+- Cross-court lob
+- Straight lob
+- Lob over the right-side opponent
+- Lob over the left-side opponent
+- Lob through the middle
+- Lob over the weaker overhead player
+- Lob height control
+- Lob depth control
+- Lob accuracy
+- Lob using leg drive
+- Lob from a low contact point
+- Lob off the back glass
+- Lob from the corner
+- Lob under pressure
+- Lob from a difficult defensive position
+- Lob into the sun
+- Reading opponents' positioning before lobbing
+- Recognising when a lob is too risky
+- Choosing lob versus low passing shot
+- Advancing after a successful lob
+- Recovering after a short lob
+7. Glass and Wall Defence
+This is a particularly important category because it contains both specific shot techniques and decision-making.
+Back glass
+- Allowing the ball to reach the back glass
+- Deciding whether to take the ball before or after the glass
+- Reading rebound height
+- Reading rebound depth
+- Reading rebound direction
+- Adjusting distance from the glass
+- Forehand off the back glass
+- Backhand off the back glass
+- Low rebound recovery
+- High rebound recovery
+- Fast rebound recovery
+- Slow rebound recovery
+- Returning a sliced ball off the glass
+- Returning a topspin ball off the glass
+- Using the rebound to create time
+- Recovering court position after a glass return
+- Avoiding standing too close to the glass
+Side glass
+- Forehand side-glass return
+- Backhand side-glass return
+- Reading side-glass angles
+- Responding to fast side-glass rebounds
+- Responding to balls that die near the glass
+- Playing after a serve hits the side glass
+- Avoiding getting trapped beside the wall
+Double glass
+- Back-glass-to-side-glass sequence
+- Side-glass-to-back-glass sequence
+- Recognising which wall the ball will hit first
+- Reading the exit trajectory
+- Moving into the correct recovery position
+- Adjusting footwork in tight corners
+- Allowing the ball to travel before striking
+- Returning from awkward body positions
+- Defensive lob after double glass
+- Controlled low return after double glass
+Advanced wall play
+- Bajada off the back glass
+- Forehand bajada
+- Backhand bajada
+- Bajada placement
+- Bajada with slice
+- Bajada with controlled power
+- Bajada towards opponents' feet
+- Bajada down the middle
+- Bajada down the line
+- Bajada shot selection
+- Contrapared — using one's own back wall
+- Side-wall contrapared
+- Emergency wall recovery shots
+- Reading balls involving the metal fence
+- Recovering unusual wall rebounds
+8. Touch, Control and Transitional Shots
+- Chiquita
+- Forehand chiquita
+- Backhand chiquita
+- Chiquita towards opponents' feet
+- Chiquita through the middle
+- Chiquita from defence
+- Chiquita to initiate a net approach
+- Playing a soft ball from below net height
+- Drop shot / dejada
+- Forehand drop shot
+- Backhand drop shot
+- Drop volley
+- Disguised drop shot
+- Blocked defensive return
+- Half volley
+- Emergency scoop shot
+- Controlled passing shot
+- Cross-court passing shot
+- Down-the-line passing shot
+- Soft-angle shot
+- Short-angle shot
+- Using opponents' momentum against them
+- Changing pace
+- Absorbing pace
+- Disguising shot direction
+- Moving from a defensive to an attacking situation
+9. Footwork and Movement
+- Basic athletic stance
+- Balance
+- Split step
+- Split-step timing
+- First-step reaction
+- Lateral movement
+- Forward movement
+- Backward movement
+- Diagonal movement
+- Crossover steps
+- Adjustment steps
+- Small positioning steps
+- Turning to follow a lob
+- Moving sideways for overheads
+- Recovering balance before striking
+- Braking and changing direction
+- Maintaining balance during volleys
+- Moving around the back corner
+- Approaching the net efficiently
+- Recovering after a shot
+- Repositioning after being pulled wide
+- Moving with a partner
+- Covering the middle
+- Avoiding collisions
+- Tracking the ball while moving
+- Reading the bounce early
+- Managing fatigue-related movement decline
+- Maintaining an effective ready position
+10. Court Positioning
+- Basic court zones
+- Defensive baseline position
+- Net position
+- Correct distance from the net
+- Correct distance from the back glass
+- Correct distance from the side glass
+- Avoiding no-man's-land
+- Recognising when to move forward
+- Recognising when to retreat
+- Moving forward together
+- Retreating together
+- Recovering after a lob
+- Moving to cover the middle
+- Positioning against a cross-court shot
+- Positioning against a down-the-line shot
+- Positioning when partner is pulled wide
+- Positioning during serve
+- Positioning during return
+- Left-side positioning
+- Right-side positioning
+- Switching sides
+- Maintaining court coverage
+- Adjusting position against a left-handed player
+- Adjusting position according to opponents' tendencies
+- Anticipating the next ball
+- Knowing when to stay back
+11. Tactical Understanding
+General
+- Understanding attacking versus defensive positions
+- Recognising neutral situations
+- Shot selection
+- Risk versus reward
+- Rally construction
+- Patience
+- Maintaining consistency
+- Recognising a genuine attacking opportunity
+- Avoiding unnecessary winners from the back
+- Choosing placement over power
+- Targeting open space
+- Targeting opponents' feet
+- Playing through the middle
+- Changing direction
+- Changing pace
+- Changing height
+- Changing spin
+- Forcing weak returns
+- Creating rather than forcing winners
+- Using the glass tactically
+- Keeping opponents at the back
+- Winning the net
+- Holding the net
+- Resetting a difficult rally
+- Recognising when to defend rather than attack
+- Controlling rally tempo
+- Creating uncertainty
+Opponent analysis
+- Identifying the weaker player
+- Identifying the stronger player
+- Identifying poor glass defence
+- Identifying weak volleys
+- Identifying weak overheads
+- Identifying poor movement
+- Recognising directional preferences
+- Recognising a player who dislikes lobs
+- Recognising players who rush the net
+- Recognising players who stay too far back
+- Identifying gaps between players
+- Reading an opponent's racket preparation
+- Identifying predictable serves
+- Exploiting positioning weaknesses
+- Changing tactics when an opponent adapts
+Attacking patterns
+- Serve and first volley
+- Low return followed by net approach
+- Chiquita followed by advancing
+- Lob followed by advancing
+- Deep volley followed by short volley
+- Moving opponents sideways
+- Targeting the middle to create uncertainty
+- Building pressure over several shots
+- Recognising when the ball is available to finish
+- Choosing between volley, bandeja, víbora and smash
+Defensive patterns
+- Defensive lob to regain the net
+- Using the glass to buy time
+- Resetting from difficult corners
+- Keeping the ball low against net players
+- Avoiding risky counterattacks
+- Defending as a pair
+- Recovering after being drawn forward
+- Neutralising powerful opponents
+- Defending against aggressive net pressure
+12. Partner Communication and Teamwork
+- Calling your shots
+- Calling "mine" and "yours"
+- Calling "leave"
+- Calling opponent positions
+- Calling opponents moving forward
+- Calling opponents staying back
+- Calling short lobs
+- Calling the middle ball
+- Discussing who takes overheads
+- Agreeing on centre-ball responsibility
+- Understanding left/right roles
+- Moving forward together
+- Retreating together
+- Covering for a partner
+- Adjusting to a more aggressive partner
+- Adjusting to a more defensive partner
+- Recognising partner strengths
+- Recognising partner weaknesses
+- Choosing complementary tactics
+- Discussing serve strategy
+- Discussing return strategy
+- Communicating between points
+- Encouraging a partner
+- Responding constructively to mistakes
+- Managing disagreements
+- Staying positive after losing points
+- Avoiding blame
+- Adapting to unfamiliar partners
+- Developing shared tactical routines
+- Trusting a partner's decisions
+- Maintaining awareness of partner positioning
+13. Mental Skills and Match Psychology
+- Confidence
+- Composure
+- Concentration
+- Attention control
+- Patience
+- Emotional regulation
+- Handling frustration
+- Responding to unforced errors
+- Recovering after a poor game
+- Managing nerves
+- Managing pressure points
+- Managing match points
+- Playing when behind
+- Playing when ahead
+- Avoiding complacency
+- Avoiding rushed decisions
+- Maintaining tactical discipline
+- Trusting practised technique
+- Avoiding overthinking
+- Applying new techniques in competitive play
+- Managing fear of making mistakes
+- Recovering after losing an important rally
+- Staying engaged during long rallies
+- Managing mental fatigue
+- Adapting when an opponent changes tactics
+- Recognising personal performance patterns
+- Resetting attention between points
+- Maintaining confidence without becoming reckless
+14. Match Management
+- Understanding scoring
+- Knowing serving order
+- Knowing receiving order
+- Understanding tiebreaks
+- Understanding golden-point rules
+- Managing momentum
+- Choosing tactics at important points
+- Recognising when to play conservatively
+- Recognising when to take calculated risks
+- Managing energy over several sets
+- Recognising opponent momentum
+- Adjusting strategy after losing a set
+- Adjusting tactics during changeovers
+- Identifying recurring errors
+- Understanding why points are being lost
+- Changing return positioning
+- Changing serve targets
+- Adapting to a new partner
+- Adapting to a difficult pairing
+- Competing against stronger opponents
+- Playing against weaker opponents without losing concentration
+- Maintaining performance late in matches
+15. Physical and Athletic Competencies
+- Acceleration
+- Agility
+- Reaction speed
+- Deceleration
+- Change of direction
+- Explosive movement
+- Lateral speed
+- Balance
+- Coordination
+- Lower-body strength
+- Upper-body strength
+- Rotational power
+- Shoulder mobility
+- Hip mobility
+- Ankle mobility
+- Cardiovascular endurance
+- Repeated-effort endurance
+- Recovery between rallies
+- Recovery between matches
+- Appropriate warm-up
+- Managing accumulated fatigue
+- Recognising physical limitations
+- Hydration
+- Heat management
+- Injury prevention
+- Sustainable training load
+These would probably form a supplementary physical-readiness profile rather than contributing directly to the technical padel level.
+16. Perception and Game Reading
+An easily overlooked category, but particularly relevant as players improve.
+- Ball tracking
+- Reading opponent body position
+- Reading opponent racket position
+- Recognising shot preparation
+- Anticipating shot direction
+- Reading spin
+- Reading ball speed
+- Judging ball trajectory
+- Judging bounce height
+- Judging bounce depth
+- Predicting glass rebounds
+- Distinguishing balls to volley from balls to let bounce
+- Recognising a short ball early
+- Recognising a deep lob early
+- Identifying open court space
+- Maintaining awareness of both opponents
+- Maintaining awareness of partner position
+- Responding to unexpected shots
+- Making decisions under time pressure
+- Recognising tactical patterns over multiple rallies
+17. Training and Self-Development
+- Identifying personal strengths
+- Identifying weaknesses
+- Setting realistic goals
+- Prioritising development areas
+- Receiving coaching feedback
+- Understanding technical corrections
+- Applying technical changes
+- Practising deliberately
+- Repeating a technique consistently
+- Transferring drills into matches
+- Recognising progress
+- Recognising setbacks
+- Reflecting accurately on performance
+- Distinguishing poor execution from poor decisions
+- Recognising fatigue-related errors
+- Asking useful questions during coaching
+- Knowing when to stop focusing on a particular weakness
+- Reviewing completed development goals
+- Reassessing skills
+- Developing realistic confidence
+- Adapting learning priorities over time
+18. Specialist and Advanced Techniques
+A few additional techniques and situations to keep in the master inventory, without assuming that they deserve separate competencies:
+- Gancho (hook-style overhead)
+- Rulo (topspin overhead variation)
+- Counter-smash
+- Defending an opponent's smash
+- Running down a smash rebound
+- Returning a ball after it rebounds off the back glass
+- Out-of-court retrieval, where court access and rules allow
+- Playing near an open court doorway
+- Behind-the-back emergency shot
+- Between-the-legs shot / tweener
+- Emergency one-handed defensive recovery
+- Advanced spin variation
+- Advanced shot disguise
+- Fence-assisted attacking shots
+- Advanced overhead targeting
+- Advanced aerial recovery movement
+These are specialist options rather than essentials for most recreational players. Technique names and difficulty vary between coaching systems.

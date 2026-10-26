@@ -1,0 +1,167 @@
+{
+  "_note": "Onboarding content. Edit the words here. Six answers per question, from beginner up to pro. DRAFT: the answer-to-level mapping is a placeholder. A self-rating can't give Pro, so the result stops at A.",
+  "answerLevels": [
+    "beginner",
+    "D",
+    "C",
+    "B",
+    "A",
+    "pro"
+  ],
+  "yearsPlaying": [
+    "Under 6 months",
+    "6-12 months",
+    "1-3 years",
+    "3+ years"
+  ],
+  "playsPerWeek": [
+    "Less than weekly",
+    "About once",
+    "Twice",
+    "3 or more"
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "axis": "attack",
+      "skill": "serve",
+      "ask": "How's your serve going?",
+      "answers": [
+        "Still learning the serve. I often fault",
+        "Just getting it in",
+        "Mostly in, but soft",
+        "In most of the time, and I can aim it",
+        "Deep and aimed, and I mix pace and spin",
+        "A weapon. I can put it anywhere and it wins me points"
+      ]
+    },
+    {
+      "id": "q2",
+      "axis": "attack",
+      "skill": "bandeja",
+      "ask": "When the lob comes, what do you do?",
+      "answers": [
+        "I don't really hit overheads yet",
+        "I let it bounce or hit it hard and hope",
+        "I try a bandeja but it's hit and miss",
+        "A steady bandeja that keeps me at the net",
+        "Bandeja, vibora or bajada, depending on the ball",
+        "I pick the overhead to win the point, every time"
+      ]
+    },
+    {
+      "id": "q3",
+      "axis": "defence",
+      "skill": "return_of_serve",
+      "ask": "And returning the serve?",
+      "answers": [
+        "I'm still learning to return",
+        "I get it back sometimes",
+        "Most come back, with no plan",
+        "Most come back low and to a target",
+        "I choose the return before the serve arrives",
+        "I take control of the point from the return"
+      ]
+    },
+    {
+      "id": "q4",
+      "axis": "defence",
+      "skill": "back_glass_return",
+      "ask": "When the ball comes off the back wall?",
+      "answers": [
+        "I'm scared of the back wall",
+        "I usually miss it or panic",
+        "I can return the easy ones",
+        "I read most and return them deep",
+        "I use the wall to my advantage, even on hard ones",
+        "I turn glass defence into attack"
+      ]
+    },
+    {
+      "id": "q5",
+      "axis": "movement",
+      "skill": "net_play",
+      "ask": "How often do you get to the net?",
+      "answers": [
+        "I stay at the back",
+        "Rarely get there",
+        "When my partner is there",
+        "I take it often and hold it",
+        "I take it back after lobs and keep it",
+        "I own the net and decide the points from there"
+      ]
+    },
+    {
+      "id": "q6",
+      "axis": "movement",
+      "skill": "moving_as_pair",
+      "ask": "You and your partner...",
+      "answers": [
+        "I'm just trying to find the ball",
+        "Often end up in the same spot",
+        "Move OK when the ball is slow",
+        "Mostly move together",
+        "Move as one, even when we change sides",
+        "We move on instinct, without even looking"
+      ]
+    },
+    {
+      "id": "q7",
+      "axis": "tactics",
+      "skill": "shot_choice",
+      "ask": "Which shot do you pick?",
+      "answers": [
+        "I just try to hit it back",
+        "Whatever I can reach",
+        "Whatever I like best",
+        "I think about where the opponents are",
+        "I build the point and pick on purpose",
+        "I plan several shots ahead and change plan mid-point"
+      ]
+    },
+    {
+      "id": "q8",
+      "axis": "tactics",
+      "skill": "partner_communication",
+      "ask": "Do you talk during a match?",
+      "answers": [
+        "We don't talk",
+        "Hardly",
+        "Mostly \"mine\" and \"yours\"",
+        "We agree a plan before we start",
+        "We adjust the plan mid-match",
+        "We read each other and the opponents, all match"
+      ]
+    },
+    {
+      "id": "q9",
+      "axis": "mentality",
+      "skill": "composure",
+      "ask": "At 5-5 in a tight set?",
+      "answers": [
+        "I get very nervous playing at all",
+        "I tighten up and make mistakes",
+        "It depends on the day",
+        "I stay mostly calm",
+        "I play the same as at 0-0",
+        "Pressure makes me better"
+      ]
+    },
+    {
+      "id": "q10",
+      "axis": "mentality",
+      "skill": "bouncing_back",
+      "ask": "After a bad point or a run of mistakes?",
+      "answers": [
+        "One mistake and I'm done for the match",
+        "It carries on for a long time",
+        "I get annoyed but recover after a few points",
+        "I reset by the next point",
+        "I use a routine to reset",
+        "I don't even notice, I just play the next point"
+      ]
+    }
+  ],
+  "levelNote": "A, B, C and D mean different things at different clubs and in different countries. Your level here comes from this app's skills checklist, so it may not match your local club. That's fine.",
+  "disclaimer": "This is a starting estimate, not an official rating. You can change it any time."
+}
