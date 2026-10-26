@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
+import { goalSkill, goalNote, goalLine } from '../goals.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn } from '../sessions.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], intention: '' };
@@ -75,7 +76,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan }) {
                   <p className="session-when">{prettyDate(s.date, s.time)}</p>
                   <p className="soft">{summary(s)}</p>
                   {s.intention && <p className="soft">Intention: <em>{s.intention}</em></p>}
-                  {s.targets?.length > 0 && <p className="soft">Goals today: {s.targets.map((id) => goals.find((g) => g.id === id)?.title).filter(Boolean).join(', ')}</p>}
+                  {s.targets?.length > 0 && <p className="soft">Goals today: {s.targets.map((id) => goals.find((g) => g.id === id)).filter(Boolean).map(goalLine).join(', ')}</p>}
                 </div>
                 <div className="session-actions">
                   <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>Plan</button>
@@ -216,7 +217,7 @@ function Plan({ session, goals, onBack, onSave }) {
           <>
             <p className="soft">Pick up to 3. Keep it light.</p>
             <div className="ob-answers" style={{ marginTop: 10 }}>
-              {goals.map((g) => <button key={g.id} className={'ans' + (t.includes(g.id) ? ' picked' : '')} onClick={() => toggle(g.id)}>{t.includes(g.id) ? '✓ ' : ''}{g.title}</button>)}
+              {goals.map((g) => <button key={g.id} className={'ans' + (t.includes(g.id) ? ' picked' : '')} onClick={() => toggle(g.id)}><strong>{t.includes(g.id) ? '✓ ' : ''}{goalSkill(g)}</strong>{goalNote(g) && <span className="block soft">{goalNote(g)}</span>}</button>)}
             </div>
           </>
         )}
@@ -290,7 +291,8 @@ function Reflect({ session, player, goals, onBack, onSave }) {
           <p className="eyebrow">Your goals</p>
           {toCheck.map((g) => (
             <div key={g.id} className="goal-check">
-              <p className="goal-title">{g.title}</p>
+              <p className="goal-title">{goalSkill(g)}</p>
+              {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
               <div className="segmented small">
                 {checkOptions.map((o) => <button key={o.id} className={checks[g.id] === o.id ? 'on' : ''} onClick={() => setChecks({ ...checks, [g.id]: o.id })}>{o.label}</button>)}
               </div>
@@ -344,7 +346,7 @@ function Detail({ session, goals, onBack, onEdit, onDelete }) {
         <section className="panel">
           <p className="eyebrow">Goals</p>
           <ul className="list">
-            {Object.entries(session.goalChecks).map(([id, v]) => <li key={id} className="list-row"><span>{goals.find((g) => g.id === id)?.title || 'Old goal'}</span><span className={'tag ' + v}>{label[v]}</span></li>)}
+            {Object.entries(session.goalChecks).map(([id, v]) => <li key={id} className="list-row"><span>{goals.find((g) => g.id === id) ? goalLine(goals.find((g) => g.id === id)) : 'Old goal'}</span><span className={'tag ' + v}>{label[v]}</span></li>)}
           </ul>
         </section>
       )}

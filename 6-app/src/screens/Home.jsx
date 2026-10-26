@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, axisById, levels, skills, allSkillById as skillById } from '../data.js';
 import { currentAxisLevels, currentLevel } from '../levels.js';
+import { goalSkill, goalNote, goalLine } from '../goals.js';
 import { sortSessions, prettyDate, sessionsUntilCheckIn } from '../sessions.js';
 
 function greeting() {
@@ -84,11 +85,11 @@ export default function Home({ player, onGo }) {
               return (
                 <li key={g.id} className="goal">
                   <div className="goal-top">
-                    <span className="goal-title">{g.title}</span>
+                    <span className="goal-title">{goalSkill(g)}</span>
                     <span className="goal-pct">{g.progress}%</span>
                   </div>
-                  <p className="goal-skill">{skill.name} · {axisById[skill.axis].name}</p>
-                  <div className="bar" role="progressbar" aria-valuenow={g.progress} aria-valuemin="0" aria-valuemax="100" aria-label={g.title}>
+                  {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
+                  <div className="bar" role="progressbar" aria-valuenow={g.progress} aria-valuemin="0" aria-valuemax="100" aria-label={goalLine(g)}>
                     <span style={{ width: g.progress + '%' }} />
                   </div>
                 </li>

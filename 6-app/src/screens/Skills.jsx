@@ -178,7 +178,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
     setGoalForm({ title: '', progress: 30 });
   };
   const saveGoal = () => {
-    const title = goalForm.title.trim() || `Work on: ${skill.name}`;
+    const title = goalForm.title.trim();
     updatePlayer((p) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), skillId: skill.id, title, progress: goalForm.progress, created: new Date().toISOString() }] }));
     setGoalForm(null);
     setNote('Added to your goals.');
@@ -240,7 +240,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       {goalForm && (
         <section className="panel ob-form">
           <p className="eyebrow">New goal: {skill.name}</p>
-          <label className="soft">What exactly do you want to get better at?
+          <label className="soft">In your words: what do you want to change? (optional)
             <input value={goalForm.title} maxLength={60} placeholder={`e.g. ${goalIdea(skill)}`} onChange={(e) => setGoalForm({ ...goalForm, title: e.target.value })} />
           </label>
           <label className="soft">How happy are you with it right now? <strong className="goal-pct">{goalForm.progress}%</strong>

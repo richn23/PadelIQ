@@ -325,3 +325,4 @@ i.played { background: #fff; }
 .ob-top .bar { flex: 1; }
 .center-self { align-self: center; margin-top: 4px; }
 .chip-btn.area { border-radius: 8px; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.goal-note { font-size: 14px; color: var(--text-soft); line-height: 1.35; }

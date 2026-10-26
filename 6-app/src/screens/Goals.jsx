@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { goalSkill, goalNote, goalLine } from '../goals.js';
 import { allSkillById as skillById, axisById } from '../data.js';
 
 export default function Goals({ player, updatePlayer, onAdd }) {
@@ -27,9 +28,10 @@ export default function Goals({ player, updatePlayer, onAdd }) {
               const r = recent(g.id);
               return (
                 <li key={g.id} className="goal">
-                  <div className="goal-top"><span className="goal-title">{g.title}</span><span className="goal-pct">{g.progress}%</span></div>
-                  {skill && <p className="goal-skill">{skill.name} · {axisById[skill.axis].name}</p>}
-                  <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How happy you are with: ${g.title}`} className="slider" />
+                  <div className="goal-top"><span className="goal-title">{goalSkill(g)}</span><span className="goal-pct">{g.progress}%</span></div>
+                  {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
+                  {skill && <p className="goal-skill">{axisById[skill.axis].name}</p>}
+                  <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How happy you are with: ${goalLine(g)}`} className="slider" />
                   {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => mark[x]).join(' ')} <span className="legend">(▲ better ● same ▼ struggling)</span></p>}
                   {removing === g.id
                     ? <button className="mini" onClick={() => remove(g.id)}>Tap again to remove</button>
