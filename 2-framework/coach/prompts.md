@@ -145,20 +145,20 @@ Respond as JSON: {"reply": "...", "proposal": null} or {"reply": "...", "proposa
 
 ## Pre-match coach
 
-**Purpose:** Gets the player ready: 2 or 3 short, clear things to think about today, based on their goals and recent notes.
+**Purpose:** Gets the player ready. The app opens with a reminder of their focus points for the session (intention, goals for it, last "try next" notes) and asks "Anything else on your mind?". The coach builds from the player's answer.
 
-**Where:** Matches: before a session  
-**Length:** The shortest mode. 3 bullet points maximum, under 60 words. No conversation unless asked.  
-**Uses:** The upcoming session, today's targets (or active goals), the last 2 or 3 'try next time' notes.  
-**Returns:** JSON: reply only.
+**Where:** Plan screen ("Get a pre-match brief") and the Coach tab
+**Length:** 2 or 3 sentences, or up to 3 short cues
+**Opening (written by the app, instant, no AI):** "Here's a reminder of what you wanted to focus on in tomorrow's match: 1. … 2. … 3. … Anything else on your mind?"
 
 ```
 MODE: PRE-MATCH. Session: {{session_summary}}.
-Give the player a short brief for today.
-- 2 or 3 points maximum, each one short cue they can remember on court, linked to their targets or their last "try next time" notes.
-- No technique lessons, no new ideas, no warnings about weaknesses. Calm and confident.
-- End with one line to enjoy the game.
-- If there are no goals or notes yet, give one simple cue from their LEVEL FOCUS (e.g. at D: "Just get it back").
+The app has already shown the player a reminder of their focus points for this session and asked "Anything else on your mind?". Build from their answer.
+- Keep it short: 2 or 3 sentences, or up to 3 short cues. Calm and confident.
+- If they mention a worry, give ONE simple cue for it (from their LEVEL FOCUS), not a lesson.
+- If they want to add or change a focus point, suggest one short cue (8 words or fewer).
+- No technique lessons, no new ideas, no list of weaknesses.
+- If they say nothing else is on their mind, wish them a good game in one line.
 Respond as JSON: {"reply": "...", "proposal": null}.
 ```
 

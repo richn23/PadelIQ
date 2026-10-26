@@ -78,3 +78,29 @@ export async function askCoach({ mode, vars = {}, playerFile, messages }) {
   if (!r.ok) throw new Error(data.error || 'The coach is not available right now.');
   return data;
 }
+
+// "today's", "tomorrow's", or "Saturday's"
+function whenWord(date) {
+  const t = todayISO();
+  if (!date) return 'your next';
+  if (date === t) return "today's";
+  const d = new Date(t + 'T00:00:00'); d.setDate(d.getDate() + 1);
+  const tomorrow = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  if (date === tomorrow) return "tomorrow's";
+  return new Date(date + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'long' }) + "'s";
+}
+
+// The pre-match coach opens instantly with your own focus points (no waiting for the AI).
+export function preMatchOpener(player, session) {
+  const goals = player.goals || [];
+  const points = [];
+  if (session?.intention) points.push(session.intention);
+  const targets = session?.targets?.length ? goals.filter((g) => session.targets.includes(g.id)) : goals;
+  targets.forEach((g) => points.push(goalNote(g) ? `${goalSkill(g)}: ${goalNote(g)}` : goalSkill(g)));
+  const lastTry = recentSessions(player, 3).map((s) => s.notes?.tryNext).filter(Boolean)[0];
+  if (lastTry) points.push(`From last time: ${lastTry}`);
+  const kind = session?.kind === 'lesson' ? 'lesson' : 'match';
+  const what = session ? `${whenWord(session.date)} ${kind}` : 'your next game';
+  if (!points.length) return `Nothing saved to focus on for ${what} yet.\n\nAt your level the priority is: ${levelFocus(currentLevel(player))}\n\nAnything on your mind?`;
+  return `Here's a reminder of what you wanted to focus on in ${what}:\n${points.slice(0, 3).map((p, i) => `${i + 1}. ${p}`).join('\n')}\n\nAnything else on your mind?`;
+}

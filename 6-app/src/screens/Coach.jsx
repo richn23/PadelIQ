@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import think from '../assets/mascot-think.png';
 import CoachChat from '../components/CoachChat.jsx';
 import { allSkillById } from '../data.js';
-import { nextPlanned, sessionSummary } from '../coach.js';
+import { nextPlanned, sessionSummary, preMatchOpener } from '../coach.js';
 import { recentSessions } from '../checkin.js';
 
 const MODES = [
@@ -45,7 +45,7 @@ export default function Coach({ player, start, onGoSkills }) {
     return (
       <main className="page">
         <button className="back" onClick={() => { setMode(null); setSkillId(null); }}>‹ Coach</button>
-        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} opener={start?.opener} />
+        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : undefined} />
       </main>
     );
   }

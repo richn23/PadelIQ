@@ -4,8 +4,8 @@ import { askCoach, buildPlayerFile } from '../coach.js';
 
 // A conversation with the AI coach in one mode. When the coach suggests something
 // (a level, a goal, notes), the player taps Accept or Not quite. Nothing is saved without that tap.
-export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, onClose, opener }) {
-  const [msgs, setMsgs] = useState([]); // { role, content, proposal? }
+export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, onClose, opener, intro }) {
+  const [msgs, setMsgs] = useState(intro ? [{ role: 'assistant', content: intro }] : []); // { role, content, proposal? }
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -37,7 +37,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   useEffect(() => {
     if (started.current) return;
     started.current = true;
-    send(opener || null, []);
+    if (!intro) send(opener || null, []);
   }, []);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy]);
 
@@ -50,7 +50,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
         <p className="eyebrow">{title}</p>
         {onClose && <button className="mini quiet" onClick={onClose}>Close</button>}
       </div>
-      {msgs.length === 0 && !busy && !error && <p className="soft">Starting…</p>}
+
       <div className="chat">
         {msgs.map((m, i) => (
           <div key={i} className={'msg ' + m.role}>
@@ -71,7 +71,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
             </div>
           </div>
         ))}
-        {busy && <div className="msg assistant"><img src={think} alt="" className="msg-face" /><div className="msg-body"><p className="typing">…</p></div></div>}
+        {busy && <Thinking first={msgs.filter((m) => m.role === 'assistant').length === 0} />}
         <div ref={endRef} />
       </div>
       {error && <p className="soft error">{error}</p>}
@@ -96,4 +96,19 @@ function ProposalText({ p }) {
     </div>
   );
   return null;
+}
+
+// Shown while the coach is thinking: the mascot bobs and the line changes.
+const LINES_FIRST = ['Reading your notes…', 'Looking at your goals…', 'Thinking…'];
+const LINES = ['Thinking…', 'Hmm…', 'Nearly there…'];
+function Thinking({ first }) {
+  const lines = first ? LINES_FIRST : LINES;
+  const [i, setI] = useState(0);
+  useEffect(() => { const t = setInterval(() => setI((n) => (n + 1) % lines.length), 1400); return () => clearInterval(t); }, [lines.length]);
+  return (
+    <div className="msg assistant thinking" aria-live="polite">
+      <img src={think} alt="" className="msg-face bob" />
+      <div className="msg-body"><p>{lines[i]}</p><span className="dots"><i /><i /><i /></span></div>
+    </div>
+  );
 }

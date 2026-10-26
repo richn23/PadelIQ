@@ -3,7 +3,7 @@ import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
-import { sessionSummary } from '../coach.js';
+import { sessionSummary, preMatchOpener } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn } from '../sessions.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], intention: '' };
@@ -249,7 +249,7 @@ function Plan({ session, goals, player, onBack, onSave }) {
       </section>
       {!brief
         ? <button className="btn ghost" onClick={() => setBrief(true)}>Get a pre-match brief from the coach</button>
-        : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} onClose={() => setBrief(false)} />}
+        : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} intro={preMatchOpener(player, { ...session, intention, targets: t })} onClose={() => setBrief(false)} />}
       <button className="btn" onClick={() => onSave({ targets: t, intention: intention.trim() })}>Save plan</button>
     </main>
   );

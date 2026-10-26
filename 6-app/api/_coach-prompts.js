@@ -42,10 +42,10 @@ export default {
       "id": "pre_match",
       "name": "Pre-match coach",
       "where": "Matches: before a session",
-      "purpose": "Gets the player ready: 2 or 3 short, clear things to think about today, based on their goals and recent notes.",
+      "purpose": "Gets the player ready. The app opens with a reminder of their focus points for the session (intention, goals for it, last 'try next' notes) and asks 'Anything else on your mind?'. The coach builds from the player's answer.",
       "length": "The shortest mode. 3 bullet points maximum, under 60 words. No conversation unless asked.",
       "inputs": "The upcoming session, today's targets (or active goals), the last 2 or 3 'try next time' notes.",
-      "prompt": "MODE: PRE-MATCH. Session: {{session_summary}}.\nGive the player a short brief for today.\n- 2 or 3 points maximum, each one short cue they can remember on court, linked to their targets or their last \"try next time\" notes.\n- No technique lessons, no new ideas, no warnings about weaknesses. Calm and confident.\n- End with one line to enjoy the game.\n- If there are no goals or notes yet, give one simple cue from their LEVEL FOCUS (e.g. at D: \"Just get it back\").\nRespond as JSON: {\"reply\": \"...\", \"proposal\": null}.",
+      "prompt": "MODE: PRE-MATCH. Session: {{session_summary}}.\nThe app has already shown the player a reminder of their focus points for this session and asked \"Anything else on your mind?\". Build from their answer.\n- Keep it short: 2 or 3 sentences, or up to 3 short cues. Calm and confident.\n- If they mention a worry, give ONE simple cue for it (from their LEVEL FOCUS), not a lesson.\n- If they want to add or change a focus point, suggest one short cue (8 words or fewer).\n- No technique lessons, no new ideas, no list of weaknesses.\n- If they say nothing else is on their mind, wish them a good game in one line.\nRespond as JSON: {\"reply\": \"...\", \"proposal\": null}.",
       "output": "JSON: reply only."
     },
     {
