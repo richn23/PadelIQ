@@ -27,21 +27,65 @@ async function pickModel(key) {
 
 const fill = (text, vars) => text.replace(/\{\{(\w+)\}\}/g, (_, k) => (vars[k] ?? ''));
 
-async function ask(key, model, messages, attempt = 0) {
-  const body = { model, messages, response_format: { type: 'json_object' } };
-  if (attempt === 0) { body.temperature = prompts.defaults.temperature; body.max_completion_tokens = 700; }
-  const r = await fetch(`${OPENAI}/chat/completions`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  const data = await r.json();
-  if (!r.ok) {
-    // Some models don't accept temperature or a token limit: try once more without them.
-    if (attempt === 0 && r.status === 400) return ask(key, model, messages, 1);
-    throw new Error(data?.error?.message || `OpenAI error ${r.status}`);
+// Different models accept different settings. Try the fastest first, and remember what works
+// (for as long as this server instance stays warm), so later questions don't repeat failed tries.
+const SETTINGS = [
+  { reasoning_effort: 'low', max_completion_tokens: 900 }, // reasoning models: think less, answer faster
+  { temperature: prompts.defaults.temperature, max_completion_tokens: 700 }, // classic chat models
+  {}, // anything else
+];
+let goodSettings = null;
+
+async function openChat(key, model, messages, stream) {
+  const order = goodSettings !== null ? [goodSettings, ...SETTINGS.keys()].filter((v, i, a) => a.indexOf(v) === i) : [...SETTINGS.keys()];
+  let lastError = '';
+  for (const i of order) {
+    const body = { model, messages, response_format: { type: 'json_object' }, stream, ...SETTINGS[i] };
+    const r = await fetch(`${OPENAI}/chat/completions`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (r.ok) { goodSettings = i; return r; }
+    const data = await r.json().catch(() => ({}));
+    lastError = data?.error?.message || `OpenAI error ${r.status}`;
+    if (r.status !== 400) break;
   }
+  throw new Error(lastError);
+}
+
+async function ask(key, model, messages) {
+  const r = await openChat(key, model, messages, false);
+  const data = await r.json();
   return data.choices[0].message.content;
+}
+
+// Streams the answer to the phone as it's written, so words appear straight away.
+async function streamAnswer(key, model, messages, res) {
+  const r = await openChat(key, model, messages, true);
+  res.writeHead(200, { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache, no-transform', Connection: 'keep-alive' });
+  const reader = r.body.getReader();
+  const dec = new TextDecoder();
+  let buf = '';
+  for (;;) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    const lines = buf.split('\n');
+    buf = lines.pop();
+    for (const line of lines) {
+      const t = line.trim();
+      if (!t.startsWith('data:')) continue;
+      const payload = t.slice(5).trim();
+      if (payload === '[DONE]') continue;
+      try {
+        const d = JSON.parse(payload).choices?.[0]?.delta?.content;
+        if (d) res.write(`data: ${JSON.stringify({ d })}\n\n`);
+      } catch { /* ignore partial lines */ }
+    }
+  }
+  res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+  res.end();
 }
 
 // Web search (only for modes that allow it): OpenAI's Responses API with its web search tool.
@@ -83,7 +127,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Use POST' });
   if (!key) return res.status(500).json({ error: 'The coach is not set up yet (no API key in Vercel).' });
 
-  const { mode, vars = {}, playerFile = '', messages = [] } = req.body || {};
+  const { mode, vars = {}, playerFile = '', messages = [], stream: wantStream = false } = req.body || {};
   const m = prompts.modes.find((x) => x.id === mode);
   if (!m) return res.status(400).json({ error: 'Unknown coach mode' });
   if (messages.length > 30 || JSON.stringify(req.body).length > 40000) return res.status(413).json({ error: 'Conversation too long' });
@@ -104,6 +148,7 @@ export default async function handler(req, res) {
       const found = await askWithSearch(key, model, chat).catch(() => null);
       if (found) { text = found.text; sources = found.sources; }
     }
+    if (!text && wantStream) return await streamAnswer(key, model, chat, res);
     if (!text) text = await ask(key, model, chat);
     let out;
     try {
@@ -115,6 +160,7 @@ export default async function handler(req, res) {
     if (sources.length) out.sources = sources.slice(0, 4);
     return res.status(200).json(out);
   } catch (e) {
+    if (res.headersSent) { res.write(`data: ${JSON.stringify({ error: String(e.message || e) })}\n\n`); return res.end(); }
     return res.status(502).json({ error: String(e.message || e) });
   }
 }

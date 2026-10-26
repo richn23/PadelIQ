@@ -67,13 +67,55 @@ export function buildPlayerFile(player, { skill } = {}) {
 
 export const nextPlanned = (player) => sortSessions(player.sessions).upcoming.find((s) => s.date >= todayISO());
 
-export async function askCoach({ mode, vars = {}, playerFile, messages }) {
+// Pull the "reply" text out of a JSON answer that is still arriving: {"reply": "Hello wor
+function partialReply(raw) {
+  const m = raw.match(/"reply"\s*:\s*"/);
+  if (!m) return '';
+  let out = '';
+  for (let i = m.index + m[0].length; i < raw.length; i++) {
+    const c = raw[i];
+    if (c === '\\') {
+      const n = raw[i + 1];
+      if (n === undefined) break;
+      out += n === 'n' ? '\n' : n === 't' ? ' ' : n === 'u' ? (raw.length >= i + 6 ? String.fromCharCode(parseInt(raw.slice(i + 2, i + 6), 16)) : '') : n;
+      i += n === 'u' ? 5 : 1;
+      continue;
+    }
+    if (c === '"') break;
+    out += c;
+  }
+  return out;
+}
+
+export async function askCoach({ mode, vars = {}, playerFile, messages, onText }) {
   if (location.protocol === 'file:') throw new Error('The coach only works in the online version of the app.');
   const r = await fetch('/api/coach', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ mode, vars, playerFile, messages }),
+    body: JSON.stringify({ mode, vars, playerFile, messages, stream: !!onText }),
   });
+  if ((r.headers.get('content-type') || '').includes('text/event-stream')) {
+    // The answer arrives in pieces: show the words as they come.
+    const reader = r.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+    let raw = '';
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const parts = buf.split('\n\n');
+      buf = parts.pop();
+      for (const part of parts) {
+        const line = part.trim();
+        if (!line.startsWith('data:')) continue;
+        const ev = JSON.parse(line.slice(5));
+        if (ev.error) throw new Error(ev.error);
+        if (ev.d) { raw += ev.d; onText?.(partialReply(raw)); }
+      }
+    }
+    try { return JSON.parse(raw); } catch { return { reply: partialReply(raw) || raw, proposal: null }; }
+  }
   const data = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(data.error || 'The coach is not available right now.');
   return data;

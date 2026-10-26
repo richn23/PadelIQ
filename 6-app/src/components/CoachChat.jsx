@@ -8,6 +8,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   const [msgs, setMsgs] = useState(intro ? [{ role: 'assistant', content: intro }] : []); // { role, content, proposal? }
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [live, setLive] = useState(''); // the answer as it arrives
   const [error, setError] = useState('');
   const [done, setDone] = useState({}); // proposal index -> 'accepted' | 'declined'
   const endRef = useRef(null);
@@ -25,12 +26,15 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
         vars,
         playerFile: buildPlayerFile(player, { skill }),
         messages: next.map((m) => ({ role: m.role, content: m.role === 'assistant' ? JSON.stringify({ reply: m.content, proposal: m.proposal || null }) : m.content })),
+        onText: (t) => setLive(t),
       });
+      setLive('');
       const reply = out.reply || [out.title, out.body].filter(Boolean).join('. ') || '…';
       // Sources are listed under the answer, so tidy inline links like [fipadel.com](https://...) to plain words.
       const clean = reply.replace(/\(?\[([^\]]+)\]\((https?:[^)]+)\)\)?/g, '').replace(/ +([.,])/g, '$1').trim();
       setMsgs([...next, { role: 'assistant', content: clean || reply, proposal: out.proposal || null, sources: out.sources || [] }]);
     } catch (e) {
+      setLive('');
       setError(String(e.message || e));
     }
     setBusy(false);
@@ -41,7 +45,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
     started.current = true;
     if (!intro) send(opener || null, []);
   }, []);
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy]);
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy, live]);
 
   const accept = (i, p) => { setDone({ ...done, [i]: 'accepted' }); onProposal?.(p); };
   const decline = (i) => { setDone({ ...done, [i]: 'declined' }); send('Not quite.'); };
@@ -78,7 +82,10 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
             </div>
           </div>
         ))}
-        {busy && <Thinking first={msgs.filter((m) => m.role === 'assistant').length === 0} />}
+        {busy && live && (
+          <div className="msg assistant"><img src={think} alt="" className="msg-face" /><div className="msg-body"><p>{live}</p></div></div>
+        )}
+        {busy && !live && <Thinking first={msgs.filter((m) => m.role === 'assistant').length === 0} />}
         <div ref={endRef} />
       </div>
       {error && <p className="soft error">{error}</p>}
