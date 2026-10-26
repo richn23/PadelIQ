@@ -6,162 +6,174 @@
     "C",
     "B",
     "A",
-    "pro"
+    "Pro"
   ],
   "yearsPlaying": [
-    "Under 6 months",
-    "6-12 months",
-    "1-3 years",
-    "3+ years"
+    "Less than 6 months",
+    "6 to 12 months",
+    "1 to 3 years",
+    "More than 3 years"
   ],
   "playsPerWeek": [
-    "Less than weekly",
-    "About once",
-    "Twice",
-    "3 or more"
+    "Less than once a week",
+    "Once a week",
+    "Twice a week",
+    "3 or more times a week"
   ],
   "questions": [
     {
       "id": "q1",
       "axis": "attack",
       "skill": "serve",
-      "ask": "How's your serve going?",
+      "ask": "When you serve, what usually happens?",
       "answers": [
-        "Still learning the serve. I often fault",
-        "Just getting it in",
-        "Mostly in, but soft",
-        "In most of the time, and I can aim it",
-        "Deep and aimed, and I mix pace and spin",
-        "A weapon. I can put it anywhere and it wins me points"
+        "I'm still learning it. Lots of faults.",
+        "It mostly goes in, but slowly.",
+        "It goes in, with a bit of depth.",
+        "It goes in most of the time, and I can aim it.",
+        "I mix pace, spin and direction on purpose.",
+        "My serve wins me points."
       ]
     },
     {
       "id": "q2",
       "axis": "attack",
       "skill": "bandeja",
-      "ask": "When the lob comes, what do you do?",
+      "ask": "A lob goes over your head at the net. What do you usually do?",
       "answers": [
-        "I don't really hit overheads yet",
-        "I let it bounce or hit it hard and hope",
-        "I try a bandeja but it's hit and miss",
-        "A steady bandeja that keeps me at the net",
-        "Bandeja, vibora or bajada, depending on the ball",
-        "I pick the overhead to win the point, every time"
+        "I let it go, or just try to get it back.",
+        "I hit it hard and hope.",
+        "I try a bandeja. Sometimes it works.",
+        "I hit a steady bandeja and stay at the net.",
+        "I choose bandeja, víbora or smash, depending on the lob.",
+        "I finish points with my overheads."
       ]
     },
     {
       "id": "q3",
       "axis": "defence",
       "skill": "return_of_serve",
-      "ask": "And returning the serve?",
+      "ask": "When you return a serve, what usually happens?",
       "answers": [
-        "I'm still learning to return",
-        "I get it back sometimes",
-        "Most come back, with no plan",
-        "Most come back low and to a target",
-        "I choose the return before the serve arrives",
-        "I take control of the point from the return"
+        "I miss quite a few.",
+        "I get most back, but anywhere.",
+        "I get most back, low or to the middle.",
+        "I aim my returns on purpose.",
+        "I pick the return to suit the server.",
+        "My return starts the attack."
       ]
     },
     {
       "id": "q4",
       "axis": "defence",
       "skill": "back_glass_return",
-      "ask": "When the ball comes off the back wall?",
+      "ask": "The ball bounces and heads for the back glass. What do you do?",
       "answers": [
-        "I'm scared of the back wall",
-        "I usually miss it or panic",
-        "I can return the easy ones",
-        "I read most and return them deep",
-        "I use the wall to my advantage, even on hard ones",
-        "I turn glass defence into attack"
+        "I try to hit it before it reaches the glass.",
+        "I let it hit the glass, but often miss it.",
+        "I get the easy ones back.",
+        "I read most of them and get them back deep.",
+        "I use the glass to buy time and set up my next shot.",
+        "I turn glass balls into attacks."
       ]
     },
     {
       "id": "q5",
       "axis": "movement",
       "skill": "net_play",
-      "ask": "How often do you get to the net?",
+      "ask": "How often do you play at the net?",
       "answers": [
-        "I stay at the back",
-        "Rarely get there",
-        "When my partner is there",
-        "I take it often and hold it",
-        "I take it back after lobs and keep it",
-        "I own the net and decide the points from there"
+        "Hardly ever. I stay at the back.",
+        "Sometimes, but I'm not sure when to go.",
+        "When my partner goes.",
+        "Often, and I can stay there.",
+        "I win the net back after lobs.",
+        "I control points from the net."
       ]
     },
     {
       "id": "q6",
       "axis": "movement",
       "skill": "moving_as_pair",
-      "ask": "You and your partner...",
+      "ask": "How do you and your partner move together?",
       "answers": [
-        "I'm just trying to find the ball",
-        "Often end up in the same spot",
-        "Move OK when the ball is slow",
-        "Mostly move together",
-        "Move as one, even when we change sides",
-        "We move on instinct, without even looking"
+        "We often end up in the wrong place.",
+        "We sometimes go for the same ball.",
+        "OK when the ball is slow.",
+        "Mostly together, forwards and back.",
+        "Together, even when we switch sides.",
+        "Like one player, without thinking."
       ]
     },
     {
       "id": "q7",
       "axis": "tactics",
       "skill": "shot_choice",
-      "ask": "Which shot do you pick?",
+      "ask": "How do you choose your shots?",
       "answers": [
-        "I just try to hit it back",
-        "Whatever I can reach",
-        "Whatever I like best",
-        "I think about where the opponents are",
-        "I build the point and pick on purpose",
-        "I plan several shots ahead and change plan mid-point"
+        "I just try to get it back.",
+        "I hit whatever I can reach.",
+        "I usually play my favourite shot.",
+        "I look at where the opponents are.",
+        "I build the point and choose on purpose.",
+        "I plan a few shots ahead."
       ]
     },
     {
       "id": "q8",
       "axis": "tactics",
       "skill": "partner_communication",
-      "ask": "Do you talk during a match?",
+      "ask": "How much do you talk with your partner during a match?",
       "answers": [
-        "We don't talk",
-        "Hardly",
-        "Mostly \"mine\" and \"yours\"",
-        "We agree a plan before we start",
-        "We adjust the plan mid-match",
-        "We read each other and the opponents, all match"
+        "We don't really talk.",
+        "A little.",
+        "We call \"mine\" and \"yours\".",
+        "We agree a plan before we start.",
+        "We change the plan during the match.",
+        "We read each other and the opponents all match."
       ]
     },
     {
       "id": "q9",
       "axis": "mentality",
       "skill": "composure",
-      "ask": "At 5-5 in a tight set?",
+      "ask": "It's 5-5 in a tight set. How do you play?",
       "answers": [
-        "I get very nervous playing at all",
-        "I tighten up and make mistakes",
-        "It depends on the day",
-        "I stay mostly calm",
-        "I play the same as at 0-0",
-        "Pressure makes me better"
+        "I get very nervous.",
+        "I tighten up and make mistakes.",
+        "It depends on the day.",
+        "I mostly stay calm.",
+        "I play the same as at 0-0.",
+        "I play better under pressure."
       ]
     },
     {
       "id": "q10",
       "axis": "mentality",
       "skill": "bouncing_back",
-      "ask": "After a bad point or a run of mistakes?",
+      "ask": "After a bad mistake, what happens next?",
       "answers": [
-        "One mistake and I'm done for the match",
-        "It carries on for a long time",
-        "I get annoyed but recover after a few points",
-        "I reset by the next point",
-        "I use a routine to reset",
-        "I don't even notice, I just play the next point"
+        "It spoils the rest of my match.",
+        "It stays with me for a while.",
+        "I'm annoyed, but I recover after a few points.",
+        "I'm over it by the next point.",
+        "I use a quick routine to reset.",
+        "I don't dwell on it at all."
       ]
     }
   ],
-  "levelNote": "A, B, C and D mean different things at different clubs and in different countries. Your level here comes from this app's skills checklist, so it may not match your local club. That's fine.",
-  "disclaimer": "This is a starting estimate, not an official rating. You can change it any time."
+  "levelNote": "Levels like A, B, C and D mean different things at different clubs and in different countries. Your level here comes from this app's skills checklist, so it may not match your club. That's fine.",
+  "disclaimer": "This is a starting point, not an official rating. You can change it any time.",
+  "lines": {
+    "welcome": "Hi! I'm your Padel IQ coach. Answer a few quick questions and I'll find your starting level. It takes about 3 minutes.",
+    "name": "First, what should I call you?",
+    "years": "How long have you been playing padel?",
+    "often": "How often do you play?",
+    "hint": "Do you already have a level, from Playtomic or your club? It's optional. I'll use it as a hint, not the answer.",
+    "playtomic": "Playtomic level (e.g. 3.2)",
+    "club": "Your club level (e.g. \"C at my club\")",
+    "result": "Here's where you're starting. Does it feel right?",
+    "pick": "No problem. Which level feels closer?",
+    "go": "Let's go"
+  }
 }

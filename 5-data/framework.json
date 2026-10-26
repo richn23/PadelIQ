@@ -276,7 +276,7 @@
     {
       "id": "back_glass_return",
       "axis": "defence",
-      "name": "Back-glass return",
+      "name": "Back glass return",
       "levels": {
         "D": {
           "master": true,
@@ -303,7 +303,7 @@
     {
       "id": "side_glass_return",
       "axis": "defence",
-      "name": "Side-glass return",
+      "name": "Side glass return",
       "levels": {
         "C": {
           "master": true,
@@ -342,7 +342,7 @@
     {
       "id": "net_play",
       "axis": "movement",
-      "name": "Net play",
+      "name": "Taking and holding the net",
       "levels": {
         "D": {
           "master": true,
@@ -369,7 +369,7 @@
     {
       "id": "recovery",
       "axis": "movement",
-      "name": "Recovery after a shot",
+      "name": "Recovery",
       "levels": {
         "C": {
           "master": true,
@@ -413,7 +413,7 @@
     {
       "id": "shot_choice",
       "axis": "tactics",
-      "name": "Choosing the shot",
+      "name": "Shot choice",
       "levels": {
         "D": {
           "master": true,
@@ -440,7 +440,7 @@
     {
       "id": "partner_communication",
       "axis": "tactics",
-      "name": "Partner communication",
+      "name": "Talking to your partner",
       "levels": {
         "C": {
           "master": true,
@@ -462,7 +462,7 @@
     {
       "id": "building_points",
       "axis": "tactics",
-      "name": "Building a point",
+      "name": "Building points",
       "levels": {
         "B": {
           "master": true,
@@ -506,7 +506,7 @@
     {
       "id": "bouncing_back",
       "axis": "mentality",
-      "name": "Bouncing back after mistakes",
+      "name": "Bouncing back",
       "levels": {
         "C": {
           "master": true,
@@ -658,7 +658,7 @@
     {
       "id": "smash_x3",
       "axis": "attack",
-      "name": "Smash por tres",
+      "name": "Smash out the side (x3)",
       "levels": {
         "B": {
           "master": false,
@@ -735,6 +735,181 @@
           "master": true,
           "source": "draft",
           "text": "Disguises the chiquita and mixes it with lobs and passing shots so opponents can't predict it."
+        }
+      }
+    },
+    {
+      "id": "block_volley",
+      "axis": "attack",
+      "name": "Block volley",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Can block a fast ball back at the net, but it often sits up for the opponents."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Blocks fast balls low and deep with a short, firm racket."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the block to change pace, landing it short or at the feet on purpose."
+        }
+      }
+    },
+    {
+      "id": "drop_volley",
+      "axis": "attack",
+      "name": "Drop volley",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Tries the drop volley when opponents are deep. It works some of the time."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Disguises the drop volley and uses it at the right moment to win the point."
+        }
+      }
+    },
+    {
+      "id": "gancho",
+      "axis": "attack",
+      "name": "Hook",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Can play a quick hook at the net on high balls, mostly to keep the ball in play."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the hook to attack fast high balls at the net with control and placement."
+        }
+      }
+    },
+    {
+      "id": "rulo",
+      "axis": "attack",
+      "name": "Topspin smash",
+      "levels": {
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Hits a topspin smash that kicks up off the back glass and pushes opponents back."
+        }
+      }
+    },
+    {
+      "id": "smash_x4",
+      "axis": "attack",
+      "name": "Smash out the back (x4)",
+      "levels": {
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Can hit the x4 from very short balls near the net, and knows when it's on."
+        }
+      }
+    },
+    {
+      "id": "drop_shot",
+      "axis": "attack",
+      "name": "Drop shot",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Plays a drop shot when opponents are deep. Sometimes it sits up."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Disguises the drop shot and lands it short and low at the right moment."
+        }
+      }
+    },
+    {
+      "id": "contrapared",
+      "axis": "defence",
+      "name": "Back wall boast",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Can get the ball back with a back wall boast in emergencies."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the back wall boast as a planned option when there's no other way forwards."
+        }
+      }
+    },
+    {
+      "id": "attacking_lob",
+      "axis": "defence",
+      "name": "Attacking lob",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Tries a lower, faster lob when opponents are very close to the net."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the attacking lob on purpose to get behind net players and then moves up."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Disguises the attacking lob, so opponents can't move back early."
+        }
+      }
+    },
+    {
+      "id": "passing_shot",
+      "axis": "defence",
+      "name": "Passing shot",
+      "levels": {
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Hits a passing shot when there's an obvious gap. Often goes long or into the net."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Passes net players low down the line or through the middle on purpose."
+        }
+      }
+    },
+    {
+      "id": "half_volley",
+      "axis": "defence",
+      "name": "Half volley",
+      "levels": {
+        "C": {
+          "master": true,
+          "source": "draft",
+          "text": "Gets half volleys back when caught in the middle of the court, but they often pop up."
+        },
+        "B": {
+          "master": true,
+          "source": "draft",
+          "text": "Keeps half volleys low and moves forward or back after them."
+        },
+        "A": {
+          "master": true,
+          "source": "draft",
+          "text": "Uses the half volley to stay in a strong position, landing it low and deep."
         }
       }
     }

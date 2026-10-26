@@ -286,3 +286,36 @@ p, h1, ul { margin: 0; }
 .linkish { border: 0; background: none; color: var(--accent); font: inherit; font-weight: 700; padding: 0; text-decoration: underline; }
 .mini.danger { background: #ff6b6b; color: #2b0000; border-color: #ff6b6b; }
 .mini:disabled { opacity: 0.4; }
+.es { font-style: italic; }
+
+/* ---------- Phone fixes (iOS date/time inputs and two-column rows) ---------- */
+input, select, textarea { max-width: 100%; min-width: 0; box-sizing: border-box; }
+.two > * { min-width: 0; }
+.ob-form input[type=date], .ob-form input[type=time] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; min-height: 46px; text-align: left; line-height: 1.2;
+}
+input[type=date]::-webkit-date-and-time-value, input[type=time]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.ob-form select { -webkit-appearance: none; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--text-soft) 50%), linear-gradient(135deg, var(--text-soft) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 34px; }
+
+/* ---------- Calendar ---------- */
+.cal { padding: 12px; }
+.cal-title { font-weight: 800; font-size: 16px; }
+.cal-nav { border: 0; background: none; color: var(--text); font-size: 26px; line-height: 1; padding: 2px 12px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 8px; text-align: center; }
+.cal-wd { font-size: 11px; font-weight: 700; color: var(--text-soft); padding-bottom: 2px; }
+.cal-day { position: relative; border: 0; background: none; color: var(--text); font: inherit; font-size: 14px; font-weight: 600; height: 40px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.cal-day.today { box-shadow: inset 0 0 0 1px var(--accent); }
+.cal-day.on { background: var(--accent); color: var(--accent-text); }
+.cal-dots { display: flex; gap: 2px; height: 5px; }
+.cal-dots i, .cal-key i { display: inline-block; width: 5px; height: 5px; border-radius: 50%; }
+.cal-key i { margin: 0 3px 1px 6px; vertical-align: middle; }
+i.planned { background: var(--accent); }
+i.played { background: #fff; }
+.cal-day.on i.planned { background: var(--accent-text); }
+.cal-key { margin-top: 6px; }
+
+/* Coach button now sits in the top bar, so it never covers content */
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.topbar .gear { margin-left: 0; }
+.coach-fab { position: static; width: 44px; height: 44px; border-width: 2px; box-shadow: none; padding: 3px; }

@@ -2,13 +2,15 @@ import React from 'react';
 import logo from '../assets/logo-chalk.png';
 
 // The logo at the top of every screen takes you Home. The gear (on Home) opens Settings.
-export default function TopBar({ title, onHome, onSettings }) {
+export default function TopBar({ title, onHome, onSettings, children }) {
   return (
     <header className="topbar">
       <button className="topbar-logo" onClick={onHome} aria-label="Go to Home">
         <img src={logo} alt="" />
       </button>
       {title && <h1 className="topbar-title">{title}</h1>}
+      <span className="topbar-right">
+      {children}
       {onSettings && (
         <button className="gear" onClick={onSettings} aria-label="Settings">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -17,6 +19,7 @@ export default function TopBar({ title, onHome, onSettings }) {
           </svg>
         </button>
       )}
+      </span>
     </header>
   );
 }

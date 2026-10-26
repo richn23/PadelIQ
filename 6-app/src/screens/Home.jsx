@@ -104,7 +104,7 @@ export default function Home({ player, onGo }) {
               <p className="match-when">{next.when}</p>
               <p className="match-who">{next.who}</p>
               {next.venue && <p className="soft">{next.venue}</p>}
-              <button className="btn" onClick={() => onGo('matches')}>Choose today's targets</button>
+              <button className="btn" onClick={() => onGo('matches')}>Plan this session</button>
             </>
           ) : (
             <>

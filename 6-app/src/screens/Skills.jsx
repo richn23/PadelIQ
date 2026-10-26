@@ -113,7 +113,7 @@ function Explore({ onOpen }) {
   // Ignore accents, so "vibora" finds "Víbora"
   const plain = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const term = plain(q.trim());
-  const match = (s) => !term || plain([s.name, s.aka, s.what].join(' ')).includes(term);
+  const match = (s) => !term || plain([s.name, s.es, s.aka, s.what].join(' ')).includes(term);
   const none = term && !allSkills.some(match);
   return (
     <>
@@ -127,7 +127,7 @@ function Explore({ onOpen }) {
             <p className="eyebrow">{g.name}</p>
             {g.note && <p className="soft">{g.note}</p>}
             <ul className="list">
-              {items.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<span className="soft">{s.aka}</span>} />)}
+              {items.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<span className="soft es">{s.es !== s.name ? s.es : ''}</span>} />)}
             </ul>
           </section>
         );
@@ -177,6 +177,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       <section className="panel">
         <p className="eyebrow">{axisById[skill.axis].name}{skill.group !== skill.axis ? ` · ${groups.find((g) => g.id === skill.group)?.name}` : ''}</p>
         <h2 className="skill-title">{skill.name}</h2>
+        {skill.es && skill.es !== skill.name && <p className="soft">Spanish: <em>{skill.es}</em></p>}
         {skill.aka && <p className="soft">Also called: {skill.aka}</p>}
         <p className="skill-what">{skill.what}</p>
         <p className="soft"><strong>When:</strong> {skill.when}</p>

@@ -70,7 +70,11 @@ export default function App() {
       {screen === 'onboarding' && <Onboarding onDone={finishOnboarding} />}
       {['home', 'skills', 'goals', 'matches', 'coach', 'checkin', 'settings'].includes(screen) && player && (
         <>
-          <TopBar title={titles[screen]} onHome={() => setScreen('home')} onSettings={screen === 'home' ? () => setScreen('settings') : null} />
+          <TopBar title={titles[screen]} onHome={() => setScreen('home')} onSettings={screen === 'home' ? () => setScreen('settings') : null}>
+            {!['coach', 'checkin', 'settings'].includes(screen) && (
+              <CoachButton screen={screen} onOpenCoach={(q) => { setCoachQuestion(q); setScreen('coach'); }} />
+            )}
+          </TopBar>
           {screen === 'home' && <Home player={player} onGo={setScreen} />}
           {screen === 'checkin' && <CheckIn player={player} updatePlayer={updatePlayer} onDone={() => setScreen('matches')} />}
           {screen === 'settings' && (
@@ -86,9 +90,6 @@ export default function App() {
           {screen === 'goals' && <Goals player={player} updatePlayer={updatePlayer} />}
           {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} />}
           {screen === 'coach' && <Coach question={coachQuestion} />}
-          {!['coach', 'checkin', 'settings'].includes(screen) && (
-            <CoachButton screen={screen} onOpenCoach={(q) => { setCoachQuestion(q); setScreen('coach'); }} />
-          )}
           <TabBar active={screen} onChange={(id) => { setCoachQuestion(null); setTapCount((n) => n + 1); setScreen(id); }} />
         </>
       )}
