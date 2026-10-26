@@ -8,7 +8,7 @@ import { recentSessions } from '../checkin.js';
 const MODES = [
   { id: 'pre_match', name: 'Pre-match', what: 'Short and clear: 2 or 3 things to think about for your next session.' },
   { id: 'post_match', name: 'Post-match', what: 'Asks questions to help you reflect on your last session. No advice.' },
-  { id: 'deep_dive', name: 'Deep dive', what: 'Pick a skill. Explains it and suggests practice at your level.' },
+  { id: 'ask', name: 'Ask the coach', what: 'Any padel question: a shot, tactics, rules, even rackets.' },
   { id: 'mindset', name: 'Mindset', what: 'Nerves, focus and bouncing back.' },
 ];
 
@@ -25,7 +25,7 @@ export default function Coach({ player, start, onGoSkills }) {
         <main className="page">
           <button className="back" onClick={() => setMode(null)}>‹ Coach</button>
           <section className="panel">
-            <p className="eyebrow">Deep dive: which skill?</p>
+            <p className="eyebrow">Explain a skill: which one?</p>
             <div className="chips" style={{ marginTop: 8 }}>
               {goalSkills.map((id) => <button key={id} className="chip-btn skill" onClick={() => setSkillId(id)}>{allSkillById[id]?.name}</button>)}
             </div>
@@ -45,7 +45,7 @@ export default function Coach({ player, start, onGoSkills }) {
     return (
       <main className="page">
         <button className="back" onClick={() => { setMode(null); setSkillId(null); }}>‹ Coach</button>
-        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : mode === 'post_match' ? postMatchOpener(last) : undefined} />
+        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : mode === 'post_match' ? postMatchOpener(last) : mode === 'ask' ? "What's your question today? Anything about padel: a shot, tactics, rules, even rackets." : mode === 'mindset' ? "What's on your mind? Nerves, focus, frustration, anything." : undefined} />
       </main>
     );
   }
@@ -68,7 +68,7 @@ export default function Coach({ player, start, onGoSkills }) {
             </li>
           ))}
         </ul>
-        <p className="soft">Goal setting and placing your level live on each skill's page.</p>
+        <p className="soft">To understand one skill, open it on the Skills tab and tap "Explain this skill". Goal setting and placing your level live there too.</p>
       </section>
       <section className="panel">
         <p className="eyebrow">Inbox</p>

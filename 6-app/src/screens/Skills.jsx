@@ -362,6 +362,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           key={chat}
           mode={chat}
           title={chat === 'diagnostic' ? 'Coach: where are you with this?' : `Coach: ${skill.name} explained`}
+          intro={chat === 'diagnostic' ? `Let's work out where your ${skill.name === skill.es ? skill.name : skill.name.toLowerCase()} is. In a match, how does it usually go?` : undefined}
           vars={{ skill_name: skill.name, skill_id: skill.id }}
           player={player}
           skill={skill}

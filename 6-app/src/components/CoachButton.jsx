@@ -4,11 +4,11 @@ import think from '../assets/mascot-think.png';
 // What the coach offers depends on the screen you're on.
 const prompts = {
   home: [
-    { label: 'What should I focus on this week?', mode: 'deep_dive_goal' },
+    { label: 'Ask the coach a question', mode: 'ask' },
     { label: 'Get me ready for my next session', mode: 'pre_match' },
   ],
   skills: [
-    { label: 'Help me with a weak spot', mode: 'deep_dive_goal' },
+    { label: 'Help me with one of my goals', mode: 'deep_dive_goal' },
     { label: 'I get nervous on big points', mode: 'mindset' },
   ],
   goals: [
