@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import think from '../assets/mascot-think.png';
 
-// What the coach offers depends on the screen you're on (placeholder until the AI is connected).
+// What the coach offers depends on the screen you're on.
 const prompts = {
-  home: ['What should I focus on this week?', 'Get me ready for my next session'],
-  skills: ['Explain one of my weak spots', 'Which skill should I work on next?'],
-  goals: ['Help me choose a goal', 'Is this goal realistic?'],
-  matches: ['Help me reflect on my last match', 'Spot patterns in my matches'],
+  home: [
+    { label: 'What should I focus on this week?', mode: 'deep_dive_goal' },
+    { label: 'Get me ready for my next session', mode: 'pre_match' },
+  ],
+  skills: [
+    { label: 'Help me with a weak spot', mode: 'deep_dive_goal' },
+    { label: 'I get nervous on big points', mode: 'mindset' },
+  ],
+  goals: [
+    { label: 'Talk through one of my goals', mode: 'deep_dive_goal' },
+    { label: 'Get me ready for my next session', mode: 'pre_match' },
+  ],
+  matches: [
+    { label: 'Help me reflect on my last session', mode: 'post_match' },
+    { label: 'Get me ready for my next session', mode: 'pre_match' },
+  ],
 };
 
 export default function CoachButton({ screen, onOpenCoach }) {
@@ -26,10 +38,10 @@ export default function CoachButton({ screen, onOpenCoach }) {
             </div>
             <div className="ob-answers">
               {list.map((p) => (
-                <button key={p} className="ans" onClick={() => { setOpen(false); onOpenCoach(p); }}>{p}</button>
+                <button key={p.label} className="ans" onClick={() => { setOpen(false); onOpenCoach(p); }}>{p.label}</button>
               ))}
+              <button className="ans" onClick={() => { setOpen(false); onOpenCoach({ mode: null }); }}>Something else</button>
             </div>
-            <p className="soft center">The AI coach isn't connected yet. This shows where it will appear.</p>
             <button className="btn ghost" onClick={() => setOpen(false)}>Close</button>
           </section>
         </div>

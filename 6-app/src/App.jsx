@@ -88,7 +88,12 @@ export default function App() {
         <>
           <TopBar title={titles[screen]} onHome={() => setScreen('home')} onSettings={screen === 'home' ? () => setScreen('settings') : null}>
             {!['coach', 'checkin', 'settings'].includes(screen) && (
-              <CoachButton screen={screen} onOpenCoach={(q) => { setCoachQuestion(q); setScreen('coach'); }} />
+              <CoachButton screen={screen} onOpenCoach={(p) => {
+                // "Help with a weak spot" opens a deep dive on your first goal, if you have one.
+                const goal = (player.goals || [])[0];
+                const start = p.mode === 'deep_dive_goal' ? (goal ? { mode: 'deep_dive', skillId: goal.skillId } : { mode: 'deep_dive' }) : p.mode ? { mode: p.mode } : null;
+                setCoachQuestion(start); setTapCount((n) => n + 1); setScreen('coach');
+              }} />
             )}
           </TopBar>
           {screen === 'home' && <Home player={player} onGo={go} />}
@@ -105,7 +110,7 @@ export default function App() {
           {screen === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
           {screen === 'goals' && <Goals player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
           {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} openReflect={intent?.reflect} fresh={!!intent?.fresh} />}
-          {screen === 'coach' && <Coach question={coachQuestion} />}
+          {screen === 'coach' && <Coach key={'c' + tapCount} player={player} start={coachQuestion} onGoSkills={() => go('skills', { view: 'explore' })} />}
           <TabBar active={screen} onChange={(id) => { setCoachQuestion(null); go(id); }} />
         </>
       )}

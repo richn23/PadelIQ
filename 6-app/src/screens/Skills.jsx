@@ -4,6 +4,7 @@ import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis 
 import think from '../assets/mascot-think.png';
 import StatementCheck from '../components/StatementCheck.jsx';
 import QuickCheck from '../components/QuickCheck.jsx';
+import CoachChat from '../components/CoachChat.jsx';
 import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus, scoreSkill } from '../levels.js';
 
 const views = [
@@ -147,7 +148,7 @@ function Explore({ onOpen }) {
 }
 
 // The goal-setting coach (scripted for now): what's wrong, when, then a suggested goal.
-function GoalChat({ skill, level, form, setForm, onSave, onCancel }) {
+function GoalChat({ skill, level, player, form, setForm, onSave, onCancel }) {
   const problems = gd.problemsByGroup[skill.group] || gd.problemsByGroup.attacking;
   // Padel words keep their capital (Bandeja); English names go lower case in a sentence ("your serve").
   const name = skill.name === skill.es ? skill.name : skill.name.toLowerCase();
@@ -168,7 +169,19 @@ function GoalChat({ skill, level, form, setForm, onSave, onCancel }) {
           </div>
           <button className="btn" disabled={!form.problems.length} onClick={() => setForm({ ...form, step: 'when' })}>Next</button>
           <button className="btn ghost" onClick={() => setForm({ ...form, step: 'suggest', title: '' })}>Skip, I'll write my own</button>
+          <button className="btn ghost" onClick={() => setForm({ ...form, step: 'coach' })}>Talk it through with the coach</button>
         </>
+      )}
+      {form.step === 'coach' && (
+        <CoachChat
+          mode="goal_setting"
+          title="Goal-setting coach"
+          vars={{ skill_name: skill.name, skill_id: skill.id }}
+          player={player}
+          skill={skill}
+          onClose={() => setForm({ ...form, step: 'what' })}
+          onProposal={(p) => { if (p.type === 'goal') setForm({ ...form, step: 'suggest', title: p.title || form.title, progress: typeof p.progress === 'number' ? p.progress : form.progress }); }}
+        />
       )}
       {form.step === 'when' && (
         <>
@@ -225,6 +238,7 @@ const OUTCOME = {
   not_solid: 'At this level, but not solid yet.',
   lower: 'Your answers sounded lower.',
   self: 'Set by you, not checked yet.',
+  coach: 'Placed with the coach.',
 };
 function QuickSummary({ skill, check, onGoal }) {
   return (
@@ -268,6 +282,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const [checking, setChecking] = useState(false);
   const [showLevels, setShowLevels] = useState(false);
   const [justScored, setJustScored] = useState(null);
+  const [chat, setChat] = useState(null); // 'diagnostic' | 'deep_dive'
   const [note, setNote] = useState('');
   const [goalForm, setGoalForm] = useState(null); // { title, progress }
   const described = levels.filter((l) => skill.levels[l.id]);
@@ -331,6 +346,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
               {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}
               {shown && <ResultCard skill={skill} result={shown} />}
               <button className="btn" onClick={() => setChecking('quick')}>{check?.outcome === 'self' ? 'Check it now' : check && check.from !== 'quiz' ? 'Check again' : 'Check my level'}</button>
+              <button className="btn ghost" onClick={() => setChat('diagnostic')}>Talk it through with the coach</button>
               <button className="linkish center-self" onClick={() => setChecking('detail')}>Check in detail (all statements)</button>
             </>
           )}
@@ -340,6 +356,26 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       ) : (
         <section className="panel"><p className="soft">This shot is in the glossary only. It isn't checked in the app.</p></section>
       )}
+
+      {chat && (
+        <CoachChat
+          key={chat}
+          mode={chat}
+          title={chat === 'diagnostic' ? 'Coach: where are you with this?' : `Coach: ${skill.name} explained`}
+          vars={{ skill_name: skill.name, skill_id: skill.id }}
+          player={player}
+          skill={skill}
+          onClose={() => setChat(null)}
+          onProposal={(p) => {
+            if (p.type === 'skill_level' && p.level) {
+              const lv = levels.find((l) => l.id.toLowerCase() === String(p.level).toLowerCase() || l.name.toLowerCase() === String(p.level).toLowerCase());
+              if (lv) updatePlayer((pl) => ({ ...pl, skillChecks: { ...(pl.skillChecks || {}), [skill.id]: { level: lv.id, claimed: lv.id, outcome: 'coach', focus: [], reason: p.reason, mode: 'coach', date: new Date().toISOString() } } }));
+            }
+            if (p.type === 'goal' && p.title) goalFromFocus(p.title);
+          }}
+        />
+      )}
+      {!chat && skill.checked && <button className="btn ghost" onClick={() => setChat('deep_dive')}>Explain this skill and how to improve</button>}
 
       <section className="panel">
         <button className="row-between link-row" onClick={() => setShowLevels(!showLevels)} aria-expanded={showLevels}>
@@ -357,7 +393,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
 
       {skill.checked && !goalForm && <button className="btn" onClick={makeGoal} disabled={isGoal}>{isGoal ? 'This is one of your goals' : 'Make this a goal'}</button>}
       {goalForm && <div ref={goalRef} />}
-      {goalForm && <GoalChat skill={skill} level={currentLevel(player)} form={goalForm} setForm={setGoalForm} onSave={saveGoal} onCancel={() => setGoalForm(null)} />}
+      {goalForm && <GoalChat skill={skill} player={player} level={currentLevel(player)} form={goalForm} setForm={setGoalForm} onSave={saveGoal} onCancel={() => setGoalForm(null)} />}
       {note && <p className="soft center">{note}</p>}
     </main>
   );

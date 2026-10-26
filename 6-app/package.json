@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build"
+    "build": "npm run sync-prompts && vite build",
+    "sync-prompts": "node -e \"const fs=require('fs');fs.writeFileSync('api/_coach-prompts.js','// Copied from 5-data/coach-prompts.json by npm run sync-prompts. Edit that file, not this one.\\nexport default '+fs.readFileSync('../5-data/coach-prompts.json','utf8')+';\\n')\""
   },
   "dependencies": {
     "react": "^18.3.1",

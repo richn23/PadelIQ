@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
+import CoachChat from '../components/CoachChat.jsx';
+import { sessionSummary } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn } from '../sessions.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], intention: '' };
@@ -53,7 +55,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
   }
   const current = sessions.find((s) => s.id === mode.id);
   if (mode.name === 'targets' && current) {
-    return <Plan session={current} goals={goals} onBack={() => setMode({ name: 'list' })} onSave={(plan) => { saveSession({ ...current, ...plan }); setMode({ name: 'list' }); }} />;
+    return <Plan session={current} goals={goals} player={player} onBack={() => setMode({ name: 'list' })} onSave={(plan) => { saveSession({ ...current, ...plan }); setMode({ name: 'list' }); }} />;
   }
   if (mode.name === 'reflect' && current) {
     return <Reflect session={current} player={player} goals={goals} onBack={() => setMode({ name: 'list' })} onSave={(s) => { saveSession(s); setMode({ name: 'detail', id: s.id }); }} />;
@@ -219,7 +221,8 @@ export function SkillChips({ selected, onChange, prefer = [] }) {
   );
 }
 
-function Plan({ session, goals, onBack, onSave }) {
+function Plan({ session, goals, player, onBack, onSave }) {
+  const [brief, setBrief] = useState(false);
   const [t, setT] = useState(session.targets || []);
   const [intention, setIntention] = useState(session.intention || '');
   const toggle = (id) => setT(t.includes(id) ? t.filter((x) => x !== id) : t.length < 3 ? [...t, id] : t);
@@ -244,6 +247,9 @@ function Plan({ session, goals, onBack, onSave }) {
           </>
         )}
       </section>
+      {!brief
+        ? <button className="btn ghost" onClick={() => setBrief(true)}>Get a pre-match brief from the coach</button>
+        : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} onClose={() => setBrief(false)} />}
       <button className="btn" onClick={() => onSave({ targets: t, intention: intention.trim() })}>Save plan</button>
     </main>
   );
@@ -271,6 +277,7 @@ function Reflect({ session, player, goals, onBack, onSave }) {
   const hasNotes = Object.values(d.notes).some(Boolean) || d.coachSaid || d.practice;
   const [showNotes, setShowNotes] = useState(hasNotes || session.kind === 'lesson');
   const [showScore, setShowScore] = useState(!!d.score);
+  const [chat, setChat] = useState(false);
   const prefer = [...new Set([...goals.map((g) => g.skillId), ...(session.focus || []), ...Object.keys(skillChecks(player))])];
   const setNote = (k) => (e) => set({ notes: { ...d.notes, [k]: e.target.value } });
 
@@ -354,6 +361,23 @@ function Reflect({ session, player, goals, onBack, onSave }) {
       ) : (
         <button className="btn ghost" onClick={() => setShowNotes(true)}>+ Add notes (optional)</button>
       )}
+
+      {!chat
+        ? <button className="btn ghost" onClick={() => setChat(true)}>Talk it through with the coach</button>
+        : <CoachChat
+            mode="post_match"
+            title="Post-match coach"
+            vars={{ session_summary: sessionSummary(session) }}
+            player={player}
+            onClose={() => setChat(false)}
+            onProposal={(p) => {
+              if (p.type !== 'reflection') return;
+              const n = p.notes || {};
+              const merge = (a, b) => (b ? (a ? `${a} ${b}` : b) : a);
+              set({ notes: { worked: merge(d.notes.worked, n.worked), didnt: merge(d.notes.didnt, n.didnt), tryNext: merge(d.notes.tryNext, n.tryNext) }, tags: [...new Set([...d.tags, ...(p.tags || [])])] });
+              setShowNotes(true);
+            }}
+          />}
 
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>

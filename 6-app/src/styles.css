@@ -364,3 +364,22 @@ i.played { background: #fff; }
 .cal-day { height: 44px; }
 .eyebrow { font-size: 12px; }
 .tab { font-size: 12px; }
+
+/* ---------- Coach chat ---------- */
+.coach-chat { display: flex; flex-direction: column; gap: 10px; }
+.chat { display: flex; flex-direction: column; gap: 10px; max-height: 60vh; overflow-y: auto; }
+.msg { display: flex; gap: 8px; align-items: flex-start; }
+.msg.user { justify-content: flex-end; }
+.msg-face { width: 30px; flex: none; }
+.msg-body { max-width: 85%; border-radius: 14px; padding: 10px 12px; line-height: 1.45; font-size: 15px; }
+.msg.assistant .msg-body { background: rgba(255,255,255,0.08); border: 1px solid var(--panel-border); }
+.msg.user .msg-body { background: var(--accent); color: var(--accent-text); font-weight: 600; }
+.msg-body p + p { margin-top: 6px; }
+.proposal { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--panel-border); display: flex; flex-direction: column; gap: 8px; }
+.typing { letter-spacing: 3px; font-weight: 800; }
+.chat-input { display: flex; flex-direction: column; gap: 8px; }
+.chat-input textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--panel-border); background: rgba(255,255,255,0.1); color: var(--text); font: inherit; font-size: 16px; resize: none; }
+.chat-input .btn { margin-top: 0; }
+.tiny { font-size: 12px; }
+.error { color: #ffb4b4; }
+.msg-body p { white-space: pre-line; }
