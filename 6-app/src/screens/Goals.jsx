@@ -33,11 +33,11 @@ export default function Goals({ player, updatePlayer, onAdd }) {
                   {skill && (
                     <p className="goal-skill">
                       {axisById[skill.axis].name}
-                      {g.diagnosis?.when && g.diagnosis.when !== 'unsure' ? ` · mostly ${gd.when.find((w) => w.id === g.diagnosis.when)?.label.toLowerCase()}` : ''}
+                      {g.diagnosis?.when && g.diagnosis.when !== 'unsure' ? ` · mostly ${([...gd.when, ...Object.values(gd.whenOverrides?.replace || {})].find((w) => w.id === g.diagnosis.when))?.label.replace(/^./, (c) => c.toLowerCase())}` : ''}
                     </p>
                   )}
                   <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How happy you are with: ${goalLine(g)}`} className="slider" />
-                  {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => mark[x]).join(' ')} <span className="legend">(▲ better ● same ▼ struggling)</span></p>}
+                  {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => ({ better: 'Better', same: 'Same', struggling: 'Still struggling' })[x]).join(' · ')}</p>}
                   {removing === g.id
                     ? <button className="mini" onClick={() => remove(g.id)}>Tap again to remove</button>
                     : <button className="mini quiet" onClick={() => setRemoving(g.id)}>Remove</button>}

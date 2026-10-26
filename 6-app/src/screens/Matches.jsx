@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
@@ -16,8 +16,17 @@ const checkOptions = [
   { id: 'struggling', label: 'Still struggling' },
 ];
 
-export default function Matches({ player, updatePlayer, onCheckIn, openPlan }) {
-  const [mode, setMode] = useState(openPlan ? { name: 'targets', id: openPlan } : { name: 'list' });
+const MODE_KEY = 'padeliq-matches-mode';
+const loadMode = () => { try { return JSON.parse(sessionStorage.getItem(MODE_KEY) || 'null'); } catch { return null; } };
+
+export default function Matches({ player, updatePlayer, onCheckIn, openPlan, openReflect, fresh }) {
+  const [mode, setModeRaw] = useState(() => (openPlan ? { name: 'targets', id: openPlan } : openReflect ? { name: 'reflect', id: openReflect } : (!fresh && loadMode()) || { name: 'list' }));
+  useEffect(() => { try { sessionStorage.setItem(MODE_KEY, JSON.stringify(mode.name === 'add' || mode.name === 'edit' ? { name: 'list' } : mode)); } catch { /* ignore */ } }, []); // remember where we opened
+  const setMode = (m) => {
+    setModeRaw(m);
+    try { sessionStorage.setItem(MODE_KEY, JSON.stringify(m.name === 'add' || m.name === 'edit' ? { name: 'list' } : m)); } catch { /* ignore */ }
+    window.scrollTo(0, 0);
+  };
   const [day, setDay] = useState(null);
   const sessions = player.sessions || [];
   const { upcoming, played } = sortSessions(sessions);
@@ -35,6 +44,10 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan }) {
     setMode({ name: 'list' });
   };
 
+  if (mode.name === 'edit' && sessions.find((s) => s.id === mode.id)) {
+    const cur = sessions.find((s) => s.id === mode.id);
+    return <AddForm initial={cur} onCancel={() => setMode({ name: 'list' })} onDelete={() => remove(cur.id)} onSave={(s) => { saveSession({ ...cur, ...s, id: cur.id, status: cur.status, targets: cur.targets }); setMode({ name: 'list' }); }} />;
+  }
   if (mode.name === 'add') {
     return <AddForm date={mode.date} onCancel={() => setMode({ name: 'list' })} onSave={(s, reflectNow) => { saveSession(s); setMode(reflectNow ? { name: 'reflect', id: s.id } : { name: 'list' }); }} />;
   }
@@ -76,11 +89,16 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan }) {
                   <p className="session-when">{prettyDate(s.date, s.time)}</p>
                   <p className="soft">{summary(s)}</p>
                   {s.intention && <p className="soft">Intention: <em>{s.intention}</em></p>}
-                  {s.targets?.length > 0 && <p className="soft">Goals today: {s.targets.map((id) => goals.find((g) => g.id === id)).filter(Boolean).map(goalLine).join(', ')}</p>}
+                  {s.targets?.length > 0 && <p className="soft">Goals: {s.targets.map((id) => goals.find((g) => g.id === id)).filter(Boolean).map(goalLine).join(', ')}</p>}
                 </div>
                 <div className="session-actions">
-                  <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>Plan</button>
-                  {s.date <= todayISO() && <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Done: reflect</button>}
+                  {s.date < todayISO()
+                    ? <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Did you play? Reflect now</button>
+                    : <>
+                        <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>Plan</button>
+                        {s.date === todayISO() && <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Done: reflect</button>}
+                      </>}
+                  <button className="mini quiet" onClick={() => setMode({ name: 'edit', id: s.id })}>Edit</button>
                 </div>
               </li>
             ))}
@@ -118,8 +136,11 @@ function summary(s) {
   return [s.partner && `With ${s.partner}`, opp && `vs ${opp}`, s.venue].filter(Boolean).join(' · ') || 'Match';
 }
 
-function AddForm({ date, onCancel, onSave }) {
-  const [f, setF] = useState({ ...emptyForm, date: date || todayISO() });
+function AddForm({ date, initial, onCancel, onSave, onDelete }) {
+  const [sure, setSure] = useState(false);
+  const [f, setF] = useState(() => initial
+    ? { ...emptyForm, ...initial, opp1: initial.opponents?.[0] || '', opp2: initial.opponents?.[1] || '', venue: initial.venue || '', partner: initial.partner || '', coach: initial.coach || '', focus: initial.focus || [], intention: initial.intention || '', time: initial.time || '' }
+    : { ...emptyForm, date: date || todayISO() });
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
   const build = () => ({
     id: 's' + Date.now(),
@@ -137,7 +158,7 @@ function AddForm({ date, onCancel, onSave }) {
     status: 'planned',
     createdAt: new Date().toISOString(),
   });
-  const past = f.date <= todayISO();
+  const past = !initial && f.date <= todayISO();
   return (
     <main className="page">
       <button className="back" onClick={onCancel}>‹ Matches</button>
@@ -164,7 +185,7 @@ function AddForm({ date, onCancel, onSave }) {
           </>
         ) : (
           <>
-            <label className="soft">Coach<input value={f.coach} onChange={set('coach')} /></label>
+            <label className="soft">Coach's name<input value={f.coach} onChange={set('coach')} /></label>
             <p className="soft">What will it focus on?</p>
             <SkillChips selected={f.focus} onChange={(focus) => setF({ ...f, focus })} />
           </>
@@ -174,7 +195,8 @@ function AddForm({ date, onCancel, onSave }) {
         </label>
       </section>
       {past && <button className="btn" onClick={() => onSave(build(), true)}>Save and reflect now</button>}
-      <button className={'btn' + (past ? ' ghost' : '')} onClick={() => onSave(build(), false)}>{past ? 'Save, reflect later' : 'Save as upcoming'}</button>
+      <button className={'btn' + (past ? ' ghost' : '')} onClick={() => onSave(build(), false)}>{initial ? 'Save changes' : past ? 'Save, reflect later' : 'Save as upcoming'}</button>
+      {initial && (!sure ? <button className="btn ghost" onClick={() => setSure(true)}>Delete</button> : <button className="btn danger" onClick={onDelete}>Tap again to delete</button>)}
     </main>
   );
 }
@@ -207,12 +229,12 @@ function Plan({ session, goals, onBack, onSave }) {
       <p className="eyebrow center">Before · {prettyDate(session.date, session.time)}</p>
       <section className="panel ob-form">
         <p className="eyebrow">Your intention</p>
-        <label className="soft">One thing you want to do today
+        <label className="soft">One thing you want to do in this {session.kind}
           <input value={intention} maxLength={80} placeholder="e.g. Be patient and lob more" onChange={(e) => setIntention(e.target.value)} />
         </label>
       </section>
       <section className="panel">
-        <p className="eyebrow">Goals to think about</p>
+        <p className="eyebrow">Goals for this {session.kind}</p>
         {goals.length === 0 ? <p className="soft">No goals yet. You can add them from the Skills tab.</p> : (
           <>
             <p className="soft">Pick up to 3. Keep it light.</p>
@@ -227,51 +249,62 @@ function Plan({ session, goals, onBack, onSave }) {
   );
 }
 
+// Drafts survive the phone reloading the page (it often does after switching apps).
+const draftKey = (id) => `padeliq-draft-${id}`;
+const loadDraft = (id) => { try { return JSON.parse(localStorage.getItem(draftKey(id)) || 'null'); } catch { return null; } };
+const saveDraft = (id, d) => { try { localStorage.setItem(draftKey(id), JSON.stringify(d)); } catch { /* ignore */ } };
+const clearDraft = (id) => { try { localStorage.removeItem(draftKey(id)); } catch { /* ignore */ } };
+
 function Reflect({ session, player, goals, onBack, onSave }) {
   const toCheck = (session.targets?.length ? goals.filter((g) => session.targets.includes(g.id)) : goals);
-  const [checks, setChecks] = useState(session.goalChecks || {});
-  const [planCheck, setPlanCheck] = useState(session.intentionCheck || '');
-  const [outcome, setOutcome] = useState(session.result?.outcome || '');
-  const [score, setScore] = useState(session.result?.score || '');
-  const [notes, setNotes] = useState(session.notes || { worked: '', didnt: '', tryNext: '' });
-  const [tags, setTags] = useState(session.tags || session.focus || []);
-  const [coachSaid, setCoachSaid] = useState(session.coachSaid || '');
-  const [practice, setPractice] = useState(session.practice || '');
-  const prefer = [...new Set([...goals.map((g) => g.skillId), ...(session.focus || []), ...Object.keys(skillChecks(player))])];
-  const setNote = (k) => (e) => setNotes({ ...notes, [k]: e.target.value });
-
-  const save = () => onSave({
-    ...session,
-    status: 'played',
-    playedAt: session.playedAt || new Date().toISOString(),
-    result: session.kind === 'match' ? { outcome, score: score.trim() } : undefined,
-    goalChecks: checks,
-    intentionCheck: session.intention ? planCheck : undefined,
-    notes,
-    tags,
-    coachSaid: session.kind === 'lesson' ? coachSaid : undefined,
-    practice: session.kind === 'lesson' ? practice : undefined,
+  const [d, setD] = useState(() => loadDraft(session.id) || {
+    checks: session.goalChecks || {},
+    planCheck: session.intentionCheck || '',
+    outcome: session.result?.outcome || '',
+    score: session.result?.score || '',
+    notes: session.notes || { worked: '', didnt: '', tryNext: '' },
+    tags: session.tags || session.focus || [],
+    coachSaid: session.coachSaid || '',
+    practice: session.practice || '',
   });
+  const set = (patch) => setD((prev) => { const next = { ...prev, ...patch }; saveDraft(session.id, next); return next; });
+  const hasNotes = Object.values(d.notes).some(Boolean) || d.coachSaid || d.practice;
+  const [showNotes, setShowNotes] = useState(hasNotes || session.kind === 'lesson');
+  const [showScore, setShowScore] = useState(!!d.score);
+  const prefer = [...new Set([...goals.map((g) => g.skillId), ...(session.focus || []), ...Object.keys(skillChecks(player))])];
+  const setNote = (k) => (e) => set({ notes: { ...d.notes, [k]: e.target.value } });
+
+  const save = () => {
+    clearDraft(session.id);
+    onSave({
+      ...session,
+      status: 'played',
+      playedAt: session.playedAt || new Date().toISOString(),
+      result: session.kind === 'match' ? { outcome: d.outcome, score: d.score.trim() } : undefined,
+      goalChecks: d.checks,
+      intentionCheck: session.intention ? d.planCheck : undefined,
+      notes: d.notes,
+      tags: d.tags,
+      coachSaid: session.kind === 'lesson' ? d.coachSaid : undefined,
+      practice: session.kind === 'lesson' ? d.practice : undefined,
+    });
+  };
 
   return (
     <main className="page">
       <button className="back" onClick={onBack}>‹ Matches</button>
       <p className="eyebrow center">{session.kind === 'lesson' ? 'After the lesson' : 'After the match'} · {prettyDate(session.date)}</p>
+      <p className="soft center">A few taps. Notes are optional.</p>
 
       {session.kind === 'match' && (
         <section className="panel">
-          <p className="eyebrow">Result (optional)</p>
+          <p className="eyebrow">Result</p>
           <div className="segmented" style={{ marginTop: 8 }}>
-            {['won', 'lost', 'draw'].map((o) => <button key={o} className={outcome === o ? 'on' : ''} onClick={() => setOutcome(outcome === o ? '' : o)}>{o[0].toUpperCase() + o.slice(1)}</button>)}
+            {['won', 'lost', 'draw'].map((o) => <button key={o} className={d.outcome === o ? 'on' : ''} onClick={() => set({ outcome: d.outcome === o ? '' : o })}>{cap(o)}</button>)}
           </div>
-          <input className="search" style={{ marginTop: 10 }} placeholder="Score, e.g. 6-4 3-6 7-5" value={score} onChange={(e) => setScore(e.target.value)} />
-        </section>
-      )}
-
-      {session.kind === 'lesson' && (
-        <section className="panel ob-form">
-          <label className="soft">What did the coach say?<textarea rows="3" value={coachSaid} onChange={(e) => setCoachSaid(e.target.value)} /></label>
-          <label className="soft">Your practice task<input value={practice} onChange={(e) => setPractice(e.target.value)} /></label>
+          {showScore
+            ? <input className="search" style={{ marginTop: 10 }} placeholder="e.g. 6-4 3-6 7-5" value={d.score} onChange={(e) => set({ score: e.target.value })} aria-label="Score" />
+            : <button className="linkish" style={{ marginTop: 8 }} onClick={() => setShowScore(true)}>+ Add the score</button>}
         </section>
       )}
 
@@ -279,9 +312,8 @@ function Reflect({ session, player, goals, onBack, onSave }) {
         <section className="panel">
           <p className="eyebrow">Your intention</p>
           <p className="goal-title" style={{ margin: '6px 0 10px' }}>{session.intention}</p>
-          <p className="soft">Did you manage it?</p>
-          <div className="segmented small" style={{ marginTop: 8 }}>
-            {planOptions.map((o) => <button key={o.id} className={planCheck === o.id ? 'on' : ''} onClick={() => setPlanCheck(o.id)}>{o.label}</button>)}
+          <div className="segmented small">
+            {planOptions.map((o) => <button key={o.id} className={d.planCheck === o.id ? 'on' : ''} onClick={() => set({ planCheck: o.id })}>{o.label}</button>)}
           </div>
         </section>
       )}
@@ -294,26 +326,36 @@ function Reflect({ session, player, goals, onBack, onSave }) {
               <p className="goal-title">{goalSkill(g)}</p>
               {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
               <div className="segmented small">
-                {checkOptions.map((o) => <button key={o.id} className={checks[g.id] === o.id ? 'on' : ''} onClick={() => setChecks({ ...checks, [g.id]: o.id })}>{o.label}</button>)}
+                {checkOptions.map((o) => <button key={o.id} className={d.checks[g.id] === o.id ? 'on' : ''} onClick={() => set({ checks: { ...d.checks, [g.id]: o.id } })}>{o.label}</button>)}
               </div>
             </div>
           ))}
         </section>
       )}
 
-      <section className="panel ob-form">
-        <p className="eyebrow">Three quick notes</p>
-        <label className="soft">What worked?<textarea rows="2" value={notes.worked} onChange={setNote('worked')} /></label>
-        <label className="soft">What didn't?<textarea rows="2" value={notes.didnt} onChange={setNote('didnt')} /></label>
-        <label className="soft">One thing to try next time<textarea rows="2" value={notes.tryNext} onChange={setNote('tryNext')} /></label>
-      </section>
-
       <section className="panel">
-        <p className="eyebrow">Which skills came up? (tap any)</p>
-        <SkillChips selected={tags} onChange={setTags} prefer={prefer} />
+        <p className="eyebrow">Which skills came up?</p>
+        <SkillChips selected={d.tags} onChange={(tags) => set({ tags })} prefer={prefer} />
       </section>
 
-      <p className="soft center">This never changes your level. It helps you and your coach spot patterns.</p>
+      {showNotes ? (
+        <section className="panel ob-form">
+          <p className="eyebrow">Notes (optional)</p>
+          {session.kind === 'lesson' && (
+            <>
+              <label className="soft">What did the coach say?<textarea rows="2" placeholder="e.g. Racket up earlier on the bandeja" value={d.coachSaid} onChange={(e) => set({ coachSaid: e.target.value })} /></label>
+              <label className="soft">Your practice task<input placeholder="e.g. 20 bandejas cross-court" value={d.practice} onChange={(e) => set({ practice: e.target.value })} /></label>
+            </>
+          )}
+          <label className="soft">What worked?<textarea rows="2" placeholder="e.g. Lobbing over the left player" value={d.notes.worked} onChange={setNote('worked')} /></label>
+          <label className="soft">What didn't?<textarea rows="2" placeholder="e.g. My returns sat up" value={d.notes.didnt} onChange={setNote('didnt')} /></label>
+          <label className="soft">One thing to try next time<textarea rows="2" placeholder="e.g. Return low to the middle" value={d.notes.tryNext} onChange={setNote('tryNext')} /></label>
+        </section>
+      ) : (
+        <button className="btn ghost" onClick={() => setShowNotes(true)}>+ Add notes (optional)</button>
+      )}
+
+      <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>
   );

@@ -20,7 +20,7 @@ export default function Coach({ question }) {
         <ul className="list">
           {modes.map((m) => (
             <li key={m.name} className="list-row col">
-              <strong>{m.name}</strong>
+              <strong>{m.name} <span className="tag">Coming soon</span></strong>
               <span className="soft">{m.what}</span>
             </li>
           ))}

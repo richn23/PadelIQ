@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd } from '../data.js';
 import think from '../assets/mascot-think.png';
 import StatementCheck from '../components/StatementCheck.jsx';
+import QuickCheck from '../components/QuickCheck.jsx';
 import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus, scoreSkill } from '../levels.js';
 
 const views = [
@@ -11,9 +12,9 @@ const views = [
   { id: 'explore', label: 'Explore' },
 ];
 
-export default function Skills({ player, updatePlayer, startView = 'have' }) {
+export default function Skills({ player, updatePlayer, startView = 'have', openSkill = null }) {
   const [view, setView] = useState(startView || 'have');
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState(openSkill);
   const checks = skillChecks(player);
   const axisLevels = currentAxisLevels(player);
   const level = currentLevel(player);
@@ -49,7 +50,8 @@ function Row({ skill, right, onOpen }) {
 
 function Have({ axisLevels, level, checks, onOpen }) {
   const [area, setArea] = useState(null);
-  const checked = allSkills.filter((s) => checks[s.id] && (!area || s.axis === area));
+  const strengthIds = new Set(allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level)).map((s) => s.id));
+  const checked = allSkills.filter((s) => checks[s.id] && (!area || s.axis === area) && (area || !strengthIds.has(s.id)));
   const strengths = allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level));
   return (
     <>
@@ -65,7 +67,7 @@ function Have({ axisLevels, level, checks, onOpen }) {
         </section>
       )}
       <section className="panel">
-        <p className="eyebrow">{area ? axisById[area].name : 'Skills you have checked'}</p>
+        <p className="eyebrow">{area ? axisById[area].name : strengthIds.size ? 'Other skills you have checked' : 'Skills you have checked'}</p>
         {checked.length === 0 ? (
           <p className="soft">Nothing checked here yet. Open a skill in Explore or Work on next and tap "Check myself".</p>
         ) : (
@@ -151,7 +153,9 @@ function GoalChat({ skill, level, form, setForm, onSave, onCancel }) {
   const name = skill.name === skill.es ? skill.name : skill.name.toLowerCase();
   const line = (k) => gd.lines[k].replace('{skill}', name);
   const toggle = (id) => setForm({ ...form, problems: form.problems.includes(id) ? form.problems.filter((x) => x !== id) : form.problems.length < 2 ? [...form.problems, id] : form.problems });
-  const suggestion = () => problems.filter((p) => form.problems.includes(p.id)).map((p, i) => (i ? p.goal[0].toLowerCase() + p.goal.slice(1) : p.goal)).join(', and ') || goalIdea(skill);
+  const goalFor = (p) => gd.goalOverrides?.[skill.id]?.[p.id] || p.goal;
+  const suggestion = () => problems.filter((p) => form.problems.includes(p.id)).map(goalFor).map((t, i) => (i ? t[0].toLowerCase() + t.slice(1) : t)).join(', and ') || goalIdea(skill);
+  const whenList = gd.whenOverrides?.skills.includes(skill.id) ? gd.when.map((w) => gd.whenOverrides.replace[w.id] || w) : gd.when;
 
   return (
     <section className="panel goal-chat">
@@ -170,14 +174,14 @@ function GoalChat({ skill, level, form, setForm, onSave, onCancel }) {
         <>
           <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{line('when')}</div></div>
           <div className="chips">
-            {gd.when.map((w) => <button key={w.id} className={'chip-btn skill' + (form.when === w.id ? ' on' : '')} onClick={() => setForm({ ...form, when: w.id, step: 'suggest', title: form.title || suggestion() })}>{w.label}</button>)}
+            {whenList.map((w) => <button key={w.id} className={'chip-btn skill' + (form.when === w.id ? ' on' : '')} onClick={() => setForm({ ...form, when: w.id, step: 'suggest', title: form.title || suggestion() })}>{w.label}</button>)}
           </div>
           <button className="back" onClick={() => setForm({ ...form, step: 'what' })}>‹ Back</button>
         </>
       )}
       {form.step === 'suggest' && (
         <div className="ob-form">
-          <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{form.problems.length ? line('suggest') : 'What do you want to change? In your own words.'}</div></div>
+          <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{form.problems.length || form.title ? line('suggest') : 'What do you want to change? In your own words.'}</div></div>
           <p className="soft">At {levelName(level)}, the priority is: <em>{levelFocus(level)}</em></p>
           <textarea rows="2" value={form.title} maxLength={80} placeholder={`e.g. ${goalIdea(skill)}`} onChange={(e) => setForm({ ...form, title: e.target.value })} aria-label="Your goal" />
           <label className="soft">{line('happy')} <strong className="goal-pct">{form.progress}%</strong>
@@ -214,6 +218,31 @@ function levelLine(skill, id) {
 }
 
 // After a check: the level it comes out as, and what's missing for the next step.
+// Result of a quick check (you said your level, 4 questions confirmed it).
+const OUTCOME = {
+  solid_close: 'Solid, and close to the next level.',
+  solid: 'Solid at this level.',
+  not_solid: 'At this level, but not solid yet.',
+  lower: 'Your answers sounded lower.',
+};
+function QuickSummary({ skill, check, onGoal }) {
+  return (
+    <div className="result-card">
+      <p className="soft">
+        You said {levelName(check.claimed)}. {OUTCOME[check.outcome]}
+        {check.setByYou ? ' You kept your level.' : ''}
+      </p>
+      {check.focus?.length > 0 && (
+        <div className="focus-point" style={{ marginTop: 8 }}>
+          <p className="eyebrow">Point to work on</p>
+          <p className="focus-text">{check.focus[0]}</p>
+          {onGoal && <button className="mini on" onClick={() => onGoal(check.focus[0])}>Make this my goal</button>}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ResultCard({ skill, result }) {
   return (
     <div className="result-card">
@@ -244,13 +273,26 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const goals = player.goals || [];
   const isGoal = goals.some((g) => g.skillId === skill.id);
 
+  const goalRef = useRef(null);
+  useEffect(() => { if (goalForm) goalRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, [goalForm?.step]);
   const saveCheck = (answers) => {
     const result = scoreSkill(skill, answers);
-    updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [skill.id]: { level: result.level, answers, date: new Date().toISOString() } } }));
+    updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [skill.id]: { level: result.level, answers, mode: 'detail', date: new Date().toISOString() } } }));
     setChecking(false);
     setJustScored(result);
   };
-  const shown = justScored || (check?.answers ? scoreSkill(skill, check.answers) : null);
+  const saveQuick = (rec) => {
+    updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [skill.id]: { ...rec, date: new Date().toISOString() } } }));
+    setChecking(false);
+    setJustScored(null);
+  };
+  const goalFromFocus = (text) => {
+    if (isGoal) { setNote('This is already one of your goals.'); return; }
+    if (goals.length >= 3) { setNote('You already have 3 goals. Finish or remove one first.'); return; }
+    setGoalForm({ step: 'suggest', problems: [], when: '', title: text, progress: 30 });
+  };
+  const shown = justScored || (check?.mode !== 'quick' && check?.answers ? scoreSkill(skill, check.answers) : null);
+  const startLevel = check && check.from !== 'quiz' ? check.level : currentAxisLevels(player)[skill.axis];
   const makeGoal = () => {
     if (isGoal) return;
     if (goals.length >= 3) { setNote('You already have 3 goals. Finish or remove one first.'); return; }
@@ -271,7 +313,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
         <p className="eyebrow">{['transition', 'specialist'].includes(skill.group) ? groups.find((g) => g.id === skill.group)?.name : axisById[skill.axis].name}</p>
         <h2 className="skill-title">{skill.name}</h2>
         {skill.es && skill.es !== skill.name && <p className="soft">Spanish: <em>{skill.es}</em></p>}
-        {skill.aka && <p className="soft">Also called: {skill.aka}</p>}
+        {skill.aka && skill.aka.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() !== skill.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() && <p className="soft">Also called: {skill.aka}</p>}
         <p className="skill-what">{skill.what}</p>
         <p className="soft"><strong>When:</strong> {skill.when}</p>
       </section>
@@ -283,14 +325,16 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
             <p className="pill">{!check ? '–' : !skill.levels[check.level] && levelOrder(check.level) < (firstMasterOrder(skill) ?? 0) ? 'Not yet' : levelName(check.level)}</p>
           </div>
           {check?.from === 'quiz' && <p className="soft">From your quiz. Check it properly below.</p>}
-          {!checking ? (
+          {!checking && (
             <>
+              {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}
               {shown && <ResultCard skill={skill} result={shown} />}
-              <button className="btn" onClick={() => setChecking(true)}>{check?.answers ? 'Check again' : 'Check myself'}</button>
+              <button className="btn" onClick={() => setChecking('quick')}>{check && check.from !== 'quiz' ? 'Check again' : 'Check my level'}</button>
+              <button className="linkish center-self" onClick={() => setChecking('detail')}>Check in detail (all statements)</button>
             </>
-          ) : (
-            <StatementCheck skill={skill} initial={check?.answers || {}} onSave={saveCheck} onSkip={() => setChecking(false)} skipLabel="Cancel" />
           )}
+          {checking === 'quick' && <QuickCheck skill={skill} startLevel={startLevel} onSave={saveQuick} onCancel={() => setChecking(false)} onDetail={() => setChecking('detail')} onGoal={goalFromFocus} />}
+          {checking === 'detail' && <StatementCheck skill={skill} initial={check?.mode === 'detail' ? check.answers : {}} onSave={saveCheck} onSkip={() => setChecking(false)} skipLabel="Cancel" />}
         </section>
       ) : (
         <section className="panel"><p className="soft">This shot is in the glossary only. It isn't checked in the app.</p></section>
@@ -304,13 +348,14 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           {levels.map((l) => (
             <li key={l.id} className={'list-row col' + (check?.level === l.id ? ' you' : '')}>
               <strong>{l.name}{check?.level === l.id ? ' (you)' : ''}</strong>
-              <span className="soft">{check?.level === l.id && !skill.levels[l.id] ? 'You said: not yet. That\'s fine at this level.' : levelLine(skill, l.id)}</span>
+              <span className="soft">{check?.level === l.id && !skill.levels[l.id] ? 'From your answers: not yet. That\'s fine at this level.' : levelLine(skill, l.id)}</span>
             </li>
           ))}
         </ul>}
       </section>
 
       {skill.checked && !goalForm && <button className="btn" onClick={makeGoal} disabled={isGoal}>{isGoal ? 'This is one of your goals' : 'Make this a goal'}</button>}
+      {goalForm && <div ref={goalRef} />}
       {goalForm && <GoalChat skill={skill} level={currentLevel(player)} form={goalForm} setForm={setGoalForm} onSave={saveGoal} onCancel={() => setGoalForm(null)} />}
       {note && <p className="soft center">{note}</p>}
     </main>

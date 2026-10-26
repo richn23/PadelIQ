@@ -14,19 +14,31 @@ import CoachButton from './components/CoachButton.jsx';
 import { pickTheme, applyTheme } from './theme.js';
 import { loadPlayer, savePlayer, clearPlayer } from './store.js';
 import { player as samplePlayer } from './data.js';
+import { shiftAreas } from './levels.js';
 
 // Testing helpers: ?reset starts again, ?demo shows the sample player (Alex).
 const params = new URLSearchParams(location.search);
 if (params.has('reset')) clearPlayer();
+// Tidy the address, so reloading the page doesn't wipe your data again.
+if (params.has('reset') || params.has('demo')) {
+  try { history.replaceState(null, '', location.pathname + (params.get('theme') ? `?theme=${params.get('theme')}` : '')); } catch { /* ignore */ }
+}
+const MAIN = ['home', 'skills', 'goals', 'matches', 'coach', 'checkin', 'settings'];
+const savedScreen = () => { try { const s = sessionStorage.getItem('padeliq-screen'); return MAIN.includes(s) ? s : 'home'; } catch { return 'home'; } };
 
 const titles = { home: null, skills: 'Skills', goals: 'Goals', matches: 'Matches', coach: 'Coach', checkin: 'Check-in', settings: 'Settings' };
 
 export default function App() {
-  const [screen, setScreen] = useState('splash');
+  const [screen, setScreenRaw] = useState('splash');
+  const setScreen = (id) => {
+    setScreenRaw(id);
+    try { if (MAIN.includes(id)) sessionStorage.setItem('padeliq-screen', id); } catch { /* ignore */ }
+    window.scrollTo(0, 0);
+  };
   const [coachQuestion, setCoachQuestion] = useState(null);
   const [tapCount, setTapCount] = useState(0); // tapping a tab again goes back to its start
   const [intent, setIntent] = useState(null); // e.g. open a session's plan, or Skills on 'Work on next'
-  const go = (id, opts = null) => { setIntent(opts); setTapCount((n) => n + 1); setScreen(id); };
+  const go = (id, opts = null) => { setIntent({ ...(opts || {}), fresh: true }); setTapCount((n) => n + 1); setScreen(id); };
   const [player, setPlayer] = useState(() => (params.has('demo') ? samplePlayer : loadPlayer()));
 
   useEffect(() => {
@@ -42,15 +54,17 @@ export default function App() {
     });
   };
 
+  const [redoing, setRedoing] = useState(false);
   const finishOnboarding = (result) => {
+    setRedoing(false);
     const old = player && !isDemo ? player : {};
     const p = {
       ...old,
       name: result.name || old.name || 'Player',
       provisional: true,
       level: result.level,
-      levelSetByPlayer: result.setByPlayer,
-      axisLevels: result.axisLevels,
+      levelSetByPlayer: false,
+      axisLevels: result.axisLevels, // already moved to match a level you picked
       about: result.about,
       extra: result.extra,
       answers: result.answers,
@@ -68,8 +82,8 @@ export default function App() {
 
   return (
     <div className="app">
-      {screen === 'splash' && <Splash onDone={() => setScreen(player ? 'home' : 'onboarding')} />}
-      {screen === 'onboarding' && <Onboarding onDone={finishOnboarding} />}
+      {screen === 'splash' && <Splash onDone={() => setScreen(player ? savedScreen() : 'onboarding')} />}
+      {screen === 'onboarding' && <Onboarding onDone={finishOnboarding} onCancel={redoing ? () => { setRedoing(false); setScreen('settings'); } : null} />}
       {['home', 'skills', 'goals', 'matches', 'coach', 'checkin', 'settings'].includes(screen) && player && (
         <>
           <TopBar title={titles[screen]} onHome={() => setScreen('home')} onSettings={screen === 'home' ? () => setScreen('settings') : null}>
@@ -84,13 +98,13 @@ export default function App() {
               player={player}
               updatePlayer={updatePlayer}
               onBack={() => setScreen('home')}
-              onRedoQuiz={() => setScreen('onboarding')}
+              onRedoQuiz={() => { setRedoing(true); setScreen('onboarding'); }}
               onReset={() => { clearPlayer(); setPlayer(null); setScreen('onboarding'); }}
             />
           )}
-          {screen === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} startView={intent?.view} />}
+          {screen === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
           {screen === 'goals' && <Goals player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
-          {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} />}
+          {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} openReflect={intent?.reflect} fresh={!!intent?.fresh} />}
           {screen === 'coach' && <Coach question={coachQuestion} />}
           <TabBar active={screen} onChange={(id) => { setCoachQuestion(null); go(id); }} />
         </>

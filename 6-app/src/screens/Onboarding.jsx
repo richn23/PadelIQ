@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, onboarding as ob } from '../data.js';
-import { levelOrder, overallLevel } from '../levels.js';
+import { levelOrder, overallLevel, shiftAreas } from '../levels.js';
 import wave from '../assets/mascot-wave.png';
 import think from '../assets/mascot-think.png';
 import cheer from '../assets/mascot-cheer.png';
@@ -36,7 +36,7 @@ function Mascot({ pose, children }) {
   );
 }
 
-export default function Onboarding({ onDone }) {
+export default function Onboarding({ onDone, onCancel }) {
   // steps: 0 welcome, 1-2 about you, 3 playtomic/club, 4..13 questions, 14 result, 15 pick level
   const total = ABOUT.length + 1 + ob.questions.length;
   const [step, setStep] = useState(0);
@@ -66,6 +66,7 @@ export default function Onboarding({ onDone }) {
         </div>
         <p className="soft center ob-disc">{ob.disclaimer}</p>
         <button className="btn" onClick={next}>{ob.lines.go}</button>
+        {onCancel && <button className="btn ghost" onClick={onCancel}>Cancel, keep my current answers</button>}
       </main>
     );
   }
@@ -93,7 +94,7 @@ export default function Onboarding({ onDone }) {
         <Mascot pose="think">{ob.lines.hint}</Mascot>
         <div className="panel ob-form">
           <label className="soft">{ob.lines.playtomic}
-            <input inputMode="decimal" value={extra.playtomic} onChange={(e) => setExtra({ ...extra, playtomic: e.target.value })} />
+            <input inputMode="decimal" value={extra.playtomic} onChange={(e) => setExtra({ ...extra, playtomic: e.target.value.replace(/[^0-9.,]/g, '').slice(0, 4) })} onBlur={() => { const v = parseFloat(String(extra.playtomic).replace(',', '.')); setExtra({ ...extra, playtomic: isNaN(v) ? '' : String(Math.min(Math.max(v, 0), 7)) }); }} />
           </label>
           <label className="soft">{ob.lines.club}
             <input value={extra.club} onChange={(e) => setExtra({ ...extra, club: e.target.value })} />
@@ -111,7 +112,7 @@ export default function Onboarding({ onDone }) {
     return (
       <main className="ob">
         <Progress />
-        <p className="eyebrow center">{axis.name} · {qIndex + 1} of {ob.questions.length}</p>
+        <p className="eyebrow center">{axis.name.split(' and ')[0]} · {qIndex + 1} of {ob.questions.length}</p>
         <Mascot pose="think">{q.ask}</Mascot>
         <div className="ob-answers">
           {q.answers.map((t, i) => (
@@ -123,7 +124,8 @@ export default function Onboarding({ onDone }) {
     );
   }
 
-  const axisLevels = workOutLevels(answers);
+  const fromAnswers = workOutLevels(answers);
+  const axisLevels = chosen ? shiftAreas(fromAnswers, chosen) : fromAnswers;
   const level = chosen || overallLevel(axisLevels);
   const resultStep = ABOUT.length + 2 + ob.questions.length;
 
@@ -139,7 +141,7 @@ export default function Onboarding({ onDone }) {
           <p className="soft">It gets more accurate after your first check-in (after 5 sessions).</p>
           <Pentagon axes={axes} axisLevels={axisLevels} selected={null} onSelect={() => {}} />
         </section>
-        <p className="soft center ob-disc">{ob.levelNote}</p>
+        <p className="soft center ob-disc">Levels go Beginner, D, C, B, then A at the top. Pro is beyond that. {ob.levelNote}</p>
         <div className="ob-actions">
           <button className="btn" onClick={() => onDone({ name: name.trim(), about, extra, answers, axisLevels, level, setByPlayer: !!chosen })}>Yes, that feels right</button>
           <button className="btn ghost" onClick={next}>Not quite, let me choose</button>

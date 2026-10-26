@@ -344,3 +344,23 @@ i.played { background: #fff; }
 .result-card .gap-list li { margin: 4px 0; line-height: 1.35; }
 .link-row { width: 100%; border: 0; background: none; color: var(--text); padding: 0; }
 .result-card { margin: 8px 0 4px; }
+
+/* ---------- Quick check ---------- */
+.quick { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+.level-pick { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.level-pick button { border: 1px solid var(--panel-border); background: rgba(255,255,255,0.06); color: var(--text); border-radius: 10px; padding: 12px 0; font-weight: 800; font-size: 15px; }
+.level-pick button:first-child { font-size: 11px; }
+.level-pick button.on { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.hint { font-style: italic; }
+.focus-point { border: 1px solid var(--accent); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.focus-text { font-weight: 700; line-height: 1.35; }
+
+/* Bigger tap targets (44px) and slightly bigger small labels */
+.back, .linkish { min-height: 44px; display: inline-flex; align-items: center; }
+.seg4 button { min-height: 44px; }
+.segmented button { min-height: 44px; }
+.chip-btn { min-height: 40px; padding: 8px 13px; }
+.mini { min-height: 44px; }
+.cal-day { height: 44px; }
+.eyebrow { font-size: 12px; }
+.tab { font-size: 12px; }

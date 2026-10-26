@@ -37,7 +37,8 @@ export function currentAxisLevels(player) {
   const checks = skillChecks(player);
   const result = {};
   axes.forEach((a) => {
-    const orders = allSkills.filter((s) => s.axis === a.id && checks[s.id]).map((s) => levelOrder(checks[s.id].level));
+    // Only skills you've checked yourself move an area. Quiz answers already set the starting areas.
+    const orders = allSkills.filter((s) => s.axis === a.id && checks[s.id] && checks[s.id].from !== 'quiz').map((s) => levelOrder(checks[s.id].level));
     result[a.id] = orders.length
       ? levelByOrder(Math.floor(orders.reduce((x, y) => x + y, 0) / orders.length + 0.5)).id
       : player.axisLevels[a.id];
@@ -99,15 +100,70 @@ export function scoreSkill(skill, answers = {}) {
   for (const l of levels) {
     const list = byLevel[l.id];
     if (!list) continue;
-    if (share(list, r.goodEnough) < r.share) break;
-    level = l.id;
-    if (share(list, r.mastered) < r.share) break; // good enough here, but not mastered: stop climbing
+    if (share(list, r.goodEnough) < r.share) break; // not good enough here: stop climbing
+    level = l.id; // good enough (usually or always). "Always" only decides whether it's solid.
   }
   const result = level || notYetLevel(skill);
+  const solid = level ? share(byLevel[level] || [], r.mastered) >= r.share : false;
   // What's missing for the next step up
   const nextOrder = levelOrder(result) + 1;
   const nextId = Object.keys(byLevel).map(levelOrder).filter((o) => o >= nextOrder).sort((a, b) => a - b)[0];
   const gaps = nextId === undefined ? [] : byLevel[levelByOrder(nextId).id].filter((st) => !r.goodEnough.includes(answers[st.id]));
   const notMastered = level ? (byLevel[level] || []).filter((st) => answers[st.id] !== 'always') : [];
-  return { level: result, gaps, nextLevel: nextId === undefined ? null : levelByOrder(nextId).id, notMastered };
+  return { level: result, solid, gaps, nextLevel: nextId === undefined ? null : levelByOrder(nextId).id, notMastered };
+}
+
+// ---- Quick check: you say your level, the app confirms it with 4 questions ----
+const levelsWithStatements = (skill) => [...new Set((skill.statements || []).map((st) => st.level))].sort((a, b) => levelOrder(a) - levelOrder(b));
+
+export function quickQuestions(skill, claimed) {
+  const have = levelsWithStatements(skill);
+  if (!have.length) return { at: [], warning: null, stretch: null, used: claimed };
+  // Use the claimed level, or the nearest level that has statements at or below it (else the first one).
+  const below = have.filter((l) => levelOrder(l) <= levelOrder(claimed));
+  const used = below.length ? below[below.length - 1] : null;
+  const at = used ? skill.statements.filter((st) => st.level === used).slice(0, 2) : [];
+  const ws = (skill.warnings || []).filter((w) => levelOrder(w.level) <= levelOrder(claimed));
+  const warning = ws.length ? ws[ws.length - 1] : null;
+  const nextLevel = have.find((l) => levelOrder(l) > levelOrder(used || claimed));
+  const stretch = nextLevel ? skill.statements.find((st) => st.level === nextLevel) : null;
+  return { at, warning, stretch, used };
+}
+
+export function quickScore(skill, claimed, q, ans) {
+  const good = ['always', 'usually'];
+  const atGood = q.at.filter((st) => good.includes(ans[st.id])).length;
+  const atWeak = q.at.filter((st) => ans[st.id] && !good.includes(ans[st.id]));
+  const w = q.warning ? ans[q.warning.id] : null;
+  const warnOften = w === 'often';
+  const warnSome = w === 'sometimes';
+  const stretchGood = q.stretch && good.includes(ans[q.stretch.id]);
+  const lower = levelByOrder(Math.max(levelOrder(claimed) - 1, 0)).id;
+  let outcome;
+  if (q.at.length && (atGood === 0 || warnOften)) outcome = 'lower';
+  else if (atWeak.length || warnSome) outcome = 'not_solid';
+  else if (stretchGood) outcome = 'solid_close';
+  else outcome = 'solid';
+  // The point to work on: the weak thing at your level first, then the warning, then the stretch.
+  const focus = [
+    ...atWeak.map((st) => asGoal(st.text)),
+    ...(warnOften || warnSome ? [q.warning.fix || q.warning.text] : []),
+    ...(outcome === 'solid' && q.stretch ? [asGoal(q.stretch.text)] : []),
+  ];
+  return { outcome, level: outcome === 'lower' ? lower : claimed, suggested: outcome === 'lower' ? lower : claimed, focus };
+}
+
+// Turn a warning question ("Do you double fault in most games?") into a goal ("Fewer double faults")
+export const focusToGoal = (text) => text.replace(/^Do (you|your) /i, '').replace(/^Does (your|the) /i, 'My ').replace(/^Are you /i, 'Not ').replace(/\?$/, '');
+
+// "I can slice it so it stays low off the glass." -> "Slice it so it stays low off the glass"
+export const asGoal = (text) => {
+  let t = text.replace(/\.$/, '').replace(/^I can /, '').replace(/^I /, '').replace(/^My /, 'My ');
+  return t[0].toUpperCase() + t.slice(1);
+};
+
+// If you pick your own overall level, every area moves by the same amount.
+export function shiftAreas(axisLevels, chosen) {
+  const diff = levelOrder(chosen) - levelOrder(overallLevel(axisLevels));
+  return Object.fromEntries(Object.entries(axisLevels).map(([k, v]) => [k, levelByOrder(Math.min(Math.max(levelOrder(v) + diff, 0), 4)).id]));
 }

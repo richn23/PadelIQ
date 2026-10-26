@@ -3,7 +3,7 @@ import Pentagon from '../components/Pentagon.jsx';
 import { axes, axisById, levels, skills, allSkillById as skillById } from '../data.js';
 import { currentAxisLevels, currentLevel } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
-import { sortSessions, prettyDate, sessionsUntilCheckIn } from '../sessions.js';
+import { sortSessions, prettyDate, sessionsUntilCheckIn, todayISO } from '../sessions.js';
 
 function greeting() {
   const h = new Date().getHours();
@@ -12,7 +12,9 @@ function greeting() {
 
 export default function Home({ player, onGo }) {
   const [selected, setSelected] = useState(null);
-  const planned = sortSessions(player.sessions).upcoming[0];
+  const upcomingAll = sortSessions(player.sessions).upcoming;
+  const planned = upcomingAll.find((x) => x.date >= todayISO());
+  const unreflected = upcomingAll.filter((x) => x.date < todayISO()).slice(-1)[0];
   const next = planned
     ? {
         when: prettyDate(planned.date, planned.time),
@@ -52,6 +54,14 @@ export default function Home({ player, onGo }) {
           </div>
         </section>
 
+        {unreflected && (
+          <section className="panel focus-card">
+            <p className="eyebrow">Did you play?</p>
+            <p className="insight">{prettyDate(unreflected.date, unreflected.time)}{unreflected.kind === 'lesson' ? ' · lesson' : ''}</p>
+            <button className="btn" onClick={() => onGo('matches', { reflect: unreflected.id })}>Reflect now</button>
+          </section>
+        )}
+
         {sessionsUntilCheckIn(player) === 0 && (
           <section className="panel center">
             <p className="insight">Check-in due</p>
@@ -66,9 +76,9 @@ export default function Home({ player, onGo }) {
             <div className="axis-note">
               <strong>{selectedAxis.name}</strong>
               <div className="chips">
-                {selectedSkills.map((s) => <span key={s.id} className="chip">{s.name}</span>)}
+                {selectedSkills.map((s) => <button key={s.id} className="chip-btn skill" onClick={() => onGo('skills', { open: s.id })}>{s.name}</button>)}
               </div>
-              <p className="soft">Skill details are on the Skills tab.</p>
+              <p className="soft">Tap a skill to open it.</p>
             </div>
           ) : (
             <p className="soft center">Tap an area to see its skills</p>
@@ -123,7 +133,7 @@ export default function Home({ player, onGo }) {
               <p className="soft">Based on: {player.insight.basedOn}</p>
             </>
           ) : (
-            <p className="insight">Your level is a starting estimate. Play a few sessions and I'll start spotting patterns.</p>
+            <p className="insight">{player.provisional ? "Your level is a starting estimate. Play a few sessions and I'll start spotting patterns." : "Keep logging your sessions. I'll start spotting patterns once the coach is connected."}</p>
           )}
         </section>
       </main>

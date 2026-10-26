@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { levels, axisById, allSkillById } from '../data.js';
-import { skillChecks, levelName, scoreSkill } from '../levels.js';
-import StatementCheck from '../components/StatementCheck.jsx';
+import { skillChecks, levelName, currentAxisLevels } from '../levels.js';
+import QuickCheck from '../components/QuickCheck.jsx';
 import { buildCheckInList, reviewSummary } from '../checkin.js';
 import { SkillChips } from './Matches.jsx';
 import { goalLine } from '../goals.js';
@@ -35,7 +35,7 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
               {(sum.intentions.yes + sum.intentions.partly + sum.intentions.no) > 0 && <li className="list-row"><span>Intentions</span><span className="soft">{sum.intentions.yes} managed, {sum.intentions.partly} partly, {sum.intentions.no} not really</span></li>}
               {goals.filter((g) => sum.goalChecks[g.id]).map((g) => {
                 const c = sum.goalChecks[g.id];
-                return <li key={g.id} className="list-row"><span>{goalLine(g)}</span><span className="soft">▲{c.better} ●{c.same} ▼{c.struggling}</span></li>;
+                return <li key={g.id} className="list-row col"><span>{goalLine(g)}</span><span className="soft">Better {c.better} · Same {c.same} · Still struggling {c.struggling}</span></li>;
               })}
               {sum.topTags.length > 0 && <li className="list-row col"><span>Came up most</span><span className="soft">{sum.topTags.slice(0, 4).map((t) => `${allSkillById[t.id]?.name} (${t.count})`).join(', ')}</span></li>}
             </ul>
@@ -78,7 +78,7 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
   if (i < list.length) {
     const s = list[i];
     const prev = before[s.id];
-    const save = (ans) => { setAnswers({ ...answers, [s.id]: { answers: ans, level: scoreSkill(s, ans).level } }); setI(i + 1); };
+    const save = (rec) => { setAnswers({ ...answers, [s.id]: rec }); setI(i + 1); };
     return (
       <main className="page">
         <div className="ob-top">
@@ -86,15 +86,16 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
           <div className="bar ob-bar"><span style={{ width: `${20 + (i / list.length) * 80}%` }} /></div>
         </div>
         <p className="eyebrow center">{axisById[s.axis].name} · {i + 1} of {list.length}</p>
-        <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{s.name}: how often is each of these true for you now?</div></div>
+        <div className="mascot-row"><img className="mascot-img small" src={think} alt="" /><div className="bubble">{s.name}: where are you now?</div></div>
         {(notWorking.includes(s.id) || working.includes(s.id) || prev?.answers) && (
           <p className="soft center">
             {notWorking.includes(s.id) ? "You said this isn't working. " : working.includes(s.id) ? 'You said this is working. ' : ''}
-            {prev?.answers ? 'Your last answers are filled in. Change what has changed.' : ''}
+            {prev ? `Last time: ${levelName(prev.level)}.` : ''}
           </p>
         )}
         <section className="panel">
-          <StatementCheck key={s.id} skill={s} initial={answers[s.id]?.answers || prev?.answers || {}} onSave={save} saveLabel="Next" intro={false} onSkip={() => setI(i + 1)} skipLabel="Skip this skill" />
+          <QuickCheck key={s.id} skill={s} startLevel={answers[s.id]?.claimed || prev?.level || currentAxisLevels(player)[s.axis]} onSave={save} onCancel={() => setI(i + 1)} />
+          <button className="ans skip" onClick={() => setI(i + 1)}>Skip this skill</button>
         </section>
       </main>
     );
@@ -106,7 +107,7 @@ export default function CheckIn({ player, updatePlayer, onDone }) {
     const now = new Date().toISOString();
     updatePlayer((p) => {
       const sc = { ...(p.skillChecks || {}) };
-      changes.forEach((s) => { sc[s.id] = { level: lv(s.id), answers: answers[s.id].answers, date: now }; });
+      changes.forEach((s) => { sc[s.id] = { ...answers[s.id], date: now }; });
       return { ...p, skillChecks: sc, provisional: false, lastCheckIn: now, checkIns: [...(p.checkIns || []), { date: now, levels: Object.fromEntries(changes.map((s) => [s.id, lv(s.id)])), working, notWorking, note: note.trim() }] };
     });
     onDone();

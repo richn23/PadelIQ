@@ -8,16 +8,27 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
   const [theme, setTheme] = useState(pickTheme());
   const [pickLevel, setPickLevel] = useState(false);
   const [sureReset, setSureReset] = useState(false);
+  const [sureRedo, setSureRedo] = useState(false);
   const [msg, setMsg] = useState('');
   const fileRef = useRef(null);
   const every = player.checkInEvery || CHECKIN_EVERY;
   const fromSkills = overallLevel(currentAxisLevels(player));
 
-  const exportData = () => {
+  const exportData = async () => {
     const blob = new Blob([JSON.stringify(player, null, 2)], { type: 'application/json' });
+    const name = `padel-iq-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    // On phones, use the Share menu (save to Files, send to yourself...). Otherwise download.
+    try {
+      const file = new File([blob], name, { type: 'application/json' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: 'Padel IQ backup' });
+        setMsg('Backup shared.');
+        return;
+      }
+    } catch { /* fall back to download */ }
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `padel-iq-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = name;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -104,7 +115,7 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       <section className="panel">
         <p className="eyebrow">Start over</p>
         <div className="session-actions" style={{ marginTop: 10 }}>
-          <button className="mini" onClick={onRedoQuiz}>Redo the quiz</button>
+          {!sureRedo ? <button className="mini" onClick={() => setSureRedo(true)}>Redo the quiz</button> : <button className="mini on" onClick={onRedoQuiz}>Tap again to start the quiz</button>}
           {!sureReset ? <button className="mini" onClick={() => setSureReset(true)}>Delete everything</button> : <button className="mini danger" onClick={onReset}>Tap again: delete all</button>}
         </div>
         <p className="soft">Redoing the quiz keeps your matches, goals and skill checks.</p>

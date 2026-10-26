@@ -136,6 +136,26 @@
       "share": 0.75,
       "rule": "A player has a level for a skill when they are good enough at that level's statements (about 3 in 4 'usually' or 'always') AND have mastered every level below it (about 3 in 4 'always').",
       "note": "Agreed with Richard 26 Oct: mastery = always, good enough = usually. The 3-in-4 share is a placeholder."
+    },
+    "quickCheck": {
+      "how": "Player picks the level they think they are. App asks 2 statements at that level, 1 warning sign for that level, and 1 stretch statement from the level above.",
+      "warningAnswers": [
+        "often",
+        "sometimes",
+        "rarely",
+        "never"
+      ],
+      "warningOk": [
+        "rarely",
+        "never"
+      ],
+      "outcomes": {
+        "solid_close": "Good enough at the level, warning rare, stretch usually/always",
+        "solid": "Good enough at the level, warning rare",
+        "not_solid": "One weak answer at the level, or the warning happens sometimes",
+        "lower": "Not good enough at the level, or the warning happens often"
+      },
+      "playerDecides": "If the answers suggest a lower level, the player chooses to keep their level (marked 'set by you') or switch."
     }
   },
   "skills": [
@@ -225,6 +245,29 @@
           "text": "I mix pace, spin and direction so the returner can't settle.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "serve_w1",
+          "level": "D",
+          "text": "Do you fault more serves than you get in?",
+          "source": "draft",
+          "fix": "Get more first serves in"
+        },
+        {
+          "id": "serve_w2",
+          "level": "C",
+          "text": "Do you double fault in most games?",
+          "source": "draft",
+          "fix": "Cut out double faults"
+        },
+        {
+          "id": "serve_w3",
+          "level": "B",
+          "text": "Does your serve go short and easy to attack when the score is tight?",
+          "source": "draft",
+          "fix": "Keep my serve deep at tight scores"
+        }
       ]
     },
     {
@@ -267,6 +310,22 @@
           "level": "C",
           "text": "I turn sideways and move back for lobs.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "overhead_basic_w1",
+          "level": "D",
+          "text": "Do you let lobs go because you can't hit them?",
+          "source": "draft",
+          "fix": "Go for lobs instead of letting them go"
+        },
+        {
+          "id": "overhead_basic_w2",
+          "level": "C",
+          "text": "Do your overheads land short and get attacked?",
+          "source": "draft",
+          "fix": "Hit my overheads deeper"
         }
       ]
     },
@@ -334,6 +393,22 @@
           "text": "I control slice and pace so it stays low off the glass.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "bandeja_w1",
+          "level": "C",
+          "text": "Do you lose the net after your bandeja?",
+          "source": "draft",
+          "fix": "Stay at the net after my bandeja"
+        },
+        {
+          "id": "bandeja_w2",
+          "level": "B",
+          "text": "Does your bandeja land short or in the middle when you're rushed?",
+          "source": "draft",
+          "fix": "Keep my bandeja deep when I'm rushed"
+        }
       ]
     },
     {
@@ -377,6 +452,15 @@
           "text": "I hit it hard without losing control, even under pressure.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "vibora_w1",
+          "level": "B",
+          "text": "Does your víbora go long or into the net?",
+          "source": "draft",
+          "fix": "Keep my víbora in"
+        }
       ]
     },
     {
@@ -419,6 +503,15 @@
           "level": "A",
           "text": "I use the bajada to win the net back.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "bajada_w1",
+          "level": "B",
+          "text": "Do you hit balls off the back glass too early or too late to attack them?",
+          "source": "draft",
+          "fix": "Wait for the right height before my bajada"
         }
       ]
     },
@@ -502,6 +595,29 @@
           "text": "My return puts us on the attack.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "return_of_serve_w1",
+          "level": "D",
+          "text": "Do you miss more returns than you get back?",
+          "source": "draft",
+          "fix": "Get more returns back"
+        },
+        {
+          "id": "return_of_serve_w2",
+          "level": "C",
+          "text": "Do your returns sit up for the net players?",
+          "source": "draft",
+          "fix": "Keep my returns low"
+        },
+        {
+          "id": "return_of_serve_w3",
+          "level": "B",
+          "text": "Do you miss returns at tight scores?",
+          "source": "draft",
+          "fix": "Get my returns in at tight scores"
+        }
       ]
     },
     {
@@ -566,6 +682,29 @@
           "level": "A",
           "text": "I lob on purpose to win the net back, even under pressure.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "defensive_lob_w1",
+          "level": "D",
+          "text": "Do your lobs land short in the middle of the court?",
+          "source": "draft",
+          "fix": "Lob higher and deeper"
+        },
+        {
+          "id": "defensive_lob_w2",
+          "level": "C",
+          "text": "Do your lobs go long or out over the glass?",
+          "source": "draft",
+          "fix": "Keep my lobs in"
+        },
+        {
+          "id": "defensive_lob_w3",
+          "level": "B",
+          "text": "Do your lobs get smashed back at you?",
+          "source": "draft",
+          "fix": "Lob deep enough that it can't be smashed"
         }
       ]
     },
@@ -638,6 +777,29 @@
           "text": "I use the glass to buy time and turn defence into attack.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "back_glass_return_w1",
+          "level": "D",
+          "text": "Do you hit the ball before the glass because you're unsure of the rebound?",
+          "source": "draft",
+          "fix": "Let the ball come off the back glass"
+        },
+        {
+          "id": "back_glass_return_w2",
+          "level": "C",
+          "text": "Do you stand too close to the glass and get cramped?",
+          "source": "draft",
+          "fix": "Give myself room from the glass"
+        },
+        {
+          "id": "back_glass_return_w3",
+          "level": "B",
+          "text": "Do fast rebounds off the back glass beat you?",
+          "source": "draft",
+          "fix": "Read fast rebounds earlier"
+        }
       ]
     },
     {
@@ -686,6 +848,22 @@
           "text": "I handle fast, awkward side glass balls under pressure, and place the return.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "side_glass_return_w1",
+          "level": "C",
+          "text": "Do side glass balls get past you?",
+          "source": "draft",
+          "fix": "Get side glass balls back"
+        },
+        {
+          "id": "side_glass_return_w2",
+          "level": "B",
+          "text": "Are you late on fast balls off the side glass?",
+          "source": "draft",
+          "fix": "Be early on fast side glass balls"
+        }
       ]
     },
     {
@@ -728,6 +906,22 @@
           "level": "C",
           "text": "I do a small split step as they hit.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "ready_position_w1",
+          "level": "D",
+          "text": "Do fast balls catch you flat-footed?",
+          "source": "draft",
+          "fix": "Be ready for fast balls"
+        },
+        {
+          "id": "ready_position_w2",
+          "level": "C",
+          "text": "Are you still moving when the opponent hits?",
+          "source": "draft",
+          "fix": "Be still and ready when they hit"
         }
       ]
     },
@@ -806,6 +1000,29 @@
           "text": "I get back into my net position quickly after each shot.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "net_play_w1",
+          "level": "D",
+          "text": "Do you end up at the net at the wrong time, or stay there when you're in trouble?",
+          "source": "draft",
+          "fix": "Go to the net at the right time, and leave it when we're in trouble"
+        },
+        {
+          "id": "net_play_w2",
+          "level": "C",
+          "text": "Do you lose the net after one lob?",
+          "source": "draft",
+          "fix": "Win the net back after a lob"
+        },
+        {
+          "id": "net_play_w3",
+          "level": "B",
+          "text": "Do opponents get you off the net easily?",
+          "source": "draft",
+          "fix": "Hold the net under pressure"
+        }
       ]
     },
     {
@@ -853,6 +1070,22 @@
           "level": "A",
           "text": "I'm balanced and ready for the next ball, even in long rallies.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "recovery_w1",
+          "level": "C",
+          "text": "Do you stand and watch your shot instead of moving?",
+          "source": "draft",
+          "fix": "Move straight after my shot"
+        },
+        {
+          "id": "recovery_w2",
+          "level": "B",
+          "text": "After being pulled wide, are you out of position for the next ball?",
+          "source": "draft",
+          "fix": "Recover quickly after being pulled wide"
         }
       ]
     },
@@ -907,6 +1140,22 @@
           "level": "A",
           "text": "We move as one, even when we switch sides.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "moving_as_pair_w1",
+          "level": "C",
+          "text": "Do you and your partner end up far apart, one at the net and one at the back?",
+          "source": "draft",
+          "fix": "Stay level with my partner"
+        },
+        {
+          "id": "moving_as_pair_w2",
+          "level": "B",
+          "text": "Do you both go for the same ball, or both leave it?",
+          "source": "draft",
+          "fix": "Call and split the middle balls"
         }
       ]
     },
@@ -973,6 +1222,29 @@
           "text": "I plan a few shots ahead.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "shot_choice_w1",
+          "level": "D",
+          "text": "Do you go for winners from difficult positions?",
+          "source": "draft",
+          "fix": "Play safe from difficult positions"
+        },
+        {
+          "id": "shot_choice_w2",
+          "level": "C",
+          "text": "Do you pick power when placement would work better?",
+          "source": "draft",
+          "fix": "Choose placement over power"
+        },
+        {
+          "id": "shot_choice_w3",
+          "level": "B",
+          "text": "Do you force the attack before the ball is right?",
+          "source": "draft",
+          "fix": "Wait for the right ball to attack"
+        }
       ]
     },
     {
@@ -1027,6 +1299,22 @@
           "text": "We change the plan during the match.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "partner_communication_w1",
+          "level": "C",
+          "text": "Do balls go between you because nobody called?",
+          "source": "draft",
+          "fix": "Call every middle ball"
+        },
+        {
+          "id": "partner_communication_w2",
+          "level": "B",
+          "text": "Do you play a whole match without agreeing a plan?",
+          "source": "draft",
+          "fix": "Agree a simple plan before we start"
+        }
       ]
     },
     {
@@ -1069,6 +1357,15 @@
           "level": "A",
           "text": "I build pressure over several shots, instead of forcing it.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "building_points_w1",
+          "level": "B",
+          "text": "Do you lose patience and go for a winner too early?",
+          "source": "draft",
+          "fix": "Be patient before going for a winner"
         }
       ]
     },
@@ -1129,6 +1426,29 @@
           "text": "I play the same whether we're ahead or behind.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "composure_w1",
+          "level": "D",
+          "text": "Do errors make you angry for a while?",
+          "source": "draft",
+          "fix": "Let go of errors quickly"
+        },
+        {
+          "id": "composure_w2",
+          "level": "C",
+          "text": "Do you rush your shots at tight scores?",
+          "source": "draft",
+          "fix": "Take my time at tight scores"
+        },
+        {
+          "id": "composure_w3",
+          "level": "B",
+          "text": "Do you play worse at big points?",
+          "source": "draft",
+          "fix": "Play my normal game at big points"
+        }
       ]
     },
     {
@@ -1177,6 +1497,22 @@
           "text": "Mistakes don't change how I play.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "bouncing_back_w1",
+          "level": "C",
+          "text": "Does one mistake lead to several more?",
+          "source": "draft",
+          "fix": "Stop one mistake becoming several"
+        },
+        {
+          "id": "bouncing_back_w2",
+          "level": "B",
+          "text": "Does a bad game change how you play the next one?",
+          "source": "draft",
+          "fix": "Start each game fresh"
+        }
       ]
     },
     {
@@ -1213,6 +1549,22 @@
           "level": "C",
           "text": "I refocus quickly after a long rally or a lost point.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "focus_w1",
+          "level": "D",
+          "text": "Does your mind wander during points?",
+          "source": "draft",
+          "fix": "Keep my mind on the point"
+        },
+        {
+          "id": "focus_w2",
+          "level": "C",
+          "text": "Do you lose focus after a long rally or a lost point?",
+          "source": "draft",
+          "fix": "Refocus after long rallies or lost points"
         }
       ]
     },
@@ -1302,6 +1654,29 @@
           "text": "I rarely make errors from the back.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "groundstrokes_w1",
+          "level": "D",
+          "text": "Do rallies end within a couple of shots because of your errors?",
+          "source": "draft",
+          "fix": "Keep the rally going longer"
+        },
+        {
+          "id": "groundstrokes_w2",
+          "level": "C",
+          "text": "Do you hit the ball too hard from the back and miss?",
+          "source": "draft",
+          "fix": "Hit softer and safer from the back"
+        },
+        {
+          "id": "groundstrokes_w3",
+          "level": "B",
+          "text": "Do your shots from the back sit up for the net players?",
+          "source": "draft",
+          "fix": "Keep my shots from the back low"
+        }
       ]
     },
     {
@@ -1383,6 +1758,29 @@
           "level": "A",
           "text": "I'm already in position for the next ball.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "positioning_w1",
+          "level": "D",
+          "text": "Do you end up in no man's land, the middle of the court?",
+          "source": "draft",
+          "fix": "Stay out of the middle of the court"
+        },
+        {
+          "id": "positioning_w2",
+          "level": "C",
+          "text": "Are you unsure where to stand when serving or returning?",
+          "source": "draft",
+          "fix": "Know where to stand when serving and returning"
+        },
+        {
+          "id": "positioning_w3",
+          "level": "B",
+          "text": "Do you leave gaps when your partner is pulled wide?",
+          "source": "draft",
+          "fix": "Cover the gap when my partner is pulled wide"
         }
       ]
     },
@@ -1467,6 +1865,29 @@
           "text": "I use angles and drop volleys to finish points.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "volley_w1",
+          "level": "D",
+          "text": "Do easy volleys go into the net or out?",
+          "source": "draft",
+          "fix": "Get easy volleys back in"
+        },
+        {
+          "id": "volley_w2",
+          "level": "C",
+          "text": "Do your volleys pop up high for the opponents to smash?",
+          "source": "draft",
+          "fix": "Keep my volleys low, not popping up"
+        },
+        {
+          "id": "volley_w3",
+          "level": "B",
+          "text": "Do fast balls at the net beat you?",
+          "source": "draft",
+          "fix": "Handle fast balls at the net"
+        }
       ]
     },
     {
@@ -1527,6 +1948,22 @@
           "text": "My smash finishes points or pushes opponents well back.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "smash_w1",
+          "level": "C",
+          "text": "Do you smash lobs that are too deep and lose the point?",
+          "source": "draft",
+          "fix": "Only smash the short lobs"
+        },
+        {
+          "id": "smash_w2",
+          "level": "B",
+          "text": "Does your smash come back off the glass for an easy return?",
+          "source": "draft",
+          "fix": "Place my smash so it doesn't come back easily"
+        }
       ]
     },
     {
@@ -1563,6 +2000,15 @@
           "level": "A",
           "text": "I know when the x3 is on, and when to play safe.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "smash_x3_w1",
+          "level": "A",
+          "text": "Do you try the x3 when it isn't on and lose the point?",
+          "source": "draft",
+          "fix": "Only try the x3 when it's on"
         }
       ]
     },
@@ -1611,6 +2057,22 @@
           "level": "A",
           "text": "I choose a lob or a low ball depending on where the opponents are.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "double_glass_w1",
+          "level": "C",
+          "text": "Do double glass balls beat you?",
+          "source": "draft",
+          "fix": "Get double glass balls back"
+        },
+        {
+          "id": "double_glass_w2",
+          "level": "B",
+          "text": "Do you misjudge which wall the ball will hit first?",
+          "source": "draft",
+          "fix": "Read which wall the ball will hit first"
         }
       ]
     },
@@ -1666,6 +2128,22 @@
           "text": "I turn some smash defences into counter-attacks.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "smash_defence_w1",
+          "level": "C",
+          "text": "Do you give up on smashes you could reach?",
+          "source": "draft",
+          "fix": "Chase smashes I can reach"
+        },
+        {
+          "id": "smash_defence_w2",
+          "level": "B",
+          "text": "Do you misread where a smash will bounce?",
+          "source": "draft",
+          "fix": "Read where smashes will bounce"
+        }
       ]
     },
     {
@@ -1720,6 +2198,22 @@
           "text": "I disguise it and mix it with lobs and passing shots.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "chiquita_w1",
+          "level": "C",
+          "text": "Does your soft ball sit up and get attacked?",
+          "source": "draft",
+          "fix": "Keep my chiquita low"
+        },
+        {
+          "id": "chiquita_w2",
+          "level": "B",
+          "text": "After a chiquita, do you stay at the back instead of moving up?",
+          "source": "draft",
+          "fix": "Move up after a chiquita"
+        }
       ]
     },
     {
@@ -1762,6 +2256,15 @@
           "text": "I use the block to change pace and land it at their feet.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "block_volley_w1",
+          "level": "C",
+          "text": "Do your blocks sit up for the opponents to attack?",
+          "source": "draft",
+          "fix": "Keep my blocks low"
+        }
       ]
     },
     {
@@ -1799,6 +2302,15 @@
           "text": "I disguise it so opponents don't see it coming.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "drop_volley_w1",
+          "level": "B",
+          "text": "Does your drop volley sit up or go into the net?",
+          "source": "draft",
+          "fix": "Land my drop volley short and low"
+        }
       ]
     },
     {
@@ -1830,6 +2342,15 @@
           "text": "I use the hook to attack, with control and placement.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "gancho_w1",
+          "level": "B",
+          "text": "Do you miss high balls at the net because you can't turn in time?",
+          "source": "draft",
+          "fix": "Turn in time on high balls at the net"
+        }
       ]
     },
     {
@@ -1856,6 +2377,15 @@
           "text": "I use it on purpose to push opponents back.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "rulo_w1",
+          "level": "A",
+          "text": "Does your topspin smash sit up off the glass?",
+          "source": "draft",
+          "fix": "Keep my topspin smash low off the glass"
+        }
       ]
     },
     {
@@ -1881,6 +2411,15 @@
           "level": "A",
           "text": "I know when the x4 is on, and when to play safe.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "smash_x4_w1",
+          "level": "A",
+          "text": "Do you try the x4 when it isn't on and lose the point?",
+          "source": "draft",
+          "fix": "Only try the x4 when it's on"
         }
       ]
     },
@@ -1919,6 +2458,15 @@
           "text": "I disguise it and pick the right moment.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "drop_shot_w1",
+          "level": "B",
+          "text": "Does your drop shot sit up or go into the net?",
+          "source": "draft",
+          "fix": "Land my drop shot short and low"
+        }
       ]
     },
     {
@@ -1949,6 +2497,15 @@
           "level": "A",
           "text": "I use it as a planned option when there's no way to hit forwards.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "contrapared_w1",
+          "level": "B",
+          "text": "Do you lose the point when you can't hit the ball forwards?",
+          "source": "draft",
+          "fix": "Use the back wall when I can't hit forwards"
         }
       ]
     },
@@ -1998,6 +2555,15 @@
           "text": "I disguise it so opponents can't move back early.",
           "source": "draft"
         }
+      ],
+      "warnings": [
+        {
+          "id": "attacking_lob_w1",
+          "level": "C",
+          "text": "Does your attacking lob go long or get smashed?",
+          "source": "draft",
+          "fix": "Get the attacking lob over and in"
+        }
       ]
     },
     {
@@ -2034,6 +2600,15 @@
           "level": "A",
           "text": "I pass net players down the line or through the middle on purpose.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "passing_shot_w1",
+          "level": "B",
+          "text": "Do your passing shots go into the net or long?",
+          "source": "draft",
+          "fix": "Keep my passing shots low and in"
         }
       ]
     },
@@ -2082,6 +2657,22 @@
           "level": "A",
           "text": "I use the half volley to keep a strong position.",
           "source": "draft"
+        }
+      ],
+      "warnings": [
+        {
+          "id": "half_volley_w1",
+          "level": "C",
+          "text": "Do your half volleys pop up high?",
+          "source": "draft",
+          "fix": "Keep my half volleys low"
+        },
+        {
+          "id": "half_volley_w2",
+          "level": "B",
+          "text": "Do you stay stuck in the middle after a half volley?",
+          "source": "draft",
+          "fix": "Move forward or back after a half volley"
         }
       ]
     }

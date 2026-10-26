@@ -329,5 +329,35 @@
     "when": "When does it happen most?",
     "suggest": "How about this as your goal? Change the words if you like.",
     "happy": "How happy are you with your {skill} right now?"
+  },
+  "goalOverrides": {
+    "vibora": {
+      "sits_up": "Keep it low into the side glass",
+      "long": "Keep it in, into the side glass"
+    },
+    "bandeja": {
+      "sits_up": "Keep it deep and low off the glass"
+    },
+    "smash": {
+      "sits_up": "Place it so it doesn't come back easily"
+    }
+  },
+  "whenOverrides": {
+    "skills": [
+      "overhead_basic",
+      "bandeja",
+      "vibora",
+      "smash",
+      "gancho",
+      "rulo",
+      "smash_x3",
+      "smash_x4"
+    ],
+    "replace": {
+      "fast": {
+        "id": "deep_lobs",
+        "label": "On deep lobs"
+      }
+    }
   }
 }
