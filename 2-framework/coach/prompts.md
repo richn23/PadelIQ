@@ -11,6 +11,10 @@ The AI always answers in JSON, so the app can show **Accept / Not quite** button
 
 The machine-readable copy the online helper uses is `5-data/coach-prompts.json`. Edit there; this page is for reading.
 
+## Thinking time (speed)
+
+Fact questions and quick chats use the least thinking (`minimal`): Ask the coach, pre-match, post-match, mindset, inbox. Placing a level, explaining a skill and setting a goal use a little more (`low`). Set in `5-data/coach-prompts.json` under `defaults.thinking`. Models that don't "think" ignore it. Web search always uses at least `low`.
+
 ## Overview
 
 | Mode | Where | Purpose | Length | Can suggest |

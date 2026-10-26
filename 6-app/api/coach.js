@@ -29,14 +29,18 @@ const fill = (text, vars) => text.replace(/\{\{(\w+)\}\}/g, (_, k) => (vars[k] ?
 
 // Different models accept different settings. Try the fastest first, and remember what works
 // (for as long as this server instance stays warm), so later questions don't repeat failed tries.
-const SETTINGS = [
-  { reasoning_effort: 'low', max_completion_tokens: 900 }, // reasoning models: think less, answer faster
+// Each mode says how much a reasoning model may think (5-data/coach-prompts.json, defaults.thinking).
+// Facts and quick chats: 'minimal'. Placing a level or setting a goal: 'low'.
+const settingsFor = (effort) => [
+  { reasoning_effort: effort, max_completion_tokens: 900 },
+  { reasoning_effort: 'low', max_completion_tokens: 900 },
   { temperature: prompts.defaults.temperature, max_completion_tokens: 700 }, // classic chat models
   {}, // anything else
 ];
-let goodSettings = null;
+let goodSettings = null; // which kind worked last time: 0-1 reasoning, 2 classic, 3 plain
 
-async function openChat(key, model, messages, stream) {
+async function openChat(key, model, messages, stream, effort = 'low') {
+  const SETTINGS = settingsFor(effort);
   const order = goodSettings !== null ? [goodSettings, ...SETTINGS.keys()].filter((v, i, a) => a.indexOf(v) === i) : [...SETTINGS.keys()];
   let lastError = '';
   for (const i of order) {
@@ -54,15 +58,15 @@ async function openChat(key, model, messages, stream) {
   throw new Error(lastError);
 }
 
-async function ask(key, model, messages) {
-  const r = await openChat(key, model, messages, false);
+async function ask(key, model, messages, effort) {
+  const r = await openChat(key, model, messages, false, effort);
   const data = await r.json();
   return data.choices[0].message.content;
 }
 
 // Streams the answer to the phone as it's written, so words appear straight away.
-async function streamAnswer(key, model, messages, res) {
-  const r = await openChat(key, model, messages, true);
+async function streamAnswer(key, model, messages, res, effort) {
+  const r = await openChat(key, model, messages, true, effort);
   res.writeHead(200, { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache, no-transform', Connection: 'keep-alive' });
   const reader = r.body.getReader();
   const dec = new TextDecoder();
@@ -90,13 +94,15 @@ async function streamAnswer(key, model, messages, res) {
 
 // Web search (only for modes that allow it): OpenAI's Responses API with its web search tool.
 // Returns { text, sources }. If the tool isn't available, returns null so we fall back to a normal answer.
-async function askWithSearch(key, model, messages) {
+async function askWithSearch(key, model, messages, effort) {
   const input = messages.map((m) => ({ role: m.role === 'system' ? 'developer' : m.role, content: m.content }));
-  for (const tool of ['web_search', 'web_search_preview']) {
+  const tries = [['web_search', true], ['web_search', false], ['web_search_preview', false]];
+  for (const [tool, think] of tries) {
     const r = await fetch(`${OPENAI}/responses`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, input, tools: [{ type: tool }] }),
+      // Searching needs a little thinking, so never less than 'low' here.
+      body: JSON.stringify({ model, input, tools: [{ type: tool }], ...(think ? { reasoning: { effort: effort === 'minimal' ? 'low' : effort } } : {}) }),
     });
     const data = await r.json();
     if (!r.ok) continue;
@@ -142,14 +148,15 @@ export default async function handler(req, res) {
 
   try {
     const model = await pickModel(key);
+    const effort = prompts.defaults.thinking?.[mode] || 'low';
     let text;
     let sources = [];
     if (m.usesWebSearch) {
-      const found = await askWithSearch(key, model, chat).catch(() => null);
+      const found = await askWithSearch(key, model, chat, effort).catch(() => null);
       if (found) { text = found.text; sources = found.sources; }
     }
-    if (!text && wantStream) return await streamAnswer(key, model, chat, res);
-    if (!text) text = await ask(key, model, chat);
+    if (!text && wantStream) return await streamAnswer(key, model, chat, res, effort);
+    if (!text) text = await ask(key, model, chat, effort);
     let out;
     try {
       // Answers may come as JSON, sometimes wrapped in a code block.
