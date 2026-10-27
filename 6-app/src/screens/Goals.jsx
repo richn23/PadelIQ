@@ -74,14 +74,14 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                   {editing !== g.id && coaching !== g.id && (
                     <div className="row-gap">
                       <button className="mini" onClick={() => { setDraft({ now: g.now || '', want: g.want || '' }); setEditing(g.id); }}>{g.now || g.want ? 'Edit details' : 'Describe this goal'}</button>
-                      <button className="mini" onClick={() => setCoaching(g.id)}>Work it out with the coach</button>
+                      <button className="mini" onClick={() => setCoaching(g.id)}>{g.now && g.want ? 'Get an idea to try' : 'Work it out with the coach'}</button>
                     </div>
                   )}
                   {coaching === g.id && (
                     <CoachChat
                       mode="goal_diagnose"
                       title={`Coach: ${goalSkill(g)}`}
-                      intro={g.now && g.want ? `So for ${goalSkill(g)}: right now "${g.now}", and you'd like "${g.want}". Is that about right, or is there something to add, like when it happens?` : g.now ? `So for ${goalSkill(g)}, right now: "${g.now}". What would you like to happen instead?` : g.want ? `So for ${goalSkill(g)}, you'd like: "${g.want}". What happens in your games at the moment?` : `Let's pin down this goal: "${goalSkill(g)}". How does it go for you in matches right now?`}
+                      intro={g.now || g.want ? undefined : `Let's pin down this goal: "${goalSkill(g)}". How does it go for you in matches right now?`}
                       vars={{ skill_name: goalSkill(g), skill_id: g.skillId || '' }}
                       player={player}
                       skill={g.skillId ? skill : undefined}
