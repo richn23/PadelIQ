@@ -98,7 +98,7 @@ export default function App() {
               }} />
             )}
           </TopBar>
-          {screen === 'home' && <Home player={player} onGo={go} />}
+          {screen === 'home' && <Home player={player} updatePlayer={updatePlayer} onGo={go} />}
           {screen === 'checkin' && <CheckIn player={player} updatePlayer={updatePlayer} onDone={() => setScreen('matches')} />}
           {screen === 'settings' && (
             <Settings

@@ -41,7 +41,7 @@ export function buildPlayerFile(player, { skill } = {}) {
     L.push('Recent sessions (newest first):');
     sessions.forEach((s) => {
       const parts = [`- ${prettyDate(s.date)} ${s.kind}`];
-      if (s.result?.outcome) parts.push(`${s.result.outcome}${s.result.score ? ' ' + s.result.score : ''}`);
+      if (s.result?.outcome && s.result.outcome !== 'unknown') parts.push(`${s.result.outcome}${s.result.score ? ' ' + s.result.score : ''}`);
       if (s.intention) parts.push(`intention "${s.intention}" (${s.intentionCheck || 'not marked'})`);
       if (s.notes?.worked) parts.push(`worked: "${s.notes.worked}"`);
       if (s.notes?.didnt) parts.push(`didn't: "${s.notes.didnt}"`);

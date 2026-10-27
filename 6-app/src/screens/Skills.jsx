@@ -5,8 +5,9 @@ import think from '../assets/mascot-think.png';
 import StatementCheck from '../components/StatementCheck.jsx';
 import QuickCheck from '../components/QuickCheck.jsx';
 import CoachChat from '../components/CoachChat.jsx';
+import SkillBars, { SkillBar, LevelScale } from '../components/SkillBars.jsx';
 import { Checklist, rowsAt, key, quizChecks } from '../components/LevelChecklist.jsx';
-import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus, scoreSkill } from '../levels.js';
+import { levelOrder, levelName, levelByOrder, skillChecks, currentAxisLevels, currentAxisScores, checkLabel, currentLevel, requiredFor, notYetLevel, topDescribed, firstMasterOrder, levelFocus, scoreSkill } from '../levels.js';
 
 const views = [
   { id: 'have', label: 'My skills' },
@@ -19,8 +20,11 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
   const [open, setOpen] = useState(openSkill);
   const checks = skillChecks(player);
   const axisLevels = currentAxisLevels(player);
+  const axisScores = currentAxisScores(player);
   const level = currentLevel(player);
 
+  // Your own rating from a slider (C−, C, C+).
+  const setSelf = (sk, v) => updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [sk.id]: { ...v, mode: 'slider', date: new Date().toISOString() } } }));
   // Skills at your level that nobody has checked yet (e.g. after the quick check).
   const toCheck = rowsAt(level, (s) => !checks[s.id]);
   const [checkingRest, setCheckingRest] = useState(false);
@@ -48,7 +52,7 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
           <button className="btn" onClick={() => setCheckingRest(true)}>Check the rest</button>
         </section>
       )}
-      {view === 'have' && <Have axisLevels={axisLevels} level={level} checks={checks} onOpen={setOpen} />}
+      {view === 'have' && <Have axisLevels={axisLevels} scores={axisScores} level={level} checks={checks} onOpen={setOpen} onSet={setSelf} />}
       {view === 'next' && <Next level={level} checks={checks} onOpen={setOpen} />}
       {view === 'explore' && <Explore onOpen={setOpen} />}
     </main>
@@ -86,7 +90,7 @@ function Row({ skill, right, onOpen }) {
   );
 }
 
-function Have({ axisLevels, level, checks, onOpen }) {
+function Have({ axisLevels, scores, level, checks, onOpen, onSet }) {
   const [area, setArea] = useState(null);
   const strengthIds = new Set(allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level)).map((s) => s.id));
   const checked = allSkills.filter((s) => checks[s.id] && (!area || s.axis === area) && (area || !strengthIds.has(s.id)));
@@ -95,27 +99,21 @@ function Have({ axisLevels, level, checks, onOpen }) {
     <>
       <section className="panel">
         <div className="row-between"><p className="eyebrow">Your level</p><p className="pill">{levelName(level)}</p></div>
-        <Pentagon axes={axes} axisLevels={axisLevels} selected={area} onSelect={(id) => setArea(area === id ? null : id)} />
+        <Pentagon axes={axes} axisLevels={axisLevels} scores={scores} selected={area} onSelect={(id) => setArea(area === id ? null : id)} />
         <p className="soft center">{area ? `Showing ${axisById[area].name}. Tap again for all.` : 'Tap an area to filter'}</p>
       </section>
       {strengths.length > 0 && !area && (
-        <section className="panel">
-          <p className="eyebrow">Ahead of your level</p>
-          <ul className="list">{strengths.map((s) => <Row key={s.id} skill={s} onOpen={onOpen} right={<span className="pill">{levelName(checks[s.id].level)}</span>} />)}</ul>
-        </section>
+        <SkillBars title="Ahead of your level" skills={strengths} checks={checks} level={level} onOpen={onOpen} onSet={onSet} />
       )}
-      <section className="panel">
-        <p className="eyebrow">{area ? axisById[area].name : strengthIds.size ? 'Other skills you have checked' : 'Skills you have checked'}</p>
-        {checked.length === 0 ? (
-          <p className="soft">Nothing checked here yet. Open a skill in Explore or Work on next and tap "Check myself".</p>
-        ) : (
-          <ul className="list">
-            {checked.map((s) => (
-              <Row key={s.id} skill={s} onOpen={onOpen} right={<><span className="soft">{checks[s.id].from === 'quiz' ? 'from quiz' : ''}</span><span className="pill">{levelName(checks[s.id].level)}</span></>} />
-            ))}
-          </ul>
-        )}
-      </section>
+      <SkillBars
+        title={area ? axisById[area].name : strengthIds.size ? 'Other skills' : 'Your skills'}
+        skills={area ? allSkills.filter((s) => s.axis === area && s.checked && !s.optional) : checked}
+        checks={checks}
+        level={level}
+        onOpen={onOpen}
+        onSet={onSet}
+        note={checked.length === 0 && !area ? 'Nothing checked yet. Open a skill in Explore or Work on next.' : 'Tap a skill to open it, or Adjust to move the bars yourself.'}
+      />
     </>
   );
 }
@@ -319,6 +317,7 @@ function ResultCard({ skill, result }) {
 
 function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const [checking, setChecking] = useState(false);
+  const [adjusting, setAdjusting] = useState(false);
   const [showLevels, setShowLevels] = useState(false);
   const [justScored, setJustScored] = useState(null);
   const [chat, setChat] = useState(null); // 'diagnostic' | 'deep_dive'
@@ -377,17 +376,24 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
       {skill.checked ? (
         <section className="panel">
           <div className="row-between">
-            <p className="eyebrow">Your level for this</p>
-            <p className="pill">{!check ? '–' : !skill.levels[check.level] && levelOrder(check.level) < (firstMasterOrder(skill) ?? 0) ? 'Not yet' : levelName(check.level)}</p>
+            <p className="eyebrow">Where you are</p>
+            {!checking && <button className={'mini' + (adjusting ? ' on' : '')} onClick={() => setAdjusting(!adjusting)}>{adjusting ? 'Done' : 'Adjust'}</button>}
           </div>
-          {check?.from === 'quiz' && <p className="soft">From your quiz. Check it properly below.</p>}
+          <LevelScale />
+          <ul className="skillbars">
+            <SkillBar key={adjusting ? 'e' : 'v'} skill={skill} check={check} level={currentLevel(player)} editing={adjusting}
+              onSet={(sk, v) => updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [sk.id]: { ...v, mode: 'slider', date: new Date().toISOString() } } }))} />
+          </ul>
+          <p className="soft small">{!check ? 'Not checked yet. Slide it with Adjust, or re-check with questions.' : check.from === 'quiz' ? 'From your quiz.' : check.mode === 'slider' ? 'Set by you.' : check.mode === 'coach' ? 'Agreed with the coach.' : 'From your last check.'}</p>
           {!checking && (
             <>
               {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}
               {shown && <ResultCard skill={skill} result={shown} />}
-              <button className="btn" onClick={() => setChecking('quick')}>{check?.outcome === 'self' ? 'Check it now' : check && check.from !== 'quiz' ? 'Check again' : 'Check my level'}</button>
-              <button className="btn ghost" onClick={() => setChat('diagnostic')}>Talk it through with the coach</button>
-              <button className="linkish center-self" onClick={() => setChecking('detail')}>Check in detail (all statements)</button>
+              {!chat && <button className="btn" onClick={() => setChat('deep_dive')}>Work on it with the coach</button>}
+              <div className="link-line">
+                <button className="linkish" onClick={() => setChecking('quick')}>Re-check with questions</button>
+                <button className="linkish" onClick={() => setChat('diagnostic')}>Not sure? Work it out with the coach</button>
+              </div>
             </>
           )}
           {checking === 'quick' && <QuickCheck skill={skill} startLevel={startLevel} onSave={saveQuick} onCancel={() => setChecking(false)} onDetail={() => setChecking('detail')} onGoal={goalFromFocus} />}
@@ -401,7 +407,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
         <CoachChat
           key={chat}
           mode={chat}
-          title={chat === 'diagnostic' ? 'Coach: where are you with this?' : `Coach: ${skill.name} explained`}
+          title={chat === 'diagnostic' ? 'Coach: where are you with this?' : `Coach: working on your ${skill.name === skill.es ? skill.name : skill.name.toLowerCase()}`}
           intro={chat === 'diagnostic' ? `Let's work out where your ${skill.name === skill.es ? skill.name : skill.name.toLowerCase()} is. In a match, how does it usually go?` : undefined}
           vars={{ skill_name: skill.name, skill_id: skill.id }}
           player={player}
@@ -416,7 +422,6 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           }}
         />
       )}
-      {!chat && skill.checked && <button className="btn ghost" onClick={() => setChat('deep_dive')}>Explain this skill and how to improve</button>}
 
       <section className="panel">
         <button className="row-between link-row" onClick={() => setShowLevels(!showLevels)} aria-expanded={showLevels}>

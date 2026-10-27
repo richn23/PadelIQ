@@ -28,7 +28,8 @@ export function quizChecks(levelId, ans, pick = ALL) {
     if (!lvs.length) return;
     let got = null;
     for (const l of lvs) { if (passOf(answerFor(s, l, ans, levelId))) got = l; else break; }
-    out[s.id] = { level: got || notYetLevel(s), mode: 'quiz', date: new Date().toISOString() };
+    const answer = got ? answerFor(s, got, ans, levelId) : null;
+    out[s.id] = { level: got || notYetLevel(s), mode: 'quiz', ...(answer ? { answer } : {}), ...(answer === 'getting_there' ? { partial: true } : {}), date: new Date().toISOString() };
   });
   return out;
 }

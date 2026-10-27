@@ -39,7 +39,7 @@ export function reviewSummary(player, n = 5) {
   const list = recentSessions(player, n);
   const matches = list.filter((s) => s.kind === 'match');
   const results = { won: 0, lost: 0, draw: 0 };
-  matches.forEach((s) => { if (s.result?.outcome) results[s.result.outcome] += 1; });
+  matches.forEach((s) => { if (s.result?.outcome in results) results[s.result.outcome] += 1; }); // 'unknown' (can't remember) isn't counted
   const tagCount = {};
   list.forEach((s) => (s.tags || []).forEach((t) => { tagCount[t] = (tagCount[t] || 0) + 1; }));
   const goalChecks = {};

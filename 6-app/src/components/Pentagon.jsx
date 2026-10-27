@@ -1,6 +1,6 @@
 import React from 'react';
 import { levels } from '../data.js';
-import { levelFraction } from '../levels.js';
+import { levelFraction, scoreLabel } from '../levels.js';
 
 const W = 360;
 const H = 336;
@@ -15,12 +15,15 @@ const toPoints = (pts) => pts.map((p) => p.map((v) => v.toFixed(1)).join(',')).j
 // Short names for the corners ("Tactics and teamwork" becomes "Tactics")
 const shortName = (axis) => axis.name.split(' and ')[0];
 
-export default function Pentagon({ axes, axisLevels, selected, onSelect }) {
+// scores (optional): a number per area (2.3 = C+). Then the shape and labels show + and −.
+export default function Pentagon({ axes, axisLevels, scores, selected, onSelect }) {
+  const label = (id) => (scores && typeof scores[id] === 'number' ? scoreLabel(scores[id]) : axisLevels[id]);
+  const frac = (id) => (scores && typeof scores[id] === 'number' ? (Math.max(scores[id], -0.4) + 1) / levels.length : levelFraction(axisLevels[id]));
   const n = axes.length;
   const rings = levels.map((_, k) => toPoints(axes.map((_, i) => point(i, n, (k + 1) / levels.length))));
-  const shape = axes.map((a, i) => point(i, n, levelFraction(axisLevels[a.id])));
+  const shape = axes.map((a, i) => point(i, n, frac(a.id)));
 
-  const summary = axes.map((a) => `${a.name} ${axisLevels[a.id]}`).join(', ');
+  const summary = axes.map((a) => `${a.name} ${label(a.id)}`).join(', ');
 
   return (
     <svg className="pentagon" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Your game: ${summary}`}>
@@ -52,13 +55,13 @@ export default function Pentagon({ axes, axisLevels, selected, onSelect }) {
             className={'pent-axis' + (isSel ? ' is-selected' : '')}
             role="button"
             tabIndex={0}
-            aria-label={`${a.name}, level ${axisLevels[a.id]}`}
+            aria-label={`${a.name}, level ${label(a.id)}`}
             onClick={() => onSelect(a.id)}
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelect(a.id)}
           >
             <rect x={anchor === 'start' ? lx - 6 : anchor === 'end' ? lx - 84 : lx - 45} y={y1 - 16} width="90" height="46" fill="transparent" />
             <text x={lx} y={y1} textAnchor={anchor} className="pent-name">{shortName(a)}</text>
-            <text x={lx} y={y1 + 22} textAnchor={anchor} className="pent-level">{axisLevels[a.id]}</text>
+            <text x={lx} y={y1 + 22} textAnchor={anchor} className="pent-level">{label(a.id)}</text>
           </g>
         );
       })}

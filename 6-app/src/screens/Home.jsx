@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
-import { axes, axisById, levels, skills, allSkillById as skillById } from '../data.js';
-import { currentAxisLevels, currentLevel } from '../levels.js';
+import SkillBars from '../components/SkillBars.jsx';
+import { axes, axisById, levels, allSkills, allSkillById as skillById } from '../data.js';
+import { currentAxisLevels, currentAxisScores, currentLevel, skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import { sortSessions, prettyDate, sessionsUntilCheckIn, todayISO } from '../sessions.js';
 
@@ -10,11 +11,13 @@ function greeting() {
   return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
 }
 
-export default function Home({ player, onGo }) {
+export default function Home({ player, updatePlayer, onGo }) {
   const [selected, setSelected] = useState(null);
   const upcomingAll = sortSessions(player.sessions).upcoming;
-  const planned = upcomingAll.find((x) => x.date >= todayISO());
-  const unreflected = upcomingAll.filter((x) => x.date < todayISO()).slice(-1)[0];
+  // Logged after playing (or with a result) counts as played, not as the next session.
+  const done = (x) => x.date < todayISO() || x.logged || !!x.result;
+  const planned = upcomingAll.find((x) => !done(x));
+  const unreflected = upcomingAll.filter(done).slice(-1)[0];
   const next = planned
     ? {
         when: prettyDate(planned.date, planned.time),
@@ -25,10 +28,11 @@ export default function Home({ player, onGo }) {
       ? { when: player.nextSession.when, who: `With ${player.nextSession.partner} vs ${player.nextSession.opponents.join(' & ')}`, venue: player.nextSession.venue }
       : null;
   const axisLevels = currentAxisLevels(player);
+  const axisScores = currentAxisScores(player);
   const levelId = currentLevel(player);
   const level = levels.find((l) => l.id === levelId)?.name ?? levelId;
   const selectedAxis = selected ? axisById[selected] : null;
-  const selectedSkills = selected ? skills.filter((s) => s.axis === selected) : [];
+  const selectedSkills = selected ? allSkills.filter((s) => s.axis === selected) : [];
 
   return (
     <>
@@ -71,19 +75,20 @@ export default function Home({ player, onGo }) {
 
         <section className="panel" aria-label="Your game">
           <p className="eyebrow">Your game</p>
-          <Pentagon axes={axes} axisLevels={axisLevels} selected={selected} onSelect={setSelected} />
-          {selectedAxis ? (
-            <div className="axis-note">
-              <strong>{selectedAxis.name}</strong>
-              <div className="chips">
-                {selectedSkills.map((s) => <button key={s.id} className="chip-btn skill" onClick={() => onGo('skills', { open: s.id })}>{s.name}</button>)}
-              </div>
-              <p className="soft">Tap a skill to open it.</p>
-            </div>
-          ) : (
-            <p className="soft center">Tap an area to see its skills</p>
-          )}
+          <Pentagon axes={axes} axisLevels={axisLevels} scores={axisScores} selected={selected} onSelect={setSelected} />
+          {!selectedAxis && <p className="soft center">Tap an area to see its skills</p>}
         </section>
+        {selectedAxis && (
+          <SkillBars
+            title={selectedAxis.name}
+            skills={selectedSkills.filter((s) => s.checked && !s.optional)}
+            checks={skillChecks(player)}
+            level={currentLevel(player)}
+            note="Tap a skill to open it, or Adjust to move the bars yourself."
+            onOpen={(id) => onGo('skills', { open: id })}
+            onSet={(s, v) => updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [s.id]: { ...v, mode: 'slider', date: new Date().toISOString() } } }))}
+          />
+        )}
 
         <section className="panel" aria-label="Current focus">
           <p className="eyebrow">Current focus</p>

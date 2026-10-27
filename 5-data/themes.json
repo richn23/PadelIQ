@@ -1,5 +1,5 @@
 {
-  "_note": "Placeholder colours. Swap in real values once the court textures exist. Each theme = one court look.",
+  "_note": "Court colours. grain = strength of the court texture (0 = flat). Clay is a deep burgundy and Green a darker, flatter court green (Oct 2026).",
   "defaultTheme": "blue",
   "themes": {
     "blue": {
@@ -14,35 +14,38 @@
       "accent": "#D7FF00",
       "accentText": "#0B1A5C",
       "pentagonFill": "rgba(215, 255, 0, 0.28)",
-      "pentagonLine": "#D7FF00"
+      "pentagonLine": "#D7FF00",
+      "grain": 0.22
     },
     "clay": {
       "name": "Clay court",
-      "background": "#D9542B",
+      "background": "#7A2338",
       "backgroundTexture": "assets/backgrounds/court-clay.png",
-      "panel": "rgba(70, 20, 5, 0.72)",
-      "panelBorder": "rgba(255, 255, 255, 0.18)",
+      "panel": "rgba(38, 6, 16, 0.62)",
+      "panelBorder": "rgba(255, 255, 255, 0.16)",
       "text": "#FFFFFF",
-      "textSoft": "rgba(255, 255, 255, 0.78)",
+      "textSoft": "rgba(255, 255, 255, 0.76)",
       "chalk": "#FFFFFF",
-      "accent": "#FFF04D",
-      "accentText": "#4A1B0C",
-      "pentagonFill": "rgba(255, 240, 77, 0.28)",
-      "pentagonLine": "#FFF04D"
+      "accent": "#FFD84D",
+      "accentText": "#3D0B18",
+      "pentagonFill": "rgba(255, 216, 77, 0.26)",
+      "pentagonLine": "#FFD84D",
+      "grain": 0.06
     },
     "green": {
       "name": "Green court",
-      "background": "#1FA855",
+      "background": "#1D5C3F",
       "backgroundTexture": "assets/backgrounds/court-green.png",
-      "panel": "rgba(5, 50, 25, 0.72)",
-      "panelBorder": "rgba(255, 255, 255, 0.18)",
+      "panel": "rgba(4, 30, 18, 0.62)",
+      "panelBorder": "rgba(255, 255, 255, 0.16)",
       "text": "#FFFFFF",
-      "textSoft": "rgba(255, 255, 255, 0.78)",
+      "textSoft": "rgba(255, 255, 255, 0.76)",
       "chalk": "#FFFFFF",
-      "accent": "#FFF04D",
-      "accentText": "#073B1D",
-      "pentagonFill": "rgba(255, 240, 77, 0.28)",
-      "pentagonLine": "#FFF04D"
+      "accent": "#E3FF4D",
+      "accentText": "#0B2E1C",
+      "pentagonFill": "rgba(227, 255, 77, 0.24)",
+      "pentagonLine": "#E3FF4D",
+      "grain": 0.06
     }
   }
 }

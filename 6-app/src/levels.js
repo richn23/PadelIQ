@@ -167,3 +167,40 @@ export function shiftAreas(axisLevels, chosen) {
   const diff = levelOrder(chosen) - levelOrder(overallLevel(axisLevels));
   return Object.fromEntries(Object.entries(axisLevels).map(([k, v]) => [k, levelByOrder(Math.min(Math.max(levelOrder(v) + diff, 0), 4)).id]));
 }
+
+// ---- Jagged profile: a score per area, with + and − inside a level ----
+// A score is a level number with a fraction: 2 = C, 2.3 = C+, 1.7 = C−.
+export function scoreLabel(score) {
+  const top = levels.length - 1;
+  const base = Math.min(Math.max(Math.round(score), 0), top);
+  const d = score - base;
+  return levelName(levelByOrder(base).id) + (d >= 0.2 && base < top ? '+' : d <= -0.2 && base > 0 ? '−' : '');
+}
+
+// One skill's score. Solid at a level = +0.3, getting there / not solid = −0.3.
+// A skill whose descriptions stop below your level (e.g. rules) counts as at your level once you have its top.
+export function skillScore(skill, check, levelId) {
+  const base = levelOrder(check.level);
+  if (typeof check.adj === 'number') return base + 0.3 * check.adj; // set on a slider: C−, C or C+
+  const good = check.answer === 'yes' || check.solid || check.outcome === 'solid' || check.outcome === 'solid_close';
+  const weak = check.partial || check.answer === 'getting_there' || check.outcome === 'not_solid';
+  let s = base + (good ? 0.3 : weak ? -0.3 : 0);
+  const tops = Object.entries(skill.levels || {}).filter(([, v]) => v.master).map(([k]) => levelOrder(k));
+  if (tops.length && base >= Math.max(...tops) && !weak) s = Math.max(s, levelOrder(levelId) + 0.3);
+  return s;
+}
+
+// Area scores from all skill answers (quiz and your own checks). Optional shots never count.
+export function areaScores(checks, levelId, fallback = {}) {
+  const out = {};
+  axes.forEach((a) => {
+    const list = allSkills.filter((s) => s.axis === a.id && !s.optional && checks[s.id]).map((s) => skillScore(s, checks[s.id], levelId));
+    out[a.id] = list.length ? list.reduce((x, y) => x + y, 0) / list.length : levelOrder(fallback[a.id] || levelId);
+  });
+  return out;
+}
+
+export const currentAxisScores = (player) => areaScores(skillChecks(player), currentLevel(player), currentAxisLevels(player));
+
+// The label for one skill's answer, e.g. "C", "C+" or "C−".
+export const checkLabel = (skill, check, levelId) => scoreLabel(Math.min(skillScore(skill, check, levelId), levelOrder(check.level) + 0.3));

@@ -24,6 +24,7 @@ export function applyTheme(id) {
   root.setProperty('--accent-text', t.accentText);
   root.setProperty('--pent-fill', t.pentagonFill);
   root.setProperty('--pent-line', t.pentagonLine);
+  root.setProperty('--grain', String(t.grain ?? 0.22));
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', t.background);
   try { window.localStorage.setItem('padeliq-theme', id); } catch (e) { /* ignore */ }
 }

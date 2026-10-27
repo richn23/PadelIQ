@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, allSkills, onboarding as ob } from '../data.js';
-import { levelOrder, levelByOrder, levelName, overallLevel } from '../levels.js';
+import { levelOrder, levelByOrder, levelName, overallLevel, areaScores } from '../levels.js';
 import { Checklist, rowsAt, key, earlierLevels, answerFor, quizChecks, passOf, isKey } from '../components/LevelChecklist.jsx';
 import wave from '../assets/mascot-wave.png';
 import think from '../assets/mascot-think.png';
@@ -192,6 +192,9 @@ export default function Onboarding({ onDone, onCancel }) {
     );
   }
 
+  // The jagged picture: each area gets a + or − from the answers behind it.
+  const previewScores = areaScores(quizChecks(level, answers, pick), level, axisLevels);
+
   return (
     <main className="ob">
       <Mascot pose="cheer">{line}</Mascot>
@@ -201,7 +204,8 @@ export default function Onboarding({ onDone, onCancel }) {
           <p className="ob-level-value">{levelName(level)}</p>
         </div>
         <p className="soft">It gets more accurate after your first check-in (after 5 sessions).</p>
-        <Pentagon axes={axes} axisLevels={axisLevels} selected={null} onSelect={() => {}} />
+        <Pentagon axes={axes} axisLevels={axisLevels} scores={previewScores} selected={null} onSelect={() => {}} />
+        <p className="soft small">+ means strong at this level, − means still working on it.</p>
       </section>
       <div className="ob-actions">
         {buttons}
