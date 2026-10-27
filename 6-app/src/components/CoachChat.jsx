@@ -32,7 +32,10 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
       const reply = out.reply || [out.title, out.body].filter(Boolean).join('. ') || '…';
       // Sources are listed under the answer, so tidy inline links like [fipadel.com](https://...) to plain words.
       const clean = reply.replace(/\(?\[([^\]]+)\]\((https?:[^)]+)\)\)?/g, '').replace(/ +([.,])/g, '$1').trim();
-      setMsgs([...next, { role: 'assistant', content: clean || reply, proposal: out.proposal || null, sources: out.sources || [] }]);
+      // Don't offer the same plan twice in a row.
+      const prev = [...next].reverse().find((m) => m.proposal && m.proposal.type === out.proposal?.type);
+      const same = prev && String(prev.proposal.focus || prev.proposal.title || '').trim().toLowerCase() === String(out.proposal.focus || out.proposal.title || '').trim().toLowerCase();
+      setMsgs([...next, { role: 'assistant', content: clean || reply, proposal: same ? null : (out.proposal || null), sources: out.sources || [] }]);
     } catch (e) {
       setLive('');
       setError(String(e.message || e));
