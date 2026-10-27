@@ -48,22 +48,20 @@ export function LevelScale() {
   );
 }
 
-// A list of bars with an "Adjust" switch. onSet(skill, { level, adj }) saves a self-rating.
+// A list of bars you can slide directly. onSet(skill, { level, adj }) saves a self-rating.
 export default function SkillBars({ title, skills, checks, level, onOpen, onSet, note }) {
-  const [editing, setEditing] = useState(false);
+  const editing = !!onSet; // bars are always sliders: no Adjust switch
   return (
     <section className="panel">
       <div className="row-between">
         <p className="eyebrow">{title}</p>
-        {onSet && skills.length > 0 && <button className={'mini' + (editing ? ' on' : '')} onClick={() => setEditing(!editing)}>{editing ? 'Done' : 'Adjust'}</button>}
       </div>
-      {editing && <p className="soft">Slide to where you think you are. It saves as you go, and it's your call: you can always re-check with questions on a skill's page.</p>}
-      {note && !editing && <p className="soft">{note}</p>}
+      {note && <p className="soft">{note}</p>}
       {skills.length === 0 ? <p className="soft">Nothing here yet.</p> : (
         <>
           <LevelScale />
           <ul className="skillbars">
-            {skills.map((s) => <SkillBar key={s.id + (editing ? '-e' : '')} skill={s} check={checks[s.id]} level={level} editing={editing} onSet={onSet} onOpen={editing ? null : onOpen} />)}
+            {skills.map((s) => <SkillBar key={s.id} skill={s} check={checks[s.id]} level={level} editing={editing} onSet={onSet} onOpen={onOpen} />)}
           </ul>
         </>
       )}

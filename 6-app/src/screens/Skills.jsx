@@ -114,7 +114,7 @@ function Have({ known = true, axisLevels, scores, level, checks, onOpen, onSet }
         level={level}
         onOpen={onOpen}
         onSet={onSet}
-        note={checked.length === 0 && !area ? 'Nothing checked yet. Open a skill in Explore or Work on next.' : 'Tap a skill to open it, or Adjust to move the bars yourself.'}
+        note={checked.length === 0 && !area ? 'Nothing checked yet. Open a skill in Explore or Work on next.' : 'Slide a bar to set where you are. Tap a skill name to open it.'}
       />
     </>
   );
@@ -339,7 +339,7 @@ function NextStep({ skill, level }) {
 
 function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const [checking, setChecking] = useState(false);
-  const [adjusting, setAdjusting] = useState(false);
+  const adjusting = true; // the bar is always a slider
   const [showLevels, setShowLevels] = useState(false);
   const [justScored, setJustScored] = useState(null);
   const [chat, setChat] = useState(null); // 'diagnostic' | 'deep_dive'
@@ -399,14 +399,13 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
         <section className="panel">
           <div className="row-between">
             <p className="eyebrow">Where you are</p>
-            {!checking && <button className={'mini' + (adjusting ? ' on' : '')} onClick={() => setAdjusting(!adjusting)}>{adjusting ? 'Done' : 'Adjust'}</button>}
           </div>
           <LevelScale />
           <ul className="skillbars">
             <SkillBar key={adjusting ? 'e' : 'v'} skill={skill} check={check} level={currentLevel(player)} editing={adjusting}
               onSet={(sk, v) => updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [sk.id]: { ...v, mode: 'slider', date: new Date().toISOString() } } }))} />
           </ul>
-          <p className="soft small">{!check ? 'Not checked yet. Slide it with Adjust, or re-check with questions.' : check.from === 'quiz' ? 'From your quiz.' : check.mode === 'slider' ? 'Set by you.' : check.mode === 'coach' ? 'Agreed with the coach.' : 'From your last check.'}</p>
+          <p className="soft small">{!check ? 'Not checked yet. Slide the bar to where you think you are, or re-check with questions.' : check.from === 'quiz' ? 'From your quiz.' : check.mode === 'slider' ? 'Set by you.' : check.mode === 'coach' ? 'Agreed with the coach.' : 'From your last check.'}</p>
           {!checking && (
             <>
               {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}

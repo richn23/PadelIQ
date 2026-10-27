@@ -99,7 +99,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
             skills={selectedSkills.filter((s) => s.checked && !s.optional)}
             checks={skillChecks(player)}
             level={currentLevel(player)}
-            note="Tap a skill to open it, or Adjust to move the bars yourself."
+            note="Slide a bar to set where you are. Tap a skill name to open it."
             onOpen={(id) => onGo('skills', { open: id })}
             onSet={(s, v) => updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [s.id]: { ...v, mode: 'slider', date: new Date().toISOString() } } }))}
           />
