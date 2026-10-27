@@ -50,7 +50,8 @@ export function buildPlayerFile(player, { skill } = {}) {
     L.push('Goals:');
     goals.forEach((g) => {
       const recent = (player.sessions || []).filter((s) => s.goalChecks?.[g.id]).slice(-5).map((s) => CHECK[s.goalChecks[g.id]]);
-      const dx = g.diagnosis?.problems?.length ? ` DIAGNOSIS: ${g.diagnosis.problems.join(', ')}${g.diagnosis.when ? `, mostly ${g.diagnosis.when}` : ''}.` : '';
+      const nw = `${g.now ? ` NOW: "${g.now}".` : ''}${g.want ? ` WANT: "${g.want}".` : ''}`;
+      const dx = nw + (g.diagnosis?.problems?.length ? ` DIAGNOSIS: ${g.diagnosis.problems.join(', ')}${g.diagnosis.when ? `, mostly ${g.diagnosis.when}` : ''}.` : '');
       L.push(`- ${goalSkill(g)}${g.skillId ? ` (${g.skillId})` : ''}: "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
     });
   } else L.push('Goals: none yet');

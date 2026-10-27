@@ -480,3 +480,7 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .lvl-block:first-of-type { border-top: 0; }
 .lvl-line { margin: 6px 0; line-height: 1.35; }
 .lvl-line.you strong { color: var(--accent); }
+
+.goal-detail { margin: 6px 0; }
+.goal-detail p { margin: 2px 0; }
+.row-gap { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
