@@ -4,9 +4,9 @@ import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
-import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn } from '../sessions.js';
+import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn, isOver, addReminder } from '../sessions.js';
 import { funFact } from '../modes.js';
-import { noteOf } from '../patterns.js';
+import { noteOf, themeCounts } from '../patterns.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], focusUnknown: false, intention: '', outcome: '', score: '', targets: [], note: '' };
 // Results a player can pick. 'unknown' = can't remember (not counted in win/loss totals).
@@ -58,11 +58,11 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
     return <AddForm howTo={howTo} initial={cur} onCancel={() => setMode({ name: 'list' })} onDelete={() => remove(cur.id)} onSave={(s) => { saveSession({ ...cur, ...s, id: cur.id, status: cur.status, targets: cur.targets }); setMode({ name: 'list' }); }} />;
   }
   if (mode.name === 'add') {
-    return <AddForm howTo={howTo} date={mode.date} goals={goals} onCancel={() => setMode({ name: 'list' })} onSave={(s, reflectNow) => { saveSession(s); setMode(reflectNow ? { name: 'reflect', id: s.id } : { name: 'list' }); }} />;
+    return <AddForm howTo={howTo} date={mode.date} goals={goals} onCancel={() => setMode({ name: 'list' })} onSave={(s, reflectNow) => { saveSession(s); setMode(reflectNow ? { name: 'reflect', id: s.id } : !fun && s.status === 'planned' && !s.logged ? { name: 'targets', id: s.id } : { name: 'list' }); }} />;
   }
   const current = sessions.find((s) => s.id === mode.id);
   if (mode.name === 'targets' && current) {
-    return <Plan session={current} goals={goals} player={player} onBack={() => setMode({ name: 'list' })} onSave={(plan) => { saveSession({ ...current, ...plan }); setMode({ name: 'list' }); }} />;
+    return <Plan simple={simple} session={current} goals={goals} player={player} onBack={() => setMode({ name: 'list' })} onSave={(plan) => { saveSession({ ...current, ...plan }); setMode({ name: 'list' }); }} />;
   }
   if (mode.name === 'reflect' && current) {
     return simple
@@ -75,7 +75,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
 
   const left = sessionsUntilCheckIn(player);
   // Sessions already played but not reflected on yet (past date, or added after playing).
-  const isDone = (s) => s.date < todayISO() || s.logged || !!s.result;
+  const isDone = (s) => isOver(s);
   const toReflect = (day ? upcoming.filter((s) => s.date === day) : upcoming).filter(isDone);
   const shownUp = (day ? upcoming.filter((s) => s.date === day) : upcoming).filter((s) => !isDone(s));
   const shownPlayed = day ? played.filter((s) => s.date === day) : played;
@@ -129,7 +129,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
                   {s.targets?.length > 0 && <p className="soft">Goals: {s.targets.map((id) => goals.find((g) => g.id === id)).filter(Boolean).map(goalLine).join(', ')}</p>}
                 </div>
                 <div className="session-actions">
-                  {!simple && <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>Plan</button>}
+                  {!fun && <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>{simple ? (s.intention ? 'Focus' : 'Set focus') : 'Plan'}</button>}
                   {!fun && s.date === todayISO() && <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Done: reflect</button>}
                   <button className="mini quiet" onClick={() => setMode({ name: 'edit', id: s.id })}>Edit</button>
                 </div>
@@ -178,7 +178,10 @@ function AddForm({ date, initial, goals = [], onCancel, onSave, onDelete, howTo 
     ? { ...emptyForm, ...initial, opp1: initial.opponents?.[0] || '', opp2: initial.opponents?.[1] || '', venue: initial.venue || '', partner: initial.partner || '', coach: initial.coach || '', focus: initial.focus || [], focusUnknown: !!initial.focusUnknown, intention: initial.intention || '', time: initial.time || '', note: initial.note || '', outcome: initial.result?.outcome || '', score: initial.result?.score || '' }
     : { ...emptyForm, date: date || todayISO() });
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
-  const past = !initial && f.date <= todayISO(); // already played (or today): ask how it went
+  // Coming up or already played? Guessed from the date and time (tonight at 8pm is still coming up), and you can switch it.
+  const [playedPick, setPlayedPick] = useState(null);
+  const guess = fun ? f.date <= todayISO() : isOver({ kind: f.kind, date: f.date, time: f.time });
+  const past = !initial && (playedPick ?? guess); // already played: ask how it went
   const resultOn = f.kind === 'match' && (past || (fun && initial?.status === 'played')); // Just for fun can fix a result later
   const toggleTarget = (id) => setF({ ...f, targets: f.targets.includes(id) ? f.targets.filter((x) => x !== id) : f.targets.length < 3 ? [...f.targets, id] : f.targets });
   const build = () => ({
@@ -210,10 +213,16 @@ function AddForm({ date, initial, goals = [], onCancel, onSave, onDelete, howTo 
         <button className={f.kind === 'match' ? 'on' : ''} onClick={() => setF({ ...f, kind: 'match' })}>Match</button>
         <button className={f.kind === 'lesson' ? 'on' : ''} onClick={() => setF({ ...f, kind: 'lesson' })}>Lesson</button>
       </div>
+      {!initial && !fun && (
+        <div className="segmented">
+          <button className={!past ? 'on' : ''} onClick={() => setPlayedPick(false)}>Coming up</button>
+          <button className={past ? 'on' : ''} onClick={() => setPlayedPick(true)}>Already played</button>
+        </div>
+      )}
       <section className="panel ob-form">
         <div className="two">
           <label className="soft">Date<input type="date" value={f.date} onChange={set('date')} /></label>
-          {!simple && <label className="soft">Time<input type="time" value={f.time} onChange={set('time')} /></label>}
+          {!fun && <label className="soft">Time<input type="time" value={f.time} onChange={set('time')} /></label>}
         </div>
         {!simple && <label className="soft">Where<input value={f.venue} onChange={set('venue')} placeholder="Club or court" /></label>}
         {f.kind === 'match' ? (
@@ -266,8 +275,9 @@ function AddForm({ date, initial, goals = [], onCancel, onSave, onDelete, howTo 
           </div>
         </section>
       )}
+      {!past && !fun && !initial && <p className="soft center">Next you can set your focus and a reminder to reflect.</p>}
       {past && !fun && <button className="btn" onClick={() => onSave(build(), true)}>Save and reflect now</button>}
-      <button className={'btn' + (past && !fun ? ' ghost' : '')} onClick={() => onSave(build(), false)}>{initial ? 'Save changes' : fun && past ? 'Save' : past ? 'Save, reflect later' : 'Save as upcoming'}</button>
+      <button className={'btn' + (past && !fun ? ' ghost' : '')} onClick={() => onSave(build(), false)}>{initial ? 'Save changes' : fun && past ? 'Save' : past ? 'Save, reflect later' : 'Save and set my focus'}</button>
       {initial && (!sure ? <button className="btn ghost" onClick={() => setSure(true)}>Delete</button> : <button className="btn danger" onClick={onDelete}>Tap again to delete</button>)}
     </main>
   );
@@ -291,8 +301,11 @@ export function SkillChips({ selected, onChange, prefer = [] }) {
   );
 }
 
-function Plan({ session, goals, player, onBack, onSave }) {
+function Plan({ session, goals, player, onBack, onSave, simple }) {
   const [brief, setBrief] = useState(false);
+  const [remindMsg, setRemindMsg] = useState('');
+  // Ideas for a light focus: what keeps coming up in your notes, then your current goals.
+  const ideas = [...new Set([...themeCounts(player).slice(0, 3).map((t) => t.label), ...goals.map((g) => goalLine(g))])].slice(0, 5);
   const [t, setT] = useState(session.targets || []);
   const [intention, setIntention] = useState(session.intention || '');
   const toggle = (id) => setT(t.includes(id) ? t.filter((x) => x !== id) : t.length < 3 ? [...t, id] : t);
@@ -301,12 +314,17 @@ function Plan({ session, goals, player, onBack, onSave }) {
       <button className="back" onClick={onBack}>‹ Games</button>
       <p className="eyebrow center">Before · {prettyDate(session.date, session.time)}</p>
       <section className="panel ob-form">
-        <p className="eyebrow">Your intention</p>
-        <label className="soft">One thing you want to do in this {session.kind}
-          <input value={intention} maxLength={80} placeholder="e.g. Be patient and lob more" onChange={(e) => setIntention(e.target.value)} />
+        <p className="eyebrow">{simple ? (session.kind === 'lesson' ? 'What do you want to work on?' : "What's your focus?") : 'Your intention'}</p>
+        {simple && ideas.length > 0 && (
+          <div className="chips">
+            {ideas.map((x) => <button key={x} className={'chip-btn skill' + (intention === x ? ' on' : '')} onClick={() => setIntention(intention === x ? '' : x)}>{x}</button>)}
+          </div>
+        )}
+        <label className="soft">{simple ? 'Or in your own words (optional)' : `One thing you want to do in this ${session.kind}`}
+          <input value={intention} maxLength={80} placeholder={simple ? 'e.g. Backhand volley low' : 'e.g. Be patient and lob more'} onChange={(e) => setIntention(e.target.value)} />
         </label>
       </section>
-      <section className="panel">
+      {!simple && <section className="panel">
         <p className="eyebrow">Goals for this {session.kind}</p>
         {goals.length === 0 ? <p className="soft">No goals yet. You can add them from the Skills tab.</p> : (
           <>
@@ -316,11 +334,18 @@ function Plan({ session, goals, player, onBack, onSave }) {
             </div>
           </>
         )}
+      </section>}
+      <section className="panel">
+        <p className="eyebrow">Remind me to reflect</p>
+        {session.time
+          ? <><p className="soft">A reminder in your calendar for when it ends, so you can reflect while it's fresh.</p><button className="btn ghost" onClick={async () => setRemindMsg(await addReminder(session))}>Add a reminder to my calendar</button></>
+          : <p className="soft">Add a time to this {session.kind === 'lesson' ? 'lesson' : 'game'} to get a reminder. Tap Back, then Edit.</p>}
+        {remindMsg && <p className="soft">{remindMsg}</p>}
       </section>
       {!brief
-        ? <button className="btn ghost" onClick={() => setBrief(true)}>Get a pre-match brief from the coach</button>
+        ? <button className="btn ghost" onClick={() => setBrief(true)}>{simple ? 'Talk it through with the coach' : 'Get a pre-match brief from the coach'}</button>
         : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} intro={preMatchOpener(player, { ...session, intention, targets: t })} onClose={() => setBrief(false)} />}
-      <button className="btn" onClick={() => onSave({ targets: t, intention: intention.trim() })}>Save plan</button>
+      <button className="btn" onClick={() => onSave({ targets: t, intention: intention.trim() })}>{simple ? 'Save' : 'Save plan'}</button>
     </main>
   );
 }
@@ -466,8 +491,10 @@ function QuickReflect({ session, player, onBack, onSave }) {
   const [feel, setFeel] = useState(session.feel || '');
   const [focus, setFocus] = useState(session.notes?.tryNext || '');
   const [chat, setChat] = useState(false);
+  const [planCheck, setPlanCheck] = useState(session.intentionCheck || '');
   const save = () => onSave({
     ...session,
+    intentionCheck: session.intention ? planCheck : undefined,
     status: 'played',
     playedAt: session.playedAt || new Date().toISOString(),
     result: session.kind === 'match' ? { outcome, score: outcome === 'unknown' ? '' : score.trim() } : undefined,
@@ -485,6 +512,15 @@ function QuickReflect({ session, player, onBack, onSave }) {
             {OUTCOMES.map((o) => <button key={o.id} className={outcome === o.id ? 'on' : ''} onClick={() => setOutcome(outcome === o.id ? '' : o.id)}>{o.label}</button>)}
           </div>
           {outcome && outcome !== 'unknown' && <input className="search" style={{ marginTop: 10 }} placeholder="Score, if you know it" value={score} onChange={(e) => setScore(e.target.value)} aria-label="Score" />}
+        </section>
+      )}
+      {session.intention && (
+        <section className="panel">
+          <p className="eyebrow">Your focus</p>
+          <p className="goal-title" style={{ margin: '6px 0 10px' }}>{session.intention}</p>
+          <div className="segmented small">
+            {planOptions.map((o) => <button key={o.id} className={planCheck === o.id ? 'on' : ''} onClick={() => setPlanCheck(o.id)}>{o.label}</button>)}
+          </div>
         </section>
       )}
       <section className="panel">

@@ -4,7 +4,7 @@ import SkillBars from '../components/SkillBars.jsx';
 import { axes, axisById, levels, allSkills, allSkillById as skillById } from '../data.js';
 import { currentAxisLevels, currentAxisScores, currentLevel, skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
-import { sortSessions, prettyDate, sessionsUntilCheckIn, todayISO } from '../sessions.js';
+import { sortSessions, prettyDate, sessionsUntilCheckIn, isOver } from '../sessions.js';
 import { findThemes } from '../coach.js';
 import { needsThemes, themeCounts } from '../patterns.js';
 import { levelKnown } from '../modes.js';
@@ -29,7 +29,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
   useEffect(() => { if (!tried.current && needsThemes(player) && location.protocol !== 'file:') { tried.current = true; refresh(); } }, []);
   const upcomingAll = sortSessions(player.sessions).upcoming;
   // Logged after playing (or with a result) counts as played, not as the next session.
-  const done = (x) => x.date < todayISO() || x.logged || !!x.result;
+  const done = (x) => isOver(x);
   const planned = upcomingAll.find((x) => !done(x));
   const unreflected = upcomingAll.filter(done).slice(-1)[0];
   const next = planned
@@ -37,6 +37,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
         when: prettyDate(planned.date, planned.time),
         who: planned.kind === 'lesson' ? `Lesson${planned.coach ? ' with ' + planned.coach : ''}` : [planned.partner && `With ${planned.partner}`, planned.opponents?.filter(Boolean).length ? `vs ${planned.opponents.filter(Boolean).join(' & ')}` : ''].filter(Boolean).join(' ') || 'Match',
         venue: planned.venue,
+        intention: planned.intention,
       }
     : player.nextSession
       ? { when: player.nextSession.when, who: `With ${player.nextSession.partner} vs ${player.nextSession.opponents.join(' & ')}`, venue: player.nextSession.venue }
@@ -134,7 +135,8 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
               <p className="match-when">{next.when}</p>
               <p className="match-who">{next.who}</p>
               {next.venue && <p className="soft">{next.venue}</p>}
-              {!simple && <button className="btn" onClick={() => onGo('matches', planned ? { plan: planned.id } : null)}>Plan this session</button>}
+              {next.intention && <p className="soft">Focus: <em>{next.intention}</em></p>}
+              <button className="btn" onClick={() => onGo('matches', planned ? { plan: planned.id } : null)}>{simple ? (next.intention ? 'Change your focus' : 'Set your focus') : 'Plan this session'}</button>
             </>
           ) : (
             <>
