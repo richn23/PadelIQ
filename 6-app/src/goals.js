@@ -18,3 +18,18 @@ export const goalLine = (g) => {
   const n = goalNote(g);
   return n ? `${goalSkill(g)}: ${n[0].toLowerCase() + n.slice(1)}` : goalSkill(g);
 };
+
+// Goals the player has set aside live in player.parkedGoals, so everything else only ever sees active goals.
+export const MAX_GOALS = 3;
+export const addGoalTo = (p, g) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), progress: 30, created: new Date().toISOString(), ...g }] });
+export const parkGoalIn = (p, id) => {
+  const g = (p.goals || []).find((x) => x.id === id);
+  if (!g) return p;
+  return { ...p, goals: p.goals.filter((x) => x.id !== id), parkedGoals: [...(p.parkedGoals || []), { ...g, parkedAt: new Date().toISOString() }] };
+};
+export const unparkGoalIn = (p, id) => {
+  const g = (p.parkedGoals || []).find((x) => x.id === id);
+  if (!g || (p.goals || []).length >= MAX_GOALS) return p;
+  const { parkedAt, ...rest } = g; // eslint-disable-line no-unused-vars
+  return { ...p, goals: [...(p.goals || []), rest], parkedGoals: p.parkedGoals.filter((x) => x.id !== id) };
+};

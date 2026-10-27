@@ -53,9 +53,10 @@ export function buildPlayerFile(player, { skill } = {}) {
       const recent = (player.sessions || []).filter((s) => s.goalChecks?.[g.id]).slice(-5).map((s) => CHECK[s.goalChecks[g.id]]);
       const nw = `${g.now ? ` NOW: "${g.now}".` : ''}${g.want ? ` WANT: "${g.want}".` : ''}`;
       const dx = nw + (g.diagnosis?.problems?.length ? ` DIAGNOSIS: ${g.diagnosis.problems.join(', ')}${g.diagnosis.when ? `, mostly ${g.diagnosis.when}` : ''}.` : '');
-      L.push(`- ${goalSkill(g)}${g.skillId ? ` (${g.skillId})` : ''}: "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
+      L.push(`- [goal ${g.id}] ${goalSkill(g)}${g.skillId ? ` (${g.skillId})` : ''}: "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
     });
   } else L.push('Goals: none yet');
+  if ((player.parkedGoals || []).length) L.push('Parked goals (set aside by the player; not working on them now. Do not bring them up unless asked): ' + player.parkedGoals.map((g) => goalSkill(g)).join(', '));
   L.push(...threadLines(player));
   const own = Object.entries(checks).filter(([, v]) => v.from !== 'quiz');
   L.push(`Skill levels checked: ${own.length ? own.map(([id, v]) => `${allSkillById[id]?.name} ${levelName(v.level)}${v.focus?.[0] ? ` (working on: ${v.focus[0]})` : ''}`).join('; ') : (known ? 'none yet (only the starting quiz)' : 'none yet')}`);

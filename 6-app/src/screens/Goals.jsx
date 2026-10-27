@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { goalSkill, goalNote, goalLine } from '../goals.js';
+import { goalSkill, goalNote, goalLine, addGoalTo, parkGoalIn, unparkGoalIn, MAX_GOALS } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
 import { allSkillById as skillById, axisById, whenLabel } from '../data.js';
 
@@ -9,7 +9,11 @@ const SPOTS = ['second_serve', 'return_of_serve', 'volley_backhand', 'bandeja', 
 export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
   const [picking, setPicking] = useState(false);
   const [own, setOwn] = useState('');
-  const addGoal = (g) => { updatePlayer((p) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), progress: 30, created: new Date().toISOString(), ...g }] })); setPicking(false); setOwn(''); };
+  const addGoal = (g) => { updatePlayer((p) => addGoalTo(p, g)); setPicking(false); setOwn(''); };
+  const parked = player.parkedGoals || [];
+  const park = (id) => updatePlayer((p) => parkGoalIn(p, id));
+  const unpark = (id) => updatePlayer((p) => unparkGoalIn(p, id));
+  const removeParked = (id) => updatePlayer((p) => ({ ...p, parkedGoals: (p.parkedGoals || []).filter((g) => g.id !== id) }));
   const goals = player.goals || [];
   const [removing, setRemoving] = useState(null);
   const [editing, setEditing] = useState(null); // goal id being detailed
@@ -85,9 +89,12 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                   )}
                   <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How happy you are with: ${goalLine(g)}`} className="slider" />
                   {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => ({ better: 'Better', same: 'Same', struggling: 'Still struggling' })[x]).join(' · ')}</p>}
-                  {removing === g.id
-                    ? <button className="mini" onClick={() => remove(g.id)}>Tap again to remove</button>
-                    : <button className="mini quiet" onClick={() => setRemoving(g.id)}>Remove</button>}
+                  <div className="row-gap">
+                    <button className="mini" onClick={() => park(g.id)}>Park for now</button>
+                    {removing === g.id
+                      ? <button className="mini" onClick={() => remove(g.id)}>Tap again to remove</button>
+                      : <button className="mini quiet" onClick={() => setRemoving(g.id)}>Remove</button>}
+                  </div>
                 </li>
               );
             })}
@@ -105,6 +112,25 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
             </label>
             <button className="btn" disabled={!own.trim()} onClick={() => addGoal({ own: true, title: own.trim() })}>Save</button>
             <button className="mini quiet" onClick={() => setPicking(false)}>Cancel</button>
+          </div>
+        )}
+        {parked.length > 0 && (
+          <div className="parked">
+            <p className="eyebrow">Parked for now</p>
+            <p className="soft">Set aside, not gone. Pick one up whenever you like.</p>
+            <ul className="goals">
+              {parked.map((g) => (
+                <li key={g.id} className="goal">
+                  <div className="goal-top"><span className="goal-title">{goalSkill(g)}</span></div>
+                  {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
+                  <div className="row-gap">
+                    <button className="mini on" disabled={goals.length >= MAX_GOALS} onClick={() => unpark(g.id)}>Pick it up again</button>
+                    <button className="mini quiet" onClick={() => removeParked(g.id)}>Remove</button>
+                  </div>
+                  {goals.length >= MAX_GOALS && <p className="soft">You have 3 goals going. Park one to make room.</p>}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         <p className="soft">{simple ? 'One thing is plenty. You can change it any time.' : 'Goals start from a skill. Pick one, then tap "Make this a goal".'}</p>

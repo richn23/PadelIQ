@@ -50,7 +50,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   }, []);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy, live]);
 
-  const accept = (i, p) => { setDone({ ...done, [i]: 'accepted' }); onProposal?.(p); };
+  const accept = (i, p) => { const r = onProposal?.(p); setDone({ ...done, [i]: typeof r === 'string' ? r : 'accepted' }); };
   const decline = (i) => { setDone({ ...done, [i]: 'declined' }); send('Not quite.'); };
 
   return (
@@ -81,7 +81,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
                       <button className="mini on" onClick={() => accept(i, m.proposal)}>Accept</button>
                       <button className="mini" onClick={() => decline(i)}>Not quite</button>
                     </div>
-                  ) : <p className="soft">{done[i] === 'accepted' ? 'Saved.' : 'OK, let\'s adjust.'}</p>}
+                  ) : <p className="soft">{done[i] === 'accepted' ? 'Saved.' : done[i] === 'declined' ? 'OK, let\'s adjust.' : done[i]}</p>}
                 </div>
               )}
             </div>
@@ -106,6 +106,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
 function ProposalText({ p }) {
   if (p.type === 'skill_level') return <p><strong>Suggested level: {p.level}</strong>{p.reason ? ` · ${p.reason}` : ''}</p>;
   if (p.type === 'goal') return <p><strong>Suggested goal:</strong> {p.title}{p.progress != null ? ` (${p.progress}% happy now)` : ''}</p>;
+  if (p.type === 'park_goal') return <p><strong>Park this goal for now?</strong> You can pick it up again later.</p>;
   if (p.type === 'thread') return (
     <div>
       <p><strong>Save this to try on court?</strong></p>

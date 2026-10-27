@@ -5,6 +5,7 @@ import { allSkillById } from '../data.js';
 import { nextPlanned, sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
 import { recentSessions } from '../checkin.js';
 import { withThread, setThreadResult, openThreads } from '../threads.js';
+import { MAX_GOALS, addGoalTo, parkGoalIn } from '../goals.js';
 
 const MODES = [
   { id: 'pre_match', name: 'Pre-match', what: 'Short and clear: 2 or 3 things to think about for your next session.' },
@@ -21,7 +22,24 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
   const next = nextPlanned(player);
   const last = recentSessions(player, 1)[0];
 
-  const saveProposal = (p) => { if (p.type === 'thread' && updatePlayer) updatePlayer((pl) => withThread(pl, p)); };
+  const saveProposal = (p) => {
+    if (!updatePlayer) return;
+    if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return; }
+    if (p.type === 'goal') {
+      if ((player.goals || []).length >= MAX_GOALS) return 'You already have 3 goals going. Park one first, then I can add this.';
+      const known = allSkillById[p.skillId];
+      const title = String(p.title || '').slice(0, 80);
+      if (!known && !title) return;
+      updatePlayer((pl) => addGoalTo(pl, known ? { skillId: p.skillId, title } : { own: true, title }));
+      return 'Added to your goals.';
+    }
+    if (p.type === 'park_goal') {
+      const g = (player.goals || []).find((x) => x.id === p.goalId) || (player.goals || []).find((x) => p.skillId && x.skillId === p.skillId);
+      if (!g) return;
+      updatePlayer((pl) => parkGoalIn(pl, g.id));
+      return 'Parked. You can pick it up again from Goals.';
+    }
+  };
   const answer = (t, status) => {
     updatePlayer?.((pl) => setThreadResult(pl, t.id, status));
     if (status === 'partly' || status === 'no_help') { setFollowUp({ ...t, status }); setMode('follow_up'); }
