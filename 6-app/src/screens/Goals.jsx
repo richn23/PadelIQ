@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { progressWord, goalSkill, goalNote, goalLine, addGoalTo, parkGoalIn, unparkGoalIn, MAX_GOALS } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
-import { allSkillById as skillById, axisById, whenLabel } from '../data.js';
+import { allSkillById as skillById, allSkills, axes, axisById, whenLabel } from '../data.js';
 
 // For players who never gave a level: a short list of common weak spots, or your own words. No level, no long skill list.
-const SPOTS = ['second_serve', 'return_of_serve', 'volley_backhand', 'bandeja', 'smash', 'defensive_lob', 'net_play', 'composure'];
 
 export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
   const [picking, setPicking] = useState(false);
+  const [pickArea, setPickArea] = useState(null); // area chosen while picking a skill
   const [choosing, setChoosing] = useState(false); // the two ways to add a goal
   const [helping, setHelping] = useState(false); // choosing a goal with the coach
   const coachGoal = (pr) => {
@@ -139,16 +139,27 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
         )}
         {picking && (
           <div className="ob-form">
-            <p className="eyebrow">What do you want to work on?</p>
-            <div className="chips">
-              {SPOTS.filter((id) => skillById[id] && !goals.some((g) => g.skillId === id)).map((id) => <button key={id} className="chip-btn skill" onClick={() => addGoal({ skillId: id, title: '' })}>{skillById[id].name}</button>)}
-            </div>
-            {!simple && <button className="linkish" onClick={onAdd}>Browse all skills</button>}
-            <label className="soft">Or in your own words
+            <p className="eyebrow">{pickArea ? 'Which skill?' : 'What area do you want to work on?'}</p>
+            {!pickArea ? (
+              <div className="chips">
+                {axes.map((a) => <button key={a.id} className="chip-btn" onClick={() => setPickArea(a.id)}>{a.name}</button>)}
+              </div>
+            ) : (
+              <>
+                <button className="linkish" onClick={() => setPickArea(null)}>‹ All areas</button>
+                <p className="soft">{axisById[pickArea].name}: pick a skill</p>
+                <div className="chips">
+                  {allSkills.filter((x) => x.axis === pickArea && !x.optional && !goals.some((g) => g.skillId === x.id)).map((x) => <button key={x.id} className="chip-btn skill" onClick={() => { setPickArea(null); addGoal({ skillId: x.id, title: '' }); }}>{x.name}</button>)}
+                </div>
+              </>
+            )}
+                        <label className="soft">Or in your own words
               <input value={own} maxLength={60} placeholder="e.g. Stay calm at 30-40" onChange={(e) => setOwn(e.target.value)} />
             </label>
-            <button className="btn" disabled={!own.trim()} onClick={() => addGoal({ own: true, title: own.trim() })}>Save</button>
-            <button className="mini quiet" onClick={() => setPicking(false)}>Cancel</button>
+            <div className="row-gap">
+              <button className="mini on" disabled={!own.trim()} onClick={() => addGoal({ own: true, title: own.trim() })}>Save</button>
+              <button className="mini quiet" onClick={() => { setPicking(false); setPickArea(null); }}>Cancel</button>
+            </div>
           </div>
         )}
         {parked.length > 0 && (
