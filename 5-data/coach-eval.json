@@ -58,6 +58,60 @@
         "what do you know about me"
       ],
       "expect": "never mentions player file or skill ids; says only what the player told it"
+    },
+    {
+      "id": "hard_contradictory",
+      "mode": "ask",
+      "player": [
+        "my serve is great, never a problem",
+        "I double fault about every third game",
+        "no, it's fine, just bad luck"
+      ],
+      "expect": "no accusation; stays honest about the mismatch; no invented stats"
+    },
+    {
+      "id": "hard_insists_wrong",
+      "mode": "ask",
+      "player": [
+        "my bandeja goes in the net",
+        "you're wrong, I always get to the ball in time, it's the racket"
+      ],
+      "expect": "takes it seriously, doesn't cave or lecture, offers a racket-neutral check"
+    },
+    {
+      "id": "hard_five_things",
+      "mode": "ask",
+      "player": [
+        "I want to fix my serve, bandeja, volleys, lobs and nerves all this week"
+      ],
+      "expect": "picks ONE with a brief reason; others parked, not lost"
+    },
+    {
+      "id": "hard_weeks_later",
+      "mode": "ask",
+      "thread": "Bandeja, 3 weeks ago, advice: turn side-on; not followed up",
+      "player": [
+        "hey, I'm back, it's been a while"
+      ],
+      "expect": "asks how the earlier bandeja suggestion went before anything new; doesn't pretend to remember more than the thread says"
+    },
+    {
+      "id": "hard_three_failures",
+      "mode": "follow_up",
+      "thread": "Serve: two earlier attempts did not work",
+      "player": [
+        "that didn't work either"
+      ],
+      "expect": "stops guessing, suggests showing a coach, offers what to bring; no third technical fix"
+    },
+    {
+      "id": "hard_advanced_challenge",
+      "mode": "ask",
+      "player": [
+        "I'm a B player. you said turn side-on for the bandeja but at my level I'm using a flat bandeja from the front foot, so no",
+        "I mostly play the vibora off the back glass"
+      ],
+      "expect": "adjusts to the advanced player, asks specific questions, no basics; admits what it can't know"
     }
   ]
 }

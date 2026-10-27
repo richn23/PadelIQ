@@ -17,7 +17,8 @@ export const newThread = (p) => ({
 // Save a coach proposal: a new plan replaces an old one on the same thread.
 export const withThread = (player, p) => {
   const t = newThread(p);
-  const list = (player.threads || []).map((x) => (p.replaces && x.id === p.replaces ? { ...x, status: 'superseded', updated: t.created } : x));
+  const list = (player.threads || []).map((x) => (p.replaces && x.id === p.replaces ? { ...x, status: x.status === 'suggested' || x.status === 'not_tried' ? 'no_help' : x.status, feedback: String(p.feedback || x.feedback || '').slice(0, 200), replacedBy: t.id, updated: t.created } : x));
+  t.attempt = 1 + (p.replaces ? ((player.threads || []).find((x) => x.id === p.replaces)?.attempt || 1) : 0);
   return { ...player, threads: [...list, t].slice(-12) };
 };
 
@@ -36,11 +37,15 @@ const daysAgo = (iso) => {
 
 // Lines for the coach's PLAYER FILE.
 export function threadLines(player) {
-  const list = (player.threads || []).filter((t) => t.status !== 'superseded').slice(-6);
+  const all = player.threads || [];
+  const list = all.filter((t) => !t.replacedBy).slice(-6);
   if (!list.length) return [];
+  const failed = (topic) => all.filter((t) => t.topic === topic && (t.status === 'no_help' || t.status === 'partly') && t.replacedBy).length;
   const L = ['Coaching threads (earlier chats; the player\'s own words and working guesses, not facts):'];
   list.forEach((t) => {
-    L.push(`- ${t.topic} (${daysAgo(t.created)}; ${RESULT_LABEL[t.status] || t.status}): problem "${t.problem}"; cause considered "${t.cause}"; advice given: ${t.advice.join(' / ')}`);
+    const n = failed(t.topic);
+    const prior = all.filter((x) => x.topic === t.topic && x.replacedBy && x.feedback).slice(-2).map((x) => `earlier advice "${x.advice[0]}" -> player said: "${x.feedback}"`);
+    L.push(`- ${t.topic} (${daysAgo(t.created)}; ${RESULT_LABEL[t.status] || t.status}${n ? `; ${n} earlier attempt${n > 1 ? 's' : ''} on this topic did not work` : ''}): problem "${t.problem}"; cause considered "${t.cause}"; advice given: ${t.advice.join(' / ')}${prior.length ? `; history: ${prior.join('; ')}` : ''}`);
   });
   return L;
 }
