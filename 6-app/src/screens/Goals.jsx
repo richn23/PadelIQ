@@ -15,12 +15,17 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
     if (goals.length >= MAX_GOALS) return 'You already have 3 goals going. Park one first, then add this.';
     const known = skillById[pr.skillId]; const title = String(pr.title || '').slice(0, 80);
     if (!known && !title) return;
-    updatePlayer((p) => addGoalTo(p, known ? { skillId: pr.skillId, title } : { own: true, title }));
+    updatePlayer((p) => addGoalTo(p, { ...(known ? { skillId: pr.skillId, title } : { own: true, title }), now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }));
     setHelping(false);
     return 'Added to your goals.';
   };
   const [own, setOwn] = useState('');
-  const addGoal = (g) => { updatePlayer((p) => addGoalTo(p, g)); setPicking(false); setOwn(''); };
+  const addGoal = (g) => {
+    const id = 'g' + Date.now();
+    updatePlayer((p) => addGoalTo(p, { id, ...g }));
+    setPicking(false); setOwn('');
+    setDraft({ now: '', want: '' }); setEditing(id); // straight on to describing it
+  };
   const parked = player.parkedGoals || [];
   const park = (id) => updatePlayer((p) => parkGoalIn(p, id));
   const unpark = (id) => updatePlayer((p) => unparkGoalIn(p, id));

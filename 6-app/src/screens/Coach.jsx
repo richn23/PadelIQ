@@ -30,7 +30,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
       const known = allSkillById[p.skillId];
       const title = String(p.title || '').slice(0, 80);
       if (!known && !title) return;
-      updatePlayer((pl) => addGoalTo(pl, known ? { skillId: p.skillId, title } : { own: true, title }));
+      updatePlayer((pl) => addGoalTo(pl, { ...(known ? { skillId: p.skillId, title } : { own: true, title }), now: String(p.now || '').slice(0, 120), want: String(p.want || '').slice(0, 120) }));
       return 'Added to your goals.';
     }
     if (p.type === 'park_goal') {
