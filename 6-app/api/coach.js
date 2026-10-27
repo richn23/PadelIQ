@@ -2,6 +2,7 @@
 // It adds the OpenAI key (from Vercel's environment variables) and the coach prompts,
 // asks OpenAI, and sends the answer back. The key never reaches the phone.
 import prompts from './_coach-prompts.js';
+import { pickCards, notesSection } from './_knowledge.js';
 
 const OPENAI = 'https://api.openai.com/v1';
 let cachedModel = null;
@@ -174,7 +175,8 @@ export default async function handler(req, res) {
   if (messages.length > 30 || JSON.stringify(req.body).length > 40000) return res.status(413).json({ error: 'Conversation too long' });
 
   const v = { style: prompts.defaults.style, ...vars };
-  const system = [fill(prompts.shared, v), fill(m.prompt, v), playerFile].join('\n\n');
+  const notes = notesSection(pickCards({ messages, vars, playerFile }));
+  const system = [fill(prompts.shared, v), fill(m.prompt, v), notes, playerFile].filter(Boolean).join('\n\n');
   const chat = [
     { role: 'system', content: system },
     ...messages.filter((x) => x && (x.role === 'user' || x.role === 'assistant') && typeof x.content === 'string').map((x) => ({ role: x.role, content: x.content.slice(0, 2000) })),
