@@ -4,8 +4,8 @@ import { askCoach, buildPlayerFile } from '../coach.js';
 
 // A conversation with the AI coach in one mode. When the coach suggests something
 // (a level, a goal, notes), the player taps Accept or Not quite. Nothing is saved without that tap.
-export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, onClose, opener, intro }) {
-  const [msgs, setMsgs] = useState(intro ? [{ role: 'assistant', content: intro }] : []); // { role, content, proposal? }
+export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, onClose, opener, intro, saved, onMessages }) {
+  const [msgs, setMsgs] = useState(saved?.length ? saved.map((m) => ({ role: m.role, content: m.content })) : intro ? [{ role: 'assistant', content: intro }] : []); // { role, content, proposal? }
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [live, setLive] = useState(''); // the answer as it arrives
@@ -46,8 +46,13 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   useEffect(() => {
     if (started.current) return;
     started.current = true;
-    if (!intro) send(opener || null, []);
+    if (!intro && !saved?.length) send(opener || null, []);
   }, []);
+  // Keep the conversation with the game, so it can be reopened later.
+  useEffect(() => {
+    if (busy || !onMessages || !msgs.some((m) => m.role === 'user')) return;
+    onMessages(msgs.slice(-40).map((m) => ({ role: m.role, content: m.content })));
+  }, [msgs, busy]);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy, live]);
 
   const accept = (i, p) => { const r = onProposal?.(p); setDone({ ...done, [i]: typeof r === 'string' ? r : 'accepted' }); };
@@ -96,8 +101,10 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
       </div>
       {error && <p className="soft error">{error}</p>}
       <form className="chat-input" onSubmit={(e) => { e.preventDefault(); if (input.trim() && !busy) send(input.trim()); }}>
-        <textarea rows="2" value={input} placeholder="Type your answer" onChange={(e) => setInput(e.target.value)} aria-label="Your message" />
-        <button className="btn" disabled={busy || !input.trim()}>Send</button>
+        <textarea rows="1" value={input} placeholder="Type your answer" onChange={(e) => setInput(e.target.value)} aria-label="Your message" />
+        <button className="send" disabled={busy || !input.trim()} aria-label="Send">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </button>
       </form>
       <p className="soft tiny">The coach only knows what you've logged in the app. It suggests; you decide.</p>
     </section>

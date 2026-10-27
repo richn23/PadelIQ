@@ -49,6 +49,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
       return { ...p, sessions: exists ? list.map((x) => (x.id === s.id ? s : x)) : [...list, s] };
     });
   };
+  const saveChat = (id, chatMsgs) => updatePlayer((p) => ({ ...p, sessions: (p.sessions || []).map((x) => (x.id === id ? { ...x, coachChat: chatMsgs } : x)) }));
   const remove = (id) => {
     updatePlayer((p) => ({ ...p, sessions: (p.sessions || []).filter((x) => x.id !== id) }));
     setMode({ name: 'list' });
@@ -67,11 +68,11 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
   }
   if (mode.name === 'reflect' && current) {
     return simple
-      ? <QuickReflect session={current} player={player} onBack={() => setMode({ name: 'list' })} onSave={(s) => { saveSession(s); setMode({ name: 'detail', id: s.id }); }} />
-      : <Reflect session={current} player={player} goals={goals} onBack={() => setMode({ name: 'list' })} onSave={(s) => { saveSession(s); setMode({ name: 'detail', id: s.id }); }} />;
+      ? <QuickReflect session={current} player={player} onChat={(m) => saveChat(current.id, m)} onBack={() => setMode({ name: 'list' })} onSave={(s) => { saveSession(s); setMode({ name: 'detail', id: s.id }); }} />
+      : <Reflect session={current} player={player} onChat={(m) => saveChat(current.id, m)} goals={goals} onBack={() => setMode({ name: 'list' })} onSave={(s) => { saveSession(s); setMode({ name: 'detail', id: s.id }); }} />;
   }
   if (mode.name === 'detail' && current) {
-    return <Detail simple={simple} session={current} goals={goals} onBack={() => setMode({ name: 'list' })} onEdit={() => setMode({ name: fun ? 'edit' : 'reflect', id: current.id })} onDelete={() => remove(current.id)} />;
+    return <Detail simple={simple} session={current} goals={goals} player={player} onChat={(m) => saveChat(current.id, m)} onNotes={(n, tags) => saveSession({ ...current, notes: n, tags: [...new Set([...(current.tags || []), ...(tags || [])])] })} onBack={() => setMode({ name: 'list' })} onEdit={() => setMode({ name: fun ? 'edit' : 'reflect', id: current.id })} onDelete={() => remove(current.id)} />;
   }
 
   const left = sessionsUntilCheckIn(player);
@@ -360,7 +361,7 @@ const loadDraft = (id) => { try { return JSON.parse(localStorage.getItem(draftKe
 const saveDraft = (id, d) => { try { localStorage.setItem(draftKey(id), JSON.stringify(d)); } catch { /* ignore */ } };
 const clearDraft = (id) => { try { localStorage.removeItem(draftKey(id)); } catch { /* ignore */ } };
 
-function Reflect({ session, player, goals, onBack, onSave }) {
+function Reflect({ session, player, goals, onBack, onSave, onChat }) {
   const toCheck = (session.targets?.length ? goals.filter((g) => session.targets.includes(g.id)) : goals);
   const [d, setD] = useState(() => loadDraft(session.id) || {
     checks: session.goalChecks || {},
@@ -463,13 +464,15 @@ function Reflect({ session, player, goals, onBack, onSave }) {
       )}
 
       {!chat
-        ? <button className="btn ghost" onClick={() => setChat(true)}>Talk it through with the coach</button>
+        ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
         : <CoachChat
             mode="post_match"
             title="Post-match coach"
             vars={{ session_summary: sessionSummary(session) }}
             player={player}
             intro={postMatchOpener(session)}
+            saved={session.coachChat}
+            onMessages={onChat}
             onClose={() => setChat(false)}
             onProposal={(p) => {
               if (p.type !== 'reflection') return;
@@ -489,7 +492,7 @@ function Reflect({ session, player, goals, onBack, onSave }) {
 const FEEL = [{ id: 'great', label: 'Great' }, { id: 'good', label: 'Good' }, { id: 'mixed', label: 'Mixed' }, { id: 'tough', label: 'Tough' }];
 
 // A little reflection: how it went, how it felt, and one thing to work on. Nothing else.
-function QuickReflect({ session, player, onBack, onSave }) {
+function QuickReflect({ session, player, onBack, onSave, onChat }) {
   const [outcome, setOutcome] = useState(session.result?.outcome || '');
   const [score, setScore] = useState(session.result?.score || '');
   const [feel, setFeel] = useState(session.feel || '');
@@ -539,16 +542,17 @@ function QuickReflect({ session, player, onBack, onSave }) {
         </label>
       </section>
       {!chat
-        ? <button className="btn ghost" onClick={() => setChat(true)}>Talk it through with the coach</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
+        ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
+        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>
   );
 }
 
-function Detail({ session, goals, onBack, onEdit, onDelete, simple }) {
+function Detail({ session, goals, onBack, onEdit, onDelete, simple, player, onChat, onNotes }) {
   const [sure, setSure] = useState(false);
+  const [chat, setChat] = useState(false);
   const label = { better: 'Better', same: 'About the same', struggling: 'Still struggling' };
   return (
     <main className="page">
@@ -586,6 +590,16 @@ function Detail({ session, goals, onBack, onEdit, onDelete, simple }) {
         <p className="eyebrow">Try next time</p><p className="note">{session.notes?.tryNext || '–'}</p>
         {session.tags?.length > 0 && <div className="chips" style={{ marginTop: 8 }}>{session.tags.map((t) => <span key={t} className="chip">{allSkillById[t]?.name}</span>)}</div>}
       </section>}
+      {onChat && (!chat
+        ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
+        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)}
+            onProposal={(p) => {
+              if (p.type !== 'reflection') return;
+              const n = p.notes || {};
+              const merge = (a, b) => (b ? (a ? `${a} ${b}` : b) : a);
+              const cur = session.notes || {};
+              onNotes?.({ worked: merge(cur.worked, n.worked), didnt: merge(cur.didnt, n.didnt), tryNext: merge(cur.tryNext, n.tryNext) }, p.tags);
+            }} />)}
       <button className="btn ghost" onClick={onEdit}>{simple ? 'Edit' : 'Edit reflection'}</button>
       {!sure ? <button className="btn ghost" onClick={() => setSure(true)}>Delete</button> : <button className="btn danger" onClick={onDelete}>Tap again to delete</button>}
     </main>

@@ -388,9 +388,10 @@ i.lesson:not(.done) { color: #ff9f43; }
 .msg-body p + p { margin-top: 6px; }
 .proposal { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--panel-border); display: flex; flex-direction: column; gap: 8px; }
 .typing { letter-spacing: 3px; font-weight: 800; }
-.chat-input { display: flex; flex-direction: column; gap: 8px; }
-.chat-input textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--panel-border); background: rgba(255,255,255,0.1); color: var(--text); font: inherit; font-size: 16px; resize: none; }
-.chat-input .btn { margin-top: 0; }
+.chat-input { display: flex; flex-direction: row; align-items: flex-end; gap: 8px; }
+.chat-input textarea { flex: 1; min-width: 0; width: auto; min-height: 46px; max-height: 140px; padding: 12px; border-radius: 10px; border: 1px solid var(--panel-border); background: rgba(255,255,255,0.1); color: var(--text); font: inherit; font-size: 16px; resize: none; }
+.send { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; cursor: pointer; }
+.send:disabled { opacity: .4; cursor: default; }
 .tiny { font-size: 12px; }
 .error { color: #ffb4b4; }
 .msg-body p { white-space: pre-line; }
