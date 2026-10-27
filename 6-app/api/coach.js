@@ -36,6 +36,9 @@ function salvage(text) {
     if (tail[1] !== 'null') { try { proposal = JSON.parse(tail[1]); } catch { /* leave it out */ } }
     reply = reply.slice(0, tail.index).trim();
   }
+  // Words followed by the same answer again as unfinished JSON: keep only the first part.
+  const dup = reply.search(/\n\s*\{\s*"reply"\s*:/);
+  if (dup > 0) reply = reply.slice(0, dup).trim();
   const pi = reply.search(/\{\s*"proposal"\s*:/);
   if (pi >= 0) {
     try { proposal = JSON.parse(reply.slice(pi)).proposal || null; } catch { /* leave it out */ }
