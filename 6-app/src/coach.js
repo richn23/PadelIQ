@@ -164,6 +164,12 @@ export async function askCoach({ mode, vars = {}, playerFile, messages, onText }
 function salvageReply(raw) {
   let reply = String(raw).trim();
   let proposal = null;
+  // A stray tail like `","proposal":null}` after plain words.
+  const tail = reply.match(/"\s*,\s*"proposal"\s*:\s*(null|\{[\s\S]*\})\s*\}\s*$/);
+  if (tail) {
+    if (tail[1] !== 'null') { try { proposal = JSON.parse(tail[1]); } catch { /* leave it out */ } }
+    reply = reply.slice(0, tail.index).trim();
+  }
   const pi = reply.search(/\{\s*"proposal"\s*:/);
   if (pi >= 0) {
     try { proposal = JSON.parse(reply.slice(pi)).proposal || null; } catch { /* leave it out */ }
