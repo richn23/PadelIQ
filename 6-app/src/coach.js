@@ -4,6 +4,16 @@ import { currentLevel, currentAxisLevels, levelName, levelFocus, skillChecks } f
 import { recentSessions } from './checkin.js';
 import { goalSkill, goalNote } from './goals.js';
 import { prettyDate, sortSessions, todayISO } from './sessions.js';
+import { modeOf, levelKnown } from './modes.js';
+
+// How the player wants to use the app, and how the coach should stand. The coach prompt explains these lines.
+const MODE_NOTE = {
+  fun: 'Just for fun. The player only logs games. Keep it light and short. No analysis or advice unless they ask.',
+  reflect: 'A little reflection. The player wants to notice what happens and pick one thing to work on, not to be analysed. Plain words, short replies, at most one thing to work on.',
+  full: 'The full picture. The player wants skills, goals, plans and reflection.',
+};
+const STANCE_PARTNER = "Thinking partner. This player is at the top of the scale and knows their game better than you can judge from notes. Ask ONE or TWO sharp questions, never a list, instead of advising: when does it break down (which shot before it, which score, which opponent, how tired)? Offer possible patterns as questions, not conclusions. No cue lists. Give advice only if asked, and then one idea.";
+const STANCE_COACH = 'Coach. Follow the usual rules.';
 
 const CHECK = { better: 'better', same: 'same', struggling: 'still struggling' };
 
@@ -24,9 +34,17 @@ export function buildPlayerFile(player, { skill } = {}) {
   const L = [];
   L.push('PLAYER FILE (from the app; this is all you know about the player)');
   L.push(`Name: ${player.name || 'Player'}`);
-  L.push(`Level: ${levelName(lvl)} (provisional: ${player.provisional ? 'yes' : 'no'})`);
-  L.push(`Level focus: ${levelFocus(lvl)}`);
-  L.push(`Areas: ${axes.map((a) => `${a.name} ${levelName(areas[a.id])}`).join(', ')}`);
+  const known = levelKnown(player);
+  const advanced = known && ['A', 'Pro'].includes(lvl);
+  L.push(`Mode: ${MODE_NOTE[modeOf(player)]}`);
+  if (known) {
+    L.push(`Level: ${levelName(lvl)} (provisional: ${player.provisional ? 'yes' : 'no'})`);
+    L.push(`Level focus: ${levelFocus(lvl)}`);
+    L.push(`Areas: ${axes.map((a) => `${a.name} ${levelName(areas[a.id])}`).join(', ')}`);
+  } else {
+    L.push('Level: not given. This player skipped the skills check and has not said what level they are. Do not assume or estimate one: find out from what they describe.');
+  }
+  L.push(`Coaching stance: ${advanced ? STANCE_PARTNER : STANCE_COACH}`);
   if (goals.length) {
     L.push('Goals:');
     goals.forEach((g) => {
@@ -36,12 +54,14 @@ export function buildPlayerFile(player, { skill } = {}) {
     });
   } else L.push('Goals: none yet');
   const own = Object.entries(checks).filter(([, v]) => v.from !== 'quiz');
-  L.push(`Skill levels checked: ${own.length ? own.map(([id, v]) => `${allSkillById[id]?.name} ${levelName(v.level)}${v.focus?.[0] ? ` (working on: ${v.focus[0]})` : ''}`).join('; ') : 'none yet (only the starting quiz)'}`);
+  L.push(`Skill levels checked: ${own.length ? own.map(([id, v]) => `${allSkillById[id]?.name} ${levelName(v.level)}${v.focus?.[0] ? ` (working on: ${v.focus[0]})` : ''}`).join('; ') : (known ? 'none yet (only the starting quiz)' : 'none yet')}`);
   if (sessions.length) {
     L.push('Recent sessions (newest first):');
     sessions.forEach((s) => {
       const parts = [`- ${prettyDate(s.date)} ${s.kind}`];
       if (s.result?.outcome && s.result.outcome !== 'unknown') parts.push(`${s.result.outcome}${s.result.score ? ' ' + s.result.score : ''}`);
+      if (s.feel) parts.push(`felt: ${s.feel}`);
+      if (s.note) parts.push(`fun note: "${s.note}"`);
       if (s.intention) parts.push(`intention "${s.intention}" (${s.intentionCheck || 'not marked'})`);
       if (s.notes?.worked) parts.push(`worked: "${s.notes.worked}"`);
       if (s.notes?.didnt) parts.push(`didn't: "${s.notes.didnt}"`);
@@ -145,7 +165,7 @@ export function preMatchOpener(player, session) {
   if (lastTry) points.push(`From last time: ${lastTry}`);
   const kind = session?.kind === 'lesson' ? 'lesson' : 'match';
   const what = session ? `${whenWord(session.date)} ${kind}` : 'your next game';
-  if (!points.length) return `Nothing saved to focus on for ${what} yet.\n\nAt your level the priority is: ${levelFocus(currentLevel(player))}\n\nAnything on your mind?`;
+  if (!points.length) return `Nothing saved to focus on for ${what} yet.${levelKnown(player) ? `\n\nAt your level the priority is: ${levelFocus(currentLevel(player))}` : ''}\n\nAnything on your mind?`;
   return `Here's a reminder of what you wanted to focus on in ${what}:\n${points.slice(0, 3).map((p, i) => `${i + 1}. ${p}`).join('\n')}\n\nAnything else on your mind?`;
 }
 

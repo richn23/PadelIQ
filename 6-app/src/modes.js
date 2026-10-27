@@ -46,3 +46,7 @@ export function funFact(sessions = []) {
   const best = Object.values(by).filter((x) => x.w + x.l >= 2).sort((a, b) => b.w + b.l - (a.w + a.l))[0];
   return best ? `Your record with ${best.name}: ${best.w}–${best.l}` : null;
 }
+
+// Has this player told us their level? Fun and reflection players who skipped the skills check haven't:
+// the app stores a placeholder for them, which must never be shown or coached as a real level.
+export const levelKnown = (player) => modeOf(player) === 'full' || !!player?.quiz || !!player?.levelSetByPlayer || Object.keys(player?.skillChecks || {}).length > 0;

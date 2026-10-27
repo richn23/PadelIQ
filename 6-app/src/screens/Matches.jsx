@@ -498,7 +498,7 @@ function QuickReflect({ session, player, onBack, onSave }) {
       </section>
       {!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>Talk it through with the coach</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} onClose={() => setChat(false)} onProposal={() => {}} />}
+        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>
