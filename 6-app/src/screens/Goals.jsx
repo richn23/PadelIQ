@@ -75,7 +75,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                     <CoachChat
                       mode="goal_diagnose"
                       title={`Coach: ${goalSkill(g)}`}
-                      intro={g.now || g.want ? `Let's tighten up your ${goalSkill(g).toLowerCase()}. What's still missing?` : `Let's pin down your ${goalSkill(g).toLowerCase()}. When you play it in a match, what does it do?`}
+                      intro={g.now || g.want ? `Let's tighten up this goal: "${goalSkill(g)}". What's still missing?` : `Let's pin down this goal: "${goalSkill(g)}". How does it go for you in matches right now?`}
                       vars={{ skill_name: goalSkill(g), skill_id: g.skillId || '' }}
                       player={player}
                       skill={g.skillId ? skill : undefined}
