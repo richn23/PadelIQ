@@ -487,3 +487,5 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 
 .skill-group { margin-top: 18px; }
 .skill-group > .eyebrow { margin: 0 0 4px; }
+
+.timing { font-size: 12px; opacity: .6; margin: 4px 0 0; }

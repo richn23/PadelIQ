@@ -139,6 +139,7 @@ export async function askCoach(args) {
   const onText = args.onText ? (t) => { if (first === null && t) first = Math.round(performance.now() - t0); args.onText(t); } : undefined;
   try {
     const out = await askCoachRaw({ ...args, onText });
+    out.timing = { first, total: Math.round(performance.now() - t0) };
     saveTiming({ at: Date.now(), mode: args.mode, first, total: Math.round(performance.now() - t0), streamed: first !== null, search: !!(out.sources && out.sources.length), chars: String(out.reply || '').length, ok: true });
     return out;
   } catch (e) {

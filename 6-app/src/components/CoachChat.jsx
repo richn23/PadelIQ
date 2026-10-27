@@ -35,7 +35,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
       // Don't offer the same plan twice in a row.
       const prev = [...next].reverse().find((m) => m.proposal && m.proposal.type === out.proposal?.type);
       const same = prev && String(prev.proposal.focus || prev.proposal.title || '').trim().toLowerCase() === String(out.proposal.focus || out.proposal.title || '').trim().toLowerCase();
-      setMsgs([...next, { role: 'assistant', content: clean || reply, proposal: same ? null : (out.proposal || null), sources: out.sources || [] }]);
+      setMsgs([...next, { role: 'assistant', content: clean || reply, proposal: same ? null : (out.proposal || null), sources: out.sources || [], timing: out.timing }]);
     } catch (e) {
       setLive('');
       setError(String(e.message || e));
@@ -66,6 +66,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
             {m.role === 'assistant' && <img src={think} alt="" className="msg-face" />}
             <div className="msg-body">
               <p>{m.content}</p>
+              {m.timing && <p className="soft timing">{m.timing.first !== null && m.timing.first !== undefined ? `First word ${(m.timing.first / 1000).toFixed(1)}s · ` : ''}Answered in {(m.timing.total / 1000).toFixed(1)}s{m.sources?.length ? ' · web search' : ''}</p>}
               {m.sources?.length > 0 && (
                 <p className="sources">Sources: {m.sources.map((src, k) => (
                   <React.Fragment key={src.url}>{k ? ', ' : ''}<a href={src.url} target="_blank" rel="noopener noreferrer">{src.title.length > 40 ? new URL(src.url).hostname.replace(/^www\./, '') : src.title}</a></React.Fragment>
