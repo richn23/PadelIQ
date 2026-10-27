@@ -101,6 +101,13 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
 function ProposalText({ p }) {
   if (p.type === 'skill_level') return <p><strong>Suggested level: {p.level}</strong>{p.reason ? ` · ${p.reason}` : ''}</p>;
   if (p.type === 'goal') return <p><strong>Suggested goal:</strong> {p.title}{p.progress != null ? ` (${p.progress}% happy now)` : ''}</p>;
+  if (p.type === 'thread') return (
+    <div>
+      <p><strong>Save this to try on court?</strong></p>
+      {p.focus && <p>{p.focus}</p>}
+      {Array.isArray(p.cues) && p.cues.map((c, i) => <p key={i} className="soft">· {c}</p>)}
+    </div>
+  );
   if (p.type === 'reflection') return (
     <div>
       <p><strong>Save these notes?</strong></p>

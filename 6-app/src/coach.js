@@ -3,6 +3,7 @@ import { allSkills, allSkillById, axes, levels } from './data.js';
 import { currentLevel, currentAxisLevels, levelName, levelFocus, skillChecks } from './levels.js';
 import { recentSessions } from './checkin.js';
 import { goalSkill, goalNote } from './goals.js';
+import { threadLines } from './threads.js';
 import { prettyDate, sortSessions, todayISO } from './sessions.js';
 import { modeOf, levelKnown } from './modes.js';
 import { playedGames, noteOf, themeCounts, patternLine } from './patterns.js';
@@ -55,6 +56,7 @@ export function buildPlayerFile(player, { skill } = {}) {
       L.push(`- ${goalSkill(g)}${g.skillId ? ` (${g.skillId})` : ''}: "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
     });
   } else L.push('Goals: none yet');
+  L.push(...threadLines(player));
   const own = Object.entries(checks).filter(([, v]) => v.from !== 'quiz');
   L.push(`Skill levels checked: ${own.length ? own.map(([id, v]) => `${allSkillById[id]?.name} ${levelName(v.level)}${v.focus?.[0] ? ` (working on: ${v.focus[0]})` : ''}`).join('; ') : (known ? 'none yet (only the starting quiz)' : 'none yet')}`);
   if (sessions.length) {

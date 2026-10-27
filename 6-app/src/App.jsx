@@ -127,7 +127,7 @@ export default function App() {
           {view === 'skills' && <Skills key={'s' + tapCount} known={levelShown(player)} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
           {view === 'goals' && <Goals simple={!levelKnown(player)} player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
           {view === 'matches' && <Matches key={'m' + tapCount} mode={mode} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} openReflect={intent?.reflect} fresh={!!intent?.fresh} />}
-          {view === 'coach' && <Coach key={'c' + tapCount} howTo={mode} player={player} start={coachQuestion} onGoSkills={() => go('skills', { view: 'explore' })} />}
+          {view === 'coach' && <Coach key={'c' + tapCount} howTo={mode} player={player} updatePlayer={updatePlayer} start={coachQuestion} onGoSkills={() => go('skills', { view: 'explore' })} />}
           {mode !== 'fun' && <TabBar active={view} onChange={(id) => { setCoachQuestion(null); go(id); }} />}
         </>
       )}
