@@ -29,7 +29,7 @@ async function pickModel(key) {
 // The model sometimes answers with plain words plus a stray JSON bit, or with JSON that never closes.
 // Never show raw JSON to the player: pull the words out, and the proposal if it is complete.
 function stripCites(t) {
-  return t.replace(/[\uE200-\uE206][^\uE200-\uE206]*?[\uE201-\uE206]/g, '').replace(/[\uE200-\uE206]/g, '').replace(/\s*cite(?:turn\d+(?:search|view|news|image)\d+)+/g, '').replace(/ +([.,])/g, '$1').trim();
+  return t.replace(/\uE200[^\uE201]*\uE201/g, '').replace(/[\uE200-\uE206]/g, '').replace(/\s*cite(?:turn\d+(?:search|view|news|image)\d+)+/g, '').replace(/ +([.,])/g, '$1').trim();
 }
 
 function salvage(text) {
