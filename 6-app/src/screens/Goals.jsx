@@ -8,6 +8,17 @@ const SPOTS = ['second_serve', 'return_of_serve', 'volley_backhand', 'bandeja', 
 
 export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
   const [picking, setPicking] = useState(false);
+  const [choosing, setChoosing] = useState(false); // the two ways to add a goal
+  const [helping, setHelping] = useState(false); // choosing a goal with the coach
+  const coachGoal = (pr) => {
+    if (pr.type !== 'goal') return;
+    if (goals.length >= MAX_GOALS) return 'You already have 3 goals going. Park one first, then add this.';
+    const known = skillById[pr.skillId]; const title = String(pr.title || '').slice(0, 80);
+    if (!known && !title) return;
+    updatePlayer((p) => addGoalTo(p, known ? { skillId: pr.skillId, title } : { own: true, title }));
+    setHelping(false);
+    return 'Added to your goals.';
+  };
   const [own, setOwn] = useState('');
   const addGoal = (g) => { updatePlayer((p) => addGoalTo(p, g)); setPicking(false); setOwn(''); };
   const parked = player.parkedGoals || [];
@@ -102,13 +113,32 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
             })}
           </ul>
         )}
-        {goals.length < 3 && !picking && <button className="btn" onClick={simple ? () => setPicking(true) : onAdd}>{simple ? '+ Pick one thing to work on' : '+ Choose a skill to work on'}</button>}
+        {goals.length < 3 && !picking && !choosing && !helping && <button className="btn" onClick={() => setChoosing(true)}>+ Add a goal</button>}
+        {choosing && (
+          <div className="ob-form">
+            <p className="eyebrow">How would you like to set it?</p>
+            <button className="btn" onClick={() => { setChoosing(false); setPicking(true); }}>I know what I want to work on</button>
+            <button className="btn" onClick={() => { setChoosing(false); setHelping(true); }}>Help me choose with the coach</button>
+            <button className="mini quiet" onClick={() => setChoosing(false)}>Cancel</button>
+          </div>
+        )}
+        {helping && (
+          <CoachChat
+            mode="ask"
+            title="Choose a goal with the coach"
+            intro="Tell me what's frustrating you in your games, or what you'd like to be better at. We'll turn it into one goal."
+            player={player}
+            onProposal={coachGoal}
+            onClose={() => setHelping(false)}
+          />
+        )}
         {picking && (
           <div className="ob-form">
-            <p className="eyebrow">What's one thing to work on?</p>
+            <p className="eyebrow">What do you want to work on?</p>
             <div className="chips">
               {SPOTS.filter((id) => skillById[id] && !goals.some((g) => g.skillId === id)).map((id) => <button key={id} className="chip-btn skill" onClick={() => addGoal({ skillId: id, title: '' })}>{skillById[id].name}</button>)}
             </div>
+            {!simple && <button className="linkish" onClick={onAdd}>Browse all skills</button>}
             <label className="soft">Or in your own words
               <input value={own} maxLength={60} placeholder="e.g. Stay calm at 30-40" onChange={(e) => setOwn(e.target.value)} />
             </label>
@@ -135,7 +165,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
             </ul>
           </div>
         )}
-        <p className="soft">{simple ? 'One thing is plenty. You can change it any time.' : 'Goals start from a skill. Pick one, then tap "Make this a goal".'}</p>
+        <p className="soft">{simple ? 'One thing is plenty. You can change it any time.' : 'Pick it yourself or work it out with the coach. A goal can be a skill or your own words.'}</p>
       </section>
     </main>
   );
