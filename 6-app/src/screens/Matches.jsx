@@ -84,7 +84,8 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
     <main className="page">
       <button className="btn" onClick={() => setMode({ name: 'add', date: day || undefined })}>+ Add a {simple ? 'game' : 'match or lesson'}{day ? ` on ${prettyDate(day)}` : ''}</button>
       {fact && <p className="soft center">{fact}</p>}
-      {!simple && <Calendar sessions={sessions} day={day} onDay={(d) => setDay(day === d ? null : d)} />}
+      <Calendar sessions={sessions} day={day} onDay={(d) => setDay(day === d ? null : d)} />
+      <MonthSplit sessions={sessions} />
       {simple ? null : left === 0 ? (
         <section className="panel center">
           <p className="insight">Check-in due</p>
@@ -618,13 +619,41 @@ function Calendar({ sessions, day, onDay }) {
             <button key={i} className={'cal-day' + (k === today ? ' today' : '') + (k === day ? ' on' : '')} onClick={() => onDay(k)} aria-label={`${d.getDate()}${list.length ? `, ${list.length} session${list.length > 1 ? 's' : ''}` : ''}`}>
               {d.getDate()}
               <span className="cal-dots">
-                {list.slice(0, 3).map((s) => <i key={s.id} className={s.status === 'played' ? 'played' : 'planned'} />)}
+                {list.slice(0, 3).map((s) => <i key={s.id} className={(s.kind === 'lesson' ? 'lesson' : 'match') + (s.status === 'played' || isOver(s) ? ' done' : '')} />)}
               </span>
             </button>
           );
         })}
       </div>
-      <p className="soft cal-key"><i className="planned" /> planned <i className="played" /> played{day ? ' · tap the day again to see all' : ''}</p>
+      <p className="soft cal-key"><i className="match done" /> match <i className="lesson done" /> lesson · solid = played, ring = coming up{day ? ' · tap the day again to see all' : ''}</p>
+    </section>
+  );
+}
+
+// This month vs last month: how many games and lessons, as two simple bars.
+function MonthSplit({ sessions }) {
+  const now = new Date();
+  const key = (d) => d.getFullYear() * 12 + d.getMonth();
+  const count = (offset) => {
+    const target = key(now) - offset;
+    const inMonth = sessions.filter((s) => { const [y, m] = s.date.split('-').map(Number); return y * 12 + (m - 1) === target && (s.status === 'played' || isOver(s)); });
+    return { matches: inMonth.filter((s) => s.kind !== 'lesson').length, lessons: inMonth.filter((s) => s.kind === 'lesson').length };
+  };
+  const rows = [{ label: 'This month', ...count(0) }, { label: 'Last month', ...count(1) }];
+  const max = Math.max(1, ...rows.map((r) => r.matches + r.lessons));
+  if (rows.every((r) => r.matches + r.lessons === 0)) return null;
+  return (
+    <section className="panel">
+      <p className="eyebrow">How much you're playing</p>
+      {rows.map((r) => (
+        <div key={r.label} className="split-row">
+          <p className="soft split-label">{r.label} · {r.matches} game{r.matches === 1 ? '' : 's'}{r.lessons > 0 || rows.some((x) => x.lessons) ? `, ${r.lessons} lesson${r.lessons === 1 ? '' : 's'}` : ''}</p>
+          <div className="split-bar">
+            <span className="match" style={{ width: `${(r.matches / max) * 100}%` }} />
+            <span className="lesson" style={{ width: `${(r.lessons / max) * 100}%` }} />
+          </div>
+        </div>
+      ))}
     </section>
   );
 }

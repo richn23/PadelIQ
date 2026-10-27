@@ -310,9 +310,18 @@ input[type=date]::-webkit-date-and-time-value, input[type=time]::-webkit-date-an
 .cal-dots { display: flex; gap: 2px; height: 5px; }
 .cal-dots i, .cal-key i { display: inline-block; width: 5px; height: 5px; border-radius: 50%; }
 .cal-key i { margin: 0 3px 1px 6px; vertical-align: middle; }
-i.planned { background: var(--accent); }
-i.played { background: #fff; }
-.cal-day.on i.planned { background: var(--accent-text); }
+i.match { background: var(--accent); }
+i.lesson { background: #ff9f43; }
+.cal-dots i:not(.done), .cal-key i:not(.done) { background: transparent !important; box-shadow: inset 0 0 0 1.5px currentColor; }
+i.match:not(.done) { color: var(--accent); }
+i.lesson:not(.done) { color: #ff9f43; }
+.cal-day.on i.match.done { background: var(--accent-text); }
+.split-row { margin-top: 10px; }
+.split-label { margin-bottom: 4px; }
+.split-bar { display: flex; height: 12px; gap: 2px; }
+.split-bar span { display: block; height: 100%; border-radius: 6px; }
+.split-bar .match { background: var(--accent); }
+.split-bar .lesson { background: #ff9f43; }
 .cal-key { margin-top: 6px; }
 
 /* Coach button now sits in the top bar, so it never covers content */
