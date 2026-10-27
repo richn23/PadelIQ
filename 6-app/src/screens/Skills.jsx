@@ -16,7 +16,7 @@ const views = [
 ];
 
 export default function Skills({ player, updatePlayer, startView = 'have', openSkill = null, known = true }) {
-  const [view, setViewRaw] = useState(known ? (startView || 'have') : 'explore');
+  const [view, setViewRaw] = useState(known ? (startView || 'have') : (startView === 'explore' ? 'explore' : 'have'));
   const setView = setViewRaw;
   const [open, setOpen] = useState(openSkill);
   const checks = skillChecks(player);
@@ -40,13 +40,12 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
 
   return (
     <main className="page">
-      {!known && <p className="soft center">Have a look around. Open any skill to see what it means, and rate yourself if you like.</p>}
-      {known && <div className="segmented" role="tablist">
-        {views.map((v) => (
+      <div className="segmented" role="tablist">
+        {views.filter((v) => known || v.id !== 'next').map((v) => (
           <button key={v.id} role="tab" aria-selected={view === v.id} className={view === v.id ? 'on' : ''} onClick={() => setView(v.id)}>{v.label}</button>
         ))}
-      </div>}
-      {view === 'have' && toCheck.length > 0 && (
+      </div>
+      {view === 'have' && known && toCheck.length > 0 && (
         <section className="panel rest-card">
           <p className="eyebrow">Finish your check</p>
           <p className="insight">{toCheck.length} {levelName(level)} skill{toCheck.length === 1 ? '' : 's'} not checked yet.</p>
@@ -54,7 +53,7 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
           <button className="btn" onClick={() => setCheckingRest(true)}>Check the rest</button>
         </section>
       )}
-      {view === 'have' && <Have axisLevels={axisLevels} scores={axisScores} level={level} checks={checks} onOpen={setOpen} onSet={setSelf} />}
+      {view === 'have' && <Have known={known} axisLevels={axisLevels} scores={axisScores} level={level} checks={checks} onOpen={setOpen} onSet={setSelf} />}
       {view === 'next' && <Next level={level} checks={checks} onOpen={setOpen} />}
       {view === 'explore' && <Explore onOpen={setOpen} />}
     </main>
@@ -92,17 +91,18 @@ function Row({ skill, right, onOpen }) {
   );
 }
 
-function Have({ axisLevels, scores, level, checks, onOpen, onSet }) {
+function Have({ known = true, axisLevels, scores, level, checks, onOpen, onSet }) {
   const [area, setArea] = useState(null);
-  const strengthIds = new Set(allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level)).map((s) => s.id));
+  const unrated = known ? null : new Set(axes.filter((a) => !allSkills.some((s) => s.axis === a.id && !s.optional && checks[s.id])).map((a) => a.id));
+  const strengthIds = new Set(!known ? [] : allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level)).map((s) => s.id));
   const checked = allSkills.filter((s) => checks[s.id] && (!area || s.axis === area) && (area || !strengthIds.has(s.id)));
-  const strengths = allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level));
+  const strengths = !known ? [] : allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level));
   return (
     <>
       <section className="panel">
-        <div className="row-between"><p className="eyebrow">Your level</p><p className="pill">{levelName(level)}</p></div>
-        <Pentagon axes={axes} axisLevels={axisLevels} scores={scores} selected={area} onSelect={(id) => setArea(area === id ? null : id)} />
-        <p className="soft center">{area ? `Showing ${axisById[area].name}. Tap again for all.` : 'Tap an area to filter'}</p>
+        {known ? <div className="row-between"><p className="eyebrow">Your level</p><p className="pill">{levelName(level)}</p></div> : <p className="eyebrow">Your game, area by area</p>}
+        <Pentagon axes={axes} axisLevels={axisLevels} scores={scores} unrated={unrated} selected={area} onSelect={(id) => setArea(area === id ? null : id)} />
+        <p className="soft center">{area ? `Showing ${axisById[area].name}. Tap again for all.` : known ? 'Tap an area to filter' : 'Tap an area to see its skills. Rate a few and your shape fills in.'}</p>
       </section>
       {strengths.length > 0 && !area && (
         <SkillBars title="Ahead of your level" skills={strengths} checks={checks} level={level} onOpen={onOpen} onSet={onSet} />

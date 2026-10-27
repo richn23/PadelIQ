@@ -50,3 +50,6 @@ export function funFact(sessions = []) {
 // Has this player told us their level? Fun and reflection players who skipped the skills check haven't:
 // the app stores a placeholder for them, which must never be shown or coached as a real level.
 export const levelKnown = (player) => modeOf(player) === 'full' || !!player?.quiz || !!player?.levelSetByPlayer || Object.keys(player?.skillChecks || {}).length > 0;
+
+// Whether to show a level label on the Skills screen: only when the player really gave one (not just rated a skill or two).
+export const levelShown = (player) => modeOf(player) === 'full' || !!player?.quiz || !!player?.levelSetByPlayer;

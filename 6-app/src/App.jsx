@@ -16,7 +16,7 @@ import { pickTheme, applyTheme } from './theme.js';
 import { loadPlayer, savePlayer, clearPlayer, migratePlayer } from './store.js';
 import { player as samplePlayer } from './data.js';
 import { shiftAreas } from './levels.js';
-import { modeOf, starterPlayer, levelKnown } from './modes.js';
+import { modeOf, starterPlayer, levelKnown, levelShown } from './modes.js';
 
 // Testing helpers: ?reset starts again, ?demo shows the sample player (Alex).
 const params = new URLSearchParams(location.search);
@@ -124,7 +124,7 @@ export default function App() {
               onReset={() => { clearPlayer(); setPlayer(null); setScreen('welcome'); }}
             />
           )}
-          {view === 'skills' && <Skills key={'s' + tapCount} known={levelKnown(player)} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
+          {view === 'skills' && <Skills key={'s' + tapCount} known={levelShown(player)} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
           {view === 'goals' && <Goals simple={!levelKnown(player)} player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
           {view === 'matches' && <Matches key={'m' + tapCount} mode={mode} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} openReflect={intent?.reflect} fresh={!!intent?.fresh} />}
           {view === 'coach' && <Coach key={'c' + tapCount} howTo={mode} player={player} start={coachQuestion} onGoSkills={() => go('skills', { view: 'explore' })} />}

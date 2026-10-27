@@ -16,9 +16,9 @@ const toPoints = (pts) => pts.map((p) => p.map((v) => v.toFixed(1)).join(',')).j
 const shortName = (axis) => axis.name.split(' and ')[0];
 
 // scores (optional): a number per area (2.3 = C+). Then the shape and labels show + and −.
-export default function Pentagon({ axes, axisLevels, scores, selected, onSelect }) {
-  const label = (id) => (scores && typeof scores[id] === 'number' ? scoreLabel(scores[id]) : axisLevels[id]);
-  const frac = (id) => (scores && typeof scores[id] === 'number' ? (Math.max(scores[id], -0.4) + 1) / levels.length : levelFraction(axisLevels[id]));
+export default function Pentagon({ axes, axisLevels, scores, selected, onSelect, unrated }) {
+  const label = (id) => unrated?.has(id) ? '–' : (scores && typeof scores[id] === 'number' ? scoreLabel(scores[id]) : axisLevels[id]);
+  const frac = (id) => unrated?.has(id) ? 0.04 : (scores && typeof scores[id] === 'number' ? (Math.max(scores[id], -0.4) + 1) / levels.length : levelFraction(axisLevels[id]));
   const n = axes.length;
   const rings = levels.map((_, k) => toPoints(axes.map((_, i) => point(i, n, (k + 1) / levels.length))));
   const shape = axes.map((a, i) => point(i, n, frac(a.id)));
