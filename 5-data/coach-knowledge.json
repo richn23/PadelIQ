@@ -33,6 +33,21 @@
    "sources": [
     "The Padel School",
     "FIP rules"
+   ],
+   "causes": [
+    [
+     "Serve is slow and loopy",
+     "too much upward swing, unsuitable contact, a hesitant action, poorly controlled flight",
+     "Is it lacking pace, or is the returner simply getting a comfortable high ball?"
+    ],
+    [
+     "First serve faults too often",
+     "too much pace or spin, inconsistent ball drop, a rushed action",
+     "Is it accuracy, mechanics, or choosing too much risk?"
+    ]
+   ],
+   "practice": [
+    "Serve repeatedly to chosen targets, starting with a simple consistent action before adding variation."
    ]
   },
   {
@@ -62,6 +77,13 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Second serve gets attacked",
+     "too soft or too predictable",
+     "Is the issue placement or pace?"
+    ]
    ]
   },
   {
@@ -94,6 +116,21 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Forehand volley floats long",
+     "open racket face, swing path, too much racket speed, late preparation",
+     "Does it happen against fast balls or when trying an aggressive volley?"
+    ]
+   ],
+   "depends": [
+    "Racket path, face angle and speed are separate variables: ask which one seems off before giving a fix.",
+    "A strong volley is not always a better one: controlled volleys build the point, aggressive ones finish it. Check the ball is suitable before adding pace."
+   ],
+   "practice": [
+    "Feed a controlled setup volley followed by an easier ball to finish.",
+    "First volley: practise the serve-to-net move and treat the first volley as a setup shot, not a finisher."
    ]
   },
   {
@@ -127,6 +164,16 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Backhand volley pops up",
+     "face angle or contact, late preparation, wrong swing size",
+     "Is it low balls, balls at the body, or higher attacking balls?"
+    ]
+   ],
+   "depends": [
+    "Ball height, available time and the opponents' positions decide how aggressive to be."
    ]
   },
   {
@@ -159,6 +206,9 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "practice": [
+    "Prepare against stronger incoming attacks with compact readiness and controlled blocks into space."
    ]
   },
   {
@@ -217,6 +267,12 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "depends": [
+    "The choice between smash, bandeja, víbora, gancho and a back-glass recovery depends on the lob, not just the swing. Find out why they chose the shot before assuming the swing is wrong."
+   ],
+   "practice": [
+    "Decision before execution: before a fed lob, say whether you will smash, play a controlled overhead or retreat, then compare with what the ball actually did."
    ]
   },
   {
@@ -250,6 +306,24 @@
    "sources": [
     "The Padel School",
     "Padel Magazine"
+   ],
+   "causes": [
+    [
+     "Bandeja hits the net",
+     "contact position, preparation, swing path, or choosing a bandeja for a lob that is too hard to control",
+     "Are you balanced enough to attempt it, or should you defend?"
+    ],
+    [
+     "Bandeja bounces too high",
+     "contact too far behind or too high, too much power, wrong swing path",
+     "Does the ball land badly, or land well but rebound too comfortably?"
+    ]
+   ],
+   "depends": [
+    "Teachers differ (chest-driven versus arm-driven, playing side). Don't prescribe one 'correct' swing; stay with the basics: early prep, suitable contact, control, recovery."
+   ],
+   "practice": [
+    "Fed lobs: turn early, get behind the ball and recover toward the net; video can show contact and movement."
    ]
   },
   {
@@ -313,6 +387,13 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Smash goes long",
+     "too much power, poor control of the flight, or choosing to finish a ball that wasn't suitable",
+     "Was the lob genuinely suitable for a finishing smash?"
+    ]
    ]
   },
   {
@@ -453,6 +534,12 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "depends": [
+    "Not every back-glass ball suits a bajada: height, balance and the opponents' positions decide."
+   ],
+   "practice": [
+    "Defend the corner, then attack off the back glass, to practise switching from defending to attacking."
    ]
   },
   {
@@ -483,6 +570,13 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Drop shot gets attacked",
+     "too much height, no disguise, the wrong incoming ball, or opponents close enough to recover",
+     "Is this an execution problem or a shot-choice problem?"
+    ]
    ]
   },
   {
@@ -508,11 +602,25 @@
     "Is it fast first serves or all serves? Where does it go wrong?"
    ],
    "avoid": [
-    "No single technique for every serve."
+    "No single technique for every serve.",
+    "When someone says 'I always miss my return', don't jump to a swing fix; first find out which serves and whether they hesitate over the glass rebound."
    ],
    "sources": [
     "The Padel School",
     "FIP rules"
+   ],
+   "causes": [
+    [
+     "Return goes into the net",
+     "late decision, poor preparation, poor contact, or trying to attack a difficult serve",
+     "Is the serve going toward the glass or more central?"
+    ]
+   ],
+   "depends": [
+    "Difficult serve toward the side glass: play a simple, controlled return.",
+    "Difficult serve toward the T: a higher defensive lob may buy recovery time.",
+    "Easier central serve: a return to the server's feet or an attacking lob can work.",
+    "Comfortable return and opponents out of place: a more ambitious transition becomes possible."
    ]
   },
   {
@@ -603,6 +711,13 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Defensive lob falls short",
+     "not enough height or depth, a rushed contact, or the wrong ball for it",
+     "Were you under pressure or comfortable enough for an attacking lob?"
+    ]
    ]
   },
   {
@@ -640,6 +755,26 @@
    "sources": [
     "The Padel School",
     "Hello Padel"
+   ],
+   "causes": [
+    [
+     "Ball gets too close after the glass",
+     "moving toward the contact point instead of the rebound path, poor spacing, late preparation",
+     "Does the ball rebound straight or at an angle?"
+    ],
+    [
+     "Back-glass return sits up",
+     "late preparation, contact behind the body, or an attacking shot from a defensive situation",
+     "Are you trying to attack from a defensive spot?"
+    ]
+   ],
+   "depends": [
+    "Teaching has several components that are not opposites: 'move back with the ball', 'move sideways to make room', 'prepare early'. Which applies depends on the ball's path.",
+    "Ball height (a teaching zone, not a scientific threshold): low (ankle to knee) usually needs a controlled recovery shot; mid (waist to chest) gives control with options; high (above shoulder) may allow a more aggressive shot if balanced.",
+    "Never say always move back, always move sideways, always wait longer or always attack the rebound. Say what to read (the rebound path), then what to do."
+   ],
+   "practice": [
+    "Corner feeds: anticipate where the rebound ends up instead of chasing where it hits the wall."
    ]
   },
   {
@@ -701,6 +836,16 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Double-glass return is mistimed",
+     "misreading the order of the rebounds, turning wrongly, or not enough space",
+     "Back-then-side or side-then-back? They need different anticipation."
+    ]
+   ],
+   "practice": [
+    "Corner feeds, watching where the rebound finishes rather than where it touches the wall."
    ]
   },
   {
@@ -820,6 +965,19 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Chiquita gets attacked",
+     "too fast, too high, poor choice, or opponents already set to volley",
+     "Did it force a hard volley or give an easy one?"
+    ]
+   ],
+   "depends": [
+    "Advance after a good chiquita or lob; recover if it left an easy attack."
+   ],
+   "practice": [
+    "Slow shots to the net player's feet, noticing whether you have time to advance."
    ]
   },
   {
@@ -1086,6 +1244,17 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "causes": [
+    [
+     "Loses the net after a lob",
+     "late overhead decision, a weak overhead, poor recovery, or the partner not moving with them",
+     "Is the problem the overhead itself or what happens after it?"
+    ]
+   ],
+   "depends": [
+    "Don't move up just because you played a lob or chiquita; the quality of that ball decides if you have time and pressure.",
+    "Research on professionals links finishing at the net with winning more rallies, but that does not mean a recreational player should rush forward after every shot."
    ]
   },
   {
@@ -1146,10 +1315,14 @@
     "When does the gap open: after a wide ball, after a lob, or in a rally?"
    ],
    "avoid": [
-    "Do not make up rules like \"the first to move takes the ball\"."
+    "Do not make up rules like \"the first to move takes the ball\".",
+    "The research does not support giving every middle ball to whoever moves first."
    ],
    "sources": [
     "The Padel School"
+   ],
+   "depends": [
+    "If one player is pulled wide, the partner often covers the middle; if one retreats, the pair usually adjusts together."
    ]
   },
   {
@@ -1182,6 +1355,12 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "depends": [
+    "Winning pairs in a study of sub-elite matches made fewer volley errors, and most points came from unforced errors, so consistency is a real tactical goal. It does not mean never attacking."
+   ],
+   "practice": [
+    "Tactical restraint: set a match focus such as controlling pace, avoiding premature smashes, or recovering position."
    ]
   },
   {
@@ -1249,6 +1428,10 @@
    ],
    "sources": [
     "The Padel School"
+   ],
+   "practice": [
+    "Same error, different ball: feed varied heights and speeds and note where the mistake appears.",
+    "Technique under increasing difficulty: comfortable feeds, then movement, then faster balls, then points."
    ]
   },
   {
@@ -1277,7 +1460,8 @@
     "What happens on the ball you both miss: where are you each standing?"
    ],
    "avoid": [
-    "Do not say that the first to move or the forehand always takes it. At most offer a simple starting idea and say when it does not apply."
+    "Do not say that the first to move or the forehand always takes it. At most offer a simple starting idea and say when it does not apply.",
+    "The research does not support 'first to move takes it'."
    ],
    "sources": [
     "The Padel School"
@@ -1341,10 +1525,14 @@
     "What do you notice in your body or your decisions on big points?"
    ],
    "avoid": [
-    "Do not promise that a breath or a cue fixes it. Routines go BEFORE or BETWEEN points, not mid-rally."
+    "Do not promise that a breath or a cue fixes it. Routines go BEFORE or BETWEEN points, not mid-rally.",
+    "Don't say a missed shot on a big point was caused by nerves unless the player says they felt it."
    ],
    "sources": [
     "Peer-reviewed study (PMC)"
+   ],
+   "depends": [
+    "A 2026 study of high-level men found no overall difference in several final-shot measures between normal and important points. A miss at break point is not proof of nerves."
    ]
   },
   {
@@ -1404,7 +1592,8 @@
     "When in the match does it fade: early, late, or after long points?"
    ],
    "avoid": [
-    "Say \"might\" about fatigue. Prefer cues about the target or the ball."
+    "Say \"might\" about fatigue. Prefer cues about the target or the ball.",
+    "Fatigue research was in young elite men: say 'might', not 'is'."
    ],
    "sources": [
     "Peer-reviewed studies (PMC)"

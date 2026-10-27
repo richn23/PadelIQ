@@ -30,6 +30,9 @@ export function notesSection(cards) {
       'Points: ' + c.facts.join(' '),
     ];
     if (c.mistakes.length) parts.push('Common mistakes: ' + c.mistakes.join('; ') + '.');
+    if (c.causes?.length) parts.push('Possible causes (candidates, never a diagnosis): ' + c.causes.map((x) => `"${x[0]}" may involve ${x[1]}. Tell apart: ${x[2]}`).join(' | '));
+    if (c.depends?.length) parts.push('The advice changes with the situation: ' + c.depends.join(' '));
+    if (c.practice?.length) parts.push('Practice ideas from coaching guides (suggest at most one): ' + c.practice.join(' / '));
     if (c.ask.length) parts.push('Good questions: ' + c.ask.join(' / '));
     if (c.avoid.length) parts.push('Do not: ' + c.avoid.join(' '));
     return '- ' + parts.join('\n  ');
