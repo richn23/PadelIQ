@@ -28,6 +28,10 @@ async function pickModel(key) {
 
 // The model sometimes answers with plain words plus a stray JSON bit, or with JSON that never closes.
 // Never show raw JSON to the player: pull the words out, and the proposal if it is complete.
+function stripCites(t) {
+  return t.replace(/[\uE200-\uE206][^\uE200-\uE206]*?[\uE201-\uE206]/g, '').replace(/[\uE200-\uE206]/g, '').replace(/\s*cite(?:turn\d+(?:search|view|news|image)\d+)+/g, '').replace(/ +([.,])/g, '$1').trim();
+}
+
 function salvage(text) {
   let reply = String(text).trim();
   let proposal = null;
@@ -201,6 +205,8 @@ export default async function handler(req, res) {
     } catch {
       out = salvage(text);
     }
+    // Search tools sometimes leave citation markers in the words (private-use brackets, or 'citeturn0search0'). Never show them.
+    if (typeof out.reply === 'string') out.reply = stripCites(out.reply);
     if (sources.length) out.sources = sources.slice(0, 4);
     return res.status(200).json(out);
   } catch (e) {
