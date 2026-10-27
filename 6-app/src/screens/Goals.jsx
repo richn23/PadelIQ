@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import { allSkillById as skillById, axisById, whenLabel } from '../data.js';
 
-export default function Goals({ player, updatePlayer, onAdd }) {
+// For players who never gave a level: a short list of common weak spots, or your own words. No level, no long skill list.
+const SPOTS = ['second_serve', 'return_of_serve', 'volley_backhand', 'bandeja', 'smash', 'defensive_lob', 'net_play', 'composure'];
+
+export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
+  const [picking, setPicking] = useState(false);
+  const [own, setOwn] = useState('');
+  const addGoal = (g) => { updatePlayer((p) => ({ ...p, goals: [...(p.goals || []), { id: 'g' + Date.now(), progress: 30, created: new Date().toISOString(), ...g }] })); setPicking(false); setOwn(''); };
   const goals = player.goals || [];
   const [removing, setRemoving] = useState(null);
   const setProgress = (id, v) => updatePlayer((p) => ({ ...p, goals: p.goals.map((g) => (g.id === id ? { ...g, progress: v } : g)) }));
@@ -46,8 +52,21 @@ export default function Goals({ player, updatePlayer, onAdd }) {
             })}
           </ul>
         )}
-        {goals.length < 3 && <button className="btn" onClick={onAdd}>+ Choose a skill to work on</button>}
-        <p className="soft">Goals start from a skill. Pick one, then tap "Make this a goal".</p>
+        {goals.length < 3 && !picking && <button className="btn" onClick={simple ? () => setPicking(true) : onAdd}>{simple ? '+ Pick one thing to work on' : '+ Choose a skill to work on'}</button>}
+        {picking && (
+          <div className="ob-form">
+            <p className="eyebrow">What's one thing to work on?</p>
+            <div className="chips">
+              {SPOTS.filter((id) => skillById[id] && !goals.some((g) => g.skillId === id)).map((id) => <button key={id} className="chip-btn skill" onClick={() => addGoal({ skillId: id, title: '' })}>{skillById[id].name}</button>)}
+            </div>
+            <label className="soft">Or in your own words
+              <input value={own} maxLength={60} placeholder="e.g. Stay calm at 30-40" onChange={(e) => setOwn(e.target.value)} />
+            </label>
+            <button className="btn" disabled={!own.trim()} onClick={() => addGoal({ own: true, title: own.trim() })}>Save</button>
+            <button className="mini quiet" onClick={() => setPicking(false)}>Cancel</button>
+          </div>
+        )}
+        <p className="soft">{simple ? 'One thing is plenty. You can change it any time.' : 'Goals start from a skill. Pick one, then tap "Make this a goal".'}</p>
       </section>
     </main>
   );

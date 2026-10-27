@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import SkillBars from '../components/SkillBars.jsx';
 import { axes, axisById, levels, allSkills, allSkillById as skillById } from '../data.js';
 import { currentAxisLevels, currentAxisScores, currentLevel, skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import { sortSessions, prettyDate, sessionsUntilCheckIn, todayISO } from '../sessions.js';
+import { findThemes } from '../coach.js';
+import { needsThemes, themeCounts } from '../patterns.js';
+import { levelKnown } from '../modes.js';
 
 function greeting() {
   const h = new Date().getHours();
@@ -14,6 +17,16 @@ function greeting() {
 export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
   const simple = mode !== 'full'; // A little reflection: no level, no skills picture, no check-ins
   const [selected, setSelected] = useState(null);
+  // What keeps coming up in your notes: the coach groups them, the app counts them. Looks again every 5 games.
+  const [busy, setBusy] = useState(false);
+  const themes = mode === 'fun' ? [] : themeCounts(player);
+  const refresh = () => {
+    if (busy) return;
+    setBusy(true);
+    findThemes(player).then((patterns) => updatePlayer((p) => ({ ...p, patterns }))).catch(() => { /* offline: try again next time */ }).finally(() => setBusy(false));
+  };
+  const tried = useRef(false);
+  useEffect(() => { if (!tried.current && needsThemes(player) && location.protocol !== 'file:') { tried.current = true; refresh(); } }, []);
   const upcomingAll = sortSessions(player.sessions).upcoming;
   // Logged after playing (or with a result) counts as played, not as the next session.
   const done = (x) => x.date < todayISO() || x.logged || !!x.result;
@@ -131,7 +144,24 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
           )}
         </section>
 
-        <section className="panel" aria-label="Coach insight">
+        {mode !== 'fun' && (themes.length > 0 || busy) && (
+          <section className="panel" aria-label="Your pattern">
+            <p className="eyebrow">Your pattern</p>
+            {themes.length === 0 ? <p className="soft">Reading your notes…</p> : (
+              <ul className="goals">
+                {themes.slice(0, 3).map((t) => (
+                  <li key={t.label} className="goal">
+                    <p className="goal-title">{t.label}</p>
+                    <p className="soft">{t.count} of {t.total} games{t.quiet >= 5 ? ` · quiet since game ${t.last}` : ''}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="soft">From your own notes. <button className="linkish" onClick={refresh} disabled={busy}>{busy ? 'Updating…' : 'Update'}</button></p>
+          </section>
+        )}
+
+        {!(simple && themes.length > 0) && <section className="panel" aria-label="Coach insight">
           <p className="eyebrow">Coach insight</p>
           {player.insight ? (
             <>
@@ -139,9 +169,9 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
               <p className="soft">Based on: {player.insight.basedOn}</p>
             </>
           ) : (
-            <p className="insight">{player.provisional ? "Your level is a starting estimate. Play a few sessions and I'll start spotting patterns." : "Keep logging your sessions. I'll start spotting patterns once the coach is connected."}</p>
+            <p className="insight">{!levelKnown(player) ? "Log a few games, with a note on what to work on, and I'll start spotting patterns." : player.provisional ? "Your level is a starting estimate. Play a few sessions and I'll start spotting patterns." : "Keep logging your sessions. I'll start spotting patterns once the coach is connected."}</p>
           )}
-        </section>
+        </section>}
       </main>
     </>
   );

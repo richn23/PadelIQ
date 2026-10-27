@@ -6,6 +6,7 @@ import CoachChat from '../components/CoachChat.jsx';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn } from '../sessions.js';
 import { funFact } from '../modes.js';
+import { noteOf } from '../patterns.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], focusUnknown: false, intention: '', outcome: '', score: '', targets: [], note: '' };
 // Results a player can pick. 'unknown' = can't remember (not counted in win/loss totals).
@@ -148,6 +149,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
                   <span>
                     <span className="session-when">{prettyDate(s.date)}</span>
                     <span className="soft block">{summary(s)}</span>
+                    {simple && noteOf(s) && <span className="soft block">“{noteOf(s)}”</span>}
                   </span>
                   <span className="row-right">{s.kind === 'match' && s.result?.outcome && s.result.outcome !== 'unknown' && <span className={'tag ' + s.result.outcome}>{cap(s.result.outcome)}</span>}<span className="chev">›</span></span>
                 </button>

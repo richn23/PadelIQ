@@ -5,6 +5,7 @@ import { recentSessions } from './checkin.js';
 import { goalSkill, goalNote } from './goals.js';
 import { prettyDate, sortSessions, todayISO } from './sessions.js';
 import { modeOf, levelKnown } from './modes.js';
+import { playedGames, noteOf, themeCounts, patternLine } from './patterns.js';
 
 // How the player wants to use the app, and how the coach should stand. The coach prompt explains these lines.
 const MODE_NOTE = {
@@ -50,7 +51,7 @@ export function buildPlayerFile(player, { skill } = {}) {
     goals.forEach((g) => {
       const recent = (player.sessions || []).filter((s) => s.goalChecks?.[g.id]).slice(-5).map((s) => CHECK[s.goalChecks[g.id]]);
       const dx = g.diagnosis?.problems?.length ? ` DIAGNOSIS: ${g.diagnosis.problems.join(', ')}${g.diagnosis.when ? `, mostly ${g.diagnosis.when}` : ''}.` : '';
-      L.push(`- ${goalSkill(g)} (${g.skillId}): "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
+      L.push(`- ${goalSkill(g)}${g.skillId ? ` (${g.skillId})` : ''}: "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
     });
   } else L.push('Goals: none yet');
   const own = Object.entries(checks).filter(([, v]) => v.from !== 'quiz');
@@ -71,6 +72,21 @@ export function buildPlayerFile(player, { skill } = {}) {
       L.push(parts.join('; '));
     });
   } else L.push('Recent sessions: none logged yet');
+  // The whole story, not just the last 5: one short line per game, and what keeps coming up.
+  const all = playedGames(player);
+  const themes = themeCounts(player);
+  if (themes.length) {
+    L.push("PATTERNS in the player's own notes (grouped by the coach, counted by the app; quote these numbers exactly):");
+    themes.slice(0, 5).forEach((t) => L.push(`- ${patternLine(t)}`));
+  }
+  if (all.length > 5) {
+    L.push(`History of all ${all.length} games, oldest first (game number, date, result, how it felt, the player's note):`);
+    all.slice(-60).forEach((s) => {
+      const n = all.indexOf(s) + 1;
+      const o = s.result?.outcome && s.result.outcome !== 'unknown' ? s.result.outcome[0].toUpperCase() : '-';
+      L.push(`#${n} ${prettyDate(s.date)} ${o}${s.feel ? ' ' + s.feel : ''}${noteOf(s) ? ` "${noteOf(s)}"` : ''}`);
+    });
+  }
   const last = (player.checkIns || []).slice(-1)[0];
   if (last) L.push(`Last check-in: working ${last.working?.join(', ') || '-'}; not working ${last.notWorking?.join(', ') || '-'}${last.note ? `; note "${last.note}"` : ''}`);
   L.push(`Skill names and ids: ${allSkills.filter((s) => s.checked).map((s) => `${s.name} (${s.id})`).join(', ')}`);
@@ -139,6 +155,19 @@ export async function askCoach({ mode, vars = {}, playerFile, messages, onText }
   const data = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(data.error || 'The coach is not available right now.');
   return data;
+}
+
+// Ask the coach to group the notes. Notes are sent as numbered lines (game numbers), never ids.
+export async function findThemes(player) {
+  const games = playedGames(player);
+  const numbered = games.map((s, i) => ({ n: i + 1, id: s.id, note: noteOf(s) })).filter((x) => x.note).slice(-40);
+  const content = numbered.map((x) => `${x.n}: ${x.note.slice(0, 70)}`).join('\n');
+  const r = await askCoach({ mode: 'themes', vars: {}, playerFile: '', messages: [{ role: 'user', content }] });
+  const byN = Object.fromEntries(numbered.map((x) => [x.n, x.id]));
+  const themes = (Array.isArray(r.themes) ? r.themes : [])
+    .map((t) => ({ label: String(t.label || '').trim().slice(0, 40), ids: [...new Set((t.ids || []).map((n) => byN[Number(n)]).filter(Boolean))] }))
+    .filter((t) => t.label && t.ids.length >= 2);
+  return { at: games.length, themes, updated: new Date().toISOString() };
 }
 
 // "today's", "tomorrow's", or "Saturday's"

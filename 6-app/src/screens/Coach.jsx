@@ -12,10 +12,10 @@ const MODES = [
   { id: 'mindset', name: 'Mindset', what: 'Nerves, focus and bouncing back.' },
 ];
 
-export default function Coach({ player, start, onGoSkills }) {
+export default function Coach({ player, start, onGoSkills, howTo = 'full' }) {
   const [mode, setMode] = useState(start?.mode || null);
   const [skillId, setSkillId] = useState(start?.skillId || null);
-  const goalSkills = [...new Set((player.goals || []).map((g) => g.skillId))];
+  const goalSkills = [...new Set((player.goals || []).map((g) => g.skillId).filter(Boolean))];
   const next = nextPlanned(player);
   const last = recentSessions(player, 1)[0];
 
@@ -68,7 +68,7 @@ export default function Coach({ player, start, onGoSkills }) {
             </li>
           ))}
         </ul>
-        <p className="soft">To understand one skill, open it on the Skills tab and tap "Explain this skill". Goal setting and placing your level live there too.</p>
+        {howTo === 'full' && <p className="soft">To understand one skill, open it on the Skills tab and tap "Explain this skill". Goal setting and placing your level live there too.</p>}
       </section>
       <section className="panel">
         <p className="eyebrow">Inbox</p>
