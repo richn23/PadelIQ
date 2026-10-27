@@ -127,7 +127,27 @@ function partialReply(raw) {
   return out;
 }
 
-export async function askCoach({ mode, vars = {}, playerFile, messages, onText }) {
+// How long the coach takes, kept in this browser only (last 30 answers) so speed can be checked.
+const TIMING_KEY = 'padeliq-timing';
+export const getTimings = () => { try { return JSON.parse(localStorage.getItem(TIMING_KEY) || '[]'); } catch { return []; } };
+export const clearTimings = () => { try { localStorage.removeItem(TIMING_KEY); } catch { /* ignore */ } };
+const saveTiming = (t) => { try { localStorage.setItem(TIMING_KEY, JSON.stringify([...getTimings(), t].slice(-30))); } catch { /* ignore */ } };
+
+export async function askCoach(args) {
+  const t0 = performance.now();
+  let first = null;
+  const onText = args.onText ? (t) => { if (first === null && t) first = Math.round(performance.now() - t0); args.onText(t); } : undefined;
+  try {
+    const out = await askCoachRaw({ ...args, onText });
+    saveTiming({ at: Date.now(), mode: args.mode, first, total: Math.round(performance.now() - t0), streamed: first !== null, search: !!(out.sources && out.sources.length), chars: String(out.reply || '').length, ok: true });
+    return out;
+  } catch (e) {
+    saveTiming({ at: Date.now(), mode: args.mode, first, total: Math.round(performance.now() - t0), streamed: first !== null, ok: false });
+    throw e;
+  }
+}
+
+async function askCoachRaw({ mode, vars = {}, playerFile, messages, onText }) {
   if (location.protocol === 'file:') throw new Error('The coach only works in the online version of the app.');
   const r = await fetch('/api/coach', {
     method: 'POST',

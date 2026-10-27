@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { getTimings, clearTimings } from '../coach.js';
 import { levels, themes } from '../data.js';
 import { currentLevel, levelName, overallLevel, currentAxisLevels } from '../levels.js';
 import { applyTheme, pickTheme } from '../theme.js';
@@ -127,6 +128,10 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       </section>
 
       <section className="panel">
+        <p className="eyebrow">Coach speed</p>
+        <SpeedBox />
+      </section>
+      <section className="panel">
         <p className="eyebrow">Backup</p>
         <p className="soft">Your data lives only on this phone. Save a backup now and then. It only takes a moment.</p>
         <div className="session-actions" style={{ marginTop: 10 }}>
@@ -153,5 +158,33 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       </section>
       {msg && <p className="soft center">{msg}</p>}
     </main>
+  );
+}
+
+const avg = (a) => (a.length ? Math.round(a.reduce((x, y) => x + y, 0) / a.length) / 1000 : null);
+const secs = (n) => (n === null ? 'n/a' : n.toFixed(1) + 's');
+
+// How quickly the coach answers: a simple check for testing, kept only in this browser.
+function SpeedBox() {
+  const [rows, setRows] = useState(getTimings());
+  const ok = rows.filter((r) => r.ok);
+  const streamed = ok.filter((r) => r.streamed);
+  const searched = ok.filter((r) => r.search);
+  const text = `Coach speed, last ${ok.length} answers: first word ${secs(avg(streamed.map((r) => r.first)))}, full answer ${secs(avg(ok.map((r) => r.total)))}, slowest ${secs(ok.length ? Math.max(...ok.map((r) => r.total)) / 1000 : null)}, with web search ${searched.length}. ` + ok.slice(-10).map((r) => `${r.mode} ${secs(r.first === null ? null : r.first / 1000)}/${secs(r.total / 1000)}${r.search ? ' search' : ''}`).join('; ');
+  return (
+    <>
+      {ok.length === 0 ? <p className="soft">Nothing yet. Ask the coach something, then come back.</p> : (
+        <>
+          <p className="soft">Last {ok.length} answers</p>
+          <p className="soft">First word appears after about <strong>{secs(avg(streamed.map((r) => r.first)))}</strong></p>
+          <p className="soft">Full answer takes about <strong>{secs(avg(ok.map((r) => r.total)))}</strong> (slowest {secs(Math.max(...ok.map((r) => r.total)) / 1000)})</p>
+          {searched.length > 0 && <p className="soft">{searched.length} used a web search, which is slower.</p>}
+          <div className="row-gap">
+            <button className="mini" onClick={() => navigator.clipboard?.writeText(text)}>Copy these numbers</button>
+            <button className="mini quiet" onClick={() => { clearTimings(); setRows([]); }}>Clear</button>
+          </div>
+        </>
+      )}
+    </>
   );
 }
