@@ -153,11 +153,24 @@ export async function askCoach({ mode, vars = {}, playerFile, messages, onText }
         if (ev.d) { raw += ev.d; onText?.(partialReply(raw)); }
       }
     }
-    try { return JSON.parse(raw); } catch { return { reply: partialReply(raw) || raw, proposal: null }; }
+    try { return JSON.parse(raw); } catch { return salvageReply(raw); }
   }
   const data = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(data.error || 'The coach is not available right now.');
   return data;
+}
+
+// Same idea as the server: never show raw JSON. Plain words plus a stray {"proposal": ...} bit, or JSON that never closes.
+function salvageReply(raw) {
+  let reply = String(raw).trim();
+  let proposal = null;
+  const pi = reply.search(/\{\s*"proposal"\s*:/);
+  if (pi >= 0) {
+    try { proposal = JSON.parse(reply.slice(pi)).proposal || null; } catch { /* leave it out */ }
+    reply = reply.slice(0, pi).trim();
+  }
+  if (/^\{\s*"reply"\s*:/.test(reply)) reply = partialReply(reply).trim();
+  return { reply: reply || String(raw).trim(), proposal };
 }
 
 // Ask the coach to group the notes. Notes are sent as numbered lines (game numbers), never ids.

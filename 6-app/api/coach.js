@@ -25,6 +25,32 @@ async function pickModel(key) {
   return cachedModel;
 }
 
+// The model sometimes answers with plain words plus a stray JSON bit, or with JSON that never closes.
+// Never show raw JSON to the player: pull the words out, and the proposal if it is complete.
+function salvage(text) {
+  let reply = String(text).trim();
+  let proposal = null;
+  const pi = reply.search(/\{\s*"proposal"\s*:/);
+  if (pi >= 0) {
+    try { proposal = JSON.parse(reply.slice(pi)).proposal || null; } catch { /* leave it out */ }
+    reply = reply.slice(0, pi).trim();
+  }
+  const m = reply.match(/^\{\s*"reply"\s*:\s*"/);
+  if (m) {
+    let out = '';
+    for (let i = m[0].length; i < reply.length; i++) {
+      const c = reply[i];
+      if (c === '\\') { const n = reply[i + 1]; if (n === undefined) break; out += n === 'n' ? '\n' : n; i++; continue; }
+      if (c === '"') break;
+      out += c;
+    }
+    const pm = reply.match(/"proposal"\s*:\s*(\{[\s\S]*\})\s*\}?\s*$/);
+    if (pm && !proposal) { try { proposal = JSON.parse(pm[1]); } catch { /* leave it out */ } }
+    reply = out.trim();
+  }
+  return { reply: reply || String(text).trim(), proposal };
+}
+
 const fill = (text, vars) => text.replace(/\{\{(\w+)\}\}/g, (_, k) => (vars[k] ?? ''));
 
 // Different models accept different settings. Try the fastest first, and remember what works
@@ -162,7 +188,7 @@ export default async function handler(req, res) {
       // Answers may come as JSON, sometimes wrapped in a code block.
       out = JSON.parse(text.replace(/^```(json)?\s*/i, '').replace(/```\s*$/, ''));
     } catch {
-      out = { reply: text, proposal: null };
+      out = salvage(text);
     }
     if (sources.length) out.sources = sources.slice(0, 4);
     return res.status(200).json(out);
