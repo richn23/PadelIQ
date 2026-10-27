@@ -471,3 +471,6 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 
 .tappable { cursor: pointer; }
 .tab { min-width: 0; }
+
+.skillbar-track input.unrated::-webkit-slider-thumb { opacity: .55; }
+.skillbar-track input.unrated::-moz-range-thumb { opacity: .55; }

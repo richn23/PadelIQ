@@ -15,7 +15,10 @@ const pct = (score) => `${Math.min(Math.max(((score + 0.5) / RATED.length) * 100
 export function SkillBar({ skill, check, level, editing, onSet, onOpen }) {
   const score = check ? skillScore(skill, check, level) : null;
   const [step, setStep] = useState(toStep(score ?? levelOrder(level)));
-  const shown = editing ? stepScore(step) : score;
+  const [touched, setTouched] = useState(false);
+  const rated = score !== null || touched;
+  const shown = editing ? (rated ? stepScore(step) : null) : score;
+  const commit = () => { setTouched(true); onSet(skill, fromStep(step)); };
   return (
     <li className="skillbar">
       <div className="skillbar-top">
@@ -27,12 +30,13 @@ export function SkillBar({ skill, check, level, editing, onSet, onOpen }) {
         {shown !== null && <span className="skillbar-fill" style={{ width: pct(shown) }} />}
         {editing && (
           <input
-            type="range" min="0" max={MAX} step="1" value={step}
+            type="range" min="0" max={MAX} step="1" value={step} className={rated ? '' : 'unrated'}
             aria-label={`${skill.name}: ${scoreLabel(stepScore(step))}`}
             onChange={(e) => setStep(Number(e.target.value))}
-            onPointerUp={() => onSet(skill, fromStep(step))}
-            onKeyUp={() => onSet(skill, fromStep(step))}
-            onTouchEnd={() => onSet(skill, fromStep(step))}
+            onPointerUp={commit}
+            onClick={commit}
+            onKeyUp={commit}
+            onTouchEnd={commit}
           />
         )}
       </div>
