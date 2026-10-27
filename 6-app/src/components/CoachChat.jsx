@@ -71,7 +71,9 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
               {m.proposal && (
                 <div className="proposal">
                   <ProposalText p={m.proposal} />
-                  {!done[i] ? (
+                  {!done[i] && msgs.slice(i + 1).some((x) => x.proposal && x.proposal.type === m.proposal.type) ? (
+                    <p className="soft">Replaced by the newer plan below.</p>
+                  ) : !done[i] ? (
                     <div className="session-actions">
                       <button className="mini on" onClick={() => accept(i, m.proposal)}>Accept</button>
                       <button className="mini" onClick={() => decline(i)}>Not quite</button>
