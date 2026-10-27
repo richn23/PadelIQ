@@ -317,6 +317,26 @@ function ResultCard({ skill, result }) {
   );
 }
 
+// After you set your own level: what the next level looks like and what to practise, in plain words.
+function NextStep({ skill, level }) {
+  const nextOrder = levelOrder(level) + 1;
+  const next = levelByOrder(nextOrder);
+  if (!next || nextOrder > 4 || !skill.levels[next.id]) return null;
+  const todo = (skill.statements || []).filter((st) => st.level === next.id).slice(0, 4);
+  return (
+    <div className="result-card">
+      <p className="eyebrow">Your next step · {levelName(level)} to {levelName(next.id)}</p>
+      <p className="soft">At {levelName(next.id)}, this looks like: {skill.levels[next.id].text}</p>
+      {todo.length > 0 && (
+        <>
+          <p className="soft" style={{ marginTop: 8 }}>Try working on:</p>
+          <ul className="gap-list soft">{todo.map((st) => <li key={st.id}>{st.text}</li>)}</ul>
+        </>
+      )}
+    </div>
+  );
+}
+
 function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const [checking, setChecking] = useState(false);
   const [adjusting, setAdjusting] = useState(false);
@@ -391,7 +411,8 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
             <>
               {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}
               {shown && <ResultCard skill={skill} result={shown} />}
-              {!chat && <button className="btn" onClick={() => setChat('deep_dive')}>Work on it with the coach</button>}
+              {!shown && check && check.mode !== 'quick' && <NextStep skill={skill} level={check.level} />}
+              {!chat && <button className="btn" onClick={() => setChat('deep_dive')}>Dive in with the coach</button>}
               <div className="link-line">
                 <button className="linkish" onClick={() => setChecking('quick')}>Re-check with questions</button>
                 <button className="linkish" onClick={() => setChat('diagnostic')}>Not sure? Work it out with the coach</button>
