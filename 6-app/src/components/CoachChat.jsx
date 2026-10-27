@@ -26,12 +26,12 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
         vars,
         playerFile: buildPlayerFile(player, { skill }),
         messages: next.map((m) => ({ role: m.role, content: m.role === 'assistant' ? JSON.stringify({ reply: m.content, proposal: m.proposal || null }) : m.content })),
-        onText: (t) => setLive(t),
+        onText: (t) => setLive(t.replace(/\*\*|__/g, '').replace(/\s*—\s*/g, ', ')),
       });
       setLive('');
       const reply = out.reply || [out.title, out.body].filter(Boolean).join('. ') || '…';
       // Sources are listed under the answer, so tidy inline links like [fipadel.com](https://...) to plain words.
-      const clean = reply.replace(/[\uE200-\uE206]/g, '').replace(/\s*cite(?:turn\d+(?:search|view|news|image)\d+)+/g, '').replace(/\(?\[([^\]]+)\]\((https?:[^)]+)\)\)?/g, '').replace(/ +([.,])/g, '$1').trim();
+      const clean = reply.replace(/[\uE200-\uE206]/g, '').replace(/\s*cite(?:turn\d+(?:search|view|news|image)\d+)+/g, '').replace(/\(?\[([^\]]+)\]\((https?:[^)]+)\)\)?/g, '').replace(/\*\*|__/g, '').replace(/\s*—\s*/g, ', ').replace(/ – /g, ', ').replace(/ +([.,])/g, '$1').trim();
       // Don't offer the same plan twice in a row.
       const prev = [...next].reverse().find((m) => m.proposal && m.proposal.type === out.proposal?.type);
       const same = prev && String(prev.proposal.focus || prev.proposal.title || '').trim().toLowerCase() === String(out.proposal.focus || out.proposal.title || '').trim().toLowerCase();
