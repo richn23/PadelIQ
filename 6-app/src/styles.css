@@ -450,7 +450,7 @@ p.ican { padding-left: 0; }
 
 /* Skill progress bars (Beginner to A, with + and −) */
 .skillbars { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.skillbar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 5px; }
+.skillbar-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 15px; }
 .skillbar-name { background: none; border: 0; padding: 0; color: var(--text); font-weight: 700; font-size: 15px; text-align: left; }
 button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .skillbar-label { font-weight: 800; color: var(--accent); font-size: 15px; white-space: nowrap; }
@@ -474,3 +474,9 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 
 .skillbar-track input.unrated::-webkit-slider-thumb { opacity: .55; }
 .skillbar-track input.unrated::-moz-range-thumb { opacity: .55; }
+
+.lvl-guide { margin: 14px 0 6px; }
+.lvl-block { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.12); }
+.lvl-block:first-of-type { border-top: 0; }
+.lvl-line { margin: 6px 0; line-height: 1.35; }
+.lvl-line.you strong { color: var(--accent); }

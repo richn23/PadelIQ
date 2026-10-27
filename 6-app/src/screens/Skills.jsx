@@ -326,13 +326,45 @@ function NextStep({ skill, level }) {
   return (
     <div className="result-card">
       <p className="eyebrow">Your next step · {levelName(level)} to {levelName(next.id)}</p>
-      <p className="soft">At {levelName(next.id)}, this looks like: {skill.levels[next.id].text}</p>
-      {todo.length > 0 && (
+      {todo.length > 0 ? (
         <>
-          <p className="soft" style={{ marginTop: 8 }}>Try working on:</p>
+          <p className="soft">Try working on:</p>
           <ul className="gap-list soft">{todo.map((st) => <li key={st.id}>{st.text}</li>)}</ul>
         </>
-      )}
+      ) : <p className="soft">At {levelName(next.id)}, this looks like: {skill.levels[next.id].text}</p>}
+    </div>
+  );
+}
+
+// What each spot on the bar means: C−, C and C+ for every level. Sits right under the bar.
+function LevelGuide({ skill, check }) {
+  const [all, setAll] = useState(false);
+  const lv = levels.filter((l) => l.id !== 'Pro');
+  const cur = check?.level;
+  const curAdj = typeof check?.adj === 'number' ? check.adj : 0;
+  const lines = (l) => {
+    const next = levelByOrder(levelOrder(l.id) + 1);
+    const nextText = next && next.id !== 'Pro' && skill.levels[next.id] ? skill.levels[next.id].text : null;
+    return [
+      l.id !== 'beginner' && { adj: -1, label: l.name + '−', text: `Getting there. You can do this some of the time, but not yet reliably or under pressure.` },
+      { adj: 0, label: l.name, text: levelLine(skill, l.id) },
+      { adj: 1, label: l.name + '+', text: nextText ? `Solid at ${l.name}, and starting to show some of ${next.name}: ${nextText}` : `Solid, and doing this consistently.` },
+    ].filter(Boolean);
+  };
+  const block = (l) => (
+    <div key={l.id} className="lvl-block">
+      {lines(l).map((x) => (
+        <p key={x.adj} className={'lvl-line' + (cur === l.id && curAdj === x.adj ? ' you' : '')}><strong>{x.label}{cur === l.id && curAdj === x.adj ? ' (you)' : ''}</strong> <span className="soft">{x.text}</span></p>
+      ))}
+    </div>
+  );
+  const here = lv.find((l) => l.id === cur);
+  return (
+    <div className="lvl-guide">
+      <p className="eyebrow">What it looks like</p>
+      {!all && here && block(here)}
+      {(all || !here) && lv.map(block)}
+      <button className="linkish" onClick={() => setAll(!all)}>{all ? 'Show just my level' : 'See every level'}</button>
     </div>
   );
 }
@@ -340,7 +372,6 @@ function NextStep({ skill, level }) {
 function SkillPage({ skill, check, player, updatePlayer, onBack }) {
   const [checking, setChecking] = useState(false);
   const adjusting = true; // the bar is always a slider
-  const [showLevels, setShowLevels] = useState(false);
   const [justScored, setJustScored] = useState(null);
   const [chat, setChat] = useState(null); // 'diagnostic' | 'deep_dive'
   const [note, setNote] = useState('');
@@ -406,6 +437,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
               onSet={(sk, v) => updatePlayer((p) => ({ ...p, skillChecks: { ...(p.skillChecks || {}), [sk.id]: { ...v, mode: 'slider', date: new Date().toISOString() } } }))} />
           </ul>
           <p className="soft small">{!check ? 'Not checked yet. Slide the bar to where you think you are, or re-check with questions.' : check.from === 'quiz' ? 'From your quiz.' : check.mode === 'slider' ? 'Set by you.' : check.mode === 'coach' ? 'Agreed with the coach.' : 'From your last check.'}</p>
+          {!checking && <LevelGuide skill={skill} check={check} />}
           {!checking && (
             <>
               {check?.mode === 'quick' && <QuickSummary skill={skill} check={check} onGoal={!isGoal && goals.length < 3 ? goalFromFocus : null} />}
@@ -444,20 +476,6 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           }}
         />
       )}
-
-      <section className="panel">
-        <button className="row-between link-row" onClick={() => setShowLevels(!showLevels)} aria-expanded={showLevels}>
-          <span className="eyebrow">What it looks like at each level</span><span className="chev">{showLevels ? '▾' : '▸'}</span>
-        </button>
-        {showLevels && <ul className="list">
-          {levels.map((l) => (
-            <li key={l.id} className={'list-row col' + (check?.level === l.id ? ' you' : '')}>
-              <strong>{l.name}{check?.level === l.id ? ' (you)' : ''}</strong>
-              <span className="soft">{check?.level === l.id && !skill.levels[l.id] ? 'From your answers: not yet. That\'s fine at this level.' : levelLine(skill, l.id)}</span>
-            </li>
-          ))}
-        </ul>}
-      </section>
 
       {skill.checked && !goalForm && <button className="btn" onClick={makeGoal} disabled={isGoal}>{isGoal ? 'This is one of your goals' : 'Make this a goal'}</button>}
       {goalForm && <div ref={goalRef} />}
