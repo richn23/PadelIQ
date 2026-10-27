@@ -37,7 +37,7 @@ function salvage(text) {
     reply = reply.slice(0, tail.index).trim();
   }
   // Words followed by the same answer again as unfinished JSON: keep only the first part.
-  const dup = reply.search(/\n\s*\{\s*"reply"\s*:/);
+  const dup = reply.search(/\s*\{\s*"reply"\s*:/);
   if (dup > 0) reply = reply.slice(0, dup).trim();
   const pi = reply.search(/\{\s*"proposal"\s*:/);
   if (pi >= 0) {
