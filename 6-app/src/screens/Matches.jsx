@@ -617,15 +617,13 @@ function Calendar({ sessions, day, onDay }) {
           const list = byDay[k] || [];
           return (
             <button key={i} className={'cal-day' + (k === today ? ' today' : '') + (k === day ? ' on' : '')} onClick={() => onDay(k)} aria-label={`${d.getDate()}${list.length ? `, ${list.length} session${list.length > 1 ? 's' : ''}` : ''}`}>
-              {d.getDate()}
-              <span className="cal-dots">
-                {list.slice(0, 3).map((s) => <i key={s.id} className={(s.kind === 'lesson' ? 'lesson' : 'match') + (s.status === 'played' || isOver(s) ? ' done' : '')} />)}
-              </span>
+              <span className="cal-num">{d.getDate()}</span>
+              <DayRing list={list} />
             </button>
           );
         })}
       </div>
-      <p className="soft cal-key"><i className="match done" /> match <i className="lesson done" /> lesson · solid = played, ring = coming up{day ? ' · tap the day again to see all' : ''}</p>
+      <p className="soft cal-key"><i className="match done" /> game <i className="lesson done" /> lesson · full ring = played, dashed = coming up{day ? ' · tap the day again to see all' : ''}</p>
     </section>
   );
 }
@@ -655,5 +653,29 @@ function MonthSplit({ sessions }) {
         </div>
       ))}
     </section>
+  );
+}
+
+// One Apple-style ring per day: outer green = a game, inner orange = a lesson.
+// Full bright ring = played. Dashed = coming up. Faint = nothing.
+function DayRing({ list }) {
+  const has = (kind) => list.filter((s) => (kind === 'lesson' ? s.kind === 'lesson' : s.kind !== 'lesson'));
+  const state = (arr) => (arr.length === 0 ? 'none' : arr.some((s) => s.status === 'played' || isOver(s)) ? 'done' : 'soon');
+  const ring = (r, color, st) => {
+    const c = 2 * Math.PI * r;
+    return (
+      <>
+        <circle cx="17" cy="17" r={r} fill="none" stroke={color} strokeOpacity={st === "none" ? 0.1 : 0.22} strokeWidth="5" />
+        {st === 'done' && <circle cx="17" cy="17" r={r} fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" />}
+        {st === 'soon' && <circle cx="17" cy="17" r={r} fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" strokeDasharray={`${c / 9} ${c / 9}`} />}
+      </>
+    );
+  };
+  const g = state(has('match')), l = state(has('lesson'));
+  return (
+    <svg className="cal-ring" viewBox="0 0 34 34" width="32" height="32" aria-hidden="true" style={{ transform: 'rotate(-90deg)' }}>
+      {ring(14.2, '#d7ff00', g)}
+      {ring(7.8, '#ff9f43', l)}
+    </svg>
   );
 }
