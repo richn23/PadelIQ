@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
+    "check:salvage": "node scripts/check-salvage.mjs",
     "build": "npm run import-framework && npm run sync-prompts && vite build",
     "sync-prompts": "node -e \"const fs=require('fs');fs.writeFileSync('api/_coach-prompts.js','// Copied from 5-data/coach-prompts.json by npm run sync-prompts. Edit that file, not this one.\\nexport default '+fs.readFileSync('../5-data/coach-prompts.json','utf8')+';\\n');fs.writeFileSync('api/_coach-knowledge.js','// Copied from 5-data/coach-knowledge.json by npm run sync-prompts. Edit that file, not this one.\\nexport default '+fs.readFileSync('../5-data/coach-knowledge.json','utf8')+';\\n')\"",
     "import-framework": "node scripts/import-framework.mjs"
