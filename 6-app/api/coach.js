@@ -192,7 +192,10 @@ export default async function handler(req, res) {
     const effort = prompts.defaults.thinking?.[mode] || 'low';
     let text;
     let sources = [];
-    if (m.usesWebSearch) {
+    // Searching the web is slow and cannot stream, so only do it when the question needs current facts.
+    const lastUser = [...messages].reverse().find((x) => x && x.role === 'user')?.content || '';
+    const needsSearch = /racket|racquet|paddle|brand|bullpadel|nox|head\b|babolat|adidas|siux|wilson|shoes?\b|grip|price|cost|buy|cheap|deal|rule|rules|fip\b|ranking|ranked|tour\b|tournament|premier|world number|number one|no\.? ?1|who (is|won|are)|latest|newest|new model|202\d|news|schedule|result|score of|vs\.?\b|versus|compare|best .*(racket|shoes|ball|brand)|court (size|dimension)|where can i/i.test(String(lastUser));
+    if (m.usesWebSearch && needsSearch) {
       const found = await askWithSearch(key, model, chat, effort).catch(() => null);
       if (found) { text = found.text; sources = found.sources; }
     }
