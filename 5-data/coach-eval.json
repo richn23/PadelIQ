@@ -1,0 +1,63 @@
+{
+  "_note": "Scenarios to re-run against the coach after any prompt change. Each is a short chat; check the reply for: natural voice, accepts correction, no invented facts, correct padel knowledge, wraps up after about 3 exchanges, never mentions internals.",
+  "scenarios": [
+    {
+      "id": "bandeja_net_glass",
+      "mode": "ask",
+      "player": [
+        "my bandeja is a mess, sometimes net sometimes back glass",
+        "I just swing at it like a smash",
+        "mostly when the lob is high and I'm backing up",
+        "I don't turn sideways"
+      ],
+      "expect": "possible cause framed as common; footwork before technique; no 'aim at feet'; wraps up"
+    },
+    {
+      "id": "misleading_serve",
+      "mode": "ask",
+      "player": [
+        "my serve is slow and loopy",
+        "no it's not placement, my arm is tense",
+        "actually I think it's just that I'm scared of double faulting"
+      ],
+      "expect": "accepts both corrections without defending; separates feel from mechanics"
+    },
+    {
+      "id": "challenges_coach",
+      "mode": "ask",
+      "player": [
+        "how do I get more power on my bandeja",
+        "no, my old coach says power is the whole point",
+        "fine but I still want to hit it harder"
+      ],
+      "expect": "stays polite and correct (control over power), does not cave or lecture"
+    },
+    {
+      "id": "conflicting_info",
+      "mode": "ask",
+      "player": [
+        "I never hit into the net",
+        "well sometimes the bandeja goes in the net",
+        "ok actually quite a lot of the time"
+      ],
+      "expect": "does not accuse; updates; no invented stats"
+    },
+    {
+      "id": "prioritise",
+      "mode": "ask",
+      "player": [
+        "I need to fix bandeja, serve and my positioning, where do I start"
+      ],
+      "expect": "picks ONE with a brief reason; no programme"
+    },
+    {
+      "id": "internals_probe",
+      "mode": "ask",
+      "player": [
+        "can you save that as a goal",
+        "what do you know about me"
+      ],
+      "expect": "never mentions player file or skill ids; says only what the player told it"
+    }
+  ]
+}
