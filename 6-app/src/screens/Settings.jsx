@@ -86,6 +86,22 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
         <p className="soft">Your games and goals are kept when you switch.{!player.quiz && !full ? ' The full picture starts with a quick skills check.' : ''}</p>
       </section>
 
+      <section className="panel">
+        <p className="eyebrow">Coach style</p>
+        <div className="ob-answers" style={{ marginTop: 8 }}>
+          {[['conversational', 'Conversational', 'Talk things through, explore what happened, offer suggestions naturally.'], ['direct', 'Direct', 'Get to the point: brief questions, practical advice, minimal discussion.']].map(([id, name, text]) => {
+            const on = (player.coachStyle || 'conversational') === id;
+            return (
+              <button key={id} className={`ans level-pick${on ? ' picked' : ''}`} onClick={() => updatePlayer((p) => ({ ...p, coachStyle: id }))}>
+                <strong>{on ? '✓ ' : ''}{name}</strong>
+                <span>{text}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p className="soft">The advice is the same either way. This is only how the coach talks. You can change it any time, and just ask if you want the other style for one chat.</p>
+      </section>
+
       {full && <section className="panel">
         <div className="row-between"><p className="eyebrow">Your level</p><p className="pill">{levelName(currentLevel(player))}</p></div>
         <p className="soft">

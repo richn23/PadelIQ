@@ -39,6 +39,7 @@ export function buildPlayerFile(player, { skill } = {}) {
   const known = levelKnown(player);
   const advanced = known && ['A', 'Pro'].includes(lvl);
   L.push(`Mode: ${MODE_NOTE[modeOf(player)]}`);
+  L.push(`Coach style: ${player.coachStyle === 'direct' ? 'DIRECT (short, practical, to the point; minimal discussion)' : 'CONVERSATIONAL (talk things through, explore what happened, offer suggestions naturally)'}`);
   if (known) {
     L.push(`Level: ${levelName(lvl)} (provisional: ${player.provisional ? 'yes' : 'no'})`);
     L.push(`Level focus: ${levelFocus(lvl)}`);

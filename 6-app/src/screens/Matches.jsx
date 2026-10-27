@@ -600,6 +600,7 @@ function Detail({ session, goals, onBack, onEdit, onDelete, simple, player, onCh
               const cur = session.notes || {};
               onNotes?.({ worked: merge(cur.worked, n.worked), didnt: merge(cur.didnt, n.didnt), tryNext: merge(cur.tryNext, n.tryNext) }, p.tags);
             }} />)}
+      {onChat && !chat && session.coachChat?.length > 0 && <p className="soft center">This chat is kept with this game. <button className="linkish" onClick={() => onChat([])}>Clear it</button></p>}
       <button className="btn ghost" onClick={onEdit}>{simple ? 'Edit' : 'Edit reflection'}</button>
       {!sure ? <button className="btn ghost" onClick={() => setSure(true)}>Delete</button> : <button className="btn danger" onClick={onDelete}>Tap again to delete</button>}
     </main>
