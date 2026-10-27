@@ -81,7 +81,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                     <CoachChat
                       mode="goal_diagnose"
                       title={`Coach: ${goalSkill(g)}`}
-                      intro={g.now || g.want ? `Let's tighten up this goal: "${goalSkill(g)}". What's still missing?` : `Let's pin down this goal: "${goalSkill(g)}". How does it go for you in matches right now?`}
+                      intro={g.now && g.want ? `So for ${goalSkill(g)}: right now "${g.now}", and you'd like "${g.want}". Is that about right, or is there something to add, like when it happens?` : g.now ? `So for ${goalSkill(g)}, right now: "${g.now}". What would you like to happen instead?` : g.want ? `So for ${goalSkill(g)}, you'd like: "${g.want}". What happens in your games at the moment?` : `Let's pin down this goal: "${goalSkill(g)}". How does it go for you in matches right now?`}
                       vars={{ skill_name: goalSkill(g), skill_id: g.skillId || '' }}
                       player={player}
                       skill={g.skillId ? skill : undefined}
