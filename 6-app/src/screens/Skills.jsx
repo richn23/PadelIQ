@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
-import { axes, levels, groups, allSkills, allSkillById, axisById, goalDiagnosis as gd, goalOptions } from '../data.js';
+import { axes, levels, groups, allSkills as everySkill, BEGINNER_ONLY, allSkillById, axisById, goalDiagnosis as gd, goalOptions } from '../data.js';
 import think from '../assets/mascot-think.png';
 import StatementCheck from '../components/StatementCheck.jsx';
 import QuickCheck from '../components/QuickCheck.jsx';
@@ -20,6 +20,7 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
   const setView = setViewRaw;
   const [open, setOpen] = useState(openSkill);
   const checks = skillChecks(player);
+  const skills = everySkill.filter((s) => !BEGINNER_ONLY.has(s.id) || !known || levelOrder(currentLevel(player)) === 0);
   const axisLevels = currentAxisLevels(player);
   const axisScores = currentAxisScores(player);
   const level = currentLevel(player);
@@ -53,9 +54,9 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
           <button className="btn" onClick={() => setCheckingRest(true)}>Check the rest</button>
         </section>
       )}
-      {view === 'have' && <Have known={known} axisLevels={axisLevels} scores={axisScores} level={level} checks={checks} onOpen={setOpen} onSet={setSelf} />}
-      {view === 'next' && <Next level={level} checks={checks} onOpen={setOpen} />}
-      {view === 'explore' && <Explore onOpen={setOpen} />}
+      {view === 'have' && <Have skills={skills} known={known} axisLevels={axisLevels} scores={axisScores} level={level} checks={checks} onOpen={setOpen} onSet={setSelf} />}
+      {view === 'next' && <Next skills={skills} level={level} checks={checks} onOpen={setOpen} />}
+      {view === 'explore' && <Explore skills={skills} onOpen={setOpen} />}
     </main>
   );
 }
@@ -91,12 +92,12 @@ function Row({ skill, right, onOpen }) {
   );
 }
 
-function Have({ known = true, axisLevels, scores, level, checks, onOpen, onSet }) {
+function Have({ skills, known = true, axisLevels, scores, level, checks, onOpen, onSet }) {
   const [area, setArea] = useState(null);
-  const unrated = known ? null : new Set(axes.filter((a) => !allSkills.some((s) => s.axis === a.id && !s.optional && checks[s.id])).map((a) => a.id));
-  const strengthIds = new Set(!known ? [] : allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level)).map((s) => s.id));
-  const checked = allSkills.filter((s) => checks[s.id] && (!area || s.axis === area) && (area || !strengthIds.has(s.id)));
-  const strengths = !known ? [] : allSkills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level));
+  const unrated = known ? null : new Set(axes.filter((a) => !skills.some((s) => s.axis === a.id && !s.optional && checks[s.id])).map((a) => a.id));
+  const strengthIds = new Set(!known ? [] : skills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level)).map((s) => s.id));
+  const checked = skills.filter((s) => checks[s.id] && (!area || s.axis === area) && (area || !strengthIds.has(s.id)));
+  const strengths = !known ? [] : skills.filter((s) => checks[s.id] && levelOrder(checks[s.id].level) > levelOrder(level));
   return (
     <>
       <section className="panel">
@@ -109,7 +110,7 @@ function Have({ known = true, axisLevels, scores, level, checks, onOpen, onSet }
       )}
       <SkillBars
         title={area ? axisById[area].name : strengthIds.size ? 'Other skills' : 'Your skills'}
-        skills={area ? allSkills.filter((s) => s.axis === area && s.checked && !s.optional) : checked}
+        skills={area ? skills.filter((s) => s.axis === area && s.checked && !s.optional) : checked}
         checks={checks}
         level={level}
         onOpen={onOpen}
@@ -120,12 +121,12 @@ function Have({ known = true, axisLevels, scores, level, checks, onOpen, onSet }
   );
 }
 
-function Next({ level, checks, onOpen }) {
+function Next({ skills, level, checks, onOpen }) {
   const [all, setAll] = useState(false);
   const now = levelOrder(level);
   const nextLevel = levelByOrder(Math.min(now + 1, 4)); // A is the top checked level
   // Gap: below what your own level asks for. Towards: fine at your level, but the next level asks for more.
-  const rows = allSkills
+  const rows = skills
     .filter((s) => s.checked)
     .map((s) => {
       const needNow = requiredFor(s, level);
@@ -159,19 +160,19 @@ function Next({ level, checks, onOpen }) {
   );
 }
 
-function Explore({ onOpen }) {
+function Explore({ skills, onOpen }) {
   const [q, setQ] = useState('');
   // Ignore accents, so "vibora" finds "Víbora"
   const plain = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const term = plain(q.trim());
   const match = (s) => !term || plain([s.name, s.es, s.aka, s.what].join(' ')).includes(term);
-  const none = term && !allSkills.some(match);
+  const none = term && !skills.some(match);
   return (
     <>
       <input className="search" placeholder="Search shots and skills (e.g. víbora)" value={q} onChange={(e) => setQ(e.target.value)} />
       {none && <p className="soft center">Nothing matches "{q}" yet.</p>}
       {groups.map((g) => {
-        const items = allSkills.filter((s) => s.group === g.id && match(s));
+        const items = skills.filter((s) => s.group === g.id && match(s));
         if (!items.length) return null;
         return (
           <section className="panel" key={g.id}>

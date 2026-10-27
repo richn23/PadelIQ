@@ -18,11 +18,14 @@ export const skillById = Object.fromEntries(skills.map((s) => [s.id, s]));
 
 // Skills and shots: glossary words + level descriptions from the framework.
 export const groups = glossary.groups;
+// Skills that only make sense for beginners (e.g. the rules). Only the Beginner level is kept, and they are hidden for everyone above it.
+export const BEGINNER_ONLY = new Set(['rules_scoring']);
+const onlyBeginner = (id, obj) => (BEGINNER_ONLY.has(id) ? Object.fromEntries(Object.entries(obj).filter(([k]) => k === 'beginner')) : obj);
 export const allSkills = glossary.items.map((g) => ({
   ...g,
   axis: g.area,
-  levels: skillById[g.id]?.levels || {},
-  statements: skillById[g.id]?.statements || [],
+  levels: onlyBeginner(g.id, skillById[g.id]?.levels || {}),
+  statements: (skillById[g.id]?.statements || []).filter((st) => !BEGINNER_ONLY.has(g.id) || st.level === 'beginner'),
   warnings: skillById[g.id]?.warnings || [],
   optional: g.optional ?? skillById[g.id]?.optional ?? false,
 }));
