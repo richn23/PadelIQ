@@ -59,14 +59,16 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                   )}
                   {editing === g.id && (
                     <div className="ob-form">
-                      <label className="soft">How is it now? What happens?
-                        <input value={draft.now} maxLength={120} placeholder="e.g. Soft and loops up" onChange={(e) => setDraft({ ...draft, now: e.target.value })} />
+                      <label className="soft">What happens in your games right now?
+                        <input value={draft.now} maxLength={120} placeholder="A few words is plenty" onChange={(e) => setDraft({ ...draft, now: e.target.value })} />
                       </label>
-                      <label className="soft">What do you want instead?
-                        <input value={draft.want} maxLength={120} placeholder="e.g. Faster, towards the side glass" onChange={(e) => setDraft({ ...draft, want: e.target.value })} />
+                      <label className="soft">What would you like to happen instead?
+                        <input value={draft.want} maxLength={120} placeholder="A few words is plenty" onChange={(e) => setDraft({ ...draft, want: e.target.value })} />
                       </label>
-                      <button className="btn" onClick={() => { setDetail(g.id, { now: draft.now.trim(), want: draft.want.trim() }); setEditing(null); }}>Save</button>
-                      <button className="mini quiet" onClick={() => setEditing(null)}>Cancel</button>
+                      <div className="row-gap">
+                        <button className="mini on" onClick={() => { setDetail(g.id, { now: draft.now.trim(), want: draft.want.trim() }); setEditing(null); }}>Save</button>
+                        <button className="mini quiet" onClick={() => setEditing(null)}>Cancel</button>
+                      </div>
                     </div>
                   )}
                   {editing !== g.id && coaching !== g.id && (
@@ -87,14 +89,14 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                       onProposal={(pr) => { if (pr.type === 'goal_detail') setDetail(g.id, { now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }); }}
                     />
                   )}
-                  <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How it is going: ${goalLine(g)}`} className="slider" />
+                  {editing !== g.id && <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How it is going: ${goalLine(g)}`} className="slider" />}
                   {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => ({ better: 'Better', same: 'Same', struggling: 'Still struggling' })[x]).join(' · ')}</p>}
-                  <div className="row-gap">
+                  {editing !== g.id && <div className="row-gap">
                     <button className="mini" onClick={() => park(g.id)}>Park for now</button>
                     {removing === g.id
                       ? <button className="mini" onClick={() => remove(g.id)}>Tap again to remove</button>
                       : <button className="mini quiet" onClick={() => setRemoving(g.id)}>Remove</button>}
-                  </div>
+                  </div>}
                 </li>
               );
             })}
