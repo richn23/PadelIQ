@@ -130,7 +130,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
                 </div>
                 <div className="session-actions">
                   {!fun && <button className="mini" onClick={() => setMode({ name: 'targets', id: s.id })}>{simple ? (s.intention ? 'Focus' : 'Set focus') : 'Plan'}</button>}
-                  {!fun && s.date === todayISO() && <button className="mini on" onClick={() => setMode({ name: 'reflect', id: s.id })}>Done: reflect</button>}
+                  {!fun && s.date === todayISO() && <button className="mini" onClick={() => setMode({ name: 'reflect', id: s.id })}>Finished? Reflect</button>}
                   <button className="mini quiet" onClick={() => setMode({ name: 'edit', id: s.id })}>Edit</button>
                 </div>
               </li>
