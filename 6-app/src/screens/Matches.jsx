@@ -198,7 +198,7 @@ function AddForm({ date, initial, goals = [], onCancel, onSave, onDelete, howTo 
     focusUnknown: f.kind === 'lesson' && f.focusUnknown ? true : undefined, // the coach decides on the day
     intention: f.intention.trim(),
     targets: past ? f.targets : [],
-    ...(past ? { logged: true } : {}), // added after it was played
+    ...(past ? { logged: true } : resultOn && f.outcome ? {} : { logged: false }), // added after it was played; editing a session back to "coming up" clears it
     ...(resultOn && f.outcome ? { result: { outcome: f.outcome, score: f.outcome === 'unknown' ? '' : f.score.trim() } } : {}),
     ...(fun && f.note.trim() ? { note: f.note.trim() } : {}),
     // Just for fun: logging it after the game is all there is to do, so it goes straight to Played.
