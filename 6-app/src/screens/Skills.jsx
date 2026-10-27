@@ -115,7 +115,7 @@ function Have({ skills, known = true, axisLevels, scores, level, checks, onOpen,
         level={level}
         onOpen={onOpen}
         onSet={onSet}
-        note={checked.length === 0 && !area ? 'Nothing checked yet. Open a skill in Explore or Work on next.' : 'Slide a bar to set where you are. Tap a skill name to open it.'}
+        note={checked.length === 0 && !area ? 'No skills checked one by one yet. Open a skill in Explore or Work on next.' : 'Slide a bar to set where you are. Tap a skill name to open it.'}
       />
     </>
   );

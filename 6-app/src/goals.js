@@ -33,3 +33,13 @@ export const unparkGoalIn = (p, id) => {
   const { parkedAt, ...rest } = g; // eslint-disable-line no-unused-vars
   return { ...p, goals: [...(p.goals || []), rest], parkedGoals: p.parkedGoals.filter((x) => x.id !== id) };
 };
+
+export const progressWord = (n) => (n < 20 ? 'Just started' : n < 45 ? 'Getting going' : n < 70 ? 'Getting there' : n < 90 ? 'Nearly there' : 'Nailed it');
+export const BACKUP_DAYS = 30;
+export const backupDue = (p, now = Date.now()) => {
+  if ((p.sessions || []).length < 3) return false;
+  const day = 86400000;
+  const last = p.lastBackup ? new Date(p.lastBackup).getTime() : 0;
+  const snooze = p.backupSnooze ? new Date(p.backupSnooze).getTime() : 0;
+  return now - last > BACKUP_DAYS * day && now - snooze > 14 * day;
+};

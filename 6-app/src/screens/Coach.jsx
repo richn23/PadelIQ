@@ -118,11 +118,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
             </li>
           ))}
         </ul>
-        {howTo === 'full' && <p className="soft">To understand one skill, open it on the Skills tab and tap "Explain this skill". Goal setting and placing your level live there too.</p>}
-      </section>
-      <section className="panel">
-        <p className="eyebrow">Inbox</p>
-        <p className="soft">Tips and patterns from your notes will land here. Coming soon.</p>
+        {howTo === 'full' && <p className="soft">Want a skill explained? Open it in Skills and tap "Explain this skill".</p>}
       </section>
     </main>
   );

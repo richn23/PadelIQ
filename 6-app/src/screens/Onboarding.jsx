@@ -141,7 +141,7 @@ export default function Onboarding({ onDone, onCancel, initialName = '' }) {
         <Mascot pose="think">{say(levelOrder(checking) === 0 ? ob.lines.checksBeginner : ob.lines.checks, { level: levelName(checking) })}</Mascot>
         {levelOrder(checking) > 0 && <p className="soft small">{ob.lines.checksNote}</p>}
         <Checklist key={checking + len} levelId={checking} ans={answers} setAns={setAnswers} pick={pick} />
-        <button className="btn" disabled={!mineDone} onClick={() => setStep(3)}>{mineDone ? 'See my level' : `Answer all the ${levelName(checking)} skills to continue`}</button>
+        <button className="btn" disabled={!mineDone} onClick={() => setStep(3)}>{mineDone ? 'See my level' : `${checking ? rowsAt(checking, pick).filter((s) => !answers[key(s, checking)]).length : 0} ${levelName(checking)} skills left to answer`}</button>
       </main>
     );
   }

@@ -3,7 +3,8 @@ import Pentagon from '../components/Pentagon.jsx';
 import SkillBars from '../components/SkillBars.jsx';
 import { axes, axisById, levels, allSkills, allSkillById as skillById } from '../data.js';
 import { currentAxisLevels, currentAxisScores, currentLevel, skillChecks } from '../levels.js';
-import { goalSkill, goalNote, goalLine } from '../goals.js';
+import { goalSkill, goalNote, goalLine, progressWord } from '../goals.js';
+import BackupNudge from '../components/BackupNudge.jsx';
 import { sortSessions, prettyDate, sessionsUntilCheckIn, isOver } from '../sessions.js';
 import { findThemes } from '../coach.js';
 import { needsThemes, themeCounts } from '../patterns.js';
@@ -81,9 +82,12 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
           </section>
         )}
 
+        <BackupNudge player={player} updatePlayer={updatePlayer} onSettings={() => onGo('settings')} />
+
         {!simple && sessionsUntilCheckIn(player) === 0 && (
           <section className="panel center">
             <p className="insight">Check-in due</p>
+            <p className="soft">A 2-minute re-check of a few skills, so your profile stays up to date.</p>
             <button className="btn" onClick={() => onGo('checkin')}>Start check-in</button>
           </section>
         )}
@@ -107,7 +111,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
 
         <section className="panel tappable" aria-label="Current focus" onClick={(e) => { if (!e.target.closest('button')) onGo('goals'); }}>
           <p className="eyebrow">Current focus</p>
-          <p className="soft">How happy you are with each goal</p>
+          <p className="soft">How each one is going</p>
           {(player.goals || []).length === 0 && <p className="soft empty">{simple ? 'Nothing picked yet. One thing to work on is plenty.' : "No focus yet. Soon you'll pick up to 3 things to work on."}</p>}
           <ul className="goals">
             {(player.goals || []).map((g) => {
@@ -116,7 +120,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
                 <li key={g.id} className="goal">
                   <div className="goal-top">
                     <span className="goal-title">{goalSkill(g)}</span>
-                    <span className="goal-pct">{g.progress}%</span>
+                    <span className="goal-pct">{progressWord(g.progress)}</span>
                   </div>
                   {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
                   <div className="bar" role="progressbar" aria-valuenow={g.progress} aria-valuemin="0" aria-valuemax="100" aria-label={goalLine(g)}>
@@ -160,11 +164,11 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
                 ))}
               </ul>
             )}
-            <p className="soft">From your own notes. <button className="linkish" onClick={refresh} disabled={busy}>{busy ? 'Updating…' : 'Update'}</button></p>
+            <p className="soft">From your own notes. <button className="linkish" onClick={refresh} disabled={busy}>{busy ? 'Updating…' : 'Refresh from my notes'}</button></p>
           </section>
         )}
 
-        {!(simple && themes.length > 0) && <section className="panel" aria-label="Coach insight">
+        {!(themes.length > 0 && !player.insight) && !(simple && themes.length > 0) && <section className="panel" aria-label="Coach insight">
           <p className="eyebrow">Coach insight</p>
           {player.insight ? (
             <>

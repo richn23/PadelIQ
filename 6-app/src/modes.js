@@ -3,7 +3,7 @@ import { axes } from './data.js';
 // Three ways to use Padel IQ. Chosen on the first screen, changeable in Settings.
 // Players from before this existed have no mode saved, so they stay on the full picture.
 export const MODES = [
-  { id: 'fun', name: 'Just for fun', text: 'Log your games: who you played with and the score. No thinking needed.' },
+  { id: 'fun', name: 'Just for fun', text: 'Log your games: who you played with and how it went. No thinking needed.' },
   { id: 'reflect', name: 'A little reflection', text: 'Log your games, how they felt, and pick one thing to work on.', recommended: true },
   { id: 'full', name: 'The full picture', text: 'Check your skills, set goals, plan games and reflect. The coach helps with all of it.' },
 ];

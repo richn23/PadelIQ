@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { goalSkill, goalNote, goalLine, addGoalTo, parkGoalIn, unparkGoalIn, MAX_GOALS } from '../goals.js';
+import { progressWord, goalSkill, goalNote, goalLine, addGoalTo, parkGoalIn, unparkGoalIn, MAX_GOALS } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
 import { allSkillById as skillById, axisById, whenLabel } from '../data.js';
 
@@ -33,7 +33,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
     <main className="page">
       <section className="panel">
         <p className="eyebrow">Your goals</p>
-        <p className="soft">Up to 3 at a time. The % is how happy you are with it, not your level.</p>
+        <p className="soft">Up to 3 at a time. Slide to show how it is going. It is about how you feel, not your level.</p>
         {goals.length === 0 ? (
           <p className="insight">No goals yet.</p>
         ) : (
@@ -43,7 +43,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
               const r = recent(g.id);
               return (
                 <li key={g.id} className="goal">
-                  <div className="goal-top"><span className="goal-title">{goalSkill(g)}</span><span className="goal-pct">{g.progress}%</span></div>
+                  <div className="goal-top"><span className="goal-title">{goalSkill(g)}</span><span className="goal-pct">{progressWord(g.progress)}</span></div>
                   {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
                   {skill && (
                     <p className="goal-skill">
@@ -71,7 +71,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                   )}
                   {editing !== g.id && coaching !== g.id && (
                     <div className="row-gap">
-                      <button className="mini" onClick={() => { setDraft({ now: g.now || '', want: g.want || '' }); setEditing(g.id); }}>{g.now || g.want ? 'Edit details' : 'Add the how and why'}</button>
+                      <button className="mini" onClick={() => { setDraft({ now: g.now || '', want: g.want || '' }); setEditing(g.id); }}>{g.now || g.want ? 'Edit details' : 'Describe this goal'}</button>
                       <button className="mini" onClick={() => setCoaching(g.id)}>Work it out with the coach</button>
                     </div>
                   )}
@@ -87,7 +87,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                       onProposal={(pr) => { if (pr.type === 'goal_detail') setDetail(g.id, { now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }); }}
                     />
                   )}
-                  <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How happy you are with: ${goalLine(g)}`} className="slider" />
+                  <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How it is going: ${goalLine(g)}`} className="slider" />
                   {r.length > 0 && <p className="soft">Last sessions: {r.map((x) => ({ better: 'Better', same: 'Same', struggling: 'Still struggling' })[x]).join(' · ')}</p>}
                   <div className="row-gap">
                     <button className="mini" onClick={() => park(g.id)}>Park for now</button>

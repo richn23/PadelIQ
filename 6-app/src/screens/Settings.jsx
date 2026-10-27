@@ -31,6 +31,7 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       const file = new File([blob], name, { type: 'application/json' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({ files: [file], title: 'Padel IQ backup' });
+        updatePlayer((p) => ({ ...p, lastBackup: new Date().toISOString() }));
         setMsg('Backup shared.');
         return;
       }
@@ -42,6 +43,7 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    updatePlayer((p) => ({ ...p, lastBackup: new Date().toISOString() }));
     setMsg('Backup saved to your downloads.');
   };
   const importData = (e) => {
@@ -126,7 +128,7 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
 
       <section className="panel">
         <p className="eyebrow">Backup</p>
-        <p className="soft">Your data lives only on this phone. Save a backup now and then.</p>
+        <p className="soft">Your data lives only on this phone. Save a backup now and then. It only takes a moment.</p>
         <div className="session-actions" style={{ marginTop: 10 }}>
           <button className="mini on" onClick={exportData}>Save a backup</button>
           <button className="mini" onClick={() => fileRef.current?.click()}>Load a backup</button>
@@ -143,8 +145,8 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
         {full && <p className="soft">Redoing the quiz keeps your matches, goals and skill checks.</p>}
       </section>
       <section className="panel">
-        <p className="eyebrow">Admin</p>
-        <p className="soft">See and edit every skill, level and statement. Best on a laptop, for reviewing with a coach.</p>
+        <p className="eyebrow">For coaches</p>
+        <p className="soft">Not needed for playing. See and edit every skill, level and statement. Best on a laptop.</p>
         <div className="session-actions" style={{ marginTop: 10 }}>
           <a className="mini" href="?admin">Open the skills framework</a>
         </div>

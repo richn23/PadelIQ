@@ -6,6 +6,7 @@ import CoachChat from '../components/CoachChat.jsx';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn, isOver, addReminder } from '../sessions.js';
 import { funFact } from '../modes.js';
+import BackupNudge from '../components/BackupNudge.jsx';
 import { noteOf, themeCounts } from '../patterns.js';
 
 const emptyForm = { kind: 'match', date: todayISO(), time: '', venue: '', type: 'casual', partner: '', opp1: '', opp2: '', coach: '', focus: [], focusUnknown: false, intention: '', outcome: '', score: '', targets: [], note: '' };
@@ -26,7 +27,7 @@ const checkOptions = [
 const MODE_KEY = 'padeliq-matches-mode';
 const loadMode = () => { try { return JSON.parse(sessionStorage.getItem(MODE_KEY) || 'null'); } catch { return null; } };
 
-export default function Matches({ player, updatePlayer, onCheckIn, openPlan, openReflect, fresh, mode: howTo = 'full' }) {
+export default function Matches({ player, updatePlayer, onCheckIn, openPlan, openReflect, fresh, mode: howTo = 'full', onSettings }) {
   const simple = howTo !== 'full'; // Just for fun and A little reflection keep this screen light
   const fun = howTo === 'fun'; // Just for fun: log it and you're done, no reflecting
   const [mode, setModeRaw] = useState(() => (openPlan ? { name: 'targets', id: openPlan } : openReflect ? { name: 'reflect', id: openReflect } : (!fresh && loadMode()) || { name: 'list' }));
@@ -83,6 +84,7 @@ export default function Matches({ player, updatePlayer, onCheckIn, openPlan, ope
   return (
     <main className="page">
       <button className="btn" onClick={() => setMode({ name: 'add', date: day || undefined })}>+ Add a {simple ? 'game' : 'match or lesson'}{day ? ` on ${prettyDate(day)}` : ''}</button>
+      {howTo === 'fun' && onSettings && <BackupNudge player={player} updatePlayer={updatePlayer} onSettings={onSettings} />}
       {fact && <p className="soft center">{fact}</p>}
       <Calendar sessions={sessions} day={day} onDay={(d) => setDay(day === d ? null : d)} />
       <MonthSplit sessions={sessions} />
@@ -262,6 +264,7 @@ function AddForm({ date, initial, goals = [], onCancel, onSave, onDelete, howTo 
           <div className="segmented small" style={{ marginTop: 8 }}>
             {OUTCOMES.map((o) => <button key={o.id} className={f.outcome === o.id ? 'on' : ''} onClick={() => setF({ ...f, outcome: f.outcome === o.id ? '' : o.id })}>{o.label}</button>)}
           </div>
+          {!f.outcome && <p className="soft">Pick a result to add the score.</p>}
           {f.outcome && f.outcome !== 'unknown' && (
             <input className="search" style={{ marginTop: 10 }} placeholder="Score, if you know it (e.g. 6-4 3-6 7-5)" value={f.score} onChange={set('score')} aria-label="Score" />
           )}
