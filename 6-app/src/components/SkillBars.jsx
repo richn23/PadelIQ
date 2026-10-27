@@ -53,7 +53,7 @@ export function LevelScale() {
 }
 
 // A list of bars you can slide directly. onSet(skill, { level, adj }) saves a self-rating.
-export default function SkillBars({ title, skills, checks, level, onOpen, onSet, note }) {
+export default function SkillBars({ title, skills, checks, level, onOpen, onSet, note, groups }) {
   const editing = !!onSet; // bars are always sliders: no Adjust switch
   return (
     <section className="panel">
@@ -64,9 +64,22 @@ export default function SkillBars({ title, skills, checks, level, onOpen, onSet,
       {skills.length === 0 ? <p className="soft">Nothing here yet.</p> : (
         <>
           <LevelScale />
-          <ul className="skillbars">
-            {skills.map((s) => <SkillBar key={s.id} skill={s} check={checks[s.id]} level={level} editing={editing} onSet={onSet} onOpen={onOpen} />)}
-          </ul>
+          {groups ? groups.map((g) => {
+            const mine = skills.filter((s) => s.axis === g.id);
+            if (!mine.length) return null;
+            return (
+              <div key={g.id} className="skill-group">
+                <p className="eyebrow">{g.name}</p>
+                <ul className="skillbars">
+                  {mine.map((s) => <SkillBar key={s.id} skill={s} check={checks[s.id]} level={level} editing={editing} onSet={onSet} onOpen={onOpen} />)}
+                </ul>
+              </div>
+            );
+          }) : (
+            <ul className="skillbars">
+              {skills.map((s) => <SkillBar key={s.id} skill={s} check={checks[s.id]} level={level} editing={editing} onSet={onSet} onOpen={onOpen} />)}
+            </ul>
+          )}
         </>
       )}
     </section>

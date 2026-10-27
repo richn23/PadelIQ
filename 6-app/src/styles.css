@@ -484,3 +484,6 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .goal-detail { margin: 6px 0; }
 .goal-detail p { margin: 2px 0; }
 .row-gap { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+
+.skill-group { margin-top: 18px; }
+.skill-group > .eyebrow { margin: 0 0 4px; }
