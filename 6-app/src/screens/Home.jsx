@@ -105,7 +105,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
           />
         )}
 
-        <section className="panel" aria-label="Current focus">
+        <section className="panel tappable" aria-label="Current focus" onClick={(e) => { if (!e.target.closest('button')) onGo('goals'); }}>
           <p className="eyebrow">Current focus</p>
           <p className="soft">How happy you are with each goal</p>
           {(player.goals || []).length === 0 && <p className="soft empty">{simple ? 'Nothing picked yet. One thing to work on is plenty.' : "No focus yet. Soon you'll pick up to 3 things to work on."}</p>}
@@ -126,6 +126,7 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
               );
             })}
           </ul>
+          <button className="linkish" onClick={() => onGo('goals')}>See all my goals ›</button>
         </section>
 
         <section className="panel" aria-label="Next session">

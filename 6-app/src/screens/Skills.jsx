@@ -15,8 +15,9 @@ const views = [
   { id: 'explore', label: 'Explore' },
 ];
 
-export default function Skills({ player, updatePlayer, startView = 'have', openSkill = null }) {
-  const [view, setView] = useState(startView || 'have');
+export default function Skills({ player, updatePlayer, startView = 'have', openSkill = null, known = true }) {
+  const [view, setViewRaw] = useState(known ? (startView || 'have') : 'explore');
+  const setView = setViewRaw;
   const [open, setOpen] = useState(openSkill);
   const checks = skillChecks(player);
   const axisLevels = currentAxisLevels(player);
@@ -39,11 +40,12 @@ export default function Skills({ player, updatePlayer, startView = 'have', openS
 
   return (
     <main className="page">
-      <div className="segmented" role="tablist">
+      {!known && <p className="soft center">Have a look around. Open any skill to see what it means, and rate yourself if you like.</p>}
+      {known && <div className="segmented" role="tablist">
         {views.map((v) => (
           <button key={v.id} role="tab" aria-selected={view === v.id} className={view === v.id ? 'on' : ''} onClick={() => setView(v.id)}>{v.label}</button>
         ))}
-      </div>
+      </div>}
       {view === 'have' && toCheck.length > 0 && (
         <section className="panel rest-card">
           <p className="eyebrow">Finish your check</p>

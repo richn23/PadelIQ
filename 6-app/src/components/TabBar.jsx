@@ -1,7 +1,8 @@
 import React from 'react';
 
-// Four tabs. Home is reached by tapping the logo at the top of any screen.
+// Five tabs: Home, Skills, Goals, Games, Coach. (Just for fun has no tab bar.)
 const icons = {
+  home: <path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" />,
   skills: <path d="M12 3l8.5 6.2-3.2 10H6.7L3.5 9.2z" />,
   goals: <><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r="0.8" /></>,
   matches: <path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4" />,
@@ -9,15 +10,15 @@ const icons = {
 };
 
 export const tabs = [
+  { id: 'home', label: 'Home' },
   { id: 'skills', label: 'Skills' },
   { id: 'goals', label: 'Goals' },
   { id: 'matches', label: 'Games' },
   { id: 'coach', label: 'Coach' },
 ];
 
-// A little reflection keeps three tabs (no Skills). Just for fun has no tab bar at all.
-export default function TabBar({ active, onChange, mode = 'full' }) {
-  const shown = mode === 'reflect' ? tabs.filter((t) => t.id !== 'skills') : tabs;
+export default function TabBar({ active, onChange }) {
+  const shown = tabs;
   return (
     <nav className="tabbar" aria-label="Main">
       {shown.map((t) => (

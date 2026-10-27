@@ -468,3 +468,6 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .skillbars:has(input) .skillbar { padding-bottom: 6px; }
 .skillbar-scale { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 11px; color: var(--text-soft); margin-top: 8px; }
 .link-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-top: 6px; }
+
+.tappable { cursor: pointer; }
+.tab { min-width: 0; }
