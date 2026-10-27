@@ -11,7 +11,8 @@ function greeting() {
   return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
 }
 
-export default function Home({ player, updatePlayer, onGo }) {
+export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
+  const simple = mode !== 'full'; // A little reflection: no level, no skills picture, no check-ins
   const [selected, setSelected] = useState(null);
   const upcomingAll = sortSessions(player.sessions).upcoming;
   // Logged after playing (or with a result) counts as played, not as the next session.
@@ -45,7 +46,7 @@ export default function Home({ player, updatePlayer, onGo }) {
           <div className="avatar" aria-hidden="true">{(player.name || 'P')[0]}</div>
         </header>
 
-        <section className="tiles" aria-label="Summary">
+        {!simple && <section className="tiles" aria-label="Summary">
           <div className="panel tile">
             <p className="eyebrow">Your level</p>
             <p className={'tile-value' + (level.length > 2 ? ' small' : '')}>{level}</p>
@@ -56,7 +57,7 @@ export default function Home({ player, updatePlayer, onGo }) {
             <p className="tile-value">{(player.goals || []).length}</p>
             <p className="tile-note">Max 3 at a time</p>
           </div>
-        </section>
+        </section>}
 
         {unreflected && (
           <section className="panel focus-card">
@@ -66,19 +67,19 @@ export default function Home({ player, updatePlayer, onGo }) {
           </section>
         )}
 
-        {sessionsUntilCheckIn(player) === 0 && (
+        {!simple && sessionsUntilCheckIn(player) === 0 && (
           <section className="panel center">
             <p className="insight">Check-in due</p>
             <button className="btn" onClick={() => onGo('checkin')}>Start check-in</button>
           </section>
         )}
 
-        <section className="panel" aria-label="Your game">
+        {!simple && <section className="panel" aria-label="Your game">
           <p className="eyebrow">Your game</p>
           <Pentagon axes={axes} axisLevels={axisLevels} scores={axisScores} selected={selected} onSelect={setSelected} />
           {!selectedAxis && <p className="soft center">Tap an area to see its skills</p>}
-        </section>
-        {selectedAxis && (
+        </section>}
+        {!simple && selectedAxis && (
           <SkillBars
             title={selectedAxis.name}
             skills={selectedSkills.filter((s) => s.checked && !s.optional)}
@@ -93,7 +94,7 @@ export default function Home({ player, updatePlayer, onGo }) {
         <section className="panel" aria-label="Current focus">
           <p className="eyebrow">Current focus</p>
           <p className="soft">How happy you are with each goal</p>
-          {(player.goals || []).length === 0 && <p className="soft empty">No focus yet. Soon you'll pick up to 3 things to work on.</p>}
+          {(player.goals || []).length === 0 && <p className="soft empty">{simple ? 'Nothing picked yet. One thing to work on is plenty.' : "No focus yet. Soon you'll pick up to 3 things to work on."}</p>}
           <ul className="goals">
             {(player.goals || []).map((g) => {
               const skill = skillById[g.skillId];
@@ -120,12 +121,12 @@ export default function Home({ player, updatePlayer, onGo }) {
               <p className="match-when">{next.when}</p>
               <p className="match-who">{next.who}</p>
               {next.venue && <p className="soft">{next.venue}</p>}
-              <button className="btn" onClick={() => onGo('matches', planned ? { plan: planned.id } : null)}>Plan this session</button>
+              {!simple && <button className="btn" onClick={() => onGo('matches', planned ? { plan: planned.id } : null)}>Plan this session</button>}
             </>
           ) : (
             <>
               <p className="soft empty">Nothing planned yet.</p>
-              <button className="btn" onClick={() => onGo('matches')}>Add a match or lesson</button>
+              <button className="btn" onClick={() => onGo('matches')}>Add a game</button>
             </>
           )}
         </section>

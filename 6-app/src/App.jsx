@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Splash from './screens/Splash.jsx';
 import Home from './screens/Home.jsx';
 import Onboarding from './screens/Onboarding.jsx';
+import Welcome from './screens/Welcome.jsx';
 import Skills from './screens/Skills.jsx';
 import Goals from './screens/Goals.jsx';
 import Matches from './screens/Matches.jsx';
@@ -15,6 +16,7 @@ import { pickTheme, applyTheme } from './theme.js';
 import { loadPlayer, savePlayer, clearPlayer, migratePlayer } from './store.js';
 import { player as samplePlayer } from './data.js';
 import { shiftAreas } from './levels.js';
+import { modeOf, starterPlayer } from './modes.js';
 
 // Testing helpers: ?reset starts again, ?demo shows the sample player (Alex).
 const params = new URLSearchParams(location.search);
@@ -26,7 +28,7 @@ if (params.has('reset') || params.has('demo')) {
 const MAIN = ['home', 'skills', 'goals', 'matches', 'coach', 'checkin', 'settings'];
 const savedScreen = () => { try { const s = sessionStorage.getItem('padeliq-screen'); return MAIN.includes(s) ? s : 'home'; } catch { return 'home'; } };
 
-const titles = { home: null, skills: 'Skills', goals: 'Goals', matches: 'Matches', coach: 'Coach', checkin: 'Check-in', settings: 'Settings' };
+const titles = { home: null, skills: 'Skills', goals: 'Goals', matches: 'Games', coach: 'Coach', checkin: 'Check-in', settings: 'Settings' };
 
 export default function App() {
   const [screen, setScreenRaw] = useState('splash');
@@ -55,12 +57,24 @@ export default function App() {
   };
 
   const [redoing, setRedoing] = useState(false);
+  const [startName, setStartName] = useState('');
+  const mode = modeOf(player);
+  const pickMode = (m, name) => {
+    if (m === 'full') { setStartName(name); setScreen('onboarding'); return; }
+    const p = starterPlayer(name, m);
+    savePlayer(p);
+    setPlayer(p);
+    setScreen(m === 'fun' ? 'matches' : 'home');
+  };
+  // Just for fun is a games list and nothing else: Home, Skills, Goals and Coach all lead there.
+  const view = mode === 'fun' && ['home', 'skills', 'goals', 'coach', 'checkin'].includes(screen) ? 'matches' : screen;
   const finishOnboarding = (result) => {
     setRedoing(false);
     const old = player && !isDemo ? player : {};
     const p = {
       ...old,
       name: result.name || old.name || 'Player',
+      mode: 'full',
       provisional: true,
       level: result.level,
       levelSetByPlayer: !!result.setByPlayer,
@@ -84,12 +98,13 @@ export default function App() {
 
   return (
     <div className="app">
-      {screen === 'splash' && <Splash onDone={() => setScreen(player ? savedScreen() : 'onboarding')} />}
-      {screen === 'onboarding' && <Onboarding onDone={finishOnboarding} onCancel={redoing ? () => { setRedoing(false); setScreen('settings'); } : null} />}
+      {screen === 'splash' && <Splash onDone={() => setScreen(player ? savedScreen() : 'welcome')} />}
+      {screen === 'welcome' && <Welcome onPick={pickMode} />}
+      {screen === 'onboarding' && <Onboarding initialName={startName} onDone={finishOnboarding} onCancel={redoing ? () => { setRedoing(false); setScreen('settings'); } : null} />}
       {['home', 'skills', 'goals', 'matches', 'coach', 'checkin', 'settings'].includes(screen) && player && (
         <>
-          <TopBar title={titles[screen]} onHome={() => setScreen('home')} onSettings={screen === 'home' ? () => setScreen('settings') : null}>
-            {!['coach', 'checkin', 'settings'].includes(screen) && (
+          <TopBar title={titles[view]} onHome={() => setScreen(mode === 'fun' ? 'matches' : 'home')} onSettings={view === 'home' || (mode === 'fun' && view === 'matches') ? () => setScreen('settings') : null}>
+            {mode !== 'fun' && !['coach', 'checkin', 'settings'].includes(view) && (
               <CoachButton screen={screen} onOpenCoach={(p) => {
                 // "Help with a weak spot" opens a deep dive on your first goal, if you have one.
                 const goal = (player.goals || [])[0];
@@ -98,22 +113,22 @@ export default function App() {
               }} />
             )}
           </TopBar>
-          {screen === 'home' && <Home player={player} updatePlayer={updatePlayer} onGo={go} />}
-          {screen === 'checkin' && <CheckIn player={player} updatePlayer={updatePlayer} onDone={() => setScreen('matches')} />}
-          {screen === 'settings' && (
+          {view === 'home' && <Home player={player} updatePlayer={updatePlayer} mode={mode} onGo={go} />}
+          {view === 'checkin' && <CheckIn player={player} updatePlayer={updatePlayer} onDone={() => setScreen('matches')} />}
+          {view === 'settings' && (
             <Settings
               player={player}
               updatePlayer={updatePlayer}
-              onBack={() => setScreen('home')}
+              onBack={() => setScreen(mode === 'fun' ? 'matches' : 'home')}
               onRedoQuiz={() => { setRedoing(true); setScreen('onboarding'); }}
-              onReset={() => { clearPlayer(); setPlayer(null); setScreen('onboarding'); }}
+              onReset={() => { clearPlayer(); setPlayer(null); setScreen('welcome'); }}
             />
           )}
-          {screen === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
-          {screen === 'goals' && <Goals player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
-          {screen === 'matches' && <Matches key={'m' + tapCount} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} openReflect={intent?.reflect} fresh={!!intent?.fresh} />}
-          {screen === 'coach' && <Coach key={'c' + tapCount} player={player} start={coachQuestion} onGoSkills={() => go('skills', { view: 'explore' })} />}
-          <TabBar active={screen} onChange={(id) => { setCoachQuestion(null); go(id); }} />
+          {view === 'skills' && <Skills key={'s' + tapCount} player={player} updatePlayer={updatePlayer} startView={intent?.view} openSkill={intent?.open} />}
+          {view === 'goals' && <Goals player={player} updatePlayer={updatePlayer} onAdd={() => go('skills', { view: 'next' })} />}
+          {view === 'matches' && <Matches key={'m' + tapCount} mode={mode} player={player} updatePlayer={updatePlayer} onCheckIn={() => setScreen('checkin')} openPlan={intent?.plan} openReflect={intent?.reflect} fresh={!!intent?.fresh} />}
+          {view === 'coach' && <Coach key={'c' + tapCount} player={player} start={coachQuestion} onGoSkills={() => go('skills', { view: 'explore' })} />}
+          {mode !== 'fun' && <TabBar mode={mode} active={view} onChange={(id) => { setCoachQuestion(null); go(id); }} />}
         </>
       )}
     </div>

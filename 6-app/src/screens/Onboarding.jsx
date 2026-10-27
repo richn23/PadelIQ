@@ -40,9 +40,9 @@ function Mascot({ pose, children }) {
   );
 }
 
-export default function Onboarding({ onDone, onCancel }) {
+export default function Onboarding({ onDone, onCancel, initialName = '' }) {
   const [step, setStep] = useState(0);
-  const [name, setName] = useState('');
+  const [name, setName] = useState(initialName);
   const [often, setOften] = useState(null);
   const [picked, setPicked] = useState(null); // what the player said (can be Pro)
   const [base, setBase] = useState(null); // level checked (Pro is checked as A)

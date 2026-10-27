@@ -3,6 +3,7 @@ import { levels, themes } from '../data.js';
 import { currentLevel, levelName, overallLevel, currentAxisLevels } from '../levels.js';
 import { applyTheme, pickTheme } from '../theme.js';
 import { CHECKIN_EVERY } from '../sessions.js';
+import { MODES, modeOf } from '../modes.js';
 
 export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, onBack }) {
   const [theme, setTheme] = useState(pickTheme());
@@ -13,6 +14,14 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
   const fileRef = useRef(null);
   const every = player.checkInEvery || CHECKIN_EVERY;
   const fromSkills = overallLevel(currentAxisLevels(player));
+  const mode = modeOf(player);
+  const full = mode === 'full';
+  // Going to the full picture needs the skills check once, if you skipped it.
+  const setMode = (id) => {
+    if (id === mode) return;
+    if (id === 'full' && !player.quiz) { onRedoQuiz(); return; }
+    updatePlayer((p) => ({ ...p, mode: id }));
+  };
 
   const exportData = async () => {
     const blob = new Blob([JSON.stringify(player, null, 2)], { type: 'application/json' });
@@ -52,7 +61,7 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
 
   return (
     <main className="page">
-      <button className="back" onClick={onBack}>‹ Home</button>
+      <button className="back" onClick={onBack}>‹ {mode === 'fun' ? 'Games' : 'Home'}</button>
 
       <section className="panel ob-form">
         <p className="eyebrow">You</p>
@@ -62,6 +71,19 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       </section>
 
       <section className="panel">
+        <p className="eyebrow">How you use Padel IQ</p>
+        <div className="ob-answers" style={{ marginTop: 8 }}>
+          {MODES.map((m) => (
+            <button key={m.id} className={`ans level-pick${mode === m.id ? ' picked' : ''}`} onClick={() => setMode(m.id)}>
+              <strong>{mode === m.id ? '✓ ' : ''}{m.name}</strong>
+              <span>{m.text}</span>
+            </button>
+          ))}
+        </div>
+        <p className="soft">Your games and goals are kept when you switch.{!player.quiz && !full ? ' The full picture starts with a quick skills check.' : ''}</p>
+      </section>
+
+      {full && <section className="panel">
         <div className="row-between"><p className="eyebrow">Your level</p><p className="pill">{levelName(currentLevel(player))}</p></div>
         <p className="soft">
           {player.levelSetByPlayer ? 'You set this yourself.' : Object.keys(player.skillChecks || {}).length ? 'Worked out from your skill checks.' : 'From your quiz.'}
@@ -79,9 +101,9 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
             ))}
           </div>
         )}
-      </section>
+      </section>}
 
-      <section className="panel">
+      {full && <section className="panel">
         <p className="eyebrow">Check-in</p>
         <div className="row-between" style={{ marginTop: 6 }}>
           <span>Every {every} sessions</span>
@@ -91,7 +113,7 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
           </span>
         </div>
         <p className="soft">Minimum 5. Matches and lessons both count.</p>
-      </section>
+      </section>}
 
       <section className="panel">
         <p className="eyebrow">Court colour</p>
@@ -115,10 +137,10 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
       <section className="panel">
         <p className="eyebrow">Start over</p>
         <div className="session-actions" style={{ marginTop: 10 }}>
-          {!sureRedo ? <button className="mini" onClick={() => setSureRedo(true)}>Redo the quiz</button> : <button className="mini on" onClick={onRedoQuiz}>Tap again to start the quiz</button>}
+          {full && (!sureRedo ? <button className="mini" onClick={() => setSureRedo(true)}>Redo the quiz</button> : <button className="mini on" onClick={onRedoQuiz}>Tap again to start the quiz</button>)}
           {!sureReset ? <button className="mini" onClick={() => setSureReset(true)}>Delete everything</button> : <button className="mini danger" onClick={onReset}>Tap again: delete all</button>}
         </div>
-        <p className="soft">Redoing the quiz keeps your matches, goals and skill checks.</p>
+        {full && <p className="soft">Redoing the quiz keeps your matches, goals and skill checks.</p>}
       </section>
       <section className="panel">
         <p className="eyebrow">Admin</p>

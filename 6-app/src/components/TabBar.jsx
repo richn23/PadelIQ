@@ -11,14 +11,16 @@ const icons = {
 export const tabs = [
   { id: 'skills', label: 'Skills' },
   { id: 'goals', label: 'Goals' },
-  { id: 'matches', label: 'Matches' },
+  { id: 'matches', label: 'Games' },
   { id: 'coach', label: 'Coach' },
 ];
 
-export default function TabBar({ active, onChange }) {
+// A little reflection keeps three tabs (no Skills). Just for fun has no tab bar at all.
+export default function TabBar({ active, onChange, mode = 'full' }) {
+  const shown = mode === 'reflect' ? tabs.filter((t) => t.id !== 'skills') : tabs;
   return (
     <nav className="tabbar" aria-label="Main">
-      {tabs.map((t) => (
+      {shown.map((t) => (
         <button
           key={t.id}
           className={'tab' + (t.id === active ? ' active' : '')}
