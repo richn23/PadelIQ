@@ -3,6 +3,7 @@ import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
+import FocusChecks, { splitPlan, planOverall } from '../components/FocusChecks.jsx';
 import RatingPicker from '../components/RatingPicker.jsx';
 import { ratingOf, ratingLabel, runSignal } from '../rating.js';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
@@ -25,6 +26,13 @@ const checkOptions = [
   { id: 'same', label: 'About the same' },
   { id: 'struggling', label: 'Still struggling' },
 ];
+
+// Save each planned point with its own answer, plus one overall answer for older screens and the coach.
+const planFields = (session, plan) => {
+  if (!session.intention) return { intentionCheck: undefined, intentionChecks: undefined };
+  const intentionChecks = splitPlan(session.intention).map((text, i) => ({ text, check: plan[i] || '' }));
+  return { intentionChecks, intentionCheck: planOverall(intentionChecks) };
+};
 
 const MODE_KEY = 'padeliq-matches-mode';
 const loadMode = () => { try { return JSON.parse(sessionStorage.getItem(MODE_KEY) || 'null'); } catch { return null; } };
@@ -367,7 +375,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
   const toCheck = (session.targets?.length ? goals.filter((g) => session.targets.includes(g.id)) : goals);
   const [d, setD] = useState(() => loadDraft(session.id) || {
     checks: session.goalChecks || {},
-    planCheck: session.intentionCheck || '',
+    plan: Object.fromEntries((session.intentionChecks || []).map((x, i) => [i, x.check])),
     outcome: session.result?.outcome || '',
     score: session.result?.score || '',
     notes: session.notes || { worked: '', didnt: '', tryNext: '' },
@@ -393,7 +401,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
       result: session.kind === 'match' ? { outcome: d.outcome, score: d.outcome === 'unknown' ? '' : d.score.trim() } : undefined,
       rating: d.rating,
       goalChecks: d.checks,
-      intentionCheck: session.intention ? d.planCheck : undefined,
+      ...planFields(session, d.plan),
       notes: d.notes,
       tags: d.tags,
       coachSaid: session.kind === 'lesson' ? d.coachSaid : undefined,
@@ -421,30 +429,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
         </section>
       )}
 
-      {session.intention && (
-        <section className="panel">
-          <p className="eyebrow">Your intention</p>
-          <p className="goal-title" style={{ margin: '6px 0 10px' }}>{session.intention}</p>
-          <div className="segmented small">
-            {planOptions.map((o) => <button key={o.id} className={d.planCheck === o.id ? 'on' : ''} onClick={() => set({ planCheck: o.id })}>{o.label}</button>)}
-          </div>
-        </section>
-      )}
-
-      {toCheck.length > 0 && (
-        <section className="panel">
-          <p className="eyebrow">Your goals</p>
-          {toCheck.map((g) => (
-            <div key={g.id} className="goal-check">
-              <p className="goal-title">{goalSkill(g)}</p>
-              {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
-              <div className="segmented small">
-                {checkOptions.map((o) => <button key={o.id} className={d.checks[g.id] === o.id ? 'on' : ''} onClick={() => set({ checks: { ...d.checks, [g.id]: o.id } })}>{o.label}</button>)}
-              </div>
-            </div>
-          ))}
-        </section>
-      )}
+      <FocusChecks session={session} goals={toCheck} goalChecks={d.checks} onGoal={(checks) => set({ checks })} planChecks={d.plan || {}} onPlan={(plan) => set({ plan })} />
 
       <section className={'panel' + (session.kind === 'lesson' && session.focusUnknown && !d.tags.length ? ' rest-card' : '')}>
         <p className="eyebrow">{session.kind === 'lesson' ? 'What did you work on?' : 'Which skills came up?'}</p>
@@ -506,10 +491,13 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
   const [rating, setRating] = useState(Number.isFinite(session.rating) ? session.rating : null);
   const [focus, setFocus] = useState(session.notes?.tryNext || '');
   const [chat, setChat] = useState(false);
-  const [planCheck, setPlanCheck] = useState(session.intentionCheck || '');
+  const [plan, setPlan] = useState(Object.fromEntries((session.intentionChecks || []).map((x, i) => [i, x.check])));
+  const [goalChecks, setGoalChecks] = useState(session.goalChecks || {});
+  const toCheck = (session.targets?.length ? (player.goals || []).filter((g) => session.targets.includes(g.id)) : (player.goals || []));
   const save = () => onSave({
     ...session,
-    intentionCheck: session.intention ? planCheck : undefined,
+    ...planFields(session, plan),
+    goalChecks,
     status: 'played',
     playedAt: session.playedAt || new Date().toISOString(),
     result: session.kind === 'match' ? { outcome, score: outcome === 'unknown' ? '' : score.trim() } : undefined,
@@ -531,15 +519,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
           {outcome && outcome !== 'unknown' && <input className="search" style={{ marginTop: 10 }} placeholder="Score, if you know it" value={score} onChange={(e) => setScore(e.target.value)} aria-label="Score" />}
         </section>
       )}
-      {session.intention && (
-        <section className="panel">
-          <p className="eyebrow">Your focus</p>
-          <p className="goal-title" style={{ margin: '6px 0 10px' }}>{session.intention}</p>
-          <div className="segmented small">
-            {planOptions.map((o) => <button key={o.id} className={planCheck === o.id ? 'on' : ''} onClick={() => setPlanCheck(o.id)}>{o.label}</button>)}
-          </div>
-        </section>
-      )}
+      <FocusChecks session={session} goals={toCheck} goalChecks={goalChecks} onGoal={setGoalChecks} planChecks={plan} onPlan={setPlan} />
       <section className="panel ob-form">
         <label className="soft">One thing to work on (optional)
           <input value={focus} maxLength={80} placeholder="e.g. Get my first serve in" onChange={(e) => setFocus(e.target.value)} />
@@ -578,7 +558,9 @@ function Detail({ session, goals, onBack, onEdit, onDelete, simple, player, onCh
       {session.intention && (
         <section className="panel">
           <p className="eyebrow">Intention</p>
-          <p className="note">{session.intention}{session.intentionCheck ? ` · ${{ yes: 'Managed it', partly: 'Partly', no: 'Not really' }[session.intentionCheck]}` : ''}</p>
+          {session.intentionChecks?.length > 1
+            ? <ul className="list">{session.intentionChecks.map((x, i) => <li key={i} className="list-row"><span>{x.text}</span><span className="soft">{{ yes: 'Managed it', partly: 'Partly', no: 'Not really' }[x.check] || ''}</span></li>)}</ul>
+            : <p className="note">{session.intention}{session.intentionCheck ? ` · ${{ yes: 'Managed it', partly: 'Partly', no: 'Not really' }[session.intentionCheck]}` : ''}</p>}
         </section>
       )}
       {Object.keys(session.goalChecks || {}).length > 0 && (

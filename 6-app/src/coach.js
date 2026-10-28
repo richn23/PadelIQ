@@ -73,7 +73,7 @@ export function buildPlayerFile(player, { skill } = {}) {
       if (s.feel) parts.push(`felt: ${s.feel}`);
       if (Number.isFinite(s.rating)) parts.push(`played ${s.rating}/10 vs own best`);
       if (s.note) parts.push(`fun note: "${s.note}"`);
-      if (s.intention) parts.push(`intention "${s.intention}" (${s.intentionCheck || 'not marked'})`);
+      if (s.intention) parts.push(s.intentionChecks?.length > 1 ? `planned: ${s.intentionChecks.map((x) => `"${x.text}" (${x.check || 'not marked'})`).join(', ')}` : `intention "${s.intention}" (${s.intentionCheck || 'not marked'})`);
       if (s.notes?.worked) parts.push(`worked: "${s.notes.worked}"`);
       if (s.notes?.didnt) parts.push(`didn't: "${s.notes.didnt}"`);
       if (s.notes?.tryNext) parts.push(`try next: "${s.notes.tryNext}"`);
