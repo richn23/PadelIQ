@@ -3,6 +3,7 @@ import { playedGames } from '../patterns.js';
 import { ratingOf, ratingLabel } from '../rating.js';
 
 const W = 326, H = 150, TOP = 24, BOT = 124, PAD = 12;
+const SAMPLE = [6, 7, 5, 6, 8, 7, 4, 7, 8, 7];
 const y = (v) => BOT - (v / 10) * (BOT - TOP);
 
 // "Usually 6 to 7": the middle half of the rated games, so one odd game does not move it.
@@ -48,7 +49,15 @@ export default function RatingChart({ player, onOpen }) {
       ) : (
         <>
           <p className="hero-big small">Rate a few games and your chart will appear here.</p>
-          <p className="soft">After each game you will be asked how you played compared with your own best, 0 to 10. It is only ever you against you.</p>
+          <svg className="hero-chart ghost" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Example of the chart you will see after rating a few games">
+            <line x1="0" y1={y(10)} x2={W} y2={y(10)} className="guide" />
+            <line x1="0" y1={y(0)} x2={W} y2={y(0)} className="guide" />
+            <text x="0" y="14" className="gtext">My best</text>
+            <text x="0" y="141" className="gtext">Off day</text>
+            <polyline className="hline" points={SAMPLE.map((v, i) => `${PAD + (i * (W - 2 * PAD)) / (SAMPLE.length - 1)},${y(v)}`).join(' ')} />
+            {SAMPLE.map((v, i) => <circle key={i} cx={PAD + (i * (W - 2 * PAD)) / (SAMPLE.length - 1)} cy={y(v)} r="4.5" className="hdot" />)}
+          </svg>
+          <p className="soft">An example. After each game you will be asked how you played compared with your own best, 0 to 10. It is only ever you against you.</p>
         </>
       )}
     </section>

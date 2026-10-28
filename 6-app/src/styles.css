@@ -520,3 +520,4 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .pbox.good .eyebrow { color: #5be3a8; }
 .pbox.work { background: rgba(255,179,143,0.12); }
 .pbox.work .eyebrow { color: #ffb38f; }
+.hero-chart.ghost { opacity: 0.35; filter: grayscale(0.6); }
