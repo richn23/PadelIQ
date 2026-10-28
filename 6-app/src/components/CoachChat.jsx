@@ -5,7 +5,7 @@ import { askCoach, buildPlayerFile } from '../coach.js';
 
 // A conversation with the AI coach in one mode. When the coach suggests something
 // (a level, a goal, notes), the player taps Accept or Not quite. Nothing is saved without that tap.
-export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, onClose, opener, intro, saved, onMessages }) {
+export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, accepts, onClose, opener, intro, saved, onMessages }) {
   const [msgs, setMsgs] = useState(saved?.length ? saved.map((m) => ({ role: m.role, content: m.content })) : intro ? [{ role: 'assistant', content: intro }] : []); // { role, content, proposal? }
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
@@ -78,7 +78,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
                   <React.Fragment key={src.url}>{k ? ', ' : ''}<a href={src.url} target="_blank" rel="noopener noreferrer">{src.title.length > 40 ? new URL(src.url).hostname.replace(/^www\./, '') : src.title}</a></React.Fragment>
                 ))}</p>
               )}
-              {m.proposal && usable(m.proposal) && (
+              {m.proposal && usable(m.proposal) && (!accepts || accepts.includes(m.proposal.type)) && (
                 <div className="proposal">
                   <ProposalText p={m.proposal} />
                   {!done[i] && msgs.slice(i + 1).some((x) => x.proposal && x.proposal.type === m.proposal.type) ? (

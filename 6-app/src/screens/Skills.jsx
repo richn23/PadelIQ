@@ -222,7 +222,7 @@ function GoalChat({ skill, level, player, form, setForm, onSave, onCancel }) {
           player={player}
           skill={skill}
           onClose={() => setForm({ ...form, step: 'what' })}
-          onProposal={(p) => { if (p.type === 'goal') { setForm({ ...form, step: 'suggest', title: p.title || form.title, progress: typeof p.progress === 'number' ? p.progress : form.progress }); return 'Added to the form above.'; } if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return 'Saved. Find it on the Coach tab, under Last time.'; } return false; }}
+          accepts={['goal', 'thread']} onProposal={(p) => { if (p.type === 'goal') { setForm({ ...form, step: 'suggest', title: p.title || form.title, progress: typeof p.progress === 'number' ? p.progress : form.progress }); return 'Added to the form above.'; } if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return 'Saved. Find it on the Coach tab, under Last time.'; } return false; }}
         />
       )}
       {form.step === 'when' && (
@@ -470,6 +470,7 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
           player={player}
           skill={skill}
           onClose={() => setChat(null)}
+          accepts={['skill_level', 'goal', 'thread']}
           onProposal={(p) => {
             if (p.type === 'skill_level' && p.level) {
               const lv = levels.find((l) => l.id.toLowerCase() === String(p.level).toLowerCase() || l.name.toLowerCase() === String(p.level).toLowerCase());

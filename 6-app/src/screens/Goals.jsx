@@ -104,7 +104,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                       player={player}
                       skill={g.skillId ? skill : undefined}
                       onClose={() => setCoaching(null)}
-                      onProposal={(pr) => { if (pr.type === 'goal_detail') { setDetail(g.id, { now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }); return; } if (pr.type === 'thread') { updatePlayer((p) => withThread(p, pr)); return 'Saved. Find it on the Coach tab, under Last time.'; } return false; }}
+                      accepts={['goal_detail', 'thread']} onProposal={(pr) => { if (pr.type === 'goal_detail') { setDetail(g.id, { now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }); return; } if (pr.type === 'thread') { updatePlayer((p) => withThread(p, pr)); return 'Saved. Find it on the Coach tab, under Last time.'; } return false; }}
                     />
                   )}
                   {editing !== g.id && <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How it is going: ${goalLine(g)}`} className="slider" />}
@@ -135,6 +135,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
             title="Choose a goal with the coach"
             intro="Tell me what's frustrating you in your games, or what you'd like to be better at. We'll turn it into one goal."
             player={player}
+            accepts={['goal', 'thread']}
             onProposal={coachGoal}
             onClose={() => setHelping(false)}
           />

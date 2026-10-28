@@ -40,6 +40,12 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
       updatePlayer((pl) => parkGoalIn(pl, g.id));
       return 'Parked. You can pick it up again from Goals.';
     }
+    if (p.type === 'reflection' && last) {
+      const n = p.notes || {};
+      const merge = (a, b) => (b ? (a ? `${a} ${b}` : b) : a || '');
+      updatePlayer((pl) => ({ ...pl, sessions: (pl.sessions || []).map((x) => (x.id === last.id ? { ...x, notes: { worked: merge(x.notes?.worked, n.worked), didnt: merge(x.notes?.didnt, n.didnt), tryNext: merge(x.notes?.tryNext, n.tryNext) }, tags: [...new Set([...(x.tags || []), ...(p.tags || [])])] } : x)) }));
+      return 'Saved to your last game.';
+    }
     return false;
   };
   const answer = (t, status) => {
@@ -52,7 +58,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
     return (
       <main className="page">
         <button className="back" onClick={() => { setMode(null); setFollowUp(null); }}>‹ Coach</button>
-        <CoachChat key={'fu' + followUp.id} mode="follow_up" title={`Follow-up: ${followUp.topic}`} vars={vars} player={player} onProposal={saveProposal}
+        <CoachChat key={'fu' + followUp.id} mode="follow_up" title={`Follow-up: ${followUp.topic}`} vars={vars} player={player} onProposal={saveProposal} accepts={['thread', 'goal', 'park_goal', 'reflection']}
           intro={followUp.status === 'partly' ? `Good, a bit of progress. What did you notice when you tried it?` : `Thanks for telling me. What happened when you tried it?`} />
       </main>
     );
@@ -84,7 +90,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
     return (
       <main className="page">
         <button className="back" onClick={() => { setMode(null); setSkillId(null); }}>‹ Coach</button>
-        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} onProposal={saveProposal} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : mode === 'post_match' ? postMatchOpener(last, runSignal(player)) : mode === 'ask' ? "What's your question today? Anything about padel: a shot, tactics, rules, even rackets." : mode === 'mindset' ? "What's on your mind? Nerves, focus, frustration, anything." : undefined} />
+        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} onProposal={saveProposal} accepts={['thread', 'goal', 'park_goal', 'reflection']} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : mode === 'post_match' ? postMatchOpener(last, runSignal(player)) : mode === 'ask' ? "What's your question today? Anything about padel: a shot, tactics, rules, even rackets." : mode === 'mindset' ? "What's on your mind? Nerves, focus, frustration, anything." : undefined} />
       </main>
     );
   }
