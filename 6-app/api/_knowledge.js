@@ -33,6 +33,7 @@ export function notesSection(cards) {
     if (c.causes?.length) parts.push('Possible causes (candidates, never a diagnosis): ' + c.causes.map((x) => `"${x[0]}" may involve ${x[1]}. Tell apart: ${x[2]}`).join(' | '));
     if (c.depends?.length) parts.push('The advice changes with the situation: ' + c.depends.join(' '));
     if (c.practice?.length) parts.push('Practice ideas from coaching guides (suggest at most one): ' + c.practice.join(' / '));
+    if (c.drills) parts.push('Optional practice ideas (offer at most one, only if the player wants to improve this; basis: ' + c.drills.basis + '): technique: ' + c.drills.technique + ' | decision: ' + c.drills.decision + ' | in a match: ' + c.drills.match);
     if (c.ask.length) parts.push('Good questions: ' + c.ask.join(' / '));
     if (c.avoid.length) parts.push('Do not: ' + c.avoid.join(' '));
     return '- ' + parts.join('\n  ');
