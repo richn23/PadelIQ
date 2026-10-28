@@ -1,11 +1,11 @@
 import React from 'react';
 import { goalSkill } from '../goals.js';
 
-const planOptions = [{ id: 'yes', label: 'Yes' }, { id: 'partly', label: 'Partly' }, { id: 'no', label: 'No' }];
-const goalOptions = [{ id: 'better', label: 'Better' }, { id: 'same', label: 'Same' }, { id: 'struggling', label: 'Struggling' }];
+const planOptions = [{ id: 'yes', label: 'Yes', tone: 'good' }, { id: 'partly', label: 'Partly', tone: 'mid' }, { id: 'no', label: 'No', tone: 'low' }];
+const goalOptions = [{ id: 'better', label: 'Better', tone: 'good' }, { id: 'same', label: 'Same', tone: 'mid' }, { id: 'struggling', label: 'Struggling', tone: 'low' }];
 
 // "Volley follow through, using continental grip, slice on serve" becomes three things to check, one by one.
-export const splitPlan = (text) => String(text || '').split(/[,;\n]+/).map((x) => x.trim()).filter(Boolean).slice(0, 4);
+export const splitPlan = (text) => String(text || '').split(/[,;\n]+/).map((x) => x.trim()).filter(Boolean).slice(0, 4).map((x) => x[0].toUpperCase() + x.slice(1));
 
 // One answer for old screens and the coach: all yes = yes, all no = no, anything else = partly.
 export function planOverall(items) {
@@ -27,7 +27,7 @@ export default function FocusChecks({ session, goals, goalChecks, onGoal, planCh
         {note && <p className="goal-note">{note}</p>}
       </div>
       <div className="pills" role="group" aria-label={title}>
-        {options.map((o) => <button key={o.id} type="button" className={value === o.id ? 'on' : ''} aria-pressed={value === o.id} onClick={() => onPick(value === o.id ? '' : o.id)}>{o.label}</button>)}
+        {options.map((o) => <button key={o.id} type="button" className={value === o.id ? 'on ' + o.tone : ''} aria-pressed={value === o.id} onClick={() => onPick(value === o.id ? '' : o.id)}>{o.label}</button>)}
       </div>
     </div>
   );
