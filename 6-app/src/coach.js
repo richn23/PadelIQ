@@ -239,16 +239,20 @@ function whenWord(date) {
 // The pre-match coach opens instantly with your own focus points (no waiting for the AI).
 export function preMatchOpener(player, session) {
   const goals = player.goals || [];
-  const points = [];
-  if (session?.intention) points.push(session.intention);
   const targets = session?.targets?.length ? goals.filter((g) => session.targets.includes(g.id)) : goals;
-  targets.forEach((g) => points.push(goalNote(g) ? `${goalSkill(g)}: ${goalNote(g)}` : goalSkill(g)));
+  const goalLines = targets.map((g) => (goalNote(g) ? `${goalSkill(g)}: ${goalNote(g)}` : goalSkill(g)));
+  const extras = Array.isArray(session?.extras) ? session.extras.filter(Boolean) : (session?.intention ? [session.intention] : []);
   const lastTry = recentSessions(player, 3).map((s) => s.notes?.tryNext).filter(Boolean)[0];
-  if (lastTry) points.push(`From last time: ${lastTry}`);
   const kind = session?.kind === 'lesson' ? 'lesson' : 'match';
   const what = session ? `${whenWord(session.date)} ${kind}` : 'your next game';
-  if (!points.length) return `Nothing saved to focus on for ${what} yet.${levelKnown(player) ? `\n\nAt your level the priority is: ${levelFocus(currentLevel(player))}` : ''}\n\nAnything on your mind?`;
-  return `Here's a reminder of what you wanted to focus on in ${what}:\n${points.slice(0, 3).map((p, i) => `${i + 1}. ${p}`).join('\n')}\n\nAnything else on your mind?`;
+  if (!goalLines.length && !extras.length && !lastTry) return `Nothing saved to focus on for ${what} yet.${levelKnown(player) ? `\n\nAt your level the priority is: ${levelFocus(currentLevel(player))}` : ''}\n\nAnything on your mind?`;
+  const bullets = (list) => list.map((x) => `• ${x}`).join('\n');
+  const parts = [`Here's what you wanted to focus on in ${what}:`];
+  if (goalLines.length) parts.push(`Your goals\n${bullets(goalLines)}`);
+  if (extras.length) parts.push(`Also\n${bullets(extras)}`);
+  if (lastTry) parts.push(`From last time\n${bullets([lastTry])}`);
+  parts.push('Would you like some advice on any of these, or is the reminder enough?');
+  return parts.join('\n\n');
 }
 
 // The post-match coach opens instantly with one simple question.

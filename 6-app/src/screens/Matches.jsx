@@ -357,7 +357,7 @@ function Plan({ session, goals, player, onBack, onSave, simple }) {
       </section>
       {!brief
         ? <button className="btn ghost" onClick={() => setBrief(true)}>{simple ? 'Talk it through with the coach' : 'Get a pre-match brief from the coach'}</button>
-        : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} intro={preMatchOpener(player, { ...session, intention, targets: t })} onClose={() => setBrief(false)} />}
+        : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} intro={preMatchOpener(player, { ...session, intention, extras: extras.map((x) => x.trim()).filter(Boolean), targets: t })} onClose={() => setBrief(false)} />}
       <button className="btn" onClick={() => onSave({ targets: t, extras: extras.map((x) => x.trim()).filter(Boolean), intention })}>{simple ? 'Save' : 'Save plan'}</button>
     </main>
   );
