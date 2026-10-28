@@ -10,7 +10,7 @@ import { MAX_GOALS, addGoalTo, parkGoalIn } from '../goals.js';
 
 const MODES = [
   { id: 'pre_match', name: 'Pre-match', what: 'Short and clear: 2 or 3 things to think about for your next session.' },
-  { id: 'post_match', name: 'Post-match', what: 'Asks questions to help you reflect on your last session. No advice.' },
+  { id: 'post_match', name: 'Post-match', what: 'Talk through your last game or lesson.' },
   { id: 'ask', name: 'Ask the coach', what: 'Any padel question: a shot, tactics, rules, even rackets.' },
   { id: 'mindset', name: 'Mindset', what: 'Nerves, focus and bouncing back.' },
 ];
@@ -74,7 +74,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
             <div className="chips" style={{ marginTop: 8 }}>
               {goalSkills.map((id) => <button key={id} className="chip-btn skill" onClick={() => setSkillId(id)}>{allSkillById[id]?.name}</button>)}
             </div>
-            <p className="soft" style={{ marginTop: 8 }}>{goalSkills.length ? 'Your goals are listed. ' : ''}For any other skill, open it on the Skills tab and tap "Explain this skill".</p>
+            <p className="soft" style={{ marginTop: 8 }}>{goalSkills.length ? 'Your goals are listed. ' : ''}For any other skill, open it on the Skills tab and tap "Dive in with the coach".</p>
             <button className="btn ghost" onClick={onGoSkills}>Go to Skills</button>
           </section>
         </main>
@@ -126,7 +126,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
             </li>
           ))}
         </ul>
-        {howTo === 'full' && <p className="soft">Want a skill explained? Open it in Skills and tap "Explain this skill".</p>}
+        {howTo === 'full' && <p className="soft">Want a skill explained? Open it in Skills and tap "Dive in with the coach".</p>}
       </section>
     </main>
   );
