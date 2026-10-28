@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { getTimings, clearTimings } from '../coach.js';
+import { getChats, clearChats, chatsToText } from '../chatlog.js';
 import { levels, themes } from '../data.js';
 import { currentLevel, levelName, overallLevel, currentAxisLevels } from '../levels.js';
 import { applyTheme, pickTheme } from '../theme.js';
@@ -148,6 +149,10 @@ export default function Settings({ player, updatePlayer, onRedoQuiz, onReset, on
         <SpeedBox />
       </section>
       <section className="panel">
+        <p className="eyebrow">Coach conversations</p>
+        <ChatExport setMsg={setMsg} />
+      </section>
+      <section className="panel">
         <p className="eyebrow">Backup</p>
         <p className="soft">Your data lives only on this phone. Save a backup now and then. It only takes a moment.</p>
         <div className="session-actions" style={{ marginTop: 10 }}>
@@ -200,6 +205,36 @@ function SpeedBox() {
             <button className="mini quiet" onClick={() => { clearTimings(); setRows([]); }}>Clear</button>
           </div>
         </>
+      )}
+    </>
+  );
+}
+
+// Every chat with the coach is kept on this phone only. Export them to read, or to give to another AI to review.
+function ChatExport({ setMsg }) {
+  const [n, setN] = useState(getChats().length);
+  const text = () => chatsToText(getChats());
+  const download = async () => {
+    const blob = new Blob([text()], { type: 'text/plain' });
+    const name = `padel-iq-coach-chats-${new Date().toISOString().slice(0, 10)}.txt`;
+    try {
+      const file = new File([blob], name, { type: 'text/plain' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Padel IQ coach chats' }); setMsg('Chats shared.'); return; }
+    } catch { /* fall back to download */ }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name; a.click();
+    setMsg('Chats saved to your downloads.');
+  };
+  const copy = async () => { try { await navigator.clipboard.writeText(text()); setMsg('Copied. Paste it anywhere.'); } catch { setMsg('Could not copy. Try Save as a file.'); } };
+  return (
+    <>
+      <p className="soft">Chats with the coach are kept on this phone only, so you can read them or share them to learn what works. {n ? `${n} saved.` : 'None yet. Talk to the coach, then come back.'}</p>
+      {n > 0 && (
+        <div className="session-actions" style={{ marginTop: 10 }}>
+          <button className="mini on" onClick={download}>Save as a file</button>
+          <button className="mini" onClick={copy}>Copy</button>
+          <button className="mini quiet" onClick={() => { clearChats(); setN(0); }}>Clear</button>
+        </div>
       )}
     </>
   );

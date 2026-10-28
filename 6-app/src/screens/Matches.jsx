@@ -455,6 +455,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
       {!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
         : <CoachChat
+            logId={`g${session.id}`}
             mode="post_match"
             title="Post-match coach"
             vars={{ session_summary: sessionSummary({ ...session, rating: d.rating }, runSignal(player, { ...session, rating: d.rating })) }}
@@ -525,7 +526,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
       </section>
       {!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }, runSignal(player, { ...session, rating })) }} player={player} intro={postMatchOpener({ ...session, rating }, runSignal(player, { ...session, rating }))} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} accepts={['reflection']} onProposal={(p) => { if (p.type !== 'reflection') return false; if (p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
+        : <CoachChat logId={`g${session.id}`} mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }, runSignal(player, { ...session, rating })) }} player={player} intro={postMatchOpener({ ...session, rating }, runSignal(player, { ...session, rating }))} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} accepts={['reflection']} onProposal={(p) => { if (p.type !== 'reflection') return false; if (p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>
@@ -577,7 +578,7 @@ function Detail({ session, goals, onBack, onEdit, onDelete, simple, player, onCh
       </section>}
       {onChat && (!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)}
+        : <CoachChat logId={`g${session.id}`} mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)}
             accepts={['reflection']}
             onProposal={(p) => {
               if (p.type !== 'reflection') return false;

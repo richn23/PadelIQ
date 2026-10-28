@@ -2,10 +2,11 @@ import { progressWord } from '../goals.js';
 import React, { useEffect, useRef, useState } from 'react';
 import think from '../assets/mascot-think.png';
 import { askCoach, buildPlayerFile } from '../coach.js';
+import { logChat } from '../chatlog.js';
 
 // A conversation with the AI coach in one mode. When the coach suggests something
 // (a level, a goal, notes), the player taps Accept or Not quite. Nothing is saved without that tap.
-export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, accepts, onClose, opener, intro, saved, onMessages }) {
+export default function CoachChat({ mode, title, vars = {}, player, skill, onProposal, accepts, onClose, opener, intro, saved, onMessages, logId }) {
   const [msgs, setMsgs] = useState(saved?.length ? saved.map((m) => ({ role: m.role, content: m.content })) : intro ? [{ role: 'assistant', content: intro }] : []); // { role, content, proposal? }
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
@@ -13,6 +14,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   const [error, setError] = useState('');
   const [done, setDone] = useState({}); // proposal index -> 'accepted' | 'declined'
   const endRef = useRef(null);
+  const chatId = useRef(logId || 'c' + Date.now() + Math.random().toString(36).slice(2, 6));
   const started = useRef(false);
 
   const send = async (text, history = msgs) => {
@@ -54,6 +56,12 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
     if (busy || !onMessages || !msgs.some((m) => m.role === 'user')) return;
     onMessages(msgs.slice(-40).map((m) => ({ role: m.role, content: m.content })));
   }, [msgs, busy]);
+  // Keep a private copy of every chat on this phone, so conversations can be exported and learned from.
+  useEffect(() => {
+    if (busy || !msgs.some((m) => m.role === 'user')) return;
+    logChat(chatId.current, { mode, title, style: player?.coachStyle || 'conversational', playerMode: player?.mode, context: vars?.session_summary || skill?.name || '' },
+      msgs.map((m, i) => ({ role: m.role, content: m.content, timing: m.timing, proposal: m.proposal?.type, result: done[i] ? (done[i] === 'declined' ? 'declined' : 'accepted') : undefined })));
+  }, [msgs, busy, done]);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy, live]);
 
   const accept = (i, p) => { const r = onProposal?.(p); setDone({ ...done, [i]: r === false || !onProposal ? "Couldn't save that one here." : typeof r === 'string' ? r : 'accepted' }); };
