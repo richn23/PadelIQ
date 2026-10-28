@@ -24,8 +24,8 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
   const last = recentSessions(player, 1)[0];
 
   const saveProposal = (p) => {
-    if (!updatePlayer) return;
-    if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return; }
+    if (!updatePlayer) return false;
+    if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return 'Saved. Find it on the Coach tab, under Last time.'; }
     if (p.type === 'goal') {
       if ((player.goals || []).length >= MAX_GOALS) return 'You already have 3 goals going. Park one first, then I can add this.';
       const known = allSkillById[p.skillId];
@@ -40,6 +40,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
       updatePlayer((pl) => parkGoalIn(pl, g.id));
       return 'Parked. You can pick it up again from Goals.';
     }
+    return false;
   };
   const answer = (t, status) => {
     updatePlayer?.((pl) => setThreadResult(pl, t.id, status));

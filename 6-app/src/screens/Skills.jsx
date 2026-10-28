@@ -1,3 +1,4 @@
+import { withThread } from '../threads.js';
 import React, { useEffect, useRef, useState } from 'react';
 import Pentagon from '../components/Pentagon.jsx';
 import { axes, levels, groups, allSkills as everySkill, BEGINNER_ONLY, allSkillById, axisById, goalDiagnosis as gd, goalOptions } from '../data.js';
@@ -221,7 +222,7 @@ function GoalChat({ skill, level, player, form, setForm, onSave, onCancel }) {
           player={player}
           skill={skill}
           onClose={() => setForm({ ...form, step: 'what' })}
-          onProposal={(p) => { if (p.type === 'goal') setForm({ ...form, step: 'suggest', title: p.title || form.title, progress: typeof p.progress === 'number' ? p.progress : form.progress }); }}
+          onProposal={(p) => { if (p.type === 'goal') { setForm({ ...form, step: 'suggest', title: p.title || form.title, progress: typeof p.progress === 'number' ? p.progress : form.progress }); return 'Added to the form above.'; } if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return 'Saved. Find it on the Coach tab, under Last time.'; } return false; }}
         />
       )}
       {form.step === 'when' && (
@@ -475,6 +476,9 @@ function SkillPage({ skill, check, player, updatePlayer, onBack }) {
               if (lv) updatePlayer((pl) => ({ ...pl, skillChecks: { ...(pl.skillChecks || {}), [skill.id]: { level: lv.id, claimed: lv.id, outcome: 'coach', focus: [], reason: p.reason, mode: 'coach', date: new Date().toISOString() } } }));
             }
             if (p.type === 'goal' && p.title) goalFromFocus(p.title);
+            if (p.type === 'thread') { updatePlayer((pl) => withThread(pl, p)); return 'Saved. Find it on the Coach tab, under Last time.'; }
+            if (p.type === 'skill_level' || p.type === 'goal') return;
+            return false;
           }}
         />
       )}

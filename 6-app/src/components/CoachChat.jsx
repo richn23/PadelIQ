@@ -1,3 +1,4 @@
+import { progressWord } from '../goals.js';
 import React, { useEffect, useRef, useState } from 'react';
 import think from '../assets/mascot-think.png';
 import { askCoach, buildPlayerFile } from '../coach.js';
@@ -55,7 +56,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   }, [msgs, busy]);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy, live]);
 
-  const accept = (i, p) => { const r = onProposal?.(p); setDone({ ...done, [i]: typeof r === 'string' ? r : 'accepted' }); };
+  const accept = (i, p) => { const r = onProposal?.(p); setDone({ ...done, [i]: r === false || !onProposal ? "Couldn't save that one here." : typeof r === 'string' ? r : 'accepted' }); };
   const decline = (i) => { setDone({ ...done, [i]: 'declined' }); send('Not quite.'); };
 
   return (
@@ -77,7 +78,7 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
                   <React.Fragment key={src.url}>{k ? ', ' : ''}<a href={src.url} target="_blank" rel="noopener noreferrer">{src.title.length > 40 ? new URL(src.url).hostname.replace(/^www\./, '') : src.title}</a></React.Fragment>
                 ))}</p>
               )}
-              {m.proposal && (
+              {m.proposal && usable(m.proposal) && (
                 <div className="proposal">
                   <ProposalText p={m.proposal} />
                   {!done[i] && msgs.slice(i + 1).some((x) => x.proposal && x.proposal.type === m.proposal.type) ? (
@@ -111,9 +112,12 @@ export default function CoachChat({ mode, title, vars = {}, player, skill, onPro
   );
 }
 
+// Never show an empty card (a goal with no name, a plan with nothing in it).
+const usable = (p) => (p.type === 'goal' ? !!(p.title || p.skillId) : p.type === 'thread' ? !!(p.focus || (p.cues || []).length) : true);
+
 function ProposalText({ p }) {
   if (p.type === 'skill_level') return <p><strong>Suggested level: {p.level}</strong>{p.reason ? ` · ${p.reason}` : ''}</p>;
-  if (p.type === 'goal') return <p><strong>Suggested goal:</strong> {p.title}{p.progress != null ? ` (${p.progress}% happy now)` : ''}</p>;
+  if (p.type === 'goal') return <p><strong>Suggested goal:</strong> {p.title}{p.progress != null ? ` (${progressWord(p.progress).toLowerCase()} now)` : ''}</p>;
   if (p.type === 'park_goal') return <p><strong>Park this goal for now?</strong> You can pick it up again later.</p>;
   if (p.type === 'thread') return (
     <div>

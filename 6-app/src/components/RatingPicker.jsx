@@ -5,7 +5,7 @@ export default function RatingPicker({ value, onChange, first }) {
   const has = Number.isFinite(value);
   return (
     <section className="panel rating">
-      <p className="eyebrow">How did you play today, compared with your own best?</p>
+      <p className="eyebrow">How did you play, compared with your own best?</p>
       <p className="soft">This is about your game, not the result or how good they were. Playing stronger players? Rate what you did.</p>
       <div className="rating-row" role="group" aria-label="Rating from 0 to 10">
         {Array.from({ length: 11 }, (_, n) => (

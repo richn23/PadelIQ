@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { progressWord, goalSkill, goalNote, goalLine, addGoalTo, parkGoalIn, unparkGoalIn, MAX_GOALS } from '../goals.js';
+import { withThread } from '../threads.js';
 import CoachChat from '../components/CoachChat.jsx';
 import { allSkillById as skillById, allSkills, axes, axisById, whenLabel } from '../data.js';
 
@@ -11,10 +12,11 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
   const [choosing, setChoosing] = useState(false); // the two ways to add a goal
   const [helping, setHelping] = useState(false); // choosing a goal with the coach
   const coachGoal = (pr) => {
-    if (pr.type !== 'goal') return;
+    if (pr.type === 'thread') { updatePlayer((p) => withThread(p, pr)); return 'Saved. Find it on the Coach tab, under Last time.'; }
+    if (pr.type !== 'goal') return false;
     if (goals.length >= MAX_GOALS) return 'You already have 3 goals going. Park one first, then add this.';
     const known = skillById[pr.skillId]; const title = String(pr.title || '').slice(0, 80);
-    if (!known && !title) return;
+    if (!known && !title) return false;
     updatePlayer((p) => addGoalTo(p, { ...(known ? { skillId: pr.skillId, title } : { own: true, title }), now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }));
     setHelping(false);
     return 'Added to your goals.';
@@ -102,7 +104,7 @@ export default function Goals({ player, updatePlayer, onAdd, simple = false }) {
                       player={player}
                       skill={g.skillId ? skill : undefined}
                       onClose={() => setCoaching(null)}
-                      onProposal={(pr) => { if (pr.type === 'goal_detail') setDetail(g.id, { now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }); }}
+                      onProposal={(pr) => { if (pr.type === 'goal_detail') { setDetail(g.id, { now: String(pr.now || '').slice(0, 120), want: String(pr.want || '').slice(0, 120) }); return; } if (pr.type === 'thread') { updatePlayer((p) => withThread(p, pr)); return 'Saved. Find it on the Coach tab, under Last time.'; } return false; }}
                     />
                   )}
                   {editing !== g.id && <input type="range" min="0" max="100" step="5" value={g.progress} onChange={(e) => setProgress(g.id, Number(e.target.value))} aria-label={`How it is going: ${goalLine(g)}`} className="slider" />}

@@ -481,7 +481,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
             onMessages={onChat}
             onClose={() => setChat(false)}
             onProposal={(p) => {
-              if (p.type !== 'reflection') return;
+              if (p.type !== 'reflection') return false;
               const n = p.notes || {};
               const merge = (a, b) => (b ? (a ? `${a} ${b}` : b) : a);
               set({ notes: { worked: merge(d.notes.worked, n.worked), didnt: merge(d.notes.didnt, n.didnt), tryNext: merge(d.notes.tryNext, n.tryNext) }, tags: [...new Set([...d.tags, ...(p.tags || [])])] });
@@ -552,7 +552,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
       </section>
       {!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }, runSignal(player, { ...session, rating })) }} player={player} intro={postMatchOpener({ ...session, rating }, runSignal(player, { ...session, rating }))} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
+        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }, runSignal(player, { ...session, rating })) }} player={player} intro={postMatchOpener({ ...session, rating }, runSignal(player, { ...session, rating }))} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type !== 'reflection') return false; if (p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>
@@ -604,7 +604,7 @@ function Detail({ session, goals, onBack, onEdit, onDelete, simple, player, onCh
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
         : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)}
             onProposal={(p) => {
-              if (p.type !== 'reflection') return;
+              if (p.type !== 'reflection') return false;
               const n = p.notes || {};
               const merge = (a, b) => (b ? (a ? `${a} ${b}` : b) : a);
               const cur = session.notes || {};
