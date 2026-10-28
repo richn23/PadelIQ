@@ -1016,7 +1016,13 @@ export default {
     "off the back",
     "rebound",
     "glass behind",
-    "back-wall"
+    "back-wall",
+    "glass defence",
+    "glass defense",
+    "off the glass",
+    "let it rebound",
+    "defending the glass",
+    "glass"
    ],
    "facts": [
     "Anticipate where the ball goes after the rebound, create space and prepare early.",
