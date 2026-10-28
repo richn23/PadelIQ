@@ -1,8 +1,8 @@
 import React from 'react';
-import { goalSkill, goalNote } from '../goals.js';
+import { goalSkill } from '../goals.js';
 
-const planOptions = [{ id: 'yes', label: 'Yes' }, { id: 'partly', label: 'Partly' }, { id: 'no', label: 'Not really' }];
-const goalOptions = [{ id: 'better', label: 'Better' }, { id: 'same', label: 'About the same' }, { id: 'struggling', label: 'Still struggling' }];
+const planOptions = [{ id: 'yes', label: 'Yes' }, { id: 'partly', label: 'Partly' }, { id: 'no', label: 'No' }];
+const goalOptions = [{ id: 'better', label: 'Better' }, { id: 'same', label: 'Same' }, { id: 'struggling', label: 'Struggling' }];
 
 // "Volley follow through, using continental grip, slice on serve" becomes three things to check, one by one.
 export const splitPlan = (text) => String(text || '').split(/[,;\n]+/).map((x) => x.trim()).filter(Boolean).slice(0, 4);
@@ -19,37 +19,26 @@ export function planOverall(items) {
 // Two sections: your goals (always, one question each) and what you planned for this game (one question each).
 export default function FocusChecks({ session, goals, goalChecks, onGoal, planChecks, onPlan }) {
   const items = splitPlan(session.intention);
+  if (!goals.length && !items.length) return null;
+  const row = (key, title, note, options, value, onPick) => (
+    <div key={key} className="check-row">
+      <div className="check-text">
+        <p className="goal-title">{title}</p>
+        {note && <p className="goal-note">{note}</p>}
+      </div>
+      <div className="pills" role="group" aria-label={title}>
+        {options.map((o) => <button key={o.id} type="button" className={value === o.id ? 'on' : ''} aria-pressed={value === o.id} onClick={() => onPick(value === o.id ? '' : o.id)}>{o.label}</button>)}
+      </div>
+    </div>
+  );
   return (
-    <>
-      {goals.length > 0 && (
-        <section className="panel">
-          <p className="eyebrow">Your goals</p>
-          <p className="soft">How did each one go in this game?</p>
-          {goals.map((g) => (
-            <div key={g.id} className="goal-check">
-              <p className="goal-title">{goalSkill(g)}</p>
-              {goalNote(g) && <p className="goal-note">{goalNote(g)}</p>}
-              <div className="segmented small">
-                {goalOptions.map((o) => <button key={o.id} className={goalChecks[g.id] === o.id ? 'on' : ''} onClick={() => onGoal({ ...goalChecks, [g.id]: o.id })}>{o.label}</button>)}
-              </div>
-            </div>
-          ))}
-        </section>
-      )}
-      {items.length > 0 && (
-        <section className="panel">
-          <p className="eyebrow">What you planned for this game</p>
-          <p className="soft">From your pre-match notes. Did you manage each one?</p>
-          {items.map((t, i) => (
-            <div key={i} className="goal-check">
-              <p className="goal-title">{t}</p>
-              <div className="segmented small">
-                {planOptions.map((o) => <button key={o.id} className={planChecks[i] === o.id ? 'on' : ''} onClick={() => onPlan({ ...planChecks, [i]: o.id })}>{o.label}</button>)}
-              </div>
-            </div>
-          ))}
-        </section>
-      )}
-    </>
+    <section className="panel">
+      <p className="eyebrow">Your focus</p>
+      <p className="soft">Quick taps. Skip any you like.</p>
+      {goals.length > 0 && <p className="sub">Goals</p>}
+      {goals.map((g) => row(g.id, goalSkill(g), '', goalOptions, goalChecks[g.id], (v) => onGoal({ ...goalChecks, [g.id]: v })))}
+      {items.length > 0 && <p className="sub">What you planned</p>}
+      {items.map((t, i) => row('p' + i, t, '', planOptions, planChecks[i], (v) => onPlan({ ...planChecks, [i]: v })))}
+    </section>
   );
 }
