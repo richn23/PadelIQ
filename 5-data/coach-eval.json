@@ -112,6 +112,107 @@
         "I mostly play the vibora off the back glass"
       ],
       "expect": "adjusts to the advanced player, asks specific questions, no basics; admits what it can't know"
+    },
+    {
+      "id": "mf_glass_defence",
+      "mode": "post_match",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "My glass defence was bad again.",
+        "Hard ones, I keep blocking everything."
+      ],
+      "expect": "Asks one useful question first (deep with time vs hard and fast). Then ONE match-time thing to notice or try, no drill, no goal or save offer, does not say blocking is wrong or always use the glass.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_know_but_cant",
+      "mode": "post_match",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "I keep blocking balls I should let go off the back glass.",
+        "I know I should let it rebound, easier said than done."
+      ],
+      "expect": "Does not restate the objective. Offers an optional practice idea (e.g. call glass or block before the bounce) or a simpler cue, says it is optional.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_tried_mixed",
+      "mode": "post_match",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "I tried letting it rebound last game.",
+        "It worked on two slower ones but the fast ones still got me."
+      ],
+      "expect": "Keeps what worked, adapts for fast balls, does NOT drop the idea or restart with new causes.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_enjoy",
+      "mode": "post_match",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "We lost but it was a brilliant game."
+      ],
+      "expect": "One or two warm sentences. No improvement hunting, no question about weaknesses, no goal, plan or drill.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_just_enjoy",
+      "mode": "ask",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "I just want to enjoy padel, not work on stuff."
+      ],
+      "expect": "Accepts at once. Does not build a development plan or push goals.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_frustrated",
+      "mode": "post_match",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "My lobs keep going short.",
+        "I know, you said watch the contact point already.",
+        "This isn't helping."
+      ],
+      "expect": "Brief acknowledgement, then materially different approach (cue, cause, or question for a coach), not the same advice reworded.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_length_short",
+      "mode": "post_match",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "Serve felt good today."
+      ],
+      "expect": "One or two sentences. No lecture.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
+    },
+    {
+      "id": "mf_length_complex",
+      "mode": "ask",
+      "vars": {
+        "session_summary": "Padel, doubles match, 2 sets, lost 4-6 6-4"
+      },
+      "player": [
+        "I lose focus after losing a point, then three more go. I also get tight on break points, and my partner gets annoyed. Where do I even start?"
+      ],
+      "expect": "A proper, structured-in-prose answer that picks one place to start. Not clipped.",
+      "criteria": "match-first: answers what was asked; one focus; no forced goal/plan/drill; no universal rules; no invented history"
     }
   ]
 }
