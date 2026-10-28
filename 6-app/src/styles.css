@@ -490,3 +490,11 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .skill-group > .eyebrow { margin: 0 0 4px; }
 
 .timing { font-size: 12px; opacity: .6; margin: 4px 0 0; }
+
+/* rating 0 to 10 */
+.rating-row { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; margin-top: 10px; }
+.rate { padding: 10px 0; border-radius: 10px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: #fff; font-weight: 700; font-size: 15px; }
+.rate.on { background: #d7ff00; color: #0b1a5c; border-color: #d7ff00; }
+.rating-label { margin: 10px 0 0; font-weight: 700; color: #d7ff00; text-align: center; }
+.rating-key { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13px; color: rgba(255,255,255,0.78); display: grid; gap: 2px; }
+.rating-key b { color: #fff; display: inline-block; min-width: 34px; }

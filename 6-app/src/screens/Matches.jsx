@@ -3,6 +3,8 @@ import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
+import RatingPicker from '../components/RatingPicker.jsx';
+import { ratingOf, ratingLabel } from '../rating.js';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn, isOver, addReminder } from '../sessions.js';
 import { funFact } from '../modes.js';
@@ -372,6 +374,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
     tags: session.tags || session.focus || [],
     coachSaid: session.coachSaid || '',
     practice: session.practice || '',
+    rating: Number.isFinite(session.rating) ? session.rating : null,
   });
   const set = (patch) => setD((prev) => { const next = { ...prev, ...patch }; saveDraft(session.id, next); return next; });
   const hasNotes = Object.values(d.notes).some(Boolean) || d.coachSaid || d.practice;
@@ -388,6 +391,7 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
       status: 'played',
       playedAt: session.playedAt || new Date().toISOString(),
       result: session.kind === 'match' ? { outcome: d.outcome, score: d.outcome === 'unknown' ? '' : d.score.trim() } : undefined,
+      rating: d.rating,
       goalChecks: d.checks,
       intentionCheck: session.intention ? d.planCheck : undefined,
       notes: d.notes,
@@ -440,6 +444,8 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
         </section>
       )}
 
+      <RatingPicker value={d.rating} onChange={(rating) => set({ rating })} first={!(player.sessions || []).some((x) => Number.isFinite(x.rating))} />
+
       <section className={'panel' + (session.kind === 'lesson' && session.focusUnknown && !d.tags.length ? ' rest-card' : '')}>
         <p className="eyebrow">{session.kind === 'lesson' ? 'What did you work on?' : 'Which skills came up?'}</p>
         {session.kind === 'lesson' && session.focusUnknown && <p className="soft">The coach chose on the day. Tap what you worked on.</p>}
@@ -468,9 +474,9 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
         : <CoachChat
             mode="post_match"
             title="Post-match coach"
-            vars={{ session_summary: sessionSummary(session) }}
+            vars={{ session_summary: sessionSummary({ ...session, rating: d.rating }) }}
             player={player}
-            intro={postMatchOpener(session)}
+            intro={postMatchOpener({ ...session, rating: d.rating })}
             saved={session.coachChat}
             onMessages={onChat}
             onClose={() => setChat(false)}
@@ -496,6 +502,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
   const [outcome, setOutcome] = useState(session.result?.outcome || '');
   const [score, setScore] = useState(session.result?.score || '');
   const [feel, setFeel] = useState(session.feel || '');
+  const [rating, setRating] = useState(Number.isFinite(session.rating) ? session.rating : null);
   const [focus, setFocus] = useState(session.notes?.tryNext || '');
   const [chat, setChat] = useState(false);
   const [planCheck, setPlanCheck] = useState(session.intentionCheck || '');
@@ -506,6 +513,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
     playedAt: session.playedAt || new Date().toISOString(),
     result: session.kind === 'match' ? { outcome, score: outcome === 'unknown' ? '' : score.trim() } : undefined,
     feel,
+    rating,
     notes: { worked: session.notes?.worked || '', didnt: session.notes?.didnt || '', tryNext: focus.trim() },
   });
   return (
@@ -530,6 +538,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
           </div>
         </section>
       )}
+      <RatingPicker value={rating} onChange={setRating} first={!(player.sessions || []).some((x) => Number.isFinite(x.rating))} />
       <section className="panel">
         <p className="eyebrow">How did it feel?</p>
         <div className="segmented small" style={{ marginTop: 8 }}>
@@ -543,7 +552,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
       </section>
       {!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary(session) }} player={player} intro={postMatchOpener(session)} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
+        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }) }} player={player} intro={postMatchOpener({ ...session, rating })} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>
@@ -561,6 +570,7 @@ function Detail({ session, goals, onBack, onEdit, onDelete, simple, player, onCh
         <p className="eyebrow">{session.kind === 'lesson' ? 'Lesson' : 'Match'} · {prettyDate(session.date, session.time)}</p>
         <p className="insight">{summary(session)}</p>
         {session.result?.outcome && <p className="soft">Result: {outcomeText(session.result.outcome)}{session.result.score ? ` (${session.result.score})` : ''}</p>}
+        {ratingOf(session) && <p className="soft">How I played: {ratingOf(session).value}/10, {ratingLabel(ratingOf(session).value)}{ratingOf(session).estimated ? ' (estimated from how it felt)' : ''}</p>}
         {session.feel && <p className="soft">It felt: {FEEL.find((x) => x.id === session.feel)?.label}</p>}
         {session.note && <p className="note">{session.note}</p>}
       </section>

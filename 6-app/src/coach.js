@@ -1,4 +1,5 @@
 // Talking to the AI coach: builds the PLAYER FILE and calls the online helper (/api/coach).
+import { ratingLabel, ratingOf } from './rating.js';
 import { allSkills, allSkillById, axes, levels } from './data.js';
 import { currentLevel, currentAxisLevels, levelName, levelFocus, skillChecks } from './levels.js';
 import { recentSessions } from './checkin.js';
@@ -24,7 +25,8 @@ export function sessionSummary(s) {
   const who = s.kind === 'lesson'
     ? `Lesson${s.coach ? ' with ' + s.coach : ''}`
     : [s.partner && `with ${s.partner}`, s.opponents?.filter(Boolean).length ? `vs ${s.opponents.filter(Boolean).join(' & ')}` : ''].filter(Boolean).join(' ') || 'Match';
-  return `${prettyDate(s.date, s.time)}, ${who}${s.venue ? ', ' + s.venue : ''}${s.intention ? `. Intention: "${s.intention}"` : ''}`;
+  const r = Number.isFinite(s.rating) ? `. The player rated how they played ${s.rating}/10 compared with their OWN best (${ratingLabel(s.rating)}); it says nothing about the opponents or the result` : '';
+  return `${prettyDate(s.date, s.time)}, ${who}${s.venue ? ', ' + s.venue : ''}${s.intention ? `. Intention: "${s.intention}"` : ''}${r}`;
 }
 
 export function buildPlayerFile(player, { skill } = {}) {
@@ -67,6 +69,7 @@ export function buildPlayerFile(player, { skill } = {}) {
       const parts = [`- ${prettyDate(s.date)} ${s.kind}`];
       if (s.result?.outcome && s.result.outcome !== 'unknown') parts.push(`${s.result.outcome}${s.result.score ? ' ' + s.result.score : ''}`);
       if (s.feel) parts.push(`felt: ${s.feel}`);
+      if (Number.isFinite(s.rating)) parts.push(`played ${s.rating}/10 vs own best`);
       if (s.note) parts.push(`fun note: "${s.note}"`);
       if (s.intention) parts.push(`intention "${s.intention}" (${s.intentionCheck || 'not marked'})`);
       if (s.notes?.worked) parts.push(`worked: "${s.notes.worked}"`);
@@ -89,7 +92,7 @@ export function buildPlayerFile(player, { skill } = {}) {
     all.slice(-60).forEach((s) => {
       const n = all.indexOf(s) + 1;
       const o = s.result?.outcome && s.result.outcome !== 'unknown' ? s.result.outcome[0].toUpperCase() : '-';
-      L.push(`#${n} ${prettyDate(s.date)} ${o}${s.feel ? ' ' + s.feel : ''}${noteOf(s) ? ` "${noteOf(s)}"` : ''}`);
+      L.push(`#${n} ${prettyDate(s.date)} ${o}${s.feel ? ' ' + s.feel : ''}${ratingOf(s) ? ` ${ratingOf(s).value}/10${ratingOf(s).estimated ? '~' : ''}` : ''}${noteOf(s) ? ` "${noteOf(s)}"` : ''}`);
     });
   }
   const last = (player.checkIns || []).slice(-1)[0];
@@ -249,5 +252,12 @@ export function preMatchOpener(player, session) {
 // The post-match coach opens instantly with one simple question.
 export function postMatchOpener(session) {
   const kind = session?.kind === 'lesson' ? 'lesson' : 'match';
+  const r = session?.rating;
+  if (Number.isFinite(r)) {
+    if (r >= 8) return `Nice one, that is close to your best. What was working today?`;
+    if (r >= 6) return `A solid one, about your usual. What stood out?`;
+    if (r >= 4) return `A bit below your usual. What felt off?`;
+    return `Sounds like a tough one. What felt off?`;
+  }
   return session ? `How do you feel about ${whenWord(session.date)} ${kind}?` : 'How do you feel about your last game?';
 }
