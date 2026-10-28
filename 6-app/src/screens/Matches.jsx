@@ -407,6 +407,8 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
       <p className="eyebrow center">{session.kind === 'lesson' ? 'After the lesson' : 'After the match'} · {prettyDate(session.date)}</p>
       <p className="soft center">A few taps. Notes are optional.</p>
 
+      <RatingPicker value={d.rating} onChange={(rating) => set({ rating })} first={!(player.sessions || []).some((x) => Number.isFinite(x.rating))} />
+
       {session.kind === 'match' && (
         <section className="panel">
           <p className="eyebrow">Result</p>
@@ -443,8 +445,6 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
           ))}
         </section>
       )}
-
-      <RatingPicker value={d.rating} onChange={(rating) => set({ rating })} first={!(player.sessions || []).some((x) => Number.isFinite(x.rating))} />
 
       <section className={'panel' + (session.kind === 'lesson' && session.focusUnknown && !d.tags.length ? ' rest-card' : '')}>
         <p className="eyebrow">{session.kind === 'lesson' ? 'What did you work on?' : 'Which skills came up?'}</p>
@@ -521,6 +521,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
     <main className="page">
       <button className="back" onClick={onBack}>‹ Games</button>
       <p className="eyebrow center">{session.kind === 'lesson' ? 'After the lesson' : 'After the game'} · {prettyDate(session.date)}</p>
+      <RatingPicker value={rating} onChange={setRating} first={!(player.sessions || []).some((x) => Number.isFinite(x.rating))} />
       {session.kind === 'match' && (
         <section className="panel">
           <p className="eyebrow">Result</p>
@@ -539,13 +540,6 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
           </div>
         </section>
       )}
-      <RatingPicker value={rating} onChange={setRating} first={!(player.sessions || []).some((x) => Number.isFinite(x.rating))} />
-      <section className="panel">
-        <p className="eyebrow">How did it feel?</p>
-        <div className="segmented small" style={{ marginTop: 8 }}>
-          {FEEL.map((o) => <button key={o.id} className={feel === o.id ? 'on' : ''} onClick={() => setFeel(feel === o.id ? '' : o.id)}>{o.label}</button>)}
-        </div>
-      </section>
       <section className="panel ob-form">
         <label className="soft">One thing to work on (optional)
           <input value={focus} maxLength={80} placeholder="e.g. Get my first serve in" onChange={(e) => setFocus(e.target.value)} />
