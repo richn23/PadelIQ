@@ -3,7 +3,7 @@ import { allSkills, allSkillById, axes } from '../data.js';
 import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
-import FocusChecks, { splitPlan, planOverall } from '../components/FocusChecks.jsx';
+import FocusChecks, { planItems, planOverall } from '../components/FocusChecks.jsx';
 import RatingPicker from '../components/RatingPicker.jsx';
 import { ratingOf, ratingLabel, runSignal } from '../rating.js';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
@@ -29,8 +29,8 @@ const checkOptions = [
 
 // Save each planned point with its own answer, plus one overall answer for older screens and the coach.
 const planFields = (session, plan) => {
-  if (!session.intention) return { intentionCheck: undefined, intentionChecks: undefined };
-  const intentionChecks = splitPlan(session.intention).map((text, i) => ({ text, check: plan[i] || '' }));
+  if (!planItems(session).length) return { intentionCheck: undefined, intentionChecks: undefined };
+  const intentionChecks = planItems(session).map((text, i) => ({ text, check: plan[i] || '' }));
   return { intentionChecks, intentionCheck: planOverall(intentionChecks) };
 };
 
@@ -320,36 +320,34 @@ function Plan({ session, goals, player, onBack, onSave, simple }) {
   const [brief, setBrief] = useState(false);
   const [remindMsg, setRemindMsg] = useState('');
   // Ideas for a light focus: what keeps coming up in your notes, then your current goals.
-  const ideas = [...new Set([...themeCounts(player).slice(0, 3).map((t) => t.label), ...goals.map((g) => goalLine(g))])].slice(0, 5);
-  const [t, setT] = useState(session.targets || []);
-  const [intention, setIntention] = useState(session.intention || '');
+  // Your goals are set for you. Add up to 2 other things you want to focus on, if any.
+  const [t, setT] = useState(session.targets || goals.slice(0, 3).map((g) => g.id));
+  const [extras, setExtras] = useState(() => { const e = Array.isArray(session.extras) ? session.extras : (session.intention ? [session.intention] : []); return [e[0] || '', e[1] || '']; });
+  const intention = extras.map((x) => x.trim()).filter(Boolean).join(', ');
   const toggle = (id) => setT(t.includes(id) ? t.filter((x) => x !== id) : t.length < 3 ? [...t, id] : t);
+  const setExtra = (i, v) => setExtras(extras.map((x, k) => (k === i ? v : x)));
   return (
     <main className="page">
       <button className="back" onClick={onBack}>‹ Games</button>
       <p className="eyebrow center">Before · {prettyDate(session.date, session.time)}</p>
-      <section className="panel ob-form">
-        <p className="eyebrow">{simple ? (session.kind === 'lesson' ? 'What do you want to work on?' : "What's your focus?") : 'Your intention'}</p>
-        {simple && ideas.length > 0 && (
-          <div className="chips">
-            {ideas.map((x) => <button key={x} className={'chip-btn skill' + (intention === x ? ' on' : '')} onClick={() => setIntention(intention === x ? '' : x)}>{x}</button>)}
-          </div>
-        )}
-        <label className="soft">{simple ? 'Or in your own words (optional)' : `One thing you want to do in this ${session.kind}`}
-          <input value={intention} maxLength={80} placeholder={simple ? 'e.g. Backhand volley low' : 'e.g. Be patient and lob more'} onChange={(e) => setIntention(e.target.value)} />
-        </label>
-      </section>
-      {!simple && <section className="panel">
-        <p className="eyebrow">Goals for this {session.kind}</p>
-        {goals.length === 0 ? <p className="soft">No goals yet. You can add them from the Skills tab.</p> : (
+      <section className="panel">
+        <p className="eyebrow">Your goals for this {session.kind}</p>
+        {goals.length === 0 ? <p className="soft">No goals yet. You can add them in the Goals tab.</p> : (
           <>
-            <p className="soft">Pick up to 3. Keep it light.</p>
+            <p className="soft">Set from your goals. Untick any you are leaving out today.</p>
             <div className="ob-answers" style={{ marginTop: 10 }}>
               {goals.map((g) => <button key={g.id} className={'ans' + (t.includes(g.id) ? ' picked' : '')} onClick={() => toggle(g.id)}><strong>{t.includes(g.id) ? '✓ ' : ''}{goalSkill(g)}</strong>{goalNote(g) && <span className="block soft">{goalNote(g)}</span>}</button>)}
             </div>
           </>
         )}
-      </section>}
+      </section>
+      <section className="panel ob-form">
+        <p className="eyebrow">Anything else to focus on? (optional)</p>
+        <p className="soft">Up to 2 other things, in your own words.</p>
+        {[0, 1].map((i) => (i === 0 || extras[0].trim()) && (
+          <input key={i} value={extras[i]} maxLength={60} placeholder={i === 0 ? 'e.g. Slice on serve' : 'e.g. Be patient and lob more'} aria-label={`Other focus ${i + 1}`} onChange={(e) => setExtra(i, e.target.value)} />
+        ))}
+      </section>
       <section className="panel">
         <p className="eyebrow">Remind me to reflect</p>
         {session.time
@@ -360,7 +358,7 @@ function Plan({ session, goals, player, onBack, onSave, simple }) {
       {!brief
         ? <button className="btn ghost" onClick={() => setBrief(true)}>{simple ? 'Talk it through with the coach' : 'Get a pre-match brief from the coach'}</button>
         : <CoachChat mode="pre_match" title="Pre-match coach" vars={{ session_summary: sessionSummary({ ...session, intention }) }} player={player} intro={preMatchOpener(player, { ...session, intention, targets: t })} onClose={() => setBrief(false)} />}
-      <button className="btn" onClick={() => onSave({ targets: t, intention: intention.trim() })}>{simple ? 'Save' : 'Save plan'}</button>
+      <button className="btn" onClick={() => onSave({ targets: t, extras: extras.map((x) => x.trim()).filter(Boolean), intention })}>{simple ? 'Save' : 'Save plan'}</button>
     </main>
   );
 }

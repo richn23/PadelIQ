@@ -7,6 +7,9 @@ const goalOptions = [{ id: 'better', label: 'Better', tone: 'good' }, { id: 'sam
 // "Volley follow through, using continental grip, slice on serve" becomes three things to check, one by one.
 export const splitPlan = (text) => String(text || '').split(/[,;\n]+/).map((x) => x.trim()).filter(Boolean).slice(0, 4).map((x) => x[0].toUpperCase() + x.slice(1));
 
+// The extra things you planned (up to 2). Older games only have the one intention text, so split that.
+export const planItems = (session) => (Array.isArray(session.extras) && session.extras.length ? session.extras.filter(Boolean) : splitPlan(session.intention));
+
 // One answer for old screens and the coach: all yes = yes, all no = no, anything else = partly.
 export function planOverall(items) {
   const v = items.map((x) => x.check).filter(Boolean);
@@ -18,7 +21,7 @@ export function planOverall(items) {
 
 // Two sections: your goals (always, one question each) and what you planned for this game (one question each).
 export default function FocusChecks({ session, goals, goalChecks, onGoal, planChecks, onPlan }) {
-  const items = splitPlan(session.intention);
+  const items = planItems(session);
   if (!goals.length && !items.length) return null;
   const row = (key, title, note, options, value, onPick) => (
     <div key={key} className="check-row">
@@ -37,7 +40,7 @@ export default function FocusChecks({ session, goals, goalChecks, onGoal, planCh
       <p className="soft">Quick taps. Skip any you like.</p>
       {goals.length > 0 && <p className="sub">Goals</p>}
       {goals.map((g) => row(g.id, goalSkill(g), '', goalOptions, goalChecks[g.id], (v) => onGoal({ ...goalChecks, [g.id]: v })))}
-      {items.length > 0 && <p className="sub">What you planned</p>}
+      {items.length > 0 && <p className="sub">{goals.length ? 'Anything else you planned' : 'What you planned'}</p>}
       {items.map((t, i) => row('p' + i, t, '', planOptions, planChecks[i], (v) => onPlan({ ...planChecks, [i]: v })))}
     </section>
   );

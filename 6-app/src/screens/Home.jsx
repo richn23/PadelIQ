@@ -40,7 +40,7 @@ export default function Home({ player, updatePlayer, onGo, onCoach, mode = 'full
         when: prettyDate(planned.date, planned.time),
         who: planned.kind === 'lesson' ? `Lesson${planned.coach ? ' with ' + planned.coach : ''}` : [planned.partner && `With ${planned.partner}`, planned.opponents?.filter(Boolean).length ? `vs ${planned.opponents.filter(Boolean).join(' & ')}` : ''].filter(Boolean).join(' ') || 'Match',
         venue: planned.venue,
-        intention: planned.intention,
+        intention: [...(player.goals || []).filter((g) => !planned.targets?.length || planned.targets.includes(g.id)).map((g) => goalSkill(g)), ...(planned.extras || (planned.intention ? [planned.intention] : []))].filter(Boolean).join(', '),
       }
     : player.nextSession
       ? { when: player.nextSession.when, who: `With ${player.nextSession.partner} vs ${player.nextSession.opponents.join(' & ')}`, venue: player.nextSession.venue }
