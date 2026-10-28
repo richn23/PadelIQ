@@ -4,7 +4,7 @@ import { skillChecks } from '../levels.js';
 import { goalSkill, goalNote, goalLine } from '../goals.js';
 import CoachChat from '../components/CoachChat.jsx';
 import RatingPicker from '../components/RatingPicker.jsx';
-import { ratingOf, ratingLabel } from '../rating.js';
+import { ratingOf, ratingLabel, runSignal } from '../rating.js';
 import { sessionSummary, preMatchOpener, postMatchOpener } from '../coach.js';
 import { sortSessions, prettyDate, todayISO, sessionsUntilCheckIn, isOver, addReminder } from '../sessions.js';
 import { funFact } from '../modes.js';
@@ -474,9 +474,9 @@ function Reflect({ session, player, goals, onBack, onSave, onChat }) {
         : <CoachChat
             mode="post_match"
             title="Post-match coach"
-            vars={{ session_summary: sessionSummary({ ...session, rating: d.rating }) }}
+            vars={{ session_summary: sessionSummary({ ...session, rating: d.rating }, runSignal(player, { ...session, rating: d.rating })) }}
             player={player}
-            intro={postMatchOpener({ ...session, rating: d.rating })}
+            intro={postMatchOpener({ ...session, rating: d.rating }, runSignal(player, { ...session, rating: d.rating }))}
             saved={session.coachChat}
             onMessages={onChat}
             onClose={() => setChat(false)}
@@ -552,7 +552,7 @@ function QuickReflect({ session, player, onBack, onSave, onChat }) {
       </section>
       {!chat
         ? <button className="btn ghost" onClick={() => setChat(true)}>{session.coachChat?.length ? 'Continue talking with the coach' : 'Talk it through with the coach'}</button>
-        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }) }} player={player} intro={postMatchOpener({ ...session, rating })} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
+        : <CoachChat mode="post_match" title="Post-match coach" vars={{ session_summary: sessionSummary({ ...session, rating }, runSignal(player, { ...session, rating })) }} player={player} intro={postMatchOpener({ ...session, rating }, runSignal(player, { ...session, rating }))} saved={session.coachChat} onMessages={onChat} onClose={() => setChat(false)} onProposal={(p) => { if (p.type === 'reflection' && p.notes?.tryNext) setFocus(p.notes.tryNext); }} />}
       <p className="soft center">This never changes your level. It helps you spot patterns.</p>
       <button className="btn" onClick={save}>Save</button>
     </main>

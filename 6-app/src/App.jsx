@@ -113,7 +113,7 @@ export default function App() {
               }} />
             )}
           </TopBar>
-          {view === 'home' && <Home player={player} updatePlayer={updatePlayer} mode={mode} onGo={go} />}
+          {view === 'home' && <Home player={player} updatePlayer={updatePlayer} mode={mode} onGo={go} onCoach={(st) => { setCoachQuestion(st); setTapCount((n) => n + 1); setScreen('coach'); }} />}
           {view === 'checkin' && <CheckIn player={player} updatePlayer={updatePlayer} onDone={() => setScreen('matches')} />}
           {view === 'settings' && (
             <Settings

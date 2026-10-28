@@ -1,3 +1,4 @@
+import { runSignal } from '../rating.js';
 import React, { useState } from 'react';
 import think from '../assets/mascot-think.png';
 import CoachChat from '../components/CoachChat.jsx';
@@ -74,7 +75,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
     }
     const skill = skillId ? allSkillById[skillId] : null;
     const vars = {
-      session_summary: mode === 'pre_match' ? (next ? sessionSummary(next) : 'No session planned. Give a general brief for their next game.') : mode === 'post_match' ? (last ? sessionSummary(last) : 'No session logged yet.') : '',
+      session_summary: mode === 'pre_match' ? (next ? sessionSummary(next) : 'No session planned. Give a general brief for their next game.') : mode === 'post_match' ? (last ? sessionSummary(last, runSignal(player)) : 'No session logged yet.') : '',
       skill_name: skill?.name || '',
       skill_id: skill?.id || '',
     };
@@ -82,7 +83,7 @@ export default function Coach({ player, updatePlayer, start, onGoSkills, howTo =
     return (
       <main className="page">
         <button className="back" onClick={() => { setMode(null); setSkillId(null); }}>‹ Coach</button>
-        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} onProposal={saveProposal} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : mode === 'post_match' ? postMatchOpener(last) : mode === 'ask' ? "What's your question today? Anything about padel: a shot, tactics, rules, even rackets." : mode === 'mindset' ? "What's on your mind? Nerves, focus, frustration, anything." : undefined} />
+        <CoachChat key={mode + (skillId || '')} mode={mode} title={title} vars={vars} player={player} skill={skill} onProposal={saveProposal} opener={start?.opener} intro={mode === 'pre_match' ? preMatchOpener(player, next) : mode === 'post_match' ? postMatchOpener(last, runSignal(player)) : mode === 'ask' ? "What's your question today? Anything about padel: a shot, tactics, rules, even rackets." : mode === 'mindset' ? "What's on your mind? Nerves, focus, frustration, anything." : undefined} />
       </main>
     );
   }

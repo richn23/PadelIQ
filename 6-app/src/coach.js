@@ -1,5 +1,5 @@
 // Talking to the AI coach: builds the PLAYER FILE and calls the online helper (/api/coach).
-import { ratingLabel, ratingOf } from './rating.js';
+import { ratingLabel, ratingOf, runSignal, signalOpener } from './rating.js';
 import { allSkills, allSkillById, axes, levels } from './data.js';
 import { currentLevel, currentAxisLevels, levelName, levelFocus, skillChecks } from './levels.js';
 import { recentSessions } from './checkin.js';
@@ -20,13 +20,13 @@ const STANCE_COACH = 'Coach. Follow the usual rules.';
 
 const CHECK = { better: 'better', same: 'same', struggling: 'still struggling' };
 
-export function sessionSummary(s) {
+export function sessionSummary(s, signal) {
   if (!s) return '';
   const who = s.kind === 'lesson'
     ? `Lesson${s.coach ? ' with ' + s.coach : ''}`
     : [s.partner && `with ${s.partner}`, s.opponents?.filter(Boolean).length ? `vs ${s.opponents.filter(Boolean).join(' & ')}` : ''].filter(Boolean).join(' ') || 'Match';
   const r = Number.isFinite(s.rating) ? `. The player rated how they played ${s.rating}/10 compared with their OWN best (${ratingLabel(s.rating)}); it says nothing about the opponents or the result` : '';
-  return `${prettyDate(s.date, s.time)}, ${who}${s.venue ? ', ' + s.venue : ''}${s.intention ? `. Intention: "${s.intention}"` : ''}${r}`;
+  return `${prettyDate(s.date, s.time)}, ${who}${s.venue ? ', ' + s.venue : ''}${s.intention ? `. Intention: "${s.intention}"` : ''}${r}${signal && signal.id === s.id ? `. RUN: ${{ dip: `third game in a row below the player's usual (${signal.usual})`, good: `third game in a row above the player's usual (${signal.usual})`, high: 'their highest rating so far' }[signal.type]}` : ''}`;
 }
 
 export function buildPlayerFile(player, { skill } = {}) {
@@ -63,6 +63,8 @@ export function buildPlayerFile(player, { skill } = {}) {
   L.push(...threadLines(player));
   const own = Object.entries(checks).filter(([, v]) => v.from !== 'quiz');
   L.push(`Skill levels checked: ${own.length ? own.map(([id, v]) => `${allSkillById[id]?.name} ${levelName(v.level)}${v.focus?.[0] ? ` (working on: ${v.focus[0]})` : ''}`).join('; ') : (known ? 'none yet (only the starting quiz)' : 'none yet')}`);
+  const run = runSignal(player);
+  if (run) L.push(`Recent run: ${{ dip: 'the last 3 games were each below their usual', good: 'the last 3 games were each above their usual', high: 'the latest game was their highest rating so far' }[run.type]} (usual ${run.usual}, rated against their own best).`);
   if (sessions.length) {
     L.push('Recent sessions (newest first):');
     sessions.forEach((s) => {
@@ -250,9 +252,10 @@ export function preMatchOpener(player, session) {
 }
 
 // The post-match coach opens instantly with one simple question.
-export function postMatchOpener(session) {
+export function postMatchOpener(session, signal) {
   const kind = session?.kind === 'lesson' ? 'lesson' : 'match';
   const r = session?.rating;
+  if (signal && session && signal.id === session.id) return signalOpener(signal.type);
   if (Number.isFinite(r)) {
     if (r >= 8) return `Nice one, that is close to your best. What was working today?`;
     if (r >= 6) return `A solid one, about your usual. What stood out?`;

@@ -8,6 +8,7 @@ import BackupNudge from '../components/BackupNudge.jsx';
 import { sortSessions, prettyDate, sessionsUntilCheckIn, isOver } from '../sessions.js';
 import { findThemes } from '../coach.js';
 import { needsThemes, themeCounts, improvingAndWorking, gamesSummary } from '../patterns.js';
+import { runSignal, signalCard } from '../rating.js';
 import RatingChart from '../components/RatingChart.jsx';
 import { levelKnown } from '../modes.js';
 
@@ -16,7 +17,7 @@ function greeting() {
   return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
 }
 
-export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
+export default function Home({ player, updatePlayer, onGo, onCoach, mode = 'full' }) {
   const simple = mode !== 'full'; // A little reflection: no level, no skills picture, no check-ins
   const [selected, setSelected] = useState(null);
   // What keeps coming up in your notes: the coach groups them, the app counts them. Looks again every 5 games.
@@ -44,6 +45,9 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
     : player.nextSession
       ? { when: player.nextSession.when, who: `With ${player.nextSession.partner} vs ${player.nextSession.opponents.join(' & ')}`, venue: player.nextSession.venue }
       : null;
+  const sig = mode !== 'fun' ? runSignal(player) : null;
+  const sigGame = sig && (player.sessions || []).find((x) => x.id === sig.id);
+  const showSig = sig && player.runSeen !== sig.id && !sigGame?.coachChat?.length;
   const iw = improvingAndWorking(player);
   const gs = gamesSummary(player);
   const fresh = mode === 'full' && !player.quiz && !player.levelSetByPlayer && Object.keys(player.skillChecks || {}).length === 0;
@@ -73,6 +77,15 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
             <button className="btn" onClick={() => onGo('skills')}>Start with Skills</button>
           </section>
         )}
+
+        {showSig && (() => { const c = signalCard(sig.type); return (
+          <section className="panel focus-card" aria-label="A run">
+            <p className="eyebrow">{c.title}</p>
+            <p className="soft">{c.text}</p>
+            <button className="btn" onClick={() => { updatePlayer((p) => ({ ...p, runSeen: sig.id })); onCoach ? onCoach({ mode: 'post_match' }) : onGo('coach'); }}>{c.cta}</button>
+            <button className="linkish" onClick={() => updatePlayer((p) => ({ ...p, runSeen: sig.id }))}>Not now</button>
+          </section>
+        ); })()}
 
         {mode !== 'fun' && <RatingChart player={player} onOpen={() => onGo('matches')} />}
 
