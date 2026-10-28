@@ -7,7 +7,8 @@ import { goalSkill, goalNote, goalLine, progressWord } from '../goals.js';
 import BackupNudge from '../components/BackupNudge.jsx';
 import { sortSessions, prettyDate, sessionsUntilCheckIn, isOver } from '../sessions.js';
 import { findThemes } from '../coach.js';
-import { needsThemes, themeCounts } from '../patterns.js';
+import { needsThemes, themeCounts, improvingAndWorking, gamesSummary } from '../patterns.js';
+import RatingChart from '../components/RatingChart.jsx';
 import { levelKnown } from '../modes.js';
 
 function greeting() {
@@ -43,6 +44,9 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
     : player.nextSession
       ? { when: player.nextSession.when, who: `With ${player.nextSession.partner} vs ${player.nextSession.opponents.join(' & ')}`, venue: player.nextSession.venue }
       : null;
+  const iw = improvingAndWorking(player);
+  const gs = gamesSummary(player);
+  const fresh = mode === 'full' && !player.quiz && !player.levelSetByPlayer && Object.keys(player.skillChecks || {}).length === 0;
   const axisLevels = currentAxisLevels(player);
   const axisScores = currentAxisScores(player);
   const levelId = currentLevel(player);
@@ -60,6 +64,17 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
           </div>
           <div className="avatar" aria-hidden="true">{(player.name || 'P')[0]}</div>
         </header>
+
+        {fresh && (
+          <section className="panel focus-card">
+            <p className="eyebrow">Start here</p>
+            <p className="insight">Tell us how you play today.</p>
+            <p className="soft">A few quick taps on Skills, then everything else makes more sense.</p>
+            <button className="btn" onClick={() => onGo('skills')}>Start with Skills</button>
+          </section>
+        )}
+
+        {mode !== 'fun' && <RatingChart player={player} onOpen={() => onGo('matches')} />}
 
         {!simple && <section className="tiles" aria-label="Summary">
           <div className="panel tile">
@@ -109,6 +124,19 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
           />
         )}
 
+        {mode !== 'fun' && gs.month + gs.lastMonth > 0 && (
+          <section className="panel tappable" aria-label="Games this month" onClick={() => onGo('matches')}>
+            <p className="eyebrow">Games this month</p>
+            <div className="games-row">
+              <p className="hero-big">{gs.month}</p>
+              <svg className="weeks" viewBox="0 0 140 40" role="img" aria-label="Games per week over the last six weeks">
+                {gs.weeks.map((c, i) => <rect key={i} x={2 + i * 24} y={40 - Math.min(c, 4) * 8 - (c ? 0 : -6)} width="16" height={c ? Math.min(c, 4) * 8 : 2} rx="4" className={i === 5 ? 'wk now' : 'wk'} />)}
+              </svg>
+            </div>
+            <p className="soft">{gs.matches} {gs.matches === 1 ? 'match' : 'matches'}, {gs.lessons} {gs.lessons === 1 ? 'lesson' : 'lessons'} · {gs.lastMonth} last month</p>
+          </section>
+        )}
+
         <section className="panel tappable" aria-label="Current focus" onClick={(e) => { if (!e.target.closest('button')) onGo('goals'); }}>
           <p className="eyebrow">Current focus</p>
           <p className="soft">How each one is going</p>
@@ -151,18 +179,22 @@ export default function Home({ player, updatePlayer, onGo, mode = 'full' }) {
           )}
         </section>
 
-        {mode !== 'fun' && (themes.length > 0 || busy) && (
+        {mode !== 'fun' && (iw.improving || iw.working || busy) && (
           <section className="panel" aria-label="Your pattern">
             <p className="eyebrow">Your pattern</p>
-            {themes.length === 0 ? <p className="soft">Reading your notes…</p> : (
-              <ul className="goals">
-                {themes.slice(0, 3).map((t) => (
-                  <li key={t.label} className="goal">
-                    <p className="goal-title">{t.label}</p>
-                    <p className="soft">{t.count} of {t.total} games{t.quiet >= 5 ? ` · quiet since game ${t.last}` : ''}</p>
-                  </li>
-                ))}
-              </ul>
+            {!iw.improving && !iw.working ? <p className="soft">Reading your notes…</p> : (
+              <div className="pattern-grid">
+                <div className="pbox good">
+                  <p className="eyebrow">Improving</p>
+                  <p className="goal-title">{iw.improving ? (iw.improving.text || goalSkill((player.goals || []).find((g) => g.id === iw.improving.goalId))) : 'Keep going'}</p>
+                  <p className="soft">{iw.improving ? iw.improving.note : 'It shows up as you play more'}</p>
+                </div>
+                <div className="pbox work">
+                  <p className="eyebrow">Working on</p>
+                  <p className="goal-title">{iw.working ? iw.working.text : 'Nothing yet'}</p>
+                  <p className="soft">{iw.working ? iw.working.note : 'Add a note after a game'}</p>
+                </div>
+              </div>
             )}
             <p className="soft">From your own notes. <button className="linkish" onClick={refresh} disabled={busy}>{busy ? 'Updating…' : 'Refresh from my notes'}</button></p>
           </section>

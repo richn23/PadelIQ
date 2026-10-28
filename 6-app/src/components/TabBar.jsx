@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Five tabs: Home, Skills, Goals, Games, Coach. (Just for fun has no tab bar.)
+// Five tabs: Home, Goals, Games, Skills, Coach. (Just for fun has no tab bar.)
 const icons = {
   home: <path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" />,
   skills: <path d="M12 3l8.5 6.2-3.2 10H6.7L3.5 9.2z" />,
@@ -11,9 +11,9 @@ const icons = {
 
 export const tabs = [
   { id: 'home', label: 'Home' },
-  { id: 'skills', label: 'Skills' },
   { id: 'goals', label: 'Goals' },
   { id: 'matches', label: 'Games' },
+  { id: 'skills', label: 'Skills' },
   { id: 'coach', label: 'Coach' },
 ];
 

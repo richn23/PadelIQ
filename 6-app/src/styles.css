@@ -498,3 +498,25 @@ button.skillbar-name::after { content: ' ›'; color: var(--text-soft); }
 .rating-label { margin: 10px 0 0; font-weight: 700; color: #d7ff00; text-align: center; }
 .rating-key { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13px; color: rgba(255,255,255,0.78); display: grid; gap: 2px; }
 .rating-key b { color: #fff; display: inline-block; min-width: 34px; }
+
+/* new Home */
+.hero { cursor: pointer; }
+.hero-big { margin: 4px 0 0; font-size: 36px; font-weight: 800; line-height: 1.1; color: #d7ff00; }
+.hero-big.small { font-size: 22px; }
+.hero-chart { width: 100%; height: auto; display: block; margin: 6px 0; }
+.hero-chart .guide { stroke: rgba(255,255,255,0.35); stroke-width: 1; stroke-dasharray: 3 5; }
+.hero-chart .gtext { font-size: 11px; fill: #c9d4ff; font-family: system-ui, sans-serif; }
+.hero-chart .hline { fill: none; stroke: #d7ff00; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.hero-chart .hdot { fill: #d7ff00; }
+.hero-chart .hdot.est { opacity: 0.45; }
+.hero-chart .hdot.last { stroke: #0b1a5c; stroke-width: 2; }
+.games-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.weeks { width: 140px; height: 40px; }
+.weeks .wk { fill: rgba(215,255,0,0.35); }
+.weeks .wk.now { fill: #d7ff00; }
+.pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.pbox { border-radius: 14px; padding: 10px 12px; }
+.pbox.good { background: rgba(91,227,168,0.12); }
+.pbox.good .eyebrow { color: #5be3a8; }
+.pbox.work { background: rgba(255,179,143,0.12); }
+.pbox.work .eyebrow { color: #ffb38f; }
