@@ -50,7 +50,21 @@ export default {
    ],
    "practice": [
     "Serve repeatedly to chosen targets, starting with a simple consistent action before adding variation."
-   ]
+   ],
+   "match": {
+    "recognise": "Are faults into net, long or wide; does the pattern change when rushed?",
+    "basic": "Notice which target and serving rhythm produce your most repeatable first ball.",
+    "intermediate": "Use a comfortable target and finish the serve before moving into the court.",
+    "advanced": "Vary T/body/side-glass placements according to the returner’s response without sacrificing first-volley readiness.",
+    "guardrail": "Do not prescribe maximum power; check legality and whether advice applies to the first or second serve.",
+    "practice": "Between games, serve a few balls to a large safe target if court time allows.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/the-padel-serve",
+     "https://www.padelfip.com/documentation-2/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "second_serve",
@@ -86,7 +100,21 @@ export default {
      "too soft or too predictable",
      "Is the issue placement or pace?"
     ]
-   ]
+   ],
+   "match": {
+    "recognise": "Is it attacked because it is very soft, predictable or inaccurate?",
+    "basic": "Notice where the second serve lands and the reply opponents make.",
+    "intermediate": "Use repeatable rhythm with a reliable depth/placement rather than pushing a very soft ball.",
+    "advanced": "Adapt safer targets to returner tendencies without trading away double-fault reliability.",
+    "guardrail": "The second serve remains subject to the same service rules.",
+    "practice": "Optional between-game target practice at comfortable pace.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/the-padel-serve",
+     "https://www.padelfip.com/documentation-2/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "forehand_volley",
@@ -133,7 +161,21 @@ export default {
    "practice": [
     "Feed a controlled setup volley followed by an easier ball to finish.",
     "First volley: practise the serve-to-net move and treat the first volley as a setup shot, not a finisher."
-   ]
+   ],
+   "match": {
+    "recognise": "Is it floating long, popping up, or netting; against what ball height and pace?",
+    "basic": "On the next comfortable volley, notice whether the racket is ready before the ball arrives.",
+    "intermediate": "Against a fast ball, keep the action compact and choose a generous target instead of forcing a winner.",
+    "advanced": "Use an easy first volley to draw a weaker reply, then increase aggression only on the suitable next ball.",
+    "guardrail": "A short block is not the correct answer for every easy attacking volley.",
+    "practice": "With a partner, contrast soft and fast incoming balls to observe how much swing is needed.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/block-volleys",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "backhand_volley",
@@ -176,7 +218,21 @@ export default {
    ],
    "depends": [
     "Ball height, available time and the opponents' positions decide how aggressive to be."
-   ]
+   ],
+   "match": {
+    "recognise": "Does the error appear on body balls, low balls or shoulder-height balls?",
+    "basic": "Notice whether rushed backhand volleys happen before you have space to contact.",
+    "intermediate": "Use a compact, stable response to fast balls at the body, rather than a full swing.",
+    "advanced": "Distinguish a blocking volley from an attacking one using ball height, preparation and opponent position.",
+    "guardrail": "Do not assume every pop-up comes from an open racket face.",
+    "practice": "Ask a partner for varied speeds on the backhand side and compare responses.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/block-volleys",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "block_volley",
@@ -211,7 +267,20 @@ export default {
    ],
    "practice": [
     "Prepare against stronger incoming attacks with compact readiness and controlled blocks into space."
-   ]
+   ],
+   "match": {
+    "recognise": "Is the opponent hitting with pace while you are close to the net?",
+    "basic": "Identify when you are defending at the net rather than attacking.",
+    "intermediate": "Prepare compactly against the hard hitter; redirect safely rather than adding more swing.",
+    "advanced": "Read opponents’ attacking posture and choose a low-risk block that helps the pair reset.",
+    "guardrail": "Do not treat blocking as failure or prescribe one fixed net distance.",
+    "practice": "Alternate hard and gentle feeds to practise recognise-block-versus-attack.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/block-volleys"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "drop_volley",
@@ -237,7 +306,20 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Are opponents deep enough for a soft volley to be difficult to retrieve?",
+    "basic": "Notice whether opponents are already near the net before considering the drop.",
+    "intermediate": "Choose the drop volley only from a controlled ball when opponents are displaced; otherwise retain placement control.",
+    "advanced": "Mix a conventional volley and occasional drop to exploit opponents’ depth without making the pattern predictable.",
+    "guardrail": "Insufficient public primary detail to prescribe exact racket contact or disguise mechanics.",
+    "practice": "Ask a coach to demonstrate touch/trajectory when a lesson is available.",
+    "evidence": "Limited",
+    "sources": [
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "basic_overhead",
@@ -275,7 +357,21 @@ export default {
    ],
    "practice": [
     "Decision before execution: before a fed lob, say whether you will smash, play a controlled overhead or retreat, then compare with what the ball actually did."
-   ]
+   ],
+   "match": {
+    "recognise": "Is the lob short, central or deep; can you contact comfortably?",
+    "basic": "Call the lob’s depth to yourself before committing to an overhead.",
+    "intermediate": "Choose a controlled overhead only when you can get balanced; use a defensive recovery if too deep.",
+    "advanced": "Balance controlled placement, opponent positions and court recovery rather than treating overhead as a winner attempt.",
+    "guardrail": "Do not force overhead contact when retreating off balance.",
+    "practice": "With a partner, call out ‘short / playable / deep’ as lobs arrive.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs",
+     "https://thepadelschool.com/resources/padel-tips/bandeja-secrets"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "bandeja",
@@ -326,7 +422,22 @@ export default {
    ],
    "practice": [
     "Fed lobs: turn early, get behind the ball and recover toward the net; video can show contact and movement."
-   ]
+   ],
+   "match": {
+    "recognise": "Does it fail on deeper lobs, during retreat, or despite balanced contact?",
+    "basic": "Notice whether you turn early and meet the lob in front.",
+    "intermediate": "On a playable lob, control depth and recover court position rather than hitting a smash-like winner.",
+    "advanced": "Vary middle/corner depth to constrain return options; only advance when your shot creates recovery time.",
+    "guardrail": "Not all bandejas should be hit hard; not every deep lob is playable overhead.",
+    "practice": "Practise a few calm overheads with early turn and recovery if a partner can feed.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/bandeja-secrets",
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs",
+     "https://thepadelschool.com/resources/padel-tips/padel-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "vibora",
@@ -355,7 +466,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the lob comfortable enough to attack with controlled slice?",
+    "basic": "Recognise the types of lobs on which you are fully set.",
+    "intermediate": "Choose a víbora only when in position; otherwise maintain net control with a safer overhead.",
+    "advanced": "Target the opponent’s awkward rebound or corner and recover for the weak reply, not automatic winner.",
+    "guardrail": "Do not prescribe a víbora merely because the player is advanced.",
+    "practice": "If requested, alternate bandeja and víbora on manageable lob feeds.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "smash",
@@ -396,7 +521,21 @@ export default {
      "too much power, poor control of the flight, or choosing to finish a ball that wasn't suitable",
      "Was the lob genuinely suitable for a finishing smash?"
     ]
-   ]
+   ],
+   "match": {
+    "recognise": "Was the lob genuinely short/high enough; did the miss occur with max power?",
+    "basic": "Notice which attempted smashes were taken off balance or from deep positions.",
+    "intermediate": "On a comfortable short lob, favour controllable placement and pace over automatic full power.",
+    "advanced": "Select between controlled smash, overhead containment and defensive retreat based on ball and opponents.",
+    "guardrail": "Never assume an overhit smash is always a contact-point issue.",
+    "practice": "Try varying controlled power levels only in an appropriate training session.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "gancho",
@@ -422,7 +561,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Does the lob arrive over the non-dominant shoulder and restrict a regular overhead?",
+    "basic": "Recognise the unusual lob path; do not force an unfamiliar hook in a match.",
+    "intermediate": "Choose a comfortable existing overhead or let a deep ball rebound while learning the shot.",
+    "advanced": "If already proficient, choose gancho situationally for a specific high lob and court-retention target.",
+    "guardrail": "High technical complexity; no detailed self-taught mechanics from text-only symptoms.",
+    "practice": "With a qualified coach, examine lob direction and whether gancho is appropriate.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/the-gancho-padel",
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "topspin_smash",
@@ -449,7 +602,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Are the lob, timing and contact sufficient for controlled topspin?",
+    "basic": "Recognise that a topspin smash is a specialist option, not a default overhead.",
+    "intermediate": "Use a reliable flat/controlled overhead when the contact is not suitable for topspin.",
+    "advanced": "Choose spin and rebound target based on the defenders’ position and court conditions.",
+    "guardrail": "No promise of x3 or return-to-own-side outcome from a generic swing cue.",
+    "practice": "Use specialist coached feeds for topspin mechanics if desired.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/courses/advanced-roadmap",
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "por_tres",
@@ -478,7 +645,21 @@ export default {
    "sources": [
     "The Padel School",
     "SCUD"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the lob and target suitable for a legal x3 attempt?",
+    "basic": "Notice whether the ball is a genuine finishing opportunity rather than forcing x3.",
+    "intermediate": "Prioritise a conventional controlled smash if the ball is not clearly attackable.",
+    "advanced": "Consider court geometry, wind, spin, rebound and opponents’ outside-court access before choosing x3.",
+    "guardrail": "Advanced outcome, not a universal skill milestone; verify local outside-play permissions.",
+    "practice": "Specialist coached practice only, when needed.",
+    "evidence": "Limited",
+    "sources": [
+     "https://www.padelfip.com/documentation-2/",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "por_cuatro",
@@ -506,7 +687,21 @@ export default {
    "sources": [
     "The Padel School",
     "SCUD"
-   ]
+   ],
+   "match": {
+    "recognise": "Is contact close and high enough for this trajectory?",
+    "basic": "Notice when trying x4 turns a playable overhead into an error.",
+    "intermediate": "Prefer a safe finishing placement if the contact position is imperfect.",
+    "advanced": "Use x4 only on suitable attackable balls, considering legal bounce and enclosure geometry.",
+    "guardrail": "Never imply x4 is always better than a controlled smash.",
+    "practice": "Specialist coached finishing-ball feeds only.",
+    "evidence": "Limited",
+    "sources": [
+     "https://www.padelfip.com/documentation-2/",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "bajada",
@@ -542,7 +737,22 @@ export default {
    ],
    "practice": [
     "Defend the corner, then attack off the back glass, to practise switching from defending to attacking."
-   ]
+   ],
+   "match": {
+    "recognise": "Does the back-glass rebound come high enough to attack, and are you balanced?",
+    "basic": "Notice whether the ball comes off the glass above your comfortable contact zone.",
+    "intermediate": "Attack only a comfortable rebound; on a low or hurried rebound, choose a safe defensive reply.",
+    "advanced": "Read opponent positions and change bajada depth/target while maintaining recovery.",
+    "guardrail": "Do not prescribe attacking bajada on every back-glass rebound.",
+    "practice": "Have a partner feed lobs and compare high/low rebounds if requested.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/padel-match-analysis",
+     "https://thepadelschool.com/resources/padel-tips/padel-back-glass-common-errors",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "drop_shot",
@@ -579,7 +789,21 @@ export default {
      "too much height, no disguise, the wrong incoming ball, or opponents close enough to recover",
      "Is this an execution problem or a shot-choice problem?"
     ]
-   ]
+   ],
+   "match": {
+    "recognise": "Is the player too deep, are opponents already close, and does the ball sit up?",
+    "basic": "Observe opponents’ net distance before considering a drop.",
+    "intermediate": "Avoid attempting a delicate winner from a rushed back-court position; use a reliable deep ball instead.",
+    "advanced": "Use occasional drops when balanced and opponents are deep, combining with other placement options.",
+    "guardrail": "If the shot fails, investigate choice before assuming only contact mechanics.",
+    "practice": "Optional touch practice near the net with a partner.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/courses/advanced-roadmap",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "return",
@@ -624,11 +848,20 @@ export default {
     "Easier central serve: a return to the server's feet or an attacking lob can work.",
     "Comfortable return and opponents out of place: a more ambitious transition becomes possible."
    ],
-   "drills": {
-    "technique": "Returns to a deep target from a feed, focusing on a simple, early preparation.",
-    "decision": "Server varies placement; you decide before the ball arrives: lob, low and deep, or at the feet.",
-    "match": "Pick one return target for the set and stick with it for a few games.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Is the troublesome serve fast, central, or heading towards side glass?",
+    "basic": "Notice whether you miss on the initial bounce or while waiting for glass.",
+    "intermediate": "Against difficult serves, get a safe return in; on easier serves choose purposeful depth/lob/low reply.",
+    "advanced": "Vary lob versus low return based on server’s movement and partner position.",
+    "guardrail": "Never require an attacking chiquita off every serve; serve return rules differ from rally rules.",
+    "practice": "If asked, compare central versus side-glass serve returns with a partner.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/the-perfect-padel-return",
+     "https://thepadelschool.com/resources/padel-tips/how-to-dominate-an-easy-serve",
+     "https://www.padelfip.com/documentation-2/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -657,7 +890,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the error linked to ball height, rushed contact or attempted pace?",
+    "basic": "Notice whether the forehand error occurs while stretched at the back.",
+    "intermediate": "Prioritise an in-court controlled reply from defensive positions rather than driving a low-percentage winner.",
+    "advanced": "Use direction and height to build points and create a better transition chance.",
+    "guardrail": "Specific racket mechanics here are insufficiently sourced; no confident diagnosis from text.",
+    "practice": "Optional comfortable feed and large-target placement practice.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/padel-match-analysis",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "backhand",
@@ -686,7 +933,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the error on fast body balls, low contact or after glass?",
+    "basic": "Observe whether your backhand is rushed or contact feels cramped.",
+    "intermediate": "From the back, choose controllable placement and time to recover rather than immediate power.",
+    "advanced": "Use depth and selected angles to move opponents and seek a more comfortable next ball.",
+    "guardrail": "Do not assume one- or two-handed grip must change without direct evidence.",
+    "practice": "Optional controlled backhand feeds with normal match-ready stance.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/padel-match-analysis",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "lob",
@@ -727,11 +988,20 @@ export default {
      "Were you under pressure or comfortable enough for an attacking lob?"
     ]
    ],
-   "drills": {
-    "technique": "Cross-court and straight lobs from the baseline to a target above the net player's reach, aiming for depth first.",
-    "decision": "Partner stands at the net; you choose lob or drive on each fed ball and say why out loud, then check where it landed.",
-    "match": "Count your lobs in a set and notice which ones bought you time to recover.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Is it short because the player is stretched, rushed, or aiming too low?",
+    "basic": "Notice whether short lobs follow off-balance contact.",
+    "intermediate": "Lob high and deep when balanced; when rushed, choose the safer achievable reply.",
+    "advanced": "Adjust height/depth to opponents’ overhead quality and recover with partner when lob creates time.",
+    "guardrail": "Not every defensive ball must be lobbed; a high but short lob can be attacked.",
+    "practice": "Optional aim at a generous deep target when court time allows.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/playing-with-lower-level-players",
+     "https://thepadelschool.com/resources/padel-tips/how-to-dominate-an-easy-serve",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -790,7 +1060,21 @@ export default {
    ],
    "practice": [
     "Corner feeds: anticipate where the rebound ends up instead of chasing where it hits the wall."
-   ]
+   ],
+   "match": {
+    "recognise": "Is the ball too low, too high, or jamming the player after rebound?",
+    "basic": "Notice which balls give enough time to use the back glass rather than block.",
+    "intermediate": "Prepare before the rebound and create space; contact in front when possible on a playable rebound.",
+    "advanced": "Choose defensive low return or controlled bajada according to rebound height, balance and opponents.",
+    "guardrail": "Never use fixed ‘always sideways/backwards’ movement or fixed starting distance.",
+    "practice": "Optional call ‘block/glass’ on variable feeds before playing.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/padel-back-glass-common-errors",
+     "https://thepadelschool.com/resources/padel-tips/padel-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "side_glass",
@@ -822,11 +1106,19 @@ export default {
    "sources": [
     "The Padel School"
    ],
-   "drills": {
-    "technique": "Feeds that clip the side glass; repeat until you can read where it will come off.",
-    "decision": "Partner alternates feeds that bounce into the glass and ones that skip off it; call which before you move.",
-    "match": "Watch how the ball comes off the side glass in the first few games, and write down one thing you noticed.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Is it the rebound direction, speed, or late contact that surprises the player?",
+    "basic": "Observe whether fast or slow side-glass balls cause the error.",
+    "intermediate": "Decide early whether a readable rebound can be played after glass, or whether a pre-glass return is safer.",
+    "advanced": "Adjust position to the actual rebound angle and use safe replies when under pressure.",
+    "guardrail": "Avoid a universal turning technique or contact point for every side-glass ball.",
+    "practice": "Optional varied-angle feeds when feasible.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/double-glass-without-turn",
+     "https://thepadelschool.com/resources/padel-tips/padel-back-glass-common-errors"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -869,7 +1161,20 @@ export default {
    ],
    "practice": [
     "Corner feeds, watching where the rebound finishes rather than where it touches the wall."
-   ]
+   ],
+   "match": {
+    "recognise": "Which surface does the ball touch first, and how sharply does it rebound?",
+    "basic": "First recognise back-then-side versus side-then-back patterns.",
+    "intermediate": "For a readable rebound, watch through the second wall and allow room to meet the ball in front.",
+    "advanced": "Adapt turn/no-turn and spacing to rebound sequence and speed.",
+    "guardrail": "No ‘always rotate 360 degrees’; guidance for back-side may not fit side-back.",
+    "practice": "Optional slow corner feeds with clear calls of wall sequence.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/double-glass-without-turn"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "contrapared",
@@ -899,11 +1204,19 @@ export default {
    "sources": [
     "Padel Relay"
    ],
-   "drills": {
-    "technique": "Feed to the side glass then back glass; practise letting the ball come off and meeting it with a smooth, compact swing.",
-    "decision": "Partner varies the feeds so some give you time and some do not; call 'let it come' or 'play it now' before the bounce.",
-    "match": "Focus on one decision per game: let it come off the glass, or take it early.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Is a normal return still playable, or is the ball already behind the player?",
+    "basic": "Recognise contrapared as an emergency option, not an everyday choice.",
+    "intermediate": "Prefer a controlled normal rebound return when available.",
+    "advanced": "Use legal own-glass recovery only when the normal route is unavailable and conditions permit.",
+    "guardrail": "Legal contact with own glass differs from mesh; avoid detailed speculative technique.",
+    "practice": "Only coach-led safe practice if wanted.",
+    "evidence": "Limited",
+    "sources": [
+     "https://www.padelfip.com/documentation-2/",
+     "https://thepadelschool.com/resources/padel-tips/padel-back-glass-common-errors"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -937,11 +1250,18 @@ export default {
    "sources": [
     "The Padel School"
    ],
-   "drills": {
-    "technique": "Partner smashes at moderate pace; practise letting the ball bounce and playing it back high and deep.",
-    "decision": "Partner mixes flat and bouncing smashes; call 'take it out of the air' or 'let it bounce' before the shot.",
-    "match": "When you are lobbed or smashed at, give yourself one calm breath before choosing.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Is the ball rebounding from back glass, side glass, or staying low?",
+    "basic": "Notice which smashes give time for a rebound rather than instinctive block.",
+    "intermediate": "Against a suitable powerful smash, consider the rebound instead of charging forward to block.",
+    "advanced": "Anticipate rebound direction and opponent recovery; choose block, rebound or concede safely by situation.",
+    "guardrail": "Do not advise waiting for the glass on all smashes.",
+    "practice": "Optional coach/partner-assisted varied smash feeds; avoid unsafe high-speed practice.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/defend-the-padel-smash"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -972,11 +1292,19 @@ export default {
    "sources": [
     "FIP"
    ],
-   "drills": {
-    "technique": "Partner feeds balls that bounce then hit the back glass; you let each one come off the glass and play it back to a target, calling 'glass' out loud.",
-    "decision": "Partner feeds a mix of deep balls and shorter ones; before each bounce you call 'glass' (let it come off the back wall) or 'block' (play it now). No points, calling is the whole job.",
-    "match": "In a set, pick two rallies a game where you consciously call it in your head, and notice afterwards how often you were right.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Did it strike wire mesh and deflect unpredictably?",
+    "basic": "Notice that mesh rebound is not as predictable as smooth glass.",
+    "intermediate": "Keep a balanced ready position and adapt to the actual deflection instead of committing early.",
+    "advanced": "Use opponent patterns and court conditions to reduce rushed reaches after mesh contact.",
+    "guardrail": "Specific fence-reading technique lacks strong directly verified sources.",
+    "practice": "Optional gentle feeds from safe distance, not unsafe dives.",
+    "evidence": "Limited",
+    "sources": [
+     "https://www.padelfip.com/documentation-2/",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -1020,7 +1348,21 @@ export default {
    ],
    "practice": [
     "Slow shots to the net player's feet, noticing whether you have time to advance."
-   ]
+   ],
+   "match": {
+    "recognise": "Does it arrive at feet low, or sit up for an easy volley?",
+    "basic": "Notice whether a slow low ball forces opponents to volley upwards.",
+    "intermediate": "On a comfortable ball, aim a controlled low chiquita; advance only when opponent’s response creates time.",
+    "advanced": "Use down-line/cross-court placements to influence pair positioning and anticipate the next ball.",
+    "guardrail": "A chiquita is not an automatic invitation to rush the net.",
+    "practice": "Optional lower-pace target practice with partner.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/learn-the-chiquita",
+     "https://thepadelschool.com/resources/padel-tips/how-to-dominate-an-easy-serve"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "attack_lob",
@@ -1049,7 +1391,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Are the opponents forward and can you hit a balanced, deep lob?",
+    "basic": "Notice whether the lob actually passes their overhead reach.",
+    "intermediate": "Use a controlled deeper lob when balanced to push opponents off the net.",
+    "advanced": "Vary lob direction and height to exploit players who retreat slowly while advancing with partner only if time allows.",
+    "guardrail": "Deep is relative to opponents’ reach; a poor lob can be attacked.",
+    "practice": "Optional match-only focus: note success on balanced lobs.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/playing-with-lower-level-players",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "passing",
@@ -1077,7 +1433,21 @@ export default {
    ],
    "sources": [
     "Padelguru"
-   ]
+   ],
+   "match": {
+    "recognise": "Are opponents covering net comfortably or displaced wide?",
+    "basic": "Notice whether attempts to pass come against a well-set pair.",
+    "intermediate": "Use lob or low ball at feet when net pair are set; pass only when a lane is genuinely open.",
+    "advanced": "Exploit movement patterns and unexpected space but manage risk versus the lob alternative.",
+    "guardrail": "Do not teach ‘passing winner’ as default transition method.",
+    "practice": "Optional situational practice against a net pair.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis",
+     "https://thepadelschool.com/resources/padel-tips/how-to-dominate-an-easy-serve"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "half_volley",
@@ -1106,7 +1476,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Are you moving into the contact or stable on a low quick bounce?",
+    "basic": "Notice whether you arrive late and contact while running.",
+    "intermediate": "On a low ball at the feet, favour a small controlled response and recover your balance.",
+    "advanced": "Use half volley to maintain transition only when time/position allows; otherwise retreat for a safer reply.",
+    "guardrail": "Not every ball at feet should be half-volleyed aggressively.",
+    "practice": "Optional gentle low-bounce contact practice on court.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://thepadelschool.com/courses/advanced-roadmap",
+     "https://thepadelschool.com/resources/padel-tips/how-to-move-your-feet"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "between_legs",
@@ -1133,7 +1517,20 @@ export default {
    ],
    "sources": [
     "Limited sources"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the ball irretrievably behind the player, or is normal recovery possible?",
+    "basic": "Recognise this as improvisation, not expected core proficiency.",
+    "intermediate": "Choose normal turning and recovery when possible rather than risky show shots.",
+    "advanced": "Use only when there is no practical normal contact and surrounding players are safe.",
+    "guardrail": "No source-backed step-by-step technique; avoid unsafe improvisation.",
+    "practice": "Coach-supervised optional fun shot only.",
+    "evidence": "Limited",
+    "sources": [
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "behind_back",
@@ -1160,7 +1557,20 @@ export default {
    ],
    "sources": [
     "Limited sources"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the shot truly required by the ball’s position?",
+    "basic": "Notice whether a conventional reach or turn was available.",
+    "intermediate": "Prefer an ordinary controlled return to a blind behind-back contact.",
+    "advanced": "Only attempt if already skilled and there is space and a realistic recovery target.",
+    "guardrail": "Low evidence; do not claim this is necessary at high levels.",
+    "practice": "Coach-supervised optional novelty practice only.",
+    "evidence": "Limited",
+    "sources": [
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "out_of_court",
@@ -1189,7 +1599,21 @@ export default {
    ],
    "sources": [
     "FIP rules"
-   ]
+   ],
+   "match": {
+    "recognise": "Is outside play authorised and the exit path safe?",
+    "basic": "Know whether the court/match permits outside play; do not chase without awareness.",
+    "intermediate": "Prioritise safe stopping and the legal rally situation rather than an unsafe chase.",
+    "advanced": "Where legal and practised, anticipate x3 recovery path and opponent continuation options.",
+    "guardrail": "Must follow FIP and local venue rules; no improvised hazardous dives.",
+    "practice": "Coach-supervised situational rehearsal with safe exits only.",
+    "evidence": "Limited",
+    "sources": [
+     "https://www.padelfip.com/documentation-2/",
+     "https://thepadelschool.com/courses/advanced-roadmap"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "court_position",
@@ -1220,7 +1644,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the player stuck in transition or disconnected from their partner?",
+    "basic": "Notice whether you are at the net, back or stranded between positions when opponents hit.",
+    "intermediate": "Move into a coherent pair position after your shot, rather than drifting forward automatically.",
+    "advanced": "Adjust depth/width relative to ball and partner to close opponent’s likely angles.",
+    "guardrail": "No universal ‘always stand X metres from net’.",
+    "practice": "Optional review positioning with partner at changeovers.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/moving-as-a-pair",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "split_step",
@@ -1256,11 +1694,19 @@ export default {
    "sources": [
     "The Padel School"
    ],
-   "drills": {
-    "technique": "Do small hops with a partner feeding, landing as the opponent hits.",
-    "decision": "Partner points left or right as they hit; you split-step then move to that side.",
-    "match": "Remind yourself to split-step at the start of each point, only on your own serve points.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Are you still running or flat-footed at the opponent’s hit?",
+    "basic": "Notice whether you are ready when the opponent contacts the ball.",
+    "intermediate": "Use a light preparatory split at opponent contact, then move efficiently toward the ball.",
+    "advanced": "Scale split-step and recovery size with pace, terrain and fatigue; conserve movement without losing readiness.",
+    "guardrail": "Do not demand a big jump every point or imply fatigue is laziness.",
+    "practice": "Optional shadow split-step timing during warm-up.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/how-to-move-your-feet",
+     "https://thepadelschool.com/resources/padel-tips/block-volleys"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -1305,7 +1751,21 @@ export default {
    "depends": [
     "Don't move up just because you played a lob or chiquita; the quality of that ball decides if you have time and pressure.",
     "Research on professionals links finishing at the net with winning more rallies, but that does not mean a recreational player should rush forward after every shot."
-   ]
+   ],
+   "match": {
+    "recognise": "Did your previous ball create time or leave opponents an easy attack?",
+    "basic": "Notice whether you advanced after a weak shot and were passed.",
+    "intermediate": "Advance with partner after a lob or low shot that genuinely pressures opponents; otherwise hold/reset.",
+    "advanced": "Alternate approach, hold and retreat decisions depending on opponent’s shot posture and pair shape.",
+    "guardrail": "Never prescribe ‘rush net after every lob/chiquita’.",
+    "practice": "Optional observe opponent quality before moving in during a social set.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis",
+     "https://thepadelschool.com/resources/padel-tips/moving-as-a-pair"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "recovery",
@@ -1336,7 +1796,21 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Did you watch your shot land or move back into court position?",
+    "basic": "Notice the space you leave after volleys and overheads.",
+    "intermediate": "After contact, recover to cover the next likely shot with partner rather than admiring the ball.",
+    "advanced": "Adjust recovery angle/depth based on your placement and opponents’ available replies.",
+    "guardrail": "Recovery is not always ‘run straight to the net’.",
+    "practice": "Optional film one rally to see recovery positions.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/bandeja-secrets",
+     "https://thepadelschool.com/resources/padel-tips/moving-as-a-pair"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "pair_movement",
@@ -1374,7 +1848,20 @@ export default {
    ],
    "depends": [
     "If one player is pulled wide, the partner often covers the middle; if one retreats, the pair usually adjusts together."
-   ]
+   ],
+   "match": {
+    "recognise": "Does one stay forward as the other retreats, opening a diagonal?",
+    "basic": "Notice your pair’s distance and shared movement as a rally changes.",
+    "intermediate": "Move laterally and forward/back together when the tactical situation calls for it.",
+    "advanced": "Cover the middle when partner is drawn wide; allow situational exceptions for reachable overheads.",
+    "guardrail": "Do not force both players backwards for every lob.",
+    "practice": "Optional talk through two court situations at changeover.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/moving-as-a-pair"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "shot_choice",
@@ -1412,7 +1899,22 @@ export default {
    ],
    "practice": [
     "Tactical restraint: set a match focus such as controlling pace, avoiding premature smashes, or recovering position."
-   ]
+   ],
+   "match": {
+    "recognise": "Are errors from technique or trying high-risk shots on low-quality balls?",
+    "basic": "After an error, ask whether the ball was comfortable to attack.",
+    "intermediate": "From difficult positions, choose a reliable reset; attack when balanced and the ball permits.",
+    "advanced": "Adapt control, target and tempo to opponents’ positioning and recurring habits.",
+    "guardrail": "No ‘one best shot’ for all situations.",
+    "practice": "Optional informal note: errors from choices vs errors from execution.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/how-to-deal-with-lobs",
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis",
+     "https://thepadelschool.com/resources/padel-tips/how-to-dominate-an-easy-serve"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "communication",
@@ -1449,7 +1951,20 @@ export default {
    ],
    "sources": [
     "The Padel School"
-   ]
+   ],
+   "match": {
+    "recognise": "Are calls absent, late, contradictory or discouraging?",
+    "basic": "Notice whether the partner knows who will take a ball.",
+    "intermediate": "Agree one early clear call for uncertain balls and exchange useful opponent-position information.",
+    "advanced": "Use concise consistent calls to coordinate shifting, retreat and net approaches.",
+    "guardrail": "No rigid claim that all middle balls belong to one player.",
+    "practice": "Optional before-match agreement on one call each.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/moving-as-a-pair"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "build_point",
@@ -1484,7 +1999,21 @@ export default {
    "practice": [
     "Same error, different ball: feed varied heights and speeds and note where the mistake appears.",
     "Technique under increasing difficulty: comfortable feeds, then movement, then faster balls, then points."
-   ]
+   ],
+   "match": {
+    "recognise": "Do attempted winners come from uncomfortable positions?",
+    "basic": "Notice whether you tried to finish on a setup ball.",
+    "intermediate": "Use one controlled placement to create a weaker next reply rather than forcing an immediate winner.",
+    "advanced": "Develop combinations that move opponents and manage pace/height with your partner.",
+    "guardrail": "Don’t assume passive always beats attacking or vice versa.",
+    "practice": "Optional choose one recurring two-shot pattern to observe.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/intermediate-match-analysis",
+     "https://thepadelschool.com/resources/padel-tips/anticipate-every-shot-from-your-opponent"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "middle_ball",
@@ -1518,11 +2047,18 @@ export default {
    "sources": [
     "The Padel School"
    ],
-   "drills": {
-    "technique": "Rally with a partner, hitting down the middle and practising who takes it.",
-    "decision": "Partner feeds balls through the middle; agree a call ('mine', 'yours') before the bounce.",
-    "match": "Agree a middle-ball call with your partner before the match and notice how it goes.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Does nobody call it, both chase it, or is there a positional gap?",
+    "basic": "Notice where each player was when the middle ball arrived.",
+    "intermediate": "Agree early responsibility based on reach and coverage, with a clear call.",
+    "advanced": "Adjust who covers middle according to formation, opponent angle and pair movement.",
+    "guardrail": "No automatic ‘first mover owns it’ or ‘forehand always owns it’.",
+    "practice": "Optional agree communication before next set.",
+    "evidence": "Direct",
+    "sources": [
+     "https://thepadelschool.com/resources/padel-tips/moving-as-a-pair"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -1551,7 +2087,20 @@ export default {
    ],
    "sources": [
     "FIP rules"
-   ]
+   ],
+   "match": {
+    "recognise": "Is the question about official rule, club format or tactical score awareness?",
+    "basic": "Recognise official scoring versus local match formats.",
+    "intermediate": "Check the official rule before claiming a point/let/fault; confirm event scoring format.",
+    "advanced": "Use score context to choose appropriate risk without assuming pressure causes mistakes.",
+    "guardrail": "Rules are factual, not a skill diagnosis; don’t invent or conflate local scoring alternatives.",
+    "practice": "Optional discuss serving order/tie-break with partner before play.",
+    "evidence": "Direct",
+    "sources": [
+     "https://www.padelfip.com/documentation-2/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
+   }
   },
   {
    "id": "composure",
@@ -1593,11 +2142,19 @@ export default {
    "depends": [
     "A 2026 study of high-level men found no overall difference in several final-shot measures between normal and important points. A miss at break point is not proof of nerves."
    ],
-   "drills": {
-    "technique": "None needed; this is about habits under pressure.",
-    "decision": "Play practice games with artificial pressure (e.g. start at 30-40) and notice what changes.",
-    "match": "Pick one thing to do on big points, like the same routine every time, and notice if it helped.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Did player describe nerves, or only report an important score?",
+    "basic": "Notice whether pace, grip or decision changes during important points.",
+    "intermediate": "If personally helpful, choose a simple between-point routine and a reliable target.",
+    "advanced": "Keep the same tactical process at big points; adjust only to observed opponent patterns, not the score alone.",
+    "guardrail": "Never infer anxiety solely from a missed break point.",
+    "practice": "Optional practise between-point routine during a casual set.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC11194325/",
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC12341226/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -1630,11 +2187,19 @@ export default {
    "sources": [
     "Coaching resources"
    ],
-   "drills": {
-    "technique": "None needed; this is about habits after a lost point.",
-    "decision": "Practise a reset routine between points in a practice game: one breath, one cue, next point.",
-    "match": "Pick a reset cue for the match and notice whether you used it after the next lost point.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Does one mistake influence next decision or partnership communication?",
+    "basic": "Notice whether thoughts from the previous point continue into the next.",
+    "intermediate": "After an error, acknowledge it and choose one simple intention for the next point.",
+    "advanced": "Agree partner language that helps reset rather than assigning blame, and protect enjoyment.",
+    "guardrail": "No mandatory positivity or diagnosis of mood.",
+    "practice": "Optional reflect on one reset that felt helpful.",
+    "evidence": "Indirect",
+    "sources": [
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC12341226/",
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC11194325/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   },
   {
@@ -1669,11 +2234,19 @@ export default {
    "sources": [
     "Peer-reviewed studies (PMC)"
    ],
-   "drills": {
-    "technique": "None needed; this is about attention.",
-    "decision": "In a practice game, name one cue per point and check in at the end of each game.",
-    "match": "Pick one cue for the match and note after a few games if you kept it.",
-    "basis": "proposed and unverified (our own adaptation, not coach-reviewed)"
+   "match": {
+    "recognise": "Does focus fade with fatigue, distraction, or technical overthinking?",
+    "basic": "Notice when attention leaves the ball or tactical situation.",
+    "intermediate": "Use one simple attention cue during rally; save technical analysis for between points.",
+    "advanced": "Adjust pre-point target and focus routine if tired, keeping in-rally attention on play.",
+    "guardrail": "Research on fatigue groups cannot diagnose an individual; do not demand constant analysis.",
+    "practice": "Optional short between-point reset routine to test.",
+    "evidence": "Direct",
+    "sources": [
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC11235628/",
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC11194325/"
+    ],
+    "status": "source-informed adaptation, not coach-validated"
    }
   }
  ]
