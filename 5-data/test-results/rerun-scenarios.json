@@ -1,0 +1,800 @@
+[
+{
+"id": "T01",
+"scn": "Serve inconsistent",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My first serve keeps going in the net or long. It is really inconsistent.",
+"Mostly net, I think. Especially when I rush because the other pair is waiting.",
+"Ok but I do not really want to save anything. Can I just get one thing to think about?",
+"Cool, will try next game."
+]
+},
+{
+"id": "T02",
+"scn": "Forehand volley long",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My forehand volley keeps floating long, especially when the other pair hits hard at me.",
+"They hit it flat and fast, mostly at my chest. I swing at it because I want to put it away.",
+"That makes sense but I find it hard to hold back when I am at the net."
+]
+},
+{
+"id": "T03",
+"scn": "Backhand volley pops up under pressure",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I keep popping up backhand volleys when we are at 30-40 or something like that.",
+"Not sure honestly, it just floats up and they smash it.",
+"I think maybe I open the racket? Someone told me that once."
+]
+},
+{
+"id": "T04",
+"scn": "Block volley fast attacks",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Our opponents hit really hard at the net and I get overwhelmed. What do I do?",
+"Right at my body mostly. I panic and just swing.",
+"OK I will try. Is it ok to just block it?"
+]
+},
+{
+"id": "T05",
+"scn": "Drop volley poor timing",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I try drop volleys but they always sit up and get punished.",
+"Usually when I am a bit back from the net and they are already deep.",
+"Hm. So when should I actually try one?"
+]
+},
+{
+"id": "T06",
+"scn": "Basic overhead position",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I never get into position for overheads, I always end up hitting them off balance.",
+"The lob goes over my head and I just kind of turn and hit it.",
+"The lob goes over my head and I just kind of turn and hit it."
+]
+},
+{
+"id": "T07",
+"scn": "Bandeja inconsistent depth",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My bandeja is all over the place. Sometimes short, sometimes it hits the net.",
+"I think I hit it too hard because I want to be aggressive."
+]
+},
+{
+"id": "T08",
+"scn": "Vibora when to use",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B player",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I have seen people hit the vibora. When should I use it? I am a B player.",
+"Mine goes into the net a lot when I try.",
+"Mine goes into the net a lot when I try."
+]
+},
+{
+"id": "T09",
+"scn": "Smash too much power",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I smash everything as hard as I can and half go out or into the net.",
+"I just want to finish the point, it feels weak otherwise.",
+"But my partner says I should always go for the smash if the lob is short."
+]
+},
+{
+"id": "T10",
+"scn": "Gancho",
+"mode": "Ask the coach",
+"meta": "Full/Conv/A player",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I am an A player and I want to learn the gancho. I keep missing it.",
+"It happens when the lob goes over my left shoulder when I am at the net.",
+"Can you explain exactly how to swing it?"
+]
+},
+{
+"id": "T11",
+"scn": "Topspin smash",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"How do I hit a topspin smash? Is it better than a flat one?",
+"I am intermediate, B level. I saw a pro do it and the ball kicks off the glass."
+]
+},
+{
+"id": "T12",
+"scn": "X3 smash",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"When should I try the x3 smash? I see it on YouTube all the time.",
+"We play at a club with an open court side. Not sure about the outside rule though.",
+"So should I just go for it whenever the lob is high?"
+]
+},
+{
+"id": "T13",
+"scn": "X4 vs X3",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"What is the difference between an x3 and an x4 smash?",
+"Which one is easier to learn?"
+]
+},
+{
+"id": "T14",
+"scn": "Bajada when to attack",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"When the ball comes off the back glass high, should I always attack it with a bajada?",
+"I am a C player, I just started trying to hit them.",
+"It keeps going into the net"
+]
+},
+{
+"id": "T15",
+"scn": "Drop shot punished",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I keep trying drop shots from the back and they get smashed or volleyed back at me.",
+"Yeah they are usually at the net already when I try.",
+"But it works sometimes and it feels good when it does!"
+]
+},
+{
+"id": "T16",
+"scn": "Second serve passive/double faults",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My second serve is so soft they just attack it every time. But when I hit it harder I double fault.",
+"Probably about half the time it goes out the back or in the net.",
+"I get tense on second serves because I hate double faulting."
+]
+},
+{
+"id": "T17",
+"scn": "Return of fast serves",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I struggle to return fast serves, they come at me and I am always late.",
+"It is the serve into the middle or right at me, I think.",
+"Should I try to do a chiquita or something fancy?"
+]
+},
+{
+"id": "T18",
+"scn": "Forehand control under pressure",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My forehand falls apart when the score is tight. Loses all control.",
+"Mostly when I am stretched at the back and try to hit a winner from there.",
+"I know I should not, but I always want to hit winners."
+]
+},
+{
+"id": "T19",
+"scn": "Backhand inconsistent",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My backhand is just inconsistent. Some good, then a few terrible ones in a row.",
+"I do not know, I just feel cramped sometimes.",
+"Should I change my grip? A friend said I should."
+]
+},
+{
+"id": "T20",
+"scn": "Defensive lob falling short",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My defensive lobs keep landing short and getting smashed.",
+"When I am running back or stretched, I think.",
+"What is the target? How high should it go?"
+]
+},
+{
+"id": "T21",
+"scn": "Back glass mistimed rebound",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My glass defence was bad again. I mistime the rebound off the back glass.",
+"Hard ones mostly. I keep blocking everything.",
+"I know I should let it rebound, easier said than done.",
+"I tried that last game. It worked on the slower ones but the fast ones still got me."
+]
+},
+{
+"id": "T22",
+"scn": "Side glass angles",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I cannot judge the angles when the ball comes off the side glass. It always surprises me.",
+"Fast balls mainly, hit hard cross-court.",
+"Should I turn my body a certain way for these?"
+]
+},
+{
+"id": "T23",
+"scn": "Double glass confusion",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I get lost in the back corner. The ball hits two walls and I never know where it will go.",
+"Back wall then side wall, usually when they hit a deep lob.",
+"Do I always spin around to hit it?"
+]
+},
+{
+"id": "T24",
+"scn": "Contrapared emergency",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"What is a contrapared and when should I use it?",
+"I have tried it a couple of times and it felt amazing but it usually goes wrong.",
+"Can you tell me how to hit it?"
+]
+},
+{
+"id": "T25",
+"scn": "Defending a smash",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I cannot read where the ball goes after a smash hits the glass. They put me under so much pressure.",
+"Back glass mostly, big flat smashes from the net.",
+"Should I just wait for the glass every time?"
+]
+},
+{
+"id": "T26",
+"scn": "Fence rebound unpredictable",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Sometimes the ball hits the fence at the back and goes completely weird. I cannot predict it.",
+"It is an old court with a mesh at the top.",
+"It is an old court with a mesh at the top."
+]
+},
+{
+"id": "T27",
+"scn": "Chiquita attacked",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I hit chiquitas but they keep attacking them and I lose the point.",
+"They volley it hard back at my feet because it sits up.",
+"Should I just stop playing the chiquita?"
+]
+},
+{
+"id": "T28",
+"scn": "Attacking lob vs defensive lob",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"What is the difference between an attacking lob and a defensive lob? When do I use each?",
+"I always lob as high as I can no matter what.",
+"Okay, what should I change?"
+]
+},
+{
+"id": "T29",
+"scn": "Passing shot low-percentage",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I keep trying to pass them down the line when they are at the net and I keep missing.",
+"Honestly I love hitting it. When it goes in it is great.",
+"But everyone says you have to try the pass sometimes."
+]
+},
+{
+"id": "T30",
+"scn": "Half volley at feet",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Low balls at my feet are my nightmare. I always get caught half-way.",
+"I am running forward when they hit it.",
+"Is there a trick to the half volley?"
+]
+},
+{
+"id": "T31",
+"scn": "Between the legs",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Is it worth learning the between the legs shot? I want to be able to do it.",
+"I just think it looks cool and fun.",
+"Can you tell me how?"
+]
+},
+{
+"id": "T32",
+"scn": "Behind the back",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I got a ball that went right past me and I hit it behind my back. It worked once. Should I try that more?",
+"It was just luck probably.",
+"OK, fair"
+]
+},
+{
+"id": "T33",
+"scn": "Playing outside the court",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Can I go outside the court to hit the ball back? I saw it on TV.",
+"We play at a normal club, I do not know if the rules allow it.",
+"So is it allowed in matches or not?"
+]
+},
+{
+"id": "T34",
+"scn": "Court positioning",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I never know where to stand. I am always in the wrong place when they hit.",
+"Between the net and the back, like stuck in the middle.",
+"So where should I be?"
+]
+},
+{
+"id": "T35",
+"scn": "Ready position split step",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I am always flat-footed when the ball comes. Someone said I need a split step.",
+"I think I am watching the ball but not moving.",
+"I think I am watching the ball but not moving."
+]
+},
+{
+"id": "T36",
+"scn": "Taking and holding the net",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"After I hit a lob I run to the net and then get passed or lobbed. Every time.",
+"We hit the lob but it is not that deep.",
+"So should I stay back after a lob?"
+]
+},
+{
+"id": "T37",
+"scn": "Recovery after shots",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I hit a shot and then I just stand and watch it. Then they put it right where I am not.",
+"Mostly after volleys and smashes.",
+"Ok but where do I recover to?"
+]
+},
+{
+"id": "T38",
+"scn": "Moving as a pair",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My partner and I keep leaving a gap in the middle. One of us goes forward and the other stays back.",
+"It happens after lobs. I go back, they stay at the net.",
+"We argue a bit about who should do what."
+]
+},
+{
+"id": "T39",
+"scn": "Shot selection",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I think half my errors are because I pick the wrong shot, not because I cannot hit it.",
+"Like I try to smash from the back or drive volleys from way behind the net line.",
+"How do I decide faster in the moment?"
+]
+},
+{
+"id": "T40",
+"scn": "Partner communication",
+"mode": "Ask the coach",
+"meta": "Full/Conv/C",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My partner never talks on court and we keep colliding or both leaving balls.",
+"I do not want to be annoying about it. He is a friend.",
+"What do I even say to him?"
+]
+},
+{
+"id": "T41",
+"scn": "Constructing points",
+"mode": "Ask the coach",
+"meta": "Full/Conv/Alex",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I always try to win the point with one shot. I never build the point.",
+"Because it feels boring to just keep it in play. I want winners.",
+"Give me a way to build a point without being boring."
+]
+},
+{
+"id": "T42",
+"scn": "Middle ball responsibility",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Who should take the middle ball? I think it should always be the forehand player.",
+"My partner says it is whoever gets there first.",
+"We just keep arguing about it."
+]
+},
+{
+"id": "T43",
+"scn": "Rules and scoring",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"At our club someone said the serve can hit the side wall and still be good. Is that right?",
+"And what about the golden point? Do we play it?",
+"So who decides at 40-40, the receiving pair?"
+]
+},
+{
+"id": "T44",
+"scn": "Composure under pressure",
+"mode": "Mindset",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I get really tight on break points. My arm feels heavy.",
+"It is not every time. Mostly when we are close in the third set.",
+"I do not want to think about it too much, just something simple."
+]
+},
+{
+"id": "T45",
+"scn": "Bouncing back after mistakes",
+"mode": "Mindset",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"When I make a mistake I get angry and then make another one.",
+"Yes it always spirals. My partner gets annoyed too.",
+"I just want to reset quickly."
+]
+},
+{
+"id": "T46",
+"scn": "Focus in long matches",
+"mode": "Mindset",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I lose focus in the third set when we have been playing a while. I make silly mistakes.",
+"Yeah I get tired. We play after work.",
+"Is it just tiredness? Or can I do something?"
+]
+},
+{
+"id": "T47",
+"scn": "Celebrates, wants no advice",
+"mode": "Post-match",
+"meta": "Full/Conv/Alex post-match",
+"style": "conv",
+"level": "full",
+"msgs": [
+"We lost 6-4 6-4 but honestly it was the best game I have had in weeks. So much fun.",
+"Haha yes. Great evening, nothing to fix."
+]
+},
+{
+"id": "T48",
+"scn": "Explicitly says stop analysing",
+"mode": "Post-match",
+"meta": "Full/Conv/Alex post-match",
+"style": "conv",
+"level": "full",
+"msgs": [
+"Played badly today, 3 out of 10 probably. Missed everything.",
+"Honestly I do not want to analyse it. I have been overthinking my game all week. Can we just leave it?",
+"Thanks. I will just play on Thursday."
+]
+},
+{
+"id": "T49",
+"scn": "\"I already know that - how do I actually do it?\"",
+"mode": "Ask the coach",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"My volleys at the net keep going long. I know I should keep the racket in front and be compact.",
+"Yes I know all that. Everyone says that. Tell me how to actually do it, I cannot make my body do it.",
+"I tried that last time and it was fine for two games then it all went again."
+]
+},
+{
+"id": "T50",
+"scn": "\"Your advice isn't helping\" (Direct style)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"My drives from the back keep going into the net.",
+"You told me to get under the ball and I did. It is not helping.",
+"Still not helping. Same advice again."
+]
+},
+{
+"id": "T51",
+"scn": "Positive result after following advice (Direct)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"Last week you suggested I take the safer reply when stretched at the back instead of going for winners. I tried it and we won three games in a row from that!",
+"Honestly it felt great. I stayed in the rally."
+]
+},
+{
+"id": "T52",
+"scn": "Negative result after following advice (Direct)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"You said to hit controlled shots to the side when I am off balance. I tried it for two matches and it is actually worse. I keep getting attacked.",
+"They just put the ball away because mine is too slow and short.",
+"So what now?"
+]
+},
+{
+"id": "T53",
+"scn": "Mixed result: success early, fails when tired (Direct)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"I tried letting the ball come off the back glass instead of blocking. It worked well in the first set.",
+"But in the third set when I was tired I went back to blocking everything.",
+"So is it just not working?"
+]
+},
+{
+"id": "T54",
+"scn": "Advanced player needs basic correction (Direct)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/A",
+"style": "direct",
+"level": "full",
+"msgs": [
+"I am an A level player, 8 years playing. But I just realised I am hitting my bandejas late, I let the lob drop too low before I hit.",
+"I turn sideways but I seem to be waiting for the ball.",
+"I turn sideways but I seem to be waiting for the ball."
+]
+},
+{
+"id": "T55",
+"scn": "Beginner asks advanced tactical question (Direct)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/D",
+"style": "direct",
+"level": "full",
+"msgs": [
+"I just started padel last month. Should we play with one up one back or both at the net? Also what about the Australian formation?",
+"We are D level, we mostly just rally.",
+"OK so do I need to worry about formations at all?"
+]
+},
+{
+"id": "T56",
+"scn": "Player contradicts match history",
+"mode": "Post-match",
+"meta": "Full/Direct/Alex post-match",
+"style": "direct",
+"level": "full",
+"msgs": [
+"I played really well today, like 9 out of 10, no mistakes at all.",
+"Actually, I have not really played well for weeks. Everything has been a mess.",
+"Wait, did I have a good run recently or not?"
+]
+},
+{
+"id": "T57",
+"scn": "Asks coach to save/edit a goal",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"I want to make \"letting the ball come off the back glass\" a goal. Can you save it for me?",
+"Yes. Please add it as a goal."
+]
+},
+{
+"id": "T58",
+"scn": "Park a goal for later",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"I want to park my serve goal for now. I am tired of working on it. Can you do that?",
+"Yes park it please. Then maybe I can add the glass one."
+]
+},
+{
+"id": "T58b",
+"scn": "Park goal - functional re-check (supplementary)",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"Please park my serve goal for now."
+]
+},
+{
+"id": "T59",
+"scn": "Returning player expects coach to remember",
+"mode": "Ask the coach",
+"meta": "Full/Direct/B",
+"style": "direct",
+"level": "full",
+"msgs": [
+"Hi again. Last time we talked about my back glass and blocking. Do you remember what I was working on?",
+"Yes that. I tried it twice since and it went okay.",
+"Good. Anything I should keep in mind?"
+]
+},
+{
+"id": "T60",
+"scn": "Frustrated, discouraged, not improving (Conversational)",
+"mode": "Mindset",
+"meta": "Full/Conv/B",
+"style": "conv",
+"level": "full",
+"msgs": [
+"I have been playing for a year and I honestly do not feel like I am improving. It is really getting me down.",
+"Everyone else seems to get better and I stay the same. Maybe I am just not good at this.",
+"I do not know why I still play."
+]
+},
+{
+"id": "T61",
+"scn": "Reflection mode: player not interested in improving",
+"mode": "Ask the coach",
+"meta": "Reflection/Conv/D",
+"style": "conv",
+"level": "reflection",
+"msgs": [
+"I only use this app to log my games. I am not trying to get better, I just play with my friends for fun. Any tips anyway?",
+"Not really, we just enjoy it. Maybe one small thing?"
+]
+}
+]
