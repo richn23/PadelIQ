@@ -186,7 +186,7 @@ export default async function handler(req, res) {
 
   const v = { style: prompts.defaults.style, ...vars };
   const notes = notesSection(pickCards({ messages, vars, playerFile }));
-  const system = [fill(prompts.shared, v), fill(m.prompt, v), notes, playerFile].filter(Boolean).join('\n\n');
+  const system = [fill(prompts.shared, v), fill(m.prompt, v), notes, playerFile, /Coach style: DIRECT/.test(playerFile) ? 'FINAL REMINDER, DIRECT STYLE: reply in at most 35 words, one point and one action. Do NOT end with a question. This overrides every earlier instruction to ask a follow-up.' : ''].filter.filter(Boolean).join('\n\n');
   const chat = [
     { role: 'system', content: system },
     ...messages.filter((x) => x && (x.role === 'user' || x.role === 'assistant') && typeof x.content === 'string').map((x) => ({ role: x.role, content: x.content.slice(0, 2000) })),
