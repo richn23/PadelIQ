@@ -1,0 +1,1334 @@
+[
+ {
+  "id": "T01",
+  "scn": "Serve inconsistent",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My first serve keeps going in the net or long. It is really inconsistent.",
+    "c": "That sounds more like a consistency issue than something to fix by adding pace. A common cause is changing the ball drop or rushing the action, but net and long misses can come from different things. Which happens more often, and does it change when you feel rushed?\n\nFirst word 2.9s · Answered in 3.5s"
+   },
+   {
+    "p": "Mostly net, I think. Especially when I rush because the other pair is waiting.",
+    "c": "Rushing could be part of it, especially with most misses going into the net. For the next few serves, use the same comfortable rhythm and target, and finish the serve before moving in. That gives you a repeatable action without asking you to hit harder. Try it when the other pair is waiting too, and see whether the net misses ease.\n\nFirst word 1.4s · Answered in 2.2s"
+   },
+   {
+    "p": "Ok but I do not really want to save anything. Can I just get one thing to think about?",
+    "c": "Absolutely. Think “same rhythm”: let the ball bounce, serve smoothly, then move in. Don’t worry about saving anything.\n\nFirst word 1.6s · Answered in 2.0s"
+   },
+   {
+    "p": "Cool, will try next game.",
+    "c": "Sounds good, Alex. Just use that same rhythm next game and see whether it cuts down the net misses.\n\nFirst word 1.3s · Answered in 1.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T02",
+  "scn": "Forehand volley long",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My forehand volley keeps floating long, especially when the other pair hits hard at me.",
+    "c": "Against a hard hit, a common cause is having to prepare late or taking a bigger swing than the ball needs, though the racket face can matter too. On those volleys, does your racket feel ready before the ball arrives, or are you rushing to meet it?\n\nFirst word 3.4s · Answered in 4.0s"
+   },
+   {
+    "p": "They hit it flat and fast, mostly at my chest. I swing at it because I want to put it away.",
+    "c": "That sounds like the attacking swing may be adding too much speed against a flat, fast ball at chest height. Try meeting it with the racket ready in front and a compact, controlled action, aiming deep or into a generous space rather than trying to finish that ball. If they give you a weaker reply, you can attack the next one. See how that feels in a few rallies.\n\nFirst word 1.3s · Answered in 2.9s\n\nSave this to try on court?\n\nAgainst flat, fast chest-height balls, use a compact, controlled volley and aim deep or into a generous space.\n\n· Have the racket ready in front\n\n· Save the aggressive volley for a weaker reply\n\nAccept\nNot quite"
+   },
+   {
+    "p": "That makes sense but I find it hard to hold back when I am at the net.",
+    "c": "I get it, when you’re at the net a fast ball can feel like a chance to finish, even when it’s not an easy one to control. Keep the same idea, but make the decision before the ball arrives: against a flat ball straight at your chest, choose a controlled placement; save the put-away for a weaker reply. No need to force it every time.\n\nFirst word 1.3s · Answered in 2.0s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T03",
+  "scn": "Backhand volley pops up under pressure",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I keep popping up backhand volleys when we are at 30-40 or something like that.",
+    "c": "A pop-up on a backhand volley can come from a few things, and the score alone doesn’t tell me whether you feel rushed or whether the contact changes. Does it happen mainly on low balls, balls coming fast at your body, or higher balls you’re trying to attack?\n\nFirst word 1.6s · Answered in 2.2s"
+   },
+   {
+    "p": "Not sure honestly, it just floats up and they smash it.",
+    "c": "If it floats up and they can smash it, I’d first watch whether you’re rushed before you have space to meet the ball. In a match, try getting the racket ready early and keeping the response compact on a fast or body-height ball; that may help you control it without forcing an attacking volley. On the next few, just notice whether those are the ones that pop up. I’m not sure that’s the cause without knowing which balls it happens on.\n\nFirst word 3.5s · Answered in 4.4s"
+   },
+   {
+    "p": "I think maybe I open the racket? Someone told me that once.",
+    "c": "That could be part of it, but someone’s comment once isn’t enough to know. A late or rushed contact can also make a volley float up. Does it happen on slower balls when you feel you have plenty of time too?\n\nAnswered in 6.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T04",
+  "scn": "Block volley fast attacks",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Our opponents hit really hard at the net and I get overwhelmed. What do I do?",
+    "c": "Against a hard ball at the net, don’t try to hit harder back. Get your racket in front early and use a short, firm block to send it back low, often through the middle; that gives you more margin than trying for a sharp angle. When you get overwhelmed, where does your reply usually go: into the net, long, or off to the side?\n\nFirst word 3.7s · Answered in 4.5s"
+   },
+   {
+    "p": "Right at my body mostly. I panic and just swing.",
+    "c": "If it’s coming straight at your body, you may be getting jammed before you can choose a side. Rather than swinging, keep the racket in front and make a small block, letting the ball meet the strings; aim it back through the middle. The physical cue is “racket still, short block,” not trying to find extra time mid-rally. Try that on the next few body volleys and see if you can keep the ball in play.\n\nFirst word 3.1s · Answered in 4.1s"
+   },
+   {
+    "p": "OK I will try. Is it ok to just block it?",
+    "c": "Yes, absolutely. When they’re hitting hard at your body and you’re defending, a compact block is a good way to keep the ball in play and give your pair time to reset; it isn’t a failed shot. Try “racket in front, short block” on those body balls and see how it feels over a few games.\n\nFirst word 2.0s · Answered in 3.4s\n\nSave this to try on court?\n\nOn hard balls at the body, keep the racket in front and use a short block.\n\n· Racket in front\n\n· Short block\n\nAccept\nNot quite"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T05",
+  "scn": "Drop volley poor timing",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I try drop volleys but they always sit up and get punished.",
+    "c": "If it sits up, the opponents get time to attack, so the drop volley may not be the best choice on that ball. Does it happen mainly when the incoming ball is fast or low, or on a comfortable ball you have time to play? I can’t reliably coach the technique from a description, but a coach watching a few examples could help pinpoint why it’s lifting.\n\nFirst word 2.9s · Answered in 3.7s"
+   },
+   {
+    "p": "Usually when I am a bit back from the net and they are already deep.",
+    "c": "That context could be part of it. From a bit back, a drop volley has farther to travel, and if they’re deep they may still have time to reach it; going on your description, I’m not sure whether the lift is mainly technique or the shot choice. Next time, try a controlled volley into a side space instead, and save the drop for a ball you can take closer to the net when they’re out of position.\n\nFirst word 0.9s · Answered in 1.8s"
+   },
+   {
+    "p": "Hm. So when should I actually try one?",
+    "c": "Try a drop volley when you’re close enough to the net to keep it short, you can meet the ball comfortably in front, and the opponents are deep or moving away from the net. If you’re farther back, stretched, or facing a fast low ball, a controlled volley into space is usually a safer choice. I can’t give a reliable technique cue for the drop volley from here, but that’s a useful match-time filter.\n\nFirst word 0.9s · Answered in 1.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T06",
+  "scn": "Basic overhead position",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I never get into position for overheads, I always end up hitting them off balance.",
+    "c": "A common cause is moving toward the ball while it’s already arriving, so you’re still running at contact. Try to be balanced as your opponent hits, then turn side-on and adjust with small steps rather than reaching while moving. Does it happen mostly on deep lobs, or even when you have time to get under the ball?\n\nFirst word 1.5s · Answered in 2.5s"
+   },
+   {
+    "p": "The lob goes over my head and I just kind of turn and hit it.",
+    "c": "That sounds like you may be reacting once the lob is already over you, rather than getting behind it in time. As soon as you read it’s going deep, turn side-on and move back while keeping the ball in view. If you can get balanced underneath it, play the overhead; if it’s already behind you or too deep, let it come off the back glass and defend from there. Try noticing that decision next match, rather than forcing the overhead.\n\nAnswered in 7.6s"
+   },
+   {
+    "p": "Ok can you give me something simple to remember?",
+    "c": "Use this cue: “Turn early, then choose.” Turn as soon as you read the lob, move back to get balanced, then decide whether the overhead is comfortable or the glass is the better option.\n\nFirst word 4.4s · Answered in 5.0s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T07",
+  "scn": "Bandeja inconsistent depth",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My bandeja is all over the place. Sometimes short, sometimes it hits the net.",
+    "c": "Short ones and netted ones can come from a few things, so I wouldn’t pin it on one swing change yet. A common cause is getting set late and contacting the lob behind you. Does it tend to happen while you’re still moving back, or when you feel balanced?\n\nFirst word 2.1s · Answered in 2.6s"
+   },
+   {
+    "p": "I think I hit it too hard because I want to be aggressive.",
+    "c": "That could be part of it, especially if the bandeja is turning into a smash-like hit. On a lob you can play comfortably, try taking pace off and controlling the depth instead; aim deep to a corner or the middle, then recover. If the lob is too fast or deep to control while balanced, defend rather than forcing the bandeja. See how that feels in your next match.\n\nFirst word 1.0s · Answered in 2.0s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T08",
+  "scn": "Vibora when to use",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B player",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I have seen people hit the vibora. When should I use it? I am a B player.",
+    "c": "A víbora is an attacking sliced overhead, usually aimed toward a corner. Use it when the lob leaves you fully set and you can control the shot; if you’re stretched or still getting behind the ball, a safer overhead is more likely to help you keep the net. The key is a difficult rebound and a good position for the next ball, not forcing a winner. When you watch those players, are they choosing it on comfortable lobs or reaching for it under pressure?\n\nFirst word 1.9s · Answered in 3.4s"
+   },
+   {
+    "p": "Mine goes into the net a lot when I try.",
+    "c": "If it’s going into the net, the first thing I’d check is whether you’re trying the víbora on a lob that doesn’t leave you settled and in position. Going on your description, I can’t tell whether it’s shot choice or contact, and I don’t want to guess at the swing. For the next few you try, notice whether you’re fully set behind the ball; if you are and it still catches the net, a coach watching a couple would help pinpoint why.\n\nFirst word 1.2s · Answered in 2.2s"
+   },
+   {
+    "p": "Okay what do I do at the moment then, just bandeja everything?",
+    "c": "No, not bandeja everything. Use the víbora when you’re set behind a lob and can control it; if you’re not well positioned, choose a safer overhead or defend the lob, depending on its height, depth and pace. Since yours often hits the net, leave the víbora for the comfortable lobs and notice whether it still happens when you’re balanced.\n\nFirst word 1.3s · Answered in 2.4s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T09",
+  "scn": "Smash too much power",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I smash everything as hard as I can and half go out or into the net.",
+    "c": "That sounds like you may be trying to finish balls that don’t give you a comfortable smash, as well as losing control when you go full power. In a match, notice whether the misses come from short, high lobs you’re balanced for, or from deeper or awkward ones. Are most of the misses long, or into the net?\n\nFirst word 1.6s · Answered in 2.5s"
+   },
+   {
+    "p": "I just want to finish the point, it feels weak otherwise.",
+    "c": "I get wanting to put the point away, but an overhead doesn’t have to be a winner to keep you in control. Going on what you describe, try reserving the full finish for a short, high lob you’re balanced for; on a deeper or awkward one, use a controlled overhead into space and keep the attack going. A smash that stays in can still set up the next ball.\n\nFirst word 2.4s · Answered in 3.4s"
+   },
+   {
+    "p": "But my partner says I should always go for the smash if the lob is short.",
+    "c": "A short lob can be a good chance to smash, but short alone doesn’t make it an automatic winner. If it’s also high enough and you’re balanced with contact in front, go for a controlled finish; if you’re reaching or contacting it awkwardly, a safer overhead may keep the attack without handing over the point. Your partner’s cue is useful as a signal to look for the smash, not a rule for every short lob.\n\nFirst word 2.7s · Answered in 3.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T10",
+  "scn": "Gancho",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/A player",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I am an A player and I want to learn the gancho. I keep missing it.",
+    "c": "The gancho is a situational option for an awkward lob, not a shot to force when a comfortable overhead or letting a deep ball rebound is available. Since you’re missing it, I’d have a coach watch you try it rather than guess at the mechanics from text. Which lob makes you want to use it: where is it going, and how high does it arrive?\n\nFirst word 2.0s · Answered in 2.5s"
+   },
+   {
+    "p": "It happens when the lob goes over my left shoulder when I am at the net.",
+    "c": "That’s the kind of lob path where a gancho can be useful, especially if it limits your regular overhead. But because the shot is technically demanding and I can’t see what’s causing the misses, I’d avoid forcing it in matches: choose an overhead you already trust, or let a deep ball rebound, and ask a coach to check whether the gancho suits that ball.\n\nFirst word 1.1s · Answered in 2.0s"
+   },
+   {
+    "p": "Can you explain exactly how to swing it?",
+    "c": "I can’t reliably coach the gancho swing from text. It’s a specialised overhead, and a coach watching your contact on that left-shoulder lob can show you whether it’s the right shot and how to shape it safely. Until then, use an overhead you already trust or defend the deep lob off the glass.\n\nFirst word 1.2s · Answered in 2.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T11",
+  "scn": "Topspin smash",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "How do I hit a topspin smash? Is it better than a flat one?",
+    "c": "A topspin smash is an advanced overhead that can make the ball bounce more aggressively, but it isn’t automatically better than a flat smash. It’s a specialist option, not the default: if the lob or your contact isn’t suitable, a reliable flat or controlled overhead is the better choice. The detailed swing mechanics are tricky to coach safely without seeing you, so a coach watching would be the best person to show you. Is your flat smash going in reliably yet?\n\nFirst word 1.0s · Answered in 2.0s"
+   },
+   {
+    "p": "I am intermediate, B level. I saw a pro do it and the ball kicks off the glass.",
+    "c": "Yes, that sharp kick off the glass is the appeal. But a pro’s topspin smash is a specialist shot, not automatically better than a flat one; the lob and contact have to suit it, and a controlled overhead is often the safer choice. I can’t reliably teach the swing from text, so ask a coach to show you the contact on a feed. In a match, treat it as an option only when the ball gives you a comfortable overhead, rather than forcing it.\n\nAnswered in 4.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T12",
+  "scn": "X3 smash",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "When should I try the x3 smash? I see it on YouTube all the time.",
+    "c": "An x3 is for a genuine attacking chance, not just because the ball is high: the lob needs to be clearly attackable, and the court conditions and opponents’ position need to make the shot worthwhile. If it isn’t clearly on, a controlled conventional smash or keeping the attack with an overhead is usually the safer choice. Also check whether your club allows play outside the court, since that matters for an x3. Does your ordinary smash go in reliably yet?\n\nFirst word 1.3s · Answered in 2.3s"
+   },
+   {
+    "p": "We play at a club with an open court side. Not sure about the outside rule though.",
+    "c": "An open side doesn’t automatically mean you’re allowed to play the ball outside the court; clubs can have different rules, so check with the staff before trying it in a match. Even if it’s allowed, treat x3 as an occasional finishing option when the lob is clearly attackable, not a shot to force.\n\nAnswered in 2.6s"
+   },
+   {
+    "p": "So should I just go for it whenever the lob is high?",
+    "c": "No, not every high lob is an x3 chance. It’s worth considering only when it’s short and attackable and you’re balanced with time to choose; if it’s deep or you’re reaching, use a controlled overhead or defend instead. I’d check the club’s outside-play rule before attempting one.\n\nFirst word 1.2s · Answered in 1.9s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T13",
+  "scn": "X4 vs X3",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "What is the difference between an x3 and an x4 smash?",
+    "c": "An x3 smash leaves the court over the three-metre side enclosure after bouncing on your opponents’ side. An x4 leaves over the four-metre back enclosure. They’re different targets, not just two names for a regular smash, and either one depends on the ball and court conditions being right.\n\nFirst word 1.4s · Answered in 2.1s"
+   },
+   {
+    "p": "Which one is easier to learn?",
+    "c": "Neither is really a basic next step: both are advanced shots, and which feels easier depends on the lob, court and conditions. I’d get a conventional smash reliable first, then ask a coach to show you which target suits your contact and local court.\n\nFirst word 1.0s · Answered in 1.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T14",
+  "scn": "Bajada when to attack",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "When the ball comes off the back glass high, should I always attack it with a bajada?",
+    "c": "No, not always. A high rebound can make a bajada an option, but if you’re off balance, rushed, or the ball is awkward, a controlled defensive return may be the better choice. Going on what you describe, the key is whether you have time and balance to play it comfortably. When yours comes off high, do you usually feel set to hit it, or are you scrambling?\n\nAnswered in 3.0s"
+   },
+   {
+    "p": "I am a C player, I just started trying to hit them.",
+    "c": "That makes sense if you’ve only just started trying the bajada. At C level, I’d treat a high rebound as a chance to attack only when you’ve got time, balance and a clear contact in front; if you’re rushed or jammed, play a controlled return instead. For now, notice which high rebounds actually give you room, rather than trying to attack every one.\n\nFirst word 3.7s · Answered in 4.7s"
+   },
+   {
+    "p": "It keeps going into the net",
+    "c": "If the bajada is finding the net, a common possibility is that you’re trying to attack while still in a defensive position, or contacting it late. I can’t tell which from here. When it goes into the net, do you feel balanced with the ball in front, or are you scrambling to reach it?\n\nFirst word 4.2s · Answered in 4.9s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T15",
+  "scn": "Drop shot punished",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I keep trying drop shots from the back and they get smashed or volleyed back at me.",
+    "c": "A common reason is that the opponents are already at the net, so a drop from deep gives them an easy ball to attack. Try using a lob to move them back, and save the drop for when they’re deeper or pulled out of position. Were they usually at the net when you played it?\n\nFirst word 4.9s · Answered in 5.5s"
+   },
+   {
+    "p": "Yeah they are usually at the net already when I try.",
+    "c": "That fits: from the back, a drop shot has a long way to travel and gives net players time to step in. Try a high, deep lob over them to push them back; only look for the drop when they’ve been moved away from the net. See how that changes the reply next match.\n\nFirst word 2.3s · Answered in 3.0s"
+   },
+   {
+    "p": "But it works sometimes and it feels good when it does!",
+    "c": "Fair enough, and when it lands well it’s a lovely shot. Since it works sometimes and feels good, enjoy using it when the chance is there; no need to turn it into homework.\n\nFirst word 1.2s · Answered in 1.6s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T16",
+  "scn": "Second serve passive/double faults",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My second serve is so soft they just attack it every time. But when I hit it harder I double fault.",
+    "c": "Sounds like you’re caught between a second serve that’s too easy to attack and one you can’t reliably keep in. A common way through is not to add a big hit, but to keep a repeatable rhythm and aim for reliable depth and placement rather than making it very soft. In your next match, notice where your second serves land and whether the attack comes because they’re short, predictable, or inaccurate. Is it mainly the pace that changes when you try to hit harder, or the placement too?\n\nFirst word 2.0s · Answered in 2.9s"
+   },
+   {
+    "p": "Probably about half the time it goes out the back or in the net.",
+    "c": "That mix of long and into the net suggests the harder action may be changing your control as well as the pace, though I can’t tell exactly why from here. Rather than pushing harder, keep the same comfortable rhythm and use a reliable target with some depth; aim for a serve that makes them play, not one you have to protect from a double fault. Notice whether that steadier serve lands deep enough to stop them attacking so comfortably.\n\nFirst word 1.1s · Answered in 2.1s"
+   },
+   {
+    "p": "I get tense on second serves because I hate double faulting.",
+    "c": "That makes sense: worrying about the double fault can make the second serve feel like a completely different shot. Keep the same comfortable rhythm as your first serve, with a safe target that still gives the ball some depth, rather than deliberately slowing the action right down. Just notice whether that helps you serve more freely and keeps it out of the net and back glass.\n\nFirst word 1.0s · Answered in 1.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T17",
+  "scn": "Return of fast serves",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I struggle to return fast serves, they come at me and I am always late.",
+    "c": "Against a fast serve, a short, controlled block is often a better first aim than trying to drive it back. Since you’re getting caught late, notice whether you’re already balanced and ready when the server hits, or still moving then. Is it mainly the serve toward the side glass, or one coming more centrally?\n\nFirst word 1.2s · Answered in 1.8s"
+   },
+   {
+    "p": "It is the serve into the middle or right at me, I think.",
+    "c": "For a fast serve through the middle or at your body, try making a simple block return rather than taking a full swing. Set your racket in front before the serve, then just guide the ball deep enough to get the rally started. That may help with the timing, though I can’t tell from here whether late preparation is part of it. Try it on a few of those serves and see if you’re getting the racket to the ball earlier.\n\nFirst word 1.1s · Answered in 2.1s"
+   },
+   {
+    "p": "Should I try to do a chiquita or something fancy?",
+    "c": "Not on the fast serves that are catching you late. Get a controlled return in first; a chiquita is more for a serve you have time to handle comfortably. Once you’re balanced and have time, you can choose a purposeful low return, but you don’t need to force anything fancy.\n\nFirst word 1.2s · Answered in 1.9s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T18",
+  "scn": "Forehand control under pressure",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My forehand falls apart when the score is tight. Loses all control.",
+    "c": "A tight score doesn’t necessarily mean nerves are causing it. A common possibility is that you rush or change your shot choice, but going on your description I can’t tell yet. What do you notice changing on those forehands?\n\nFirst word 2.6s · Answered in 3.1s"
+   },
+   {
+    "p": "Mostly when I am stretched at the back and try to hit a winner from there.",
+    "c": "That sounds less like a general forehand-control problem and more like the winner attempt is low-percentage when you’re stretched deep. From there, aim for a controlled reply into a big space, like the middle, and look to attack when you get a more comfortable ball. Try that in a few tight-score rallies and see if it steadies things.\n\nFirst word 1.3s · Answered in 2.0s"
+   },
+   {
+    "p": "I know I should not, but I always want to hit winners.",
+    "c": "That urge is understandable, especially in a tight game. Make the decision simpler: when you’re stretched at the back, play one controlled ball into a big space; save the winner attempt for a comfortable ball. Don’t worry about getting every choice perfect, just notice what the ball gives you.\n\nFirst word 0.9s · Answered in 2.3s\n\nSave this to try on court?\n\nWhen stretched at the back, play a controlled forehand into a big space instead of forcing a winner.\n\nAccept\nNot quite"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T19",
+  "scn": "Backhand inconsistent",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My backhand is just inconsistent. Some good, then a few terrible ones in a row.",
+    "c": "That kind of run of errors can come from being rushed or cramped, but I wouldn’t want to guess yet. When the backhand goes wrong, does it usually land too short, go long, or catch the net?\n\nFirst word 2.4s · Answered in 2.9s"
+   },
+   {
+    "p": "I do not know, I just feel cramped sometimes.",
+    "c": "Feeling cramped could be part of it, especially if the ball gets on you before you’re set. In the next match, just notice whether it happens more on fast balls, low balls, or after the glass; don’t change your grip based on this alone. That should help narrow down what’s going on.\n\nFirst word 1.0s · Answered in 1.8s"
+   },
+   {
+    "p": "Should I change my grip? A friend said I should.",
+    "c": "I wouldn’t change it just because your friend suggested it. Grip choice is personal, and feeling cramped could also come from being rushed or reaching; I can’t tell which from here. What grip are you using now?\n\nAnswered in 3.2s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T20",
+  "scn": "Defensive lob falling short",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My defensive lobs keep landing short and getting smashed.",
+    "c": "A common cause is trying to lob while rushed or off balance, which can leave it short; a low aim can do it too. When you’re balanced, try giving the lob more height and depth. If you’re stretched, choose the safest reply you can manage rather than forcing a lob. Are the short ones mostly happening when you’re under pressure, or when you have time?\n\nFirst word 4.2s · Answered in 5.2s"
+   },
+   {
+    "p": "When I am running back or stretched, I think.",
+    "c": "That fits: when you’re running back or stretched, it’s harder to get balanced and send the lob deep. In those moments, don’t force height and depth you can’t reach; play the safest reply you can, and save the high, deep lob for when you’re balanced. Next match, notice whether that choice buys you more time.\n\nFirst word 1.0s · Answered in 2.5s\n\nSave this to try on court?\n\nWhen stretched, choose the safest achievable reply; lob high and deep when balanced.\n\nAccept\nNot quite"
+   },
+   {
+    "p": "What is the target? How high should it go?",
+    "c": "There isn’t one fixed height. Aim for a high, deep lob that makes the opponents move back and gives you time; if it’s short enough to attack, it hasn’t bought you that time. Since yours tend to fall short when you’re stretched, use the safer reply in that situation rather than chasing a specific height.\n\nFirst word 1.0s · Answered in 1.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T21",
+  "scn": "Back glass mistimed rebound",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My glass defence was bad again. I mistime the rebound off the back glass.",
+    "c": "A common reason is misreading where the rebound will travel, so you’re set for the wrong contact point. Does it usually come straight back, or rebound off at an angle?\n\nFirst word 2.7s · Answered in 3.3s"
+   },
+   {
+    "p": "Hard ones mostly. I keep blocking everything.",
+    "c": "On the hard balls, blocking isn’t automatically a mistake. If the rebound leaves you cramped or rushed, it may be the sensible choice; the useful distinction is which balls give you time to play off the glass. Next match, notice that before deciding, rather than trying to use the glass every time.\n\nFirst word 5.6s · Answered in 6.4s"
+   },
+   {
+    "p": "I know I should let it rebound, easier said than done.",
+    "c": "Fair, knowing the choice and reading it quickly are different skills. If you get a chance to practise, ask someone to feed a mix of hard balls and call “block” or “glass” before each one, then play it; the aim is just to recognise which rebounds leave you enough time, not to force every ball off the glass.\n\nFirst word 2.7s · Answered in 3.8s"
+   },
+   {
+    "p": "I tried that last game. It worked on the slower ones but the fast ones still got me.",
+    "c": "That’s useful: reading the slower rebounds is working, and the fast ones may simply leave you less time. Keep the same read, but on a fast ball notice whether the rebound gives you room to set up; if it jams you, block it rather than forcing a glass return. Try that distinction next time and see if it helps.\n\nFirst word 2.9s · Answered in 3.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T22",
+  "scn": "Side glass angles",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I cannot judge the angles when the ball comes off the side glass. It always surprises me.",
+    "c": "That’s a common side-glass problem: the rebound angle can be hard to read, and reacting too early can leave you caught out. Do the faster balls surprise you more, or the slower ones?\n\nAnswered in 5.3s"
+   },
+   {
+    "p": "Fast balls mainly, hit hard cross-court.",
+    "c": "That narrows it down: hard cross-court balls may give you little time to read both the speed and the rebound angle. On the next few, notice whether you can see the path off the glass early enough to choose your reply; if not, a safer return before the glass may be the better call. Don’t force the after-glass option on every fast ball.\n\nAnswered in 8.3s"
+   },
+   {
+    "p": "Should I turn my body a certain way for these?",
+    "c": "I wouldn’t prescribe one turning pattern for every fast cross-court rebound. First try to read where the ball finishes off the glass; if it’s clear, play it after the glass, and if it’s still rushing you, a safer pre-glass return may suit. A coach watching one of these balls could help you find the right movement for your court position.\n\nFirst word 1.8s · Answered in 2.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T23",
+  "scn": "Double glass confusion",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I get lost in the back corner. The ball hits two walls and I never know where it will go.",
+    "c": "That sounds like double-glass, where the ball hits both the back and side walls. A common cause is reading the rebound sequence too late; the two sequences can send it different ways. Which wall does it hit first, the back wall or the side wall?\n\nAnswered in 3.0s"
+   },
+   {
+    "p": "Back wall then side wall, usually when they hit a deep lob.",
+    "c": "With the back wall first, then the side wall, the key is to read that sequence early rather than turn automatically. On the next deep lob, notice the ball through the side-wall rebound and where it finishes; if there’s room, give yourself space to meet it in front. Going on your description, that may help you predict the path sooner.\n\nFirst word 1.0s · Answered in 1.9s"
+   },
+   {
+    "p": "Do I always spin around to hit it?",
+    "c": "No, not always. With back-wall-then-side, let the rebound sequence guide you: watch through the second wall and turn only as much as you need to get into position. The ball’s direction and speed matter, so notice where it finishes before deciding how to move.\n\nFirst word 1.5s · Answered in 2.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T24",
+  "scn": "Contrapared emergency",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "What is a contrapared and when should I use it?",
+    "c": "A contrapared is an emergency shot where you use your own back glass to send the ball over the net. It’s a recovery option, not usually the first choice: if a normal rebound return is still playable, try that; consider the contrapared when the ball is already behind you and the normal route isn’t available. Is this coming up regularly for you, or was it a one-off?\n\nFirst word 1.2s · Answered in 2.2s"
+   },
+   {
+    "p": "I have tried it a couple of times and it felt amazing but it usually goes wrong.",
+    "c": "That makes sense, it can feel great when it comes off, but it’s an emergency shot and the timing and control are demanding. Since it’s gone wrong a couple of times, I’d treat it as a last resort and notice whether a normal rebound return was still playable. If you want to work on the shot itself, a coach watching it or a short video would be more useful than me guessing at technique.\n\nFirst word 1.4s · Answered in 2.5s"
+   },
+   {
+    "p": "Can you tell me how to hit it?",
+    "c": "I can’t reliably coach the technique from a description; the evidence on this shot is limited, and a coach watching you would be safer and more useful. In a match, use it only as an emergency when a normal rebound return isn’t playable. If you get a chance, ask a coach to watch a safe, controlled attempt and check whether the ball’s height and position make the shot a good option.\n\nFirst word 1.5s · Answered in 2.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T25",
+  "scn": "Defending a smash",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I cannot read where the ball goes after a smash hits the glass. They put me under so much pressure.",
+    "c": "That sounds like you’re struggling to read the rebound quickly enough to get set. A common cause is watching the smash but losing sight of the ball as it hits the glass; does it usually come back straight toward you, or angle away to one side?\n\nAnswered in 2.3s"
+   },
+   {
+    "p": "Back glass mostly, big flat smashes from the net.",
+    "c": "With big, flat smashes from the net, you may have very little time, so the hard part could be judging whether the glass is playable at all, not just reading the angle. In the next match, notice which smashes give you enough time to use the back glass and which are coming too fast or close to your body, where a block may be the safer choice. Don't force yourself to play every one off the glass.\n\nFirst word 4.5s · Answered in 5.9s"
+   },
+   {
+    "p": "Should I just wait for the glass every time?",
+    "c": "No, not every time. Let it reach the back glass only when you have time and space to read the rebound; if a flat smash is fast, low, or coming into your body, blocking before the glass may be the safer option. Try to judge the rebound path as the ball travels, rather than committing to the glass automatically.\n\nFirst word 1.1s · Answered in 1.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T26",
+  "scn": "Fence rebound unpredictable",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Sometimes the ball hits the fence at the back and goes completely weird. I cannot predict it.",
+    "c": "That’s understandable. A ball off the back fence can take a much less predictable rebound than one off smooth glass, so it may help to treat the deflection as unknown and stay balanced rather than committing early. Does it happen more on a particular court?\n\nAnswered in 3.7s"
+   },
+   {
+    "p": "It is an old court with a mesh at the top.",
+    "c": "That mesh could be why the rebound feels so odd. Wire deflections are less predictable than glass, and I can’t tell the exact cause without seeing it. In a match, stay balanced and adjust to the ball’s actual path rather than committing early; a short video could help a coach spot what’s happening.\n\nFirst word 1.5s · Answered in 2.3s"
+   },
+   {
+    "p": "What should I do then?",
+    "c": "With that top mesh, don’t commit to a rebound direction early. Stay balanced and ready, then react to the ball’s actual deflection; mesh can send it off unpredictably. Try that on the next one and see if it helps you stay in control.\n\nFirst word 1.3s · Answered in 2.0s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T27",
+  "scn": "Chiquita attacked",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I hit chiquitas but they keep attacking them and I lose the point.",
+    "c": "If they can attack your chiquita, a common reason is that it sits up or lands where they can meet it comfortably. Try choosing a chiquita only when you can keep it low into their feet or the space between them; otherwise, a lob or a safer ball may be better. Then judge their reply before moving in. Are they attacking it straight out of the air, or after it bounces?\n\nFirst word 5.8s · Answered in 6.6s"
+   },
+   {
+    "p": "They volley it hard back at my feet because it sits up.",
+    "c": "That sounds like the chiquita is giving them time to volley down at your feet. I’d be selective: play it when you can keep it low; if you’re stretched or can only float it up, use a defensive lob to make them move back instead. After the shot, judge their reply before moving forward.\n\nFirst word 3.5s · Answered in 4.2s"
+   },
+   {
+    "p": "Should I just stop playing the chiquita?",
+    "c": "Not necessarily. Keep it for comfortable balls when you can send it low towards their feet, and choose a lob or safer reset when it’s likely to sit up. If they’ve got an easy volley lined up, recover rather than rushing forward.\n\nFirst word 1.9s · Answered in 2.6s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T28",
+  "scn": "Attacking lob vs defensive lob",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "What is the difference between an attacking lob and a defensive lob? When do I use each?",
+    "c": "A defensive lob is mainly a reset: give yourself time and push the pair back so you can recover your position. An attacking lob is more purposeful and penetrating, used when you’re balanced and there’s space behind the net pair; it aims to push them back so you and your partner may take the net if the reply gives you time. In a match, try to notice whether the opponents’ overhead reach is actually beaten before deciding to move up. Is there usually space behind them when you’re thinking of playing one?\n\nFirst word 1.0s · Answered in 2.0s"
+   },
+   {
+    "p": "I always lob as high as I can no matter what.",
+    "c": "That sounds more like a defensive lob habit. A high lob can buy time, but if you’re balanced and there’s space behind the pair, a more controlled, deeper lob may put them under more pressure. When you play those high lobs, do they usually land deep enough to push the opponents back, or do they come up short?\n\nFirst word 1.2s · Answered in 2.0s"
+   },
+   {
+    "p": "Okay, what should I change?",
+    "c": "Don’t aim for maximum height every time. When you’re balanced and there’s open space behind the net pair, try a controlled, deeper lob that gets beyond their overhead reach; use the higher defensive lob when you mainly need time to recover. Judge their reply before moving up with your partner.\n\nFirst word 2.1s · Answered in 2.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T29",
+  "scn": "Passing shot low-percentage",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I keep trying to pass them down the line when they are at the net and I keep missing.",
+    "c": "If they’re set at the net, a down-the-line pass is a tough, low-margin shot, so that may be why you’re missing. At your stage, try noticing whether there’s a genuinely open lane before you go for it; when they’re covering comfortably, a lob or a low ball at their feet is usually the safer choice. Are they usually set when you try it?\n\nFirst word 1.1s · Answered in 1.9s"
+   },
+   {
+    "p": "Honestly I love hitting it. When it goes in it is great.",
+    "c": "Fair enough, there’s nothing wrong with enjoying the shot. When it goes in, you’ve earned that feeling, and the misses are part of choosing a high-risk shot you like.\n\nFirst word 1.3s · Answered in 1.8s"
+   },
+   {
+    "p": "But everyone says you have to try the pass sometimes.",
+    "c": "You don’t have to force it just because people say that. A pass is worth trying when they’re pulled out of position and there’s a clear lane; when they’re set, a lob or a low ball at their feet is usually the more reliable choice. Keep enjoying the pass when the opening is there.\n\nFirst word 1.1s · Answered in 1.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T30",
+  "scn": "Half volley at feet",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Low balls at my feet are my nightmare. I always get caught half-way.",
+    "c": "That sounds like you’re getting pulled into a half-volley when there isn’t enough time to set your feet. On a quick, low ball at your feet, a small controlled response is safer if you can stay balanced; if you’re still moving into it, retreat for a safer reply instead. Are you usually moving forward when it catches you?\n\nAnswered in 2.3s"
+   },
+   {
+    "p": "I am running forward when they hit it.",
+    "c": "That helps explain the half-way feeling. Going on what you describe, you may be arriving too close to the bounce to play it comfortably. When you see a low ball coming at your feet, stop the forward movement and retreat enough to give yourself room for a safer reply, rather than trying to force a half-volley while running. Notice whether you can arrive balanced; a coach watching would be able to help fine-tune the timing.\n\nFirst word 0.9s · Answered in 1.9s"
+   },
+   {
+    "p": "Is there a trick to the half volley?",
+    "c": "The main trick is to stay low and make a compact, controlled contact just after the bounce. It’s most useful when you can’t move far enough back or forward to play an easier ball; if you’re still running into it, retreating for a safer reply may be better. Try to finish balanced rather than forcing a big swing.\n\nFirst word 0.9s · Answered in 1.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T31",
+  "scn": "Between the legs",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Is it worth learning the between the legs shot? I want to be able to do it.",
+    "c": "It can be worth learning as a fun recovery shot, but it’s not a core skill and the evidence on teaching it is limited. In a match, use a normal turn and recovery when that’s possible; only try it when the ball is truly behind you and it’s safe for everyone around you. Is this mainly for fun, or do you keep ending up with balls behind you?\n\nFirst word 1.2s · Answered in 1.9s"
+   },
+   {
+    "p": "I just think it looks cool and fun.",
+    "c": "Fair enough, it does look cool. Treat it as a fun extra rather than something you need in your game, and don’t force it in a match if a normal recovery is there.\n\nFirst word 1.3s · Answered in 1.7s"
+   },
+   {
+    "p": "Can you tell me how?",
+    "c": "I can’t give step-by-step technique for this one because the guidance is limited, and the shot carries timing, balance and safety risks. If you want to learn it, ask a coach to supervise it as a fun extra, and save it for situations where the ball is truly behind you and everyone nearby is clear.\n\nFirst word 1.1s · Answered in 1.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T32",
+  "scn": "Behind the back",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I got a ball that went right past me and I hit it behind my back. It worked once. Should I try that more?",
+    "c": "Fun when it comes off, but I wouldn’t make it a regular option. It’s an improvised shot for when a normal reach or turn is genuinely blocked; if you had room to play a controlled shot in front, that’s the safer choice. Was your usual reach actually blocked on that ball?\n\nAnswered in 2.4s"
+   },
+   {
+    "p": "It was just luck probably.",
+    "c": "Could be! If it happens again, just notice whether you had a normal reach or turn available. Enjoy the lucky one, but I wouldn’t rely on it as a regular shot.\n\nFirst word 1.1s · Answered in 1.6s"
+   },
+   {
+    "p": "OK, fair",
+    "c": "Exactly, a fun one-off is fine. No need to turn it into another thing to work on.\n\nFirst word 0.9s · Answered in 1.3s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T33",
+  "scn": "Playing outside the court",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Can I go outside the court to hit the ball back? I saw it on TV.",
+    "c": "Sometimes. It depends on whether outside play is allowed under the rules for that court and match. Before chasing a ball out, make sure it’s permitted and the exit is clear and safe; don’t risk a collision or a dive. Are you asking about a particular court or match?\n\nAnswered in 2.6s"
+   },
+   {
+    "p": "We play at a normal club, I do not know if the rules allow it.",
+    "c": "A normal club setting doesn’t tell us whether outside play is authorised there. Ask the staff or organiser before you play; until you’ve confirmed it’s allowed and the exit is safe, don’t chase the ball outside.\n\nAnswered in 3.1s"
+   },
+   {
+    "p": "So is it allowed in matches or not?",
+    "c": "Yes, it can be allowed in a match, but only when the court and match conditions authorise play outside. It isn’t automatically allowed everywhere, so check with the organiser or club before playing.\n\nFirst word 1.8s · Answered in 2.4s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T34",
+  "scn": "Court positioning",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I never know where to stand. I am always in the wrong place when they hit.",
+    "c": "A common cause is getting caught between the net and the back of the court while your pair is changing positions. Where are you usually standing when they hit, near the net, back defending, or somewhere in between?\n\nFirst word 3.9s · Answered in 4.4s"
+   },
+   {
+    "p": "Between the net and the back, like stuck in the middle.",
+    "c": "That does sound like you may be getting caught in transition. After you play your shot, try to move with your partner into a clear attacking position at the net or a defending position further back, rather than drifting forward automatically. Notice whether you’re stranded in the middle when opponents hit; going on what you describe, that’s the first thing I’d track.\n\nFirst word 1.2s · Answered in 2.0s"
+   },
+   {
+    "p": "So where should I be?",
+    "c": "Don’t aim for one fixed spot. When you and your partner are attacking, recover together toward the net; when you’re defending, stay back with them. After your shot, judge the reply first: if it puts them under pressure, move up with your partner; if not, recover to a solid position rather than stopping halfway.\n\nFirst word 1.0s · Answered in 1.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T35",
+  "scn": "Ready position split step",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I am always flat-footed when the ball comes. Someone said I need a split step.",
+    "c": "A split step sounds worth trying, since you notice you’re flat-footed as the ball comes. Make it a small, light preparation timed around your opponent hitting, so you’re balanced and ready to move, not still running or landing after the ball is already coming. It doesn’t need to be a big jump.\n\nAnswered in 3.9s"
+   },
+   {
+    "p": "I think I am watching the ball but not moving.",
+    "c": "That sounds like the first move may be starting late, even though your eyes are on the ball. In the next game, notice whether you’re balanced and ready when your opponent makes contact; a small split step at that moment can help you move sooner. Keep it light, not a big jump.\n\nAnswered in 2.3s"
+   },
+   {
+    "p": "It feels silly hopping every point.",
+    "c": "It shouldn’t be a hop every time. Think of it as a tiny, light adjustment as your opponent hits, just enough to feel balanced and ready to push off. If you’re already moving or the pace is slow, keep it subtle; no need to force a big jump.\n\nFirst word 2.7s · Answered in 3.6s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T36",
+  "scn": "Taking and holding the net",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "After I hit a lob I run to the net and then get passed or lobbed. Every time.",
+    "c": "It sounds like you may be committing forward before you know what your lob has made them do. After you hit it, read their reply first: if they’re rushed or pushed back, move up with your partner; if they have a comfortable overhead, stay back and get ready to defend rather than running straight to the net. Is your lob usually deep enough to make them move back?\n\nFirst word 2.6s · Answered in 3.5s"
+   },
+   {
+    "p": "We hit the lob but it is not that deep.",
+    "c": "That could be why they have time to attack you. A short lob often gives them a comfortable overhead, so don’t run straight to the net after it. When you’re balanced, try sending it higher and deeper; if it still lands short, stay with your partner and get ready for their overhead instead of charging in. See how that changes the next few rallies.\n\nFirst word 4.2s · Answered in 5.0s"
+   },
+   {
+    "p": "So should I stay back after a lob?",
+    "c": "Not automatically. Since yours often lands short, don’t rush to the net; judge their reply first. If they’re pushed back or rushed, move up with your partner. If they can attack comfortably, stay back and defend together.\n\nFirst word 0.9s · Answered in 1.6s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T37",
+  "scn": "Recovery after shots",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I hit a shot and then I just stand and watch it. Then they put it right where I am not.",
+    "c": "Sounds like you’re watching your shot instead of resetting for their reply. After you hit, track the opponent and move with your partner into a clear attacking or defending position; only close toward the net if your shot has put them under pressure. Try noticing where you are when they make contact, rather than where you were when you hit.\n\nFirst word 4.5s · Answered in 5.3s"
+   },
+   {
+    "p": "Mostly after volleys and smashes.",
+    "c": "That fits: after a volley or smash, it’s easy to admire the shot for a beat. As soon as you’ve hit, bring the racket back in front and recover with your partner; after a smash, judge their reply before moving in, since they may still be able to play it. Notice whether you get caught standing most on smashes or on volleys.\n\nFirst word 0.9s · Answered in 1.8s"
+   },
+   {
+    "p": "Ok but where do I recover to?",
+    "c": "There isn’t one fixed spot. After a volley, recover with your partner to cover the reply your shot makes most available; after a smash, first judge whether they’re under pressure. If they can still return it comfortably, don’t charge in, reset with your partner to cover the next ball. Try to be moving again by the time they contact it, rather than watching where your shot lands.\n\nFirst word 4.8s · Answered in 6.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T38",
+  "scn": "Moving as a pair",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My partner and I keep leaving a gap in the middle. One of us goes forward and the other stays back.",
+    "c": "That sounds like your pair’s movement is getting out of sync, especially when one of you moves forward and the other doesn’t. A good match cue is to notice the gap as the rally changes, then adjust sideways and forward or back together; if one of you is pulled wide, the other can often shade toward the middle. When does it tend to happen most, after a lob or when one of you is drawn wide?\n\nFirst word 1.0s · Answered in 2.0s"
+   },
+   {
+    "p": "It happens after lobs. I go back, they stay at the net.",
+    "c": "So after a lob, you retreat while your partner holds the net, and that can open the middle. The right response depends on the lob and whether you can take it comfortably overhead: try to judge that ball first, then call early and adjust together so you don’t leave a big gap. If you need to defend from the back, your partner should usually adjust too, rather than staying fixed at the net.\n\nFirst word 0.9s · Answered in 1.9s"
+   },
+   {
+    "p": "We argue a bit about who should do what.",
+    "c": "That sounds like the disagreement is about the decision, not just the gap. After a lob, the call depends on whether you can take it comfortably overhead or need to defend; agree between games on a simple early call for “mine” or “back”, then adjust together to the shot. Neither of you needs to be locked into one role.\n\nFirst word 1.1s · Answered in 2.0s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T39",
+  "scn": "Shot selection",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I think half my errors are because I pick the wrong shot, not because I cannot hit it.",
+    "c": "That’s a useful distinction: the shot itself may be fine, but the choice doesn’t fit the ball or the situation. Which kind of moment catches you out most, when you’re defending, at the net, or trying to finish a point?\n\nFirst word 2.5s · Answered in 3.1s"
+   },
+   {
+    "p": "Like I try to smash from the back or drive volleys from way behind the net line.",
+    "c": "That does sound more like shot choice than not being able to hit them. A smash usually needs a short, high lob you can reach in balance; from well behind the net, a drive volley can leave you exposed if it doesn’t put the opponents under real pressure. Next time, check whether you’re balanced and the ball is genuinely attackable before choosing the aggressive shot. What tends to happen when you try them, do they go out, into the net, or leave an easy reply?\n\nFirst word 4.8s · Answered in 6.5s"
+   },
+   {
+    "p": "How do I decide faster in the moment?",
+    "c": "Use one quick check as the ball comes: “Am I balanced and is this ball really attackable?” If you’re deep or moving back, don’t force a smash; if you’re well set under a short, high lob, it may be on. For a drive volley, use it when you can contact comfortably in front and put pressure on them; otherwise play a controlled shot into space and recover. You don’t need to make the perfect choice every time, just spot when the aggressive option is a stretch.\n\nFirst word 5.1s · Answered in 6.8s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T40",
+  "scn": "Partner communication",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/C",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My partner never talks on court and we keep colliding or both leaving balls.",
+    "c": "That sounds like a communication problem more than a shot problem. A simple starting point is to agree on one loud call, like “mine” or “yours,” and use it early on balls you might both reach. When you collide, is it usually on a middle ball or when one of you moves in for a short ball?\n\nAnswered in 2.6s"
+   },
+   {
+    "p": "I do not want to be annoying about it. He is a friend.",
+    "c": "That’s understandable. You can keep it friendly and make it about helping each other, not correcting him: “I keep worrying we’ll both go for it or leave it, shall we try calling ‘mine’ or ‘yours’ early?” It’s a small team habit, not a criticism. Try bringing it up between games, when there’s no point going on.\n\nFirst word 3.1s · Answered in 4.1s"
+   },
+   {
+    "p": "What do I even say to him?",
+    "c": "Try: “I’m enjoying playing with you, but we’ve had a couple of collisions and left some balls. Could we try calling ‘mine’ or ‘yours’ early, just so we’re both clear?” Say it between games so it feels like a team tweak, not a criticism.\n\nFirst word 1.8s · Answered in 2.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T41",
+  "scn": "Constructing points",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/Alex",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I always try to win the point with one shot. I never build the point.",
+    "c": "That sounds like you’re trying to finish before you’ve had time to make a good opening. In C-level padel, a controlled shot into a space can draw a weaker reply, then you can look for the finish. Which shot usually comes just before you go for the winner?\n\nFirst word 1.1s · Answered in 1.9s"
+   },
+   {
+    "p": "Because it feels boring to just keep it in play. I want winners.",
+    "c": "Fair enough, you want to attack, not just trade safe balls. Building the point can still be aggressive: try placing one controlled ball to the side or middle to make them move, then attack the reply if it’s weaker. That gives you a chance to create a winner rather than force one from an awkward ball.\n\nFirst word 1.1s · Answered in 1.9s"
+   },
+   {
+    "p": "Give me a way to build a point without being boring.",
+    "c": "Make it a two-shot challenge: first, hit a controlled ball to move them or draw a weaker reply; then look to finish if the next ball is comfortable. You’re still hunting winners, just creating a better chance for one.\n\nFirst word 1.5s · Answered in 2.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T42",
+  "scn": "Middle ball responsibility",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Who should take the middle ball? I think it should always be the forehand player.",
+    "c": "The forehand player can be a useful starting convention, but it shouldn’t be automatic. Who’s better placed depends on where you both are and which way the ball is travelling, so agree a clear call and adjust when the positions make the backhand player the better option. On the middle balls you’re unsure about, where are you and your partner standing?\n\nAnswered in 2.9s"
+   },
+   {
+    "p": "My partner says it is whoever gets there first.",
+    "c": "I wouldn’t use “whoever gets there first” as a rule. It can lead to both of you chasing or neither taking it; a clear early call matters more than who moves first. You could agree responsibility before the next set based on your positions and reach, then notice whether the problem is a late call, both going, or neither going.\n\nFirst word 1.3s · Answered in 2.1s"
+   },
+   {
+    "p": "We just keep arguing about it.",
+    "c": "That sounds like the agreement is the sticking point, not just the shot. Between games, agree on a simple starting convention and a clear call, then adjust it when your positions or the ball’s direction make it a poor fit. Keep the chat about what happened on the point, rather than whose rule was right.\n\nFirst word 1.6s · Answered in 2.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T43",
+  "scn": "Rules and scoring",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "At our club someone said the serve can hit the side wall and still be good. Is that right?",
+    "c": "Yes. A serve is good if it bounces first in the correct diagonal service box, then hits the side wall. If it hits the fence after bouncing, it’s a fault. Clubs can vary on some rules like golden point, but this serve rule is standard.\n\nFirst word 1.5s · Answered in 2.2s"
+   },
+   {
+    "p": "And what about the golden point? Do we play it?",
+    "c": "Golden point isn’t automatic. It depends on your match format: at deuce, you play one deciding point instead of advantage if that format is in use. Check with the organiser or agree with your opponents before starting.\n\nFirst word 1.3s · Answered in 2.0s"
+   },
+   {
+    "p": "So who decides at 40-40, the receiving pair?",
+    "c": "In golden point, the receiving pair chooses which side receives the deciding serve. If you’re not playing golden point, you continue with advantage scoring instead.\n\nFirst word 1.2s · Answered in 1.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T44",
+  "scn": "Composure under pressure",
+  "mode": "Mindset",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nMINDSET\n\nWhat's on your mind? Nerves, focus, frustration, anything.",
+  "turns": [
+   {
+    "p": "I get really tight on break points. My arm feels heavy.",
+    "c": "That heavy-arm feeling on break points is something plenty of players experience. When do you notice it most, before serving or returning, or once the rally is underway?\n\nFirst word 3.1s · Answered in 3.5s"
+   },
+   {
+    "p": "It is not every time. Mostly when we are close in the third set.",
+    "c": "That points to the tight score and late-match moment, rather than every break point. It’s common for the arm to feel heavy when the score starts to matter. Between points, turn away, breathe out slowly, then pick one clear target for the next point; once play starts, bring your attention back to the ball and that target.\n\nFirst word 2.0s · Answered in 2.7s"
+   },
+   {
+    "p": "I do not want to think about it too much, just something simple.",
+    "c": "Absolutely. Between points, just breathe out once and choose a simple target. Then play the point without analysing it.\n\nFirst word 4.2s · Answered in 4.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T45",
+  "scn": "Bouncing back after mistakes",
+  "mode": "Mindset",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nMINDSET\n\nWhat's on your mind? Nerves, focus, frustration, anything.",
+  "turns": [
+   {
+    "p": "When I make a mistake I get angry and then make another one.",
+    "c": "That can turn into a rough little spiral, and it happens to plenty of players. What do you find yourself saying to yourself right after the first mistake?\n\nFirst word 1.4s · Answered in 1.8s"
+   },
+   {
+    "p": "Yes it always spirals. My partner gets annoyed too.",
+    "c": "That sounds like the first mistake is carrying into the next point, and your partner’s reaction may add to it. After an error, try a brief between-points reset: turn away, breathe out, then agree one simple intention with your partner for the next point. Keep it about what you’ll do next, not blame. Try it in a match and see whether it helps interrupt the spiral.\n\nFirst word 1.0s · Answered in 2.1s"
+   },
+   {
+    "p": "I just want to reset quickly.",
+    "c": "Try this between points: turn away, breathe out once, and say “next point” to yourself. It’s a simple reset, and plenty of players need a small routine after mistakes.\n\nFirst word 1.3s · Answered in 1.7s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T46",
+  "scn": "Focus in long matches",
+  "mode": "Mindset",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nMINDSET\n\nWhat's on your mind? Nerves, focus, frustration, anything.",
+  "turns": [
+   {
+    "p": "I lose focus in the third set when we have been playing a while. I make silly mistakes.",
+    "c": "That’s common after a long match; tiredness can make it harder to keep your attention on the ball and the point. Between points, turn away, breathe out once, then pick one simple target for the next point. When the mistakes start, what tends to happen just before them?\n\nFirst word 3.6s · Answered in 4.2s"
+   },
+   {
+    "p": "Yeah I get tired. We play after work.",
+    "c": "That makes sense, especially after a full workday. When you feel your focus slipping, keep it simple: between points, breathe out and choose a target; during the rally, bring your attention back to the ball and where it’s going. No need to analyse your technique mid-point.\n\nFirst word 1.7s · Answered in 2.4s"
+   },
+   {
+    "p": "Is it just tiredness? Or can I do something?",
+    "c": "It might be tiredness, but I can’t tell from here, and a full workday could be part of it. You can still use a simple reset: between points, breathe out and pick one target; during the rally, bring your attention back to the ball and the play. Notice whether the slips come mainly late in the match or also when you’re distracted or overthinking.\n\nFirst word 1.6s · Answered in 2.3s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T47",
+  "scn": "Celebrates, wants no advice",
+  "mode": "Post-match",
+  "meta": "Full/Conv/Alex post-match",
+  "opener": "‹ Coach\n\nPOST-MATCH\n\nHow do you feel about your last game?",
+  "turns": [
+   {
+    "p": "We lost 6-4 6-4 but honestly it was the best game I have had in weeks. So much fun.",
+    "c": "That sounds like a brilliant game, Alex. Losing the sets but having your best time on court in weeks is a lovely win in its own way.\n\nFirst word 0.9s · Answered in 1.5s"
+   },
+   {
+    "p": "Haha yes. Great evening, nothing to fix.",
+    "c": "Exactly, sounds like a great evening and a game worth enjoying just as it was.\n\nFirst word 1.1s · Answered in 1.3s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T48",
+  "scn": "Explicitly says stop analysing",
+  "mode": "Post-match",
+  "meta": "Full/Conv/Alex post-match",
+  "opener": "‹ Coach\n\nPOST-MATCH\n\nHow do you feel about your last game?",
+  "turns": [
+   {
+    "p": "Played badly today, 3 out of 10 probably. Missed everything.",
+    "c": "That sounds like a rough day, especially when it felt like everything was going wrong. What felt off to you most during play?\n\nFirst word 1.4s · Answered in 1.9s"
+   },
+   {
+    "p": "Honestly I do not want to analyse it. I have been overthinking my game all week. Can we just leave it?",
+    "c": "Absolutely. Leave the analysis there and let yourself just enjoy the next time you play. A 3/10 day doesn’t need picking apart.\n\nFirst word 0.9s · Answered in 1.4s"
+   },
+   {
+    "p": "Thanks. I will just play on Thursday.",
+    "c": "Sounds good, Alex. Hope Thursday is a fun one and you can just enjoy being out there.\n\nFirst word 2.2s · Answered in 2.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T49",
+  "scn": "\"I already know that - how do I actually do it?\"",
+  "mode": "Ask the coach",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My volleys at the net keep going long. I know I should keep the racket in front and be compact.",
+    "c": "Since you already know to keep it compact, a common cause is adding a little push against a fast incoming ball. Does it go long more when the ball comes at you quickly, or when you try to add pace yourself?\n\nAnswered in 5.7s"
+   },
+   {
+    "p": "Yes I know all that. Everyone says that. Tell me how to actually do it, I cannot make my body do it.",
+    "c": "Fair, repeating the cue doesn’t make your body do it. If you get a few minutes to practise, try this: have a partner feed you gentle volleys from close range, and just meet each ball with the racket already in front, letting the feed provide the pace. Aim safely through the middle, then gradually make the feeds firmer; if it starts flying long, ease the feed back down. Treat it as a way to build the feel, not a test.\n\nFirst word 5.7s · Answered in 6.9s"
+   },
+   {
+    "p": "I tried that last time and it was fine for two games then it all went again.",
+    "c": "So the compact volley held up for two games, then faded. That suggests the idea may help, but it’s not sticking once the match gets harder; I wouldn’t pile on another technique cue. Next match, just notice what changes when they start going long, especially whether the incoming ball is faster or you’re trying to add pace.\n\nFirst word 1.6s · Answered in 2.6s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T50",
+  "scn": "\"Your advice isn't helping\" (Direct style)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "My drives from the back keep going into the net.",
+    "c": "A common cause is making contact too low or too late, so the ball doesn’t clear the net. Are they mostly going into the net from low, fast balls, or does it happen on higher, slower ones too?\n\nFirst word 1.3s · Answered in 1.9s"
+   },
+   {
+    "p": "You told me to get under the ball and I did. It is not helping.",
+    "c": "I can’t see that advice in this chat, so I’ll treat getting under the ball as what you tried. Since it hasn’t helped, let’s leave that cue rather than pile on another guess. In a match, just notice whether it’s mainly low, fast drives that go into the net; a short clip of one would also give a coach something specific to look at.\n\nAnswered in 8.0s"
+   },
+   {
+    "p": "Still not helping. Same advice again.",
+    "c": "You’re right, I repeated the same suggestion instead of changing approach. We’re going in circles, and another guess from here won’t help, so leave that correction aside. Ask a coach to watch a few back-court drives into the net and check your preparation, balance and contact point; one short video from behind you could help them spot what’s happening.\n\nFirst word 2.8s · Answered in 3.9s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T51",
+  "scn": "Positive result after following advice (Direct)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Last week you suggested I take the safer reply when stretched at the back instead of going for winners. I tried it and we won three games in a row from that!",
+    "c": "That’s a great result, Alex. Choosing the safer reply when you were stretched helped you stay in the rally, and winning three games in a row is a lovely sign it paid off. Stick with that choice in those stretched moments for a few more matches and see if it holds up.\n\nFirst word 1.3s · Answered in 1.9s"
+   },
+   {
+    "p": "Honestly it felt great. I stayed in the rally.",
+    "c": "That’s the key change, Alex: you stayed in the rally instead of forcing a winner, and it felt good too. Enjoy that and carry on with the same choice when you’re stretched.\n\nFirst word 1.1s · Answered in 1.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T52",
+  "scn": "Negative result after following advice (Direct)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "You said to hit controlled shots to the side when I am off balance. I tried it for two matches and it is actually worse. I keep getting attacked.",
+    "c": "I can’t see that earlier advice here, but two matches suggest the side placement may be leaving you exposed, perhaps by opening an angle or sitting short. When you’re off balance, try sending the ball deep through the middle instead, which gives them less angle to attack. Were they attacking because the ball landed short, or because it opened the court?\n\nFirst word 4.8s · Answered in 5.7s"
+   },
+   {
+    "p": "They just put the ball away because mine is too slow and short.",
+    "c": "That points to depth, not the side, being the bigger issue. I can’t tell exactly why the ball is coming off short, but when you’re off balance, try sending it high and deep through the middle rather than steering it wide. If they’re already at the net, make it a defensive lob; if they’re back, keep it lower and deep.\n\nAnswered in 9.7s"
+   },
+   {
+    "p": "So what now?",
+    "c": "Next time you’re off balance, give yourself more margin: lift the ball deep through the middle rather than aiming for the side. If they’re already at the net, use a defensive lob; otherwise keep it lower and deep. Don’t force pace. Try that for a couple of matches and see whether they still get an easy put-away.\n\nFirst word 1.3s · Answered in 2.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T53",
+  "scn": "Mixed result: success early, fails when tired (Direct)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I tried letting the ball come off the back glass instead of blocking. It worked well in the first set.",
+    "c": "Good sign: letting the ball come off the glass worked well in the first set. Keep making that choice when you have time to play the rebound, and see whether it still feels comfortable when the ball comes faster or closer to you.\n\nAnswered in 6.6s"
+   },
+   {
+    "p": "But in the third set when I was tired I went back to blocking everything.",
+    "c": "That’s useful to notice: the glass choice worked early, but tiredness pulled you back to blocking everything. When you’re flagging, just look for one ball that gives you enough time and space after the rebound, and let that one come off the glass; block the ones that jam you or leave no time. Keep it simple for another match or two.\n\nFirst word 1.2s · Answered in 2.3s"
+   },
+   {
+    "p": "So is it just not working?",
+    "c": "Not entirely. It worked in the first set, so the idea seems useful when you have time and space; it got harder when you were tired. That’s partial progress, not a reason to drop it. Keep choosing just the comfortable rebounds late in the match and block the rushed ones.\n\nFirst word 1.4s · Answered in 2.1s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T54",
+  "scn": "Advanced player needs basic correction (Direct)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/A",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I am an A level player, 8 years playing. But I just realised I am hitting my bandejas late, I let the lob drop too low before I hit.",
+    "c": "That could be the key: if you wait until the lob drops, the bandeja contact gets low and late. Try turning side-on and getting the racket up as soon as you read the lob, then meet it in front while it’s still comfortably above your head. Don’t force that on a deep or awkward lob; if the contact isn’t comfortable, defend instead. Is this happening mostly on deep lobs or on shorter ones too?\n\nFirst word 1.2s · Answered in 2.3s"
+   },
+   {
+    "p": "I turn sideways but I seem to be waiting for the ball.",
+    "c": "So the turn is there, but you may be waiting in place instead of moving early to meet the ball. As soon as you read the lob, get into position under it with your racket ready, then make small adjustments as it comes down. Do you feel stuck in place, or are you moving but still misjudging where it’ll drop?\n\nAnswered in 6.2s"
+   },
+   {
+    "p": "Feels too basic to even ask, honestly.",
+    "c": "Not basic at all. Reading the lob early but then waiting is a timing problem, and it can catch experienced players too. On the next bandeja, use the turn as your cue to move into position straight away, then make small adjustments as the ball drops so contact stays in front rather than directly overhead.\n\nFirst word 3.2s · Answered in 3.9s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T55",
+  "scn": "Beginner asks advanced tactical question (Direct)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/D",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I just started padel last month. Should we play with one up one back or both at the net? Also what about the Australian formation?",
+    "c": "As a pair, try to move together: both back when defending, and both move up when your shot gives you time and makes the opponents uncomfortable. One up and one back can leave a gap, so treat it as a transition rather than a formation to hold. The Australian formation is a serving setup where the server’s partner starts on the same side as the server, leaving the server to cover the other side after serving. It can suit a planned serve-and-volley pattern, but after just a month, the standard formation is simpler while you learn to move together.\n\nFirst word 2.6s · Answered in 4.3s"
+   },
+   {
+    "p": "We are D level, we mostly just rally.",
+    "c": "That makes sense. At D level, I’d keep the formation simple: start side by side, usually both back while the opponents control the net, and come forward together when you get a slower or shorter ball and can do it in balance. Don’t rush to the net just because you’ve hit one shot; judge their reply and recover together if it stays awkward. Australian formation can wait until your serve-and-move pattern feels settled.\n\nFirst word 1.4s · Answered in 2.6s"
+   },
+   {
+    "p": "OK so do I need to worry about formations at all?",
+    "c": "Not much yet. Rather than worrying about named formations, start in a clear side-by-side shape and move together: defend together, and come forward together when you’ve made it safe to do so. That’ll help your rallies more than adding Australian formation right now.\n\nFirst word 1.6s · Answered in 2.4s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T56",
+  "scn": "Player contradicts match history",
+  "mode": "Post-match",
+  "meta": "Full/Direct/Alex post-match",
+  "opener": "‹ Coach\n\nPOST-MATCH\n\nHow do you feel about your last game?",
+  "turns": [
+   {
+    "p": "I played really well today, like 9 out of 10, no mistakes at all.",
+    "c": "That’s a cracking day, Alex. What felt like it was working so well?\n\nFirst word 2.8s · Answered in 3.1s"
+   },
+   {
+    "p": "Actually, I have not really played well for weeks. Everything has been a mess.",
+    "c": "You rated today a 9, but also said it’s been a mess for weeks. Was today a real bright spot, or did it still feel rough despite the rating?\n\nFirst word 2.9s · Answered in 3.4s"
+   },
+   {
+    "p": "Wait, did I have a good run recently or not?",
+    "c": "I can’t tell that you’ve had a good run recently. There’s no session history here, just what you said about today, and one match isn’t enough to call it a run.\n\nFirst word 2.8s · Answered in 3.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T57",
+  "scn": "Asks coach to save/edit a goal",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I want to make \"letting the ball come off the back glass\" a goal. Can you save it for me?",
+    "c": "You already have a back-glass-return goal: “Read back glass rebounds earlier,” so I can’t add a duplicate. Letting the ball come off the glass fits that goal, though. I can’t change its saved wording from here, but you can use that as the cue when you work on it.\n\nAnswered in 5.1s"
+   },
+   {
+    "p": "Yes. Please add it as a goal.",
+    "c": "You’ve already got three active goals, including “Read back glass rebounds earlier,” so I can’t add another without making room. Letting the ball come off the glass fits that existing goal. If you want to replace one, tell me which goal to park.\n\nFirst word 1.0s · Answered in 1.6s"
+   }
+  ],
+  "extra": "NO ACCEPT BUTTON PRESENT"
+ },
+ {
+  "id": "T58",
+  "scn": "Park a goal for later",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I want to park my serve goal for now. I am tired of working on it. Can you do that?",
+    "c": "Fair enough, Alex. Want me to park your serve goal for now?\n\nFirst word 1.8s · Answered in 2.0s\n\nPark this goal for now? You can pick it up again later.\n\nAccept\nNot quite"
+   },
+   {
+    "p": "Yes park it please. Then maybe I can add the glass one.",
+    "c": "Your serve goal is parked. You already have “Read back glass rebounds earlier” as an active goal, so there’s no need to add another glass goal.\n\nFirst word 4.1s · Answered in 4.5s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T58b",
+  "scn": "Park goal - functional re-check (supplementary)",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Please park my serve goal for now.",
+    "c": "Sure, we can set your serve goal aside for now. Want me to park it?\n\nFirst word 1.1s · Answered in 1.4s\n\nPark this goal for now? You can pick it up again later.\n\nAccept\nNot quite"
+   }
+  ],
+  "extra": "AFTER ACCEPT: ckets.\n\nPlease park my serve goal for now.\n\nSure, we can set your serve goal aside for now. Want me to park it?\n\nFirst word 1.1s · Answered in 1.4s\n\nPark this goal for now? You can pick it up again later.\n\nParked. You can pick it up again from Goals.\nGOALS TAB: Goals | YOUR GOALS | Up to 3 at a time. Slide to show how it is going. It is about how you feel, not your level. | Taking and holding the net | Getting there | Take the net more often | Movement | Describe this goal | Work it out with the coach | Park for now | Remove | Back glass return | Getting going | Read back glass rebounds earlier | Defence | Describe this goal | Work it out with the coach | Park for now | Remove | + Add a goal | PARKED FOR NOW | Set aside, not gone. Pick one up whenever you like. | Serve | Add depth to my serve | Pick it up again | Remove | Pick it yourself or work it out with the coach. A goal can be a skill or your own words. | Home | Goals | Games | Skills | Coach"
+ },
+ {
+  "id": "T59",
+  "scn": "Returning player expects coach to remember",
+  "mode": "Ask the coach",
+  "meta": "Full/Direct/B",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "Hi again. Last time we talked about my back glass and blocking. Do you remember what I was working on?",
+    "c": "I can’t see the earlier chat about blocking here, so I don’t want to guess at the exact advice. I can see you’ve been working on reading back-glass rebounds earlier. What were you trying with the block?\n\nFirst word 2.0s · Answered in 2.4s"
+   },
+   {
+    "p": "Yes that. I tried it twice since and it went okay.",
+    "c": "Nice, Alex. Reading the rebound and choosing the block when you don’t have room sounds like it went reasonably well twice. Stick with the same idea for a few more games and see if it holds up.\n\nFirst word 2.2s · Answered in 2.7s"
+   },
+   {
+    "p": "Good. Anything I should keep in mind?",
+    "c": "Keep judging the rebound path early. If it leaves you room to play after the glass, prepare and make space; if it jams you, the block can be the sensible choice. Two tries is a promising start, so stick with that read and see how it goes over a few more games.\n\nFirst word 2.7s · Answered in 3.3s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T60",
+  "scn": "Frustrated, discouraged, not improving (Conversational)",
+  "mode": "Mindset",
+  "meta": "Full/Conv/B",
+  "opener": "‹ Coach\n\nMINDSET\n\nWhat's on your mind? Nerves, focus, frustration, anything.",
+  "turns": [
+   {
+    "p": "I have been playing for a year and I honestly do not feel like I am improving. It is really getting me down.",
+    "c": "That’s a rough feeling, especially when you’ve been putting a year into it. Lots of players hit stretches where progress is hard to notice. When does it hit you most, during a match, or afterwards when you’re thinking about how you played?\n\nFirst word 2.0s · Answered in 2.6s"
+   },
+   {
+    "p": "Everyone else seems to get better and I stay the same. Maybe I am just not good at this.",
+    "c": "Feeling stuck doesn’t mean you’re not good at this. You see everyone else’s progress from the outside, but your own game is the one you scrutinise point by point, and every player has stretches where improvement feels invisible. Next match, between points, turn away, breathe out, and give yourself one simple cue: “play the next ball.” You don’t have to judge your whole ability during a match.\n\nFirst word 2.6s · Answered in 3.6s"
+   },
+   {
+    "p": "I do not know why I still play.",
+    "c": "It sounds like this has taken the enjoyment out of padel, not just made you doubt your progress. When you say you don’t know why you still play, do you mean padel specifically, or are you feeling this way about other parts of life too?\n\nFirst word 2.8s · Answered in 3.3s"
+   }
+  ],
+  "extra": ""
+ },
+ {
+  "id": "T61",
+  "scn": "Reflection mode: player not interested in improving",
+  "mode": "Ask the coach",
+  "meta": "Reflection/Conv/D",
+  "opener": "‹ Coach\n\nASK THE COACH\n\nWhat's your question today? Anything about padel: a shot, tactics, rules, even rackets.",
+  "turns": [
+   {
+    "p": "I only use this app to log my games. I am not trying to get better, I just play with my friends for fun. Any tips anyway?",
+    "c": "Honestly, no tips needed if you’re happy just playing for fun. Enjoy the games with your friends!\n\nFirst word 1.1s · Answered in 1.5s"
+   },
+   {
+    "p": "Not really, we just enjoy it. Maybe one small thing?",
+    "c": "Then keep it simple: after each point, share a quick word with your partner about what you both enjoyed or noticed. No need to turn it into homework, just have fun out there.\n\nFirst word 1.3s · Answered in 1.8s"
+   }
+  ],
+  "extra": ""
+ }
+]
