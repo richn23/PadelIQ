@@ -629,8 +629,7 @@
     "over the side"
    ],
    "facts": [
-    "An attacking smash meant to leave the court over the three-metre side enclosure after a legal bounce.",
-    "Spin, trajectory, rebound and the right ball matter. It is not a normal flat smash."
+    "An attacking smash meant to leave the court over the three-metre side enclosure after a legal bounce on the opponents' side."
    ],
    "mistakes": [
     "Treating it as the same as an ordinary smash"
@@ -639,7 +638,8 @@
     "Does your ordinary smash go in reliably yet?"
    ],
    "avoid": [
-    "Advanced: do not suggest unless they ask and are consistent."
+    "Advanced: do not suggest unless they ask and are consistent.",
+    "Limited evidence: describe the shot, the rule and when it is sensible; no spin, contact or trajectory mechanics."
    ],
    "sources": [
     "The Padel School",
@@ -671,8 +671,7 @@
     "four metre"
    ],
    "facts": [
-    "Usually a flatter, forceful smash from a good forward position, sent beyond the four-metre back enclosure after a bounce.",
-    "The geometry and execution differ from the x3."
+    "An attacking smash meant to leave the court over the four-metre back enclosure after a legal bounce on the opponents' side."
    ],
    "mistakes": [
     "Treating it as the same as an ordinary smash"
@@ -681,7 +680,8 @@
     "Does your ordinary smash go in reliably yet?"
    ],
    "avoid": [
-    "Advanced: do not suggest unless they ask and are consistent."
+    "Advanced: do not suggest unless they ask and are consistent.",
+    "Limited evidence: describe the shot, the rule and when it is sensible; no mechanics, power or flatness advice."
    ],
    "sources": [
     "The Padel School",
@@ -1329,14 +1329,16 @@
    ],
    "mistakes": [
     "Hitting it with too much pace",
-    "Moving forward before seeing the reply"
+    "Moving forward before seeing the reply",
+    "Hitting it too high or too slow so it sits up and can be volleyed down"
    ],
    "ask": [
     "What do they do with it: attack it, or give you time?"
    ],
    "avoid": [
     "Do not say always follow it in.",
-    "Playing a chiquita does not mean advancing. Say to judge the reply first: advance only if it left them an awkward ball, otherwise recover."
+    "Playing a chiquita does not mean advancing. Say to judge the reply first: advance only if it left them an awkward ball, otherwise recover.",
+    "Never advise adding height to a chiquita that gets attacked. It should stay low and slow into the feet. If it sits up, ask where it lands and suggest keeping it lower, using less pace to the feet, or choosing a safer ball (lob or reset)."
    ],
    "sources": [
     "The Padel School"

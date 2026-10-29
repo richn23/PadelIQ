@@ -49,6 +49,12 @@ function salvage(text) {
     try { proposal = JSON.parse(reply.slice(pi)).proposal || null; } catch { /* leave it out */ }
     reply = reply.slice(0, pi).trim();
   }
+  // A bare proposal object glued to the words: {"type":"thread",...} with no "proposal" key.
+  const bi = reply.search(/\{\s*"type"\s*:\s*"/);
+  if (bi >= 0) {
+    if (!proposal) { try { proposal = JSON.parse(reply.slice(bi)); } catch { /* leave it out */ } }
+    reply = reply.slice(0, bi).trim();
+  }
   const m = reply.match(/^\{\s*"reply"\s*:\s*"/);
   if (m) {
     let out = '';

@@ -59,6 +59,7 @@ export function buildPlayerFile(player, { skill } = {}) {
       L.push(`- [goal ${g.id}] ${goalSkill(g)}${g.skillId ? ` (${g.skillId})` : ''}: "${goalNote(g) || 'no words added'}", ${g.progress}% happy.${recent.length ? ` Last checks: ${recent.join(', ')}.` : ''}${dx}`);
     });
   } else L.push('Goals: none yet');
+  L.push(goals.length >= 3 ? 'Goal slots: 3 of 3 used (FULL). Do not propose a new goal; offer to park one first.' : `Goal slots: ${goals.length} of 3 used.`);
   if ((player.parkedGoals || []).length) L.push('Parked goals (set aside by the player; not working on them now. Do not bring them up unless asked): ' + player.parkedGoals.map((g) => goalSkill(g)).join(', '));
   L.push(...threadLines(player));
   const own = Object.entries(checks).filter(([, v]) => v.from !== 'quiz');

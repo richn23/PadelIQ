@@ -13,6 +13,8 @@ const cases = [
   ['{"reply":"Hi there","proposal":null}', 'Hi there'],
   ['{"reply":"Hi \\"there\\"","proposal":null}', 'Hi "there"'],
   ['Words here. {"proposal":null}', 'Words here.'],
+  ['Try a small split. {"type":"thread","topic":"Split","cues":["Land balanced"]}', 'Try a small split.'],
+  ['Try a small split.\n\n{"type":"thread","topic":"Split","focus":"x"', 'Try a small split.'],
 ];
 let bad = 0;
 for (const [i, o] of cites) { const r = strip(i); if (r !== o) { bad++; console.log('FAIL cite', JSON.stringify(i), '=>', JSON.stringify(r)); } }
